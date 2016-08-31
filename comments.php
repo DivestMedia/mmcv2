@@ -38,7 +38,7 @@ global $post;
 
             <?php if ( have_comments() ) : ?>
     <div class="comment-tree-wrapper row padding-top-50 padding-bottom-20">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="col-xs-12">
 
 
             <?php
