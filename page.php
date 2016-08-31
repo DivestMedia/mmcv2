@@ -1,5 +1,5 @@
 <?php
 global $post;
 get_header();
-get_template_part("partials/content", locate_template('partials/content-page-'.basename(get_permalink()).'.php')!='' ? 'page-'.basename(get_permalink()) : 'single' );
+get_template_part("partials/page", locate_template('partials/page-'.basename(get_permalink()).'.php')!='' ? basename(get_permalink()) : '' );
 get_footer();

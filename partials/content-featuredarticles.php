@@ -49,230 +49,185 @@
 						<div class="tab-content">
 							<div class="tab-pane fade in active" id="planning">
 								<div class="row">
-									<div class="col-sm-4">
-										<img class="img-responsive liner" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/rs5/team_thumb4.jpg" alt="">
-										<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="#">Saepe eveniet ut</a></h4>
-										<p class="text-justify">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i> 
-												29th Jan 2015
-											</li>
-											<li>
-												<a href="##comments">
-													<i class="fa fa-comments"></i> 
-													3
-												</a>
-											</li>
-										</ul>
-									</div>
+									<?php
+										$args = array(
 
-									<div class="col-sm-4">
-										<img class="liner img-responsive g-mb-20" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/rs5/team_thumb5.jpg" alt="">
-										<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="#">voluptate velit esse</a></h4>
-										<p class="text-justify">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i> 
-												29th Jan 2015
-											</li>
-											<li>
-												<a href="##comments">
-													<i class="fa fa-comments"></i> 
-													3
-												</a>
-											</li>
-										</ul>
-									</div>
-
-									<div class="col-sm-4">
-										<img class="liner img-responsive g-mb-20" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/rs5/team_thumb9.jpg" alt="">
-										<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="#">Temporibus autem quibusdam</a></h4>
-										<p class="text-justify">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i> 
-												29th Jan 2015
-											</li>
-											<li>
-												<a href="##comments">
-													<i class="fa fa-comments"></i> 
-													3
-												</a>
-											</li>
-										</ul>
-									</div>
+										);
+										$catIDs = get_cat_ID( 'Rogue Trader' );
+										$catIDs .= ',' . get_cat_ID( 'Our Offshore Experts' );
+										$catIDs .= ',' . get_cat_ID( 'Starting Out' );
+										$starting_out = get_posts([
+											'posts_per_page'   => 3,
+											'category'    => $catIDs ,
+											'orderby'          => 'date',
+											'order'            => 'DESC',
+											'post_type'        => 'post',
+											'post_status'      => 'publish',
+											'suppress_filters' => true
+										]);
+										if(count($starting_out)): 
+											foreach($starting_out as $post):
+									?>
+										<div class="col-sm-4">
+											<a href="<?=get_the_permalink()?>">
+											<?=get_the_post_thumbnail($post->ID,'mid-image',[
+												'class' => 'liner img-responsive g-mb-20'
+												])?>
+											</a>
+											<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
+											<p class="text-justify"><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_excerpt())), 0, 150, '...');?></p>
+											<ul class="text-left size-12 list-inline list-separator">
+												<li>
+													<i class="fa fa-calendar"></i> 
+													<?=get_the_date()?>
+												</li>
+												<li>
+													<a href="<?=get_comments_link()?>">
+														<i class="fa fa-comments"></i>
+														<?=(comments_number( 'No Comments yet', 'One Comment', '% Comments' ))?>
+													</a>
+												</li>
+											</ul>
+										</div>
+									<?php
+											endforeach;
+										endif;
+									?>
 								</div>
 							</div>
 							<div class="tab-pane fade in" id="documentation">
 								<div class="row">
-									<div class="col-sm-4">
-										<img class="liner img-responsive g-mb-20" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/rs5/team_thumb3.jpg" alt="">
-										<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="#">Saepe eveniet ut</a></h4>
-										<p class="text-justify">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i> 
-												29th Jan 2015
-											</li>
-											<li>
-												<a href="##comments">
-													<i class="fa fa-comments"></i> 
-													3
-												</a>
-											</li>
-										</ul>
-									</div>
+									<?php
+										$args = array(
 
-									<div class="col-sm-4">
-										<img class="liner img-responsive g-mb-20" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/rs5/team_thumb9.jpg" alt="">
-										<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="#">voluptate velit esse</a></h4>
-										<p class="text-justify">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i> 
-												29th Jan 2015
-											</li>
-											<li>
-												<a href="##comments">
-													<i class="fa fa-comments"></i> 
-													3
-												</a>
-											</li>
-										</ul>
-									</div>
-
-									<div class="col-sm-4">
-										<img class="liner img-responsive g-mb-20" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/rs5/team_thumb7.jpg" alt="">
-										<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="#">Temporibus autem quibusdam</a></h4>
-										<p class="text-justify">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i> 
-												29th Jan 2015
-											</li>
-											<li>
-												<a href="##comments">
-													<i class="fa fa-comments"></i> 
-													3
-												</a>
-											</li>
-										</ul>
-									</div>
+										);
+										$starting_out = get_posts([
+											'posts_per_page'   => 3,
+											'category_name'    => 'rogue-trader',
+											'orderby'          => 'date',
+											'order'            => 'DESC',
+											'post_type'        => 'post',
+											'post_status'      => 'publish',
+											'suppress_filters' => true
+										]);
+										if(count($starting_out)): 
+											foreach($starting_out as $post):
+									?>
+										<div class="col-sm-4">
+											<a href="<?=get_the_permalink()?>">
+											<?=get_the_post_thumbnail($post->ID,'mid-image',[
+												'class' => 'liner img-responsive g-mb-20'
+												])?>
+											</a>
+											<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
+											<p class="text-justify"><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_excerpt())), 0, 150, '...');?></p>
+											<ul class="text-left size-12 list-inline list-separator">
+												<li>
+													<i class="fa fa-calendar"></i> 
+													<?=get_the_date()?>
+												</li>
+												<li>
+													<a href="<?=get_comments_link()?>">
+														<i class="fa fa-comments"></i>
+														<?=(comments_number( 'No Comments yet', 'One Comment', '% Comments' ))?>
+													</a>
+												</li>
+											</ul>
+										</div>
+									<?php
+											endforeach;
+										endif;
+									?>
 								</div>
 							</div>
 							<div class="tab-pane fade in" id="materials">
 								<div class="row">
-									<div class="col-sm-4">
-										<img class="liner img-responsive g-mb-20" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/rs5/team_thumb9.jpg" alt="">
-										<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="#">Saepe eveniet ut</a></h4>
-										<p class="text-justify">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i> 
-												29th Jan 2015
-											</li>
-											<li>
-												<a href="##comments">
-													<i class="fa fa-comments"></i> 
-													3
-												</a>
-											</li>
-										</ul>
-									</div>
+									<?php
+										$args = array(
 
-									<div class="col-sm-4">
-										<img class="liner img-responsive g-mb-20" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/rs5/team_thumb4.jpg" alt="">
-										<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="#">voluptate velit esse</a></h4>
-										<p class="text-justify">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i> 
-												29th Jan 2015
-											</li>
-											<li>
-												<a href="##comments">
-													<i class="fa fa-comments"></i> 
-													3
-												</a>
-											</li>
-										</ul>
-									</div>
-
-									<div class="col-sm-4">
-										<img class="liner img-responsive g-mb-20" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/rs5/team_thumb3.jpg" alt="">
-										<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="#">Temporibus autem quibusdam</a></h4>
-										<p class="text-justify">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i> 
-												29th Jan 2015
-											</li>
-											<li>
-												<a href="##comments">
-													<i class="fa fa-comments"></i> 
-													3
-												</a>
-											</li>
-										</ul>
-									</div>
+										);
+										$starting_out = get_posts([
+											'posts_per_page'   => 3,
+											'category_name'    => 'our-offshore-experts',
+											'orderby'          => 'date',
+											'order'            => 'DESC',
+											'post_type'        => 'post',
+											'post_status'      => 'publish',
+											'suppress_filters' => true
+										]);
+										if(count($starting_out)): 
+											foreach($starting_out as $post):
+									?>
+										<div class="col-sm-4">
+											<a href="<?=get_the_permalink()?>">
+											<?=get_the_post_thumbnail($post->ID,'mid-image',[
+												'class' => 'liner img-responsive g-mb-20'
+												])?>
+											</a>
+											<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
+											<p class="text-justify"><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_excerpt())), 0, 150, '...');?></p>
+											<ul class="text-left size-12 list-inline list-separator">
+												<li>
+													<i class="fa fa-calendar"></i> 
+													<?=get_the_date()?>
+												</li>
+												<li>
+													<a href="<?=get_comments_link()?>">
+														<i class="fa fa-comments"></i>
+														<?=(comments_number( 'No Comments yet', 'One Comment', '% Comments' ))?>
+													</a>
+												</li>
+											</ul>
+										</div>
+									<?php
+											endforeach;
+										endif;
+									?>
 								</div>
 							</div>
 							<div class="tab-pane fade in" id="exterior-d">
 								<div class="row">
-									<div class="col-sm-4">
-										<img class="liner img-responsive g-mb-20" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/rs5/team_thumb7.jpg" alt="">
-										<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="#">Saepe eveniet ut</a></h4>
-										<p class="text-justify">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i> 
-												29th Jan 2015
-											</li>
-											<li>
-												<a href="##comments">
-													<i class="fa fa-comments"></i> 
-													3
-												</a>
-											</li>
-										</ul>
-									</div>
+									<?php
+									$args = array(
 
-									<div class="col-sm-4">
-										<img class="liner img-responsive g-mb-20" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/rs5/team_thumb6.jpg" alt="">
-										<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="#">voluptate velit esse</a></h4>
-										<p class="text-justify">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i> 
-												29th Jan 2015
-											</li>
-											<li>
-												<a href="##comments">
-													<i class="fa fa-comments"></i> 
-													3
-												</a>
-											</li>
-										</ul>
-									</div>
-
-									<div class="col-sm-4">
-										<img class="liner img-responsive g-mb-20" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/rs5/team_thumb2.jpg" alt="">
-										<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="#">Temporibus autem quibusdam</a></h4>
-										<p class="text-justify">Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i> 
-												29th Jan 2015
-											</li>
-											<li>
-												<a href="##comments">
-													<i class="fa fa-comments"></i> 
-													3
-												</a>
-											</li>
-										</ul>
-									</div>
+									);
+									$starting_out = get_posts([
+										'posts_per_page'   => 3,
+										'category_name'    => 'starting-out',
+										'orderby'          => 'date',
+										'order'            => 'DESC',
+										'post_type'        => 'post',
+										'post_status'      => 'publish',
+										'suppress_filters' => true
+									]);
+										if(count($starting_out)): 
+											foreach($starting_out as $post):
+									?>
+										<div class="col-sm-4">
+											<a href="<?=get_the_permalink()?>">
+											<?=get_the_post_thumbnail($post->ID,'mid-image',[
+												'class' => 'liner img-responsive g-mb-20'
+												])?>
+											</a>
+											<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
+											<p class="text-justify"><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_excerpt())), 0, 150, '...');?></p>
+											<ul class="text-left size-12 list-inline list-separator">
+												<li>
+													<i class="fa fa-calendar"></i> 
+													<?=get_the_date()?>
+												</li>
+												<li>
+													<a href="<?=get_comments_link()?>">
+														<i class="fa fa-comments"></i>
+														<?=(comments_number( 'No Comments yet', 'One Comment', '% Comments' ))?>
+													</a>
+												</li>
+											</ul>
+										</div>
+									<?php
+											endforeach;
+										endif;
+									?>
 								</div>
 							</div>
 						</div>
