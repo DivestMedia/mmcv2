@@ -57,6 +57,7 @@ function get_category_tags($id) {
     SELECT DISTINCT
     terms2.term_id as ID,
     terms2.name as name,
+    terms2.slug as slug,
     t2.count as count
     FROM
     $wpdb->posts as p1

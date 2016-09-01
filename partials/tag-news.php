@@ -3,7 +3,7 @@ get_template_part( 'partials/content', 'indexwatch' );
 global $wpdb,$post;
 
 $mainpost = $post;
-
+$taghere = strtolower(get_query_var('tag'));
 
 $latestnews = [];
 // Get 5 Latest News for each category
@@ -17,13 +17,13 @@ $post = get_posts([
 	'posts_per_page' => 5,
 	'posts_per_archive_page' => 5,
 	'orderby' => 'date',
-	'order' => 'DESC',
-	'offset' => 5,
 	'category_name'    => 'News',
+	'order' => 'DESC',
+	'tag_slug__in' => $taghere
 ]);
 
 foreach ($post as $key => $news) {
-	$tags_array = get_the_tags( $news->ID );
+	$tags_array = [get_term_by( 'slug',$taghere,'post_tag' )];
 	$hastag = false;
 	if($tags_array){
 		$hastag = true;
@@ -55,13 +55,15 @@ $featuredPostCategories = [];
 $featuredPostCategories[] = [
 	'id' => 0,
 	'name' => 'All Articles',
-	'active' => true
+	'link' => '/news'
 ];
+
 foreach ($category_tags as $key => $cat) {
 	$featuredPostCategories[] = [
 		'id' => $cat->ID,
 		'name' => $cat->name,
-		'link' => $cat->link
+		'link' => $cat->link,
+		'active' => ($taghere==$cat->slug)
 	];
 }
 
@@ -72,8 +74,9 @@ $featuredPostNews =  get_posts([
 	'order'            => 'DESC',
 	'post_type'        => 'post',
 	'post_status'      => 'publish',
+	'offset' => 5,
 	'suppress_filters' => true,
-	'fields' => 'ID'
+	'tag_slug__in' => $taghere
 ]);
 
 foreach ($featuredPostNews as $key => $postNews) {
@@ -84,6 +87,7 @@ $featuredPost = [
 	'categories' => $featuredPostCategories,
 	'posts' => $featuredPostNews
 ];
+
 $GLOBALS['featuredPost'] = $featuredPost;
 
 get_template_part( 'partials/content', 'featuredposts' );

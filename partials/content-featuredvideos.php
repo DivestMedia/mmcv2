@@ -1,5 +1,5 @@
 <?php
-global $post;
+global $post,$featureTitle,$featureButton;
 // $videos = [
 // 	[
 // 		'title' => 'KENYON MARTIN'
@@ -15,7 +15,7 @@ global $post;
 <section class="" >
 	<div class="container">
 		<header class="text-left margin-bottom-10">
-			<h3 class="font-proxima uppercase">Most Popular <span>Videos</span></h3>
+			<h3 class="font-proxima uppercase"><?=($featureTitle ?: 'Most Popular <span>Videos</span>')?></h3>
 		</header>
 
 		<div class="row">
@@ -34,7 +34,7 @@ global $post;
 									<span class="block size-11 text-center color-theme uppercase">
 										<?=date('F j, Y',strtotime($video['date']))?>
 									</span>
-									<a class="pos-bottom block btn-sm btn secondary-bg text-center noradius weight-700" href="<?=$video['link']?>">PLAY NOW</a>
+									<a class="pos-bottom block btn-sm btn secondary-bg text-center noradius weight-700" href="<?=$video['link']?>"><?=($featureButton ?: 'PLAY NOW')?></a>
 								</span>
 							</span>
 
@@ -58,7 +58,7 @@ global $post;
 								<span class="inner padding-top-0">
 									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
-										<a class=" btn-sm btn primary-bg text-center noradius weight-700" href="<?=$video['link']?>">PLAY NOW</a>
+										<a class=" btn-sm btn primary-bg text-center noradius weight-700" href="<?=$video['link']?>"><?=($featureButton ?: 'PLAY NOW')?></a>
 									</span>
 
 								</span>
@@ -79,7 +79,7 @@ global $post;
 								<span class="inner padding-top-0">
 									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
-										<a class=" btn-sm btn primary-bg text-center noradius weight-700" href="<?=$video['link']?>">PLAY NOW</a>
+										<a class=" btn-sm btn primary-bg text-center noradius weight-700" href="<?=$video['link']?>"><?=($featureButton ?: 'PLAY NOW')?></a>
 									</span>
 
 								</span>
@@ -105,7 +105,7 @@ global $post;
 								<span class="inner padding-top-0">
 									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
-										<a class=" btn-sm btn primary-bg text-center noradius weight-700" href="<?=$video['link']?>">PLAY NOW</a>
+										<a class=" btn-sm btn primary-bg text-center noradius weight-700" href="<?=$video['link']?>"><?=($featureButton ?: 'PLAY NOW')?></a>
 									</span>
 
 								</span>
@@ -126,7 +126,7 @@ global $post;
 								<span class="inner padding-top-0">
 									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
-										<a class=" btn-sm btn primary-bg text-center noradius weight-700" href="<?=$video['link']?>">PLAY NOW</a>
+										<a class=" btn-sm btn primary-bg text-center noradius weight-700" href="<?=$video['link']?>"><?=($featureButton ?: 'PLAY NOW')?></a>
 									</span>
 
 								</span>

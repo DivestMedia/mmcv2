@@ -2,6 +2,8 @@
 get_header();
 if(is_category('news')){
 	include 'partials/category-news.php';
+}elseif(is_tag()){
+	include 'partials/tag-news.php';
 }elseif(is_archive('iod_video')){
 	include 'partials/archive-iod_video.php';
 }else{
