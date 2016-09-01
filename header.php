@@ -70,7 +70,7 @@
 
 				Example Usage:  class="clearfix sticky header-sm transparent noborder"
 			-->
-			<div id="header" class="dark header-md <?=is_front_page()?'transparent':''?> clearfix noshadow sticky">
+			<div id="header" class="dark header-md <?=(is_front_page()&&strrpos($_SERVER['REQUEST_URI'],'accounts')===FALSE)?'transparent':''?> clearfix noshadow sticky">
 
 				<!-- TOP NAV -->
 				<header id="topNav" class="noshadow">

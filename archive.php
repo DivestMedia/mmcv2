@@ -1,14 +1,12 @@
 <?php
-
+get_header();
 if(is_category('news')){
-	include 'category-news.php';
-}elseif(is_archive('game_review')){
-	include 'archive-game_review.php';
+	include 'partials/category-news.php';
 }elseif(is_archive('iod_video')){
-	include 'archive-iod_video.php';
-}else:
+	include 'partials/archive-iod_video.php';
+}else{
 
-	get_header(); ?>
+	?>
 
 	<section id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
@@ -54,6 +52,5 @@ if(is_category('news')){
 		</section><!-- .content-area -->
 
 		<?php get_footer();
-
-	endif;
+	}
 	?>

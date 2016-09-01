@@ -85,11 +85,10 @@ get_template_part( 'partials/content', 'indexwatch' );
 				</div>
 				<!-- /CATEGORIES -->
 
-				<!-- FEATURED VIDEO -->
-				<h3 class="hidden-xs size-16 margin-bottom-10">FEATURED VIDEO</h3>
-				<div class="hidden-xs embed-responsive embed-responsive-16by9 margin-bottom-60">
-					<iframe class="embed-responsive-item" src="http://player.vimeo.com/video/8408210" width="800" height="450"></iframe>
-				</div>
+				<?php 
+					if(is_active_sidebar('sidebar-single'))
+						dynamic_sidebar('sidebar-single');
+				?>
 			</div>
 		</div>
 	</div>
