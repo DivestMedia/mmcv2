@@ -48,3 +48,17 @@ function xyrthumb_columns_data( $column, $post_id ) {
     }
 }
 add_action( 'manage_posts_custom_column' , 'xyrthumb_columns_data', 10, 2 );
+
+add_action( 'widgets_init', 'backstage_smarty_widgets_init' );
+
+function backstage_smarty_widgets_init() {
+    register_sidebar( array(
+        'name' => __( 'Main Sidebar', XYR_SMARTY),
+        'id' => 'sidebar-single',
+        'description' => __( 'Widgets in this area will be shown on all posts and pages.', XYR_SMARTY ),
+        'before_widget' => '<div id="%1$s" class="row widget %2$s"><div class="col-sm-12 col-md-12 col-lg-12">',
+        'after_widget'  => '</div></div>',
+        'before_title'  => '',
+        'after_title'   => '',
+    ));
+}
