@@ -21,3 +21,80 @@
         }
     }
 }
+
+#container-glossary {
+    .cont_sel {
+        display: inline-block;
+        font-size: 40px;
+        padding: 20px;
+        background: #197B30;
+        border-radius: 8px;
+        margin-right: 20px;
+        color: #fff;
+        width: 100px;
+        font-weight: 900;
+        text-align: center;
+    }
+    .ln-disabled {
+        color: #ccc !important;
+    }
+    .ln-letters {
+        display: inline-block;
+    }
+    .ln-letters a {
+        padding: 10px;
+        color: #197A30;
+        font-weight: bold;
+        font-size: 12px;
+        cursor: pointer;
+    }
+    .ln-letter-count {
+        width: 24px;
+        background: #197B30;
+        color: #fff;
+        padding: 4px;
+        line-height: normal;
+        border-radius: 4px;
+        height: 24px;
+        line-height: 15px;
+        margin-top: -17px;
+    }
+    .ln-letter-count:after {
+        top: 100%;
+        left: 50%;
+        border: solid transparent;
+        content: " ";
+        height: 0;
+        width: 0;
+        position: absolute;
+        pointer-events: none;
+        border-color: rgba(25, 123, 48, 0);
+        border-top-color: #197B30;
+        border-width: 4px;
+        margin-left: -4px;
+    }
+    .cont_paragraph {
+        margin-bottom: 0 !important;
+    }
+    #glossaryList {
+        list-style: none;
+        margin-left: 10px !important;
+    }
+    #glossaryList li {
+        margin-bottom: 10px;
+    }
+    .glossaryLink {
+        font-size: 18px;
+        border-bottom: none;
+        margin-bottom: 5px;
+    }
+    .ln-letters a {
+        margin-bottom: 10px;
+    }
+    @media screen and (max-width: 991px) {
+        .cont_sel {
+            margin-bottom: 10px;
+            display: none;
+        }
+    }
+}
