@@ -22,3 +22,29 @@ function backstage_smarty_scripts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'backstage_smarty_scripts' );
+
+function xyrthumb_columns_css(){
+    echo '
+    <style>
+    .column-featured_image{width:150px;}
+    </style>
+    ';
+
+}
+add_action( 'admin_head' , 'xyrthumb_columns_css' );
+
+function xyrthumb_columns( $columns ) {
+
+    $new_columns = array('cb' => '<input type="checkbox" />', 'featured_image' => 'Image');
+    return array_merge($new_columns, $columns);
+}
+add_filter('manage_posts_columns' , 'xyrthumb_columns');
+
+function xyrthumb_columns_data( $column, $post_id ) {
+    switch ( $column ) {
+        case 'featured_image':
+        echo the_post_thumbnail( 'thumb-image' );
+        break;
+    }
+}
+add_action( 'manage_posts_custom_column' , 'xyrthumb_columns_data', 10, 2 );
