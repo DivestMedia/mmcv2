@@ -14,10 +14,10 @@
 				<?=ucwords($_banner->category)?>
 			</div>
 			<h2 class="ms-layer font-proxima ms-promo-travel-place hidden-3xs" style="left: 11px; top: 210px;" data-type="text" data-delay="10" data-effect="skewright(50,340)" data-ease="easeOutExpo" data-duration="2200">
-				<?=$_banner->title?>
+				<?=mb_strimwidth(strip_tags(html_entity_decode($_banner->title)), 0, 25, "&hellip;")?>
 			</h2>
 			<div class="ms-layer ms-promo-travel-description" style="left: 15px; top: 310px;" data-type="text" data-delay="30" data-effect="rotate3dbottom(100,0,0,70)" data-ease="easeOutExpo" data-duration="2300">
-				<p class="g-mb-20 hidden-sm hidden-xs"><?=$_banner->description?></p>
+				<p class="g-mb-20 hidden-sm hidden-xs"><?=mb_strimwidth(strip_tags(html_entity_decode($_banner->description)), 0, 150, "&hellip;")?></p>
 				<p><a href="<?=$_banner->link?>" class="btn btn-lg btn-primary noradius">Read <span class="visible-3xs">More</span></a></p>
 			</div>
 			<img class="ms-thumb" src="<?=$_banner_url?>" alt="<?=$_banner->title?>">
