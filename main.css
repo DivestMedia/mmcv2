@@ -770,3 +770,11 @@ i.ico-hover:hover {
 .hvr-overline-reveal:before {
 	background-color: #27AE60;
 }
+
+.cont-terms-and-conditions ul{
+    list-style:none !important;
+}
+.cont-terms-and-conditions ol li:not(:first-child){
+    list-style:none !important;
+}
+

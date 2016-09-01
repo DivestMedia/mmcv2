@@ -75,7 +75,7 @@
 												])?>
 											</a>
 											<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
-											<p class="text-justify"><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_excerpt())), 0, 150, '...');?></p>
+											<p class="text-justify"><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_excerpt())), 0, 150, "&hellip;");?></p>
 											<ul class="text-left size-12 list-inline list-separator">
 												<li>
 													<i class="fa fa-calendar"></i> 
