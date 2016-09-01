@@ -17,6 +17,7 @@ function backstage_smarty_scripts() {
 
     // THEME MAIN CSS;
     wp_enqueue_script( 'mmc-smarty-main-js', get_stylesheet_directory_uri() . '/assets/mmc.js',['jquery'],null,true);
+    wp_enqueue_script( 'mmc-smarty-main-js-mobile', get_stylesheet_directory_uri() . '/assets/jquery.browser.mobile.js',['jquery'],null,true);
     wp_enqueue_style( 'mmc-smarty-main-css', get_stylesheet_directory_uri() . '/assets/mmc.css');
     //
 
@@ -48,3 +49,38 @@ function xyrthumb_columns_data( $column, $post_id ) {
     }
 }
 add_action( 'manage_posts_custom_column' , 'xyrthumb_columns_data', 10, 2 );
+
+function get_category_tags($id) {
+    global $wpdb;
+    $tags = $wpdb->get_results
+    ("
+    SELECT DISTINCT
+    terms2.term_id as ID,
+    terms2.name as name,
+    t2.count as count
+    FROM
+    $wpdb->posts as p1
+    LEFT JOIN $wpdb->term_relationships as r1 ON p1.ID = r1.object_ID
+    LEFT JOIN $wpdb->term_taxonomy as t1 ON r1.term_taxonomy_id = t1.term_taxonomy_id
+    LEFT JOIN $wpdb->terms as terms1 ON t1.term_id = terms1.term_id,
+
+    $wpdb->posts as p2
+    LEFT JOIN $wpdb->term_relationships as r2 ON p2.ID = r2.object_ID
+    LEFT JOIN $wpdb->term_taxonomy as t2 ON r2.term_taxonomy_id = t2.term_taxonomy_id
+    LEFT JOIN $wpdb->terms as terms2 ON t2.term_id = terms2.term_id
+    WHERE (
+    t1.taxonomy = 'category' AND
+    p1.post_status = 'publish' AND
+    terms1.term_id = '$id' AND
+    t2.taxonomy = 'post_tag' AND
+    p2.post_status = 'publish' AND
+    p1.ID = p2.ID
+    )
+    ORDER BY name ASC
+    ");
+    $count = 0;
+    foreach ($tags as $k => $tag) {
+        $tags[$k]->link = get_tag_link($tag->ID);
+    }
+    return $tags;
+}

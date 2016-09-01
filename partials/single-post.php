@@ -14,7 +14,9 @@ get_template_part( 'partials/content', 'indexwatch' );
 		<div class="row">
 			<div class="col-md-6 col-sm-9 text-justify">
 				<figure>
-					<?php the_post_thumbnail( 'thumbnail', ['class' => 'alignleft'] ); ?>
+					<?php the_post_thumbnail('mid-image',[
+						'class' => 'img-responsive margin-bottom-30'
+					])?>
 				</figure>
 				<div class="post-content">
 					<?=$post->post_content?>
@@ -29,44 +31,57 @@ get_template_part( 'partials/content', 'indexwatch' );
 						<button class="fa fa-bars"></button>
 						<h4>CATEGORIES</h4>
 					</div>
-					
-					<ul class="list-group list-group-bordered list-group-noicon uppercase">
+					<?php if(in_category(['news'])):?>
+						<ul class="list-group list-group-bordered list-group-noicon uppercase">
+							<?php
+							$category_tags = get_category_tags(get_category_by_slug('news')->term_id);
+							?>
+							<?php foreach ($category_tags as $key => $tag):?>
+								<li class="list-group-item">
+									<a href="<?=($tag->link)?>" class="tag-<?=($tag->ID)?>" data-id="<?=($tag->ID)?>">
+										<span class="size-11 text-muted pull-right">(<?=(int)($tag->count)?>)</span>
+										<?=strtoupper($tag->name)?>
+									</a>
+								</li>
+							<?php endforeach; ?>
+						</ul>
+					<?php else: ?>
+						<ul class="list-group list-group-bordered list-group-noicon uppercase">
 
+							<li class="list-group-item active">
+								<a class="dropdown-toggle" href="#">GLOBAL</a>
+								<ul>
+									<li><a href="#"><span class="size-11 text-muted pull-right">(123)</span> Shoes & Boots</a></li>
+									<li class="active"><a href="#"><span class="size-11 text-muted pull-right">(331)</span> Top & Blouses</a></li>
+									<li><a href="#"><span class="size-11 text-muted pull-right">(234)</span> Dresses & Skirts</a></li>
+								</ul>
+							</li>
+							<li class="list-group-item">
+								<a class="dropdown-toggle" href="#">SPORTS</a>
+								<ul>
+									<li><a href="#"><span class="size-11 text-muted pull-right">(88)</span> Accessories</a></li>
+									<li><a href="#"><span class="size-11 text-muted pull-right">(67)</span> Shoes & Boots</a></li>
+									<li><a href="#"><span class="size-11 text-muted pull-right">(32)</span> Dresses & Skirts</a></li>
+									<li class="active"><a href="#"><span class="size-11 text-muted pull-right">(78)</span> Top & Blouses</a></li>
+								</ul>
+							</li>
+							<li class="list-group-item">
+								<a class="dropdown-toggle" href="#">DUMMIES GUIDE</a>
+							</li>
+							<li class="list-group-item">
+								<a class="dropdown-toggle" href="#">BUSINESS</a>
+								<ul>
+									<li><a href="#"><span class="size-11 text-muted pull-right">(88)</span> Shoes & Boots</a></li>
+									<li><a href="#"><span class="size-11 text-muted pull-right">(22)</span> Dresses & Skirts</a></li>
+									<li><a href="#"><span class="size-11 text-muted pull-right">(31)</span> Accessories</a></li>
+									<li class="active"><a href="#"><span class="size-11 text-muted pull-right">(18)</span> Top & Blouses</a></li>
+								</ul>
+							</li>
+							<li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(189)</span> NEWS</a></li>
+							<li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(61)</span> VIDEOS</a></li>
 
-						<li class="list-group-item active">
-							<a class="dropdown-toggle" href="#">GLOBAL</a>
-							<ul>
-								<li><a href="#"><span class="size-11 text-muted pull-right">(123)</span> Shoes & Boots</a></li>
-								<li class="active"><a href="#"><span class="size-11 text-muted pull-right">(331)</span> Top & Blouses</a></li>
-								<li><a href="#"><span class="size-11 text-muted pull-right">(234)</span> Dresses & Skirts</a></li>
-							</ul>
-						</li>
-						<li class="list-group-item">
-							<a class="dropdown-toggle" href="#">SPORTS</a>
-							<ul>
-								<li><a href="#"><span class="size-11 text-muted pull-right">(88)</span> Accessories</a></li>
-								<li><a href="#"><span class="size-11 text-muted pull-right">(67)</span> Shoes & Boots</a></li>
-								<li><a href="#"><span class="size-11 text-muted pull-right">(32)</span> Dresses & Skirts</a></li>
-								<li class="active"><a href="#"><span class="size-11 text-muted pull-right">(78)</span> Top & Blouses</a></li>
-							</ul>
-						</li>
-						<li class="list-group-item">
-							<a class="dropdown-toggle" href="#">DUMMIES GUIDE</a>
-						</li>
-						<li class="list-group-item">
-							<a class="dropdown-toggle" href="#">BUSINESS</a>
-							<ul>
-								<li><a href="#"><span class="size-11 text-muted pull-right">(88)</span> Shoes & Boots</a></li>
-								<li><a href="#"><span class="size-11 text-muted pull-right">(22)</span> Dresses & Skirts</a></li>
-								<li><a href="#"><span class="size-11 text-muted pull-right">(31)</span> Accessories</a></li>
-								<li class="active"><a href="#"><span class="size-11 text-muted pull-right">(18)</span> Top & Blouses</a></li>
-							</ul>
-						</li>
-						<li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(189)</span> NEWS</a></li>
-						<li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(61)</span> VIDEOS</a></li>
-
-					</ul>
-
+						</ul>
+					<?php endif; ?>
 				</div>
 				<!-- /CATEGORIES -->
 
