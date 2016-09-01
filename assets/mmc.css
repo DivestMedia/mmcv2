@@ -1,1 +1,1 @@
-#global-news-post-slider .post-excerpt{overflow:hidden}
+#global-news-post-slider .post-title,#global-news-post-slider .post-excerpt{overflow:hidden}#wrapper .post-content img{padding:15px}#wrapper .post-content img:nth-of-type(even){float:right !important;padding-right:0 !important}#wrapper .post-content img:nth-of-type(odd){float:left !important;padding-left:0 !important}

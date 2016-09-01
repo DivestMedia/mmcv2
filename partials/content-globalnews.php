@@ -51,8 +51,8 @@
 							])?>
 						</a>
 
-						<h4 class="text-left margin-top-20 height-50 post-title"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
-						<div class="text-left margin-bottom-10 height-100 post-excerpt"><?php echo strip_tags(html_entity_decode(get_the_excerpt()));?></div>
+						<h4 class="text-left margin-top-20 height-50 post-title"><a href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),80)?></a></h4>
+						<div class="text-left margin-bottom-10 height-100 post-excerpt"><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_excerpt())),200)?></div>
 						<ul class="text-left size-12 list-inline list-separator">
 							<li>
 								<i class="fa fa-calendar"></i>
@@ -69,6 +69,5 @@
 				<?php endforeach; ?>
 			<?php endif; ?>
 		</div>
-
 	</div>
 </section>

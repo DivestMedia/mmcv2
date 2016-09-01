@@ -1,6 +1,23 @@
 // out: mmc.css, sourcemap: true, compress: true
 #global-news-post-slider{
-    .post-excerpt{
+    .post-title,.post-excerpt{
         overflow: hidden;
+    }
+}
+
+#wrapper{
+    .post-content{
+        img{
+            padding: 15px;
+
+            &:nth-of-type(even){
+                float: right!important;
+                padding-right: 0!important;
+            }
+            &:nth-of-type(odd){
+                float: left!important;
+                padding-left: 0!important;
+            }
+        }
     }
 }

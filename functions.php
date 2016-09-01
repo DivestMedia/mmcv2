@@ -16,8 +16,8 @@ add_action( 'after_setup_theme', 'backstage_smarty_setup' );
 function backstage_smarty_scripts() {
 
     // THEME MAIN CSS;
-    wp_enqueue_script( 'mmc-smarty-main-js', get_stylesheet_directory_uri() . '/assets/main.js',['jquery'],null,true);
-    wp_enqueue_style( 'mmc-smarty-main-css', get_stylesheet_directory_uri() . '/assets/main.css');
+    wp_enqueue_script( 'mmc-smarty-main-js', get_stylesheet_directory_uri() . '/assets/mmc.js',['jquery'],null,true);
+    wp_enqueue_style( 'mmc-smarty-main-css', get_stylesheet_directory_uri() . '/assets/mmc.css');
     //
 
 }
