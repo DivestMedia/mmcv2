@@ -1,7 +1,16 @@
 <?php
 get_header();
+
 if(is_category('news')){
 	include 'partials/category-news.php';
+}elseif(is_category('article')){
+	include 'partials/category-article.php';
+}elseif(is_category('starting-out')){
+	include 'partials/category-article.php';
+}elseif(is_category('rogue-trader')){
+	include 'partials/category-article.php';
+}elseif(is_category('our-offshore-experts')){
+	include 'partials/category-article.php';
 }elseif(is_tag()){
 	include 'partials/tag-news.php';
 }elseif(is_archive('iod_video')){
