@@ -1,5 +1,5 @@
 <?php
-global $post,$featureTitle,$featureButton;
+global $post,$featureTitle,$featureButton,$featureNoMore;
 // $videos = [
 // 	[
 // 		'title' => 'KENYON MARTIN'
@@ -141,9 +141,10 @@ global $post,$featureTitle,$featureButton;
 
 			</div>
 		</div>
-
-		<div class="heading-title heading-dotted text-right margin-top-20 ">
-			<a href="#"><h4>Watch more<span> Videos</span></h4></a>
-		</div>
+		<?php if(!$featureNoMore): ?>
+			<div class="heading-title heading-dotted text-right margin-top-20 ">
+				<a href="#"><h4>Watch more<span> Videos</span></h4></a>
+			</div>
+		<?php endif; ?>
 	</div>
 </section>

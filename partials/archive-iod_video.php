@@ -12,96 +12,153 @@ $latestnews = [];
 $mainpost = $post;
 
 $post = get_posts([
-	'post_type'   => 'post',
-	'post_status' => 'publish',
 	'posts_per_page' => 5,
 	'posts_per_archive_page' => 5,
+	'paged' => get_query_var('paged'),
+	'post_type' => [
+		'iod_video'
+	],
 	'orderby' => 'date',
 	'order' => 'DESC',
-	'offset' => 5,
-	'category_name'    => 'News',
+	'post_status'      => 'publish',
 ]);
 
-foreach ($post as $key => $news) {
-	$tags_array = get_the_tags( $news->ID );
-	$hastag = false;
-	if($tags_array){
-		$hastag = true;
-		$tags = [];
-		foreach ($tags_array as $tag) {
-			$tags[] = '<a href="'.get_tag_link($tag->term_id).'">'.$tag->name.'</a>';
+foreach ($post as $key => $video) {
+	$vcats = [];
+	$video_cats = wp_get_post_terms($video->ID,'iod_category');
+	$hascat = false;
+	if($video_cats){
+		$hascat = true;
+		foreach ($video_cats as $vidcat) {
+			$vcats[] = '<a href="'.get_term_link($vidcat->term_id,'iod_category').'">'.$vidcat->name.'</a>';
 		}
 	}
-	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $news->ID ), 'mid-image' );
+
+	$iod_video = '';
+	$iod_video_thumbnail = '';
+	if($video){
+		$videohere = $videohere[0];
+		$iod_video = json_decode(get_post_meta( $video->ID, '_iod_video',true))->embed->url;
+		$ytpattern = '/^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/';
+		if(preg_match($ytpattern,$iod_video,$vid_id)){
+			$iod_video_thumbnail = 'http://img.youtube.com/vi/'.end($vid_id).'/mqdefault.jpg';
+		}else{
+			$iod_video_thumbnail = 'http://www.askgamblers.com/uploads/original/isoftbet-2-5474883270a0f81c4b8b456b.png';
+		};
+	}
+
 	$latestnews[] = [
-		'title' => $hastag ? implode(',',$tags) : 'News',
-		'description' => xyr_smarty_limit_chars($news->post_title,40),
-		'date' => $news->post_date,
-		'thumbnail' => $image[0],
-		'link' => get_the_permalink($news->ID)
+		'title' => $hascat ? implode(',',$vcats) : 'Video',
+		'description' => xyr_smarty_limit_chars($video->post_title,40),
+		'date' => $video->post_date,
+		'thumbnail' => $iod_video_thumbnail,
+		'link' => $iod_video ?: get_the_permalink($video->ID)
 	];
 }
 
 $post = $latestnews;
 $GLOBALS['featureTitle'] = 'Latest <span>Videos</span>';
-$GLOBALS['featureButton'] = 'READ MORE';
-get_template_part( 'partials/content', 'featuredgrid' );
+$GLOBALS['featureButton'] = 'PLAY NOW';
+$GLOBALS['featureNoMore'] = true;
+get_template_part( 'partials/content', 'featuredvideos' );
 $post = $mainpost;
 
-
-$category_tags = get_category_tags(get_category_by_slug('news')->term_id);
-
-$featuredPostCategories = [];
-$featuredPostCategories[] = [
-	'id' => 0,
-	'name' => 'All News',
-	'active' => true
-];
-foreach ($category_tags as $key => $cat) {
-
-	if(in_array($cat->slug,[
-		'pre-markets',
-		'usa',
-		'asia',
-		'europe',
-		'stocks',
-		'commodities',
-		'currencies',
-		'bonds',
-		'funds',
-		'etfs'
-	])) continue;
-
-	$featuredPostCategories[] = [
-		'id' => $cat->ID,
-		'name' => $cat->name,
-		'link' => $cat->link
-	];
-}
-
-$featuredPostNews =  get_posts([
-	'posts_per_page'   => 9,
-	'category_name'    => 'News',
-	'orderby'          => 'date',
-	'order'            => 'DESC',
-	'post_type'        => 'post',
-	'post_status'      => 'publish',
-	'suppress_filters' => true,
-	'fields' => 'ID'
+$video_cats = get_categories([
+	'type'                     => 'iod_video',
+	'child_of'                 => 0,
+	'parent'                   => 0,
+	'orderby'                  => 'name',
+	'order'                    => 'ASC',
+	'hide_empty'               => 1,
+	'hierarchical'             => 1,
+	'exclude'                  => '1',
+	'include'                  => '',
+	'number'                   => '',
+	'taxonomy'                 => 'iod_category',
+	'pad_counts'               => false
 ]);
 
-foreach ($featuredPostNews as $key => $postNews) {
-	$featuredPostNews[$key] = $postNews->ID;
-}
 
-$featuredPost = [
-	'categories' => $featuredPostCategories,
-	'posts' => $featuredPostNews
+$featuredVidsCategories = [];
+$featuredVidsCategories[] = [
+	'id' => 0,
+	'name' => 'All Videos',
+	'active' => true
 ];
-$GLOBALS['featuredPost'] = $featuredPost;
-$GLOBALS['featuredTitle'] = 'All News';
+foreach ($video_cats as $key => $cat) {
 
-get_template_part( 'partials/content', 'featuredposts' );
-get_template_part( 'partials/content', 'investordivest' );
-get_template_part( 'partials/content', 'vipsubscribers' );
-?>
+	if(in_array($cat->slug,[
+		// 'pre-markets',
+		// 'usa',
+		// 'asia',
+		// 'europe',
+		// 'stocks',
+		// 'commodities',
+		// 'currencies',
+		// 'bonds',
+		// 'funds',
+		// 'etfs'
+		])) continue;
+		$child = [];
+		$child_cats = get_categories([
+			'type'                     => 'iod_video',
+			'parent'                   => $cat->term_id,
+			'orderby'                  => 'name',
+			'order'                    => 'ASC',
+			'hide_empty'               => 1,
+			'hierarchical'             => 1,
+			'exclude'                  => '1',
+			'include'                  => '',
+			'number'                   => '',
+			'taxonomy'                 => 'iod_category',
+			'pad_counts'               => false
+		]);
+
+
+		if(!empty($child_cats)){
+			foreach ($child_cats as $kk => $cc) {
+				$child_cats[$kk] = [
+					'id' => $cc->term_id,
+					'name' => $cc->name,
+					'link' => get_term_link($cc->term_id,'iod_category')
+				];
+			}
+			$child = $child_cats;
+		}
+
+		$featuredVidsCategories[] = [
+			'id' => $cat->term_id,
+			'name' => $cat->name,
+			'link' => get_term_link($cat->term_id,'iod_category'),
+			'child' => $child
+		];
+
+	}
+	$featuredVidsNews =  get_posts([
+		'posts_per_page' => 9,
+		'posts_per_archive_page' => 9,
+		'paged' => get_query_var('paged'),
+		'post_type' => [
+			'iod_video'
+		],
+		'offset' => 5,
+		'orderby' => 'date',
+		'order' => 'DESC',
+		'post_status'      => 'publish',
+	]);
+
+	foreach ($featuredVidsNews as $key => $postNews) {
+		$featuredVidsNews[$key] = $postNews->ID;
+	}
+
+	$featuredVids = [
+		'categories' => $featuredVidsCategories,
+		'posts' => $featuredVidsNews
+	];
+	$GLOBALS['featuredVids'] = $featuredVids;
+	$GLOBALS['featuredTitle'] = 'All Videos';
+
+	get_template_part( 'partials/content', 'featuredpostsvids' );
+	get_template_part( 'partials/content', 'investordivest' );
+	get_template_part( 'partials/content', 'vipsubscribers' );
+	?>
