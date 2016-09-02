@@ -2,10 +2,8 @@
 
 
 
-$_datas = stockMarket::request(array('AAPL','GOOG','YHOO','NDAQ'));
-
-
-print_r($_datas);
+//$_datas = stockMarket::request(array('AAPL','GOOG','YHOO','NDAQ'),date('Y-m-d'));
+$_datas = stockMarket::request(array('AAPL','GOOG','YHOO','^GSPC'));
 
 ?>
 <section class="dark nopadding noborder" id="scroll-market">
@@ -18,61 +16,37 @@ print_r($_datas);
 				</div>
 				<div class="col-sm-12 col-md-9 nopadding nomargin primary-bg noborder trading-graph">
 					
-					
-					
-					
 					<div class="row box-gradient box-black noborder nopadding primary-bg">
+					<?php
+					
+					foreach($_datas as $_stock => $_info){
+						?>
 						<div class="col-xs-6 col-sm-3 padding-10">
 							
 							<div class="text-center pull-left">
-								<a href="#">S&P 500</a><br>
-								<span class="text-white">2,172.47</span>
+								<a href="#"><?php echo $_stock;?></a><br>
+								<span class="text-white"><?php echo $_info['bid'];?></span>
 							</div>
-							<div class="text-center width-40 pull-right">
-								<span class="sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2"}'>
+							<div class="text-center width-60 pull-right text-gray">
+								<?php echo $_info['change_percent'];?><br/>
+								<?php echo $_info['change'];?>
+								<?php
+								$_perc = (float)$_info['change'];
+								if($_perc > 0){
+									echo '<span class="text-green"> <i class="fa fa-long-arrow-up"></i><span> ';
+								}elseif($_perc < 0){
+									echo '<span class="text-red"> <i class="fa fa-long-arrow-down"></i><span> ';
+								}else{
+									echo '<span class="text-white"> <i class="fa fa-exchange"></i><span> ';
+								}?>
+								<span class="hide sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2"}'>
 									1,3,1,-1,0,2,1
 								</span>
 							</div>
 						</div>
-						<div class="col-xs-6 col-sm-3 padding-10">
-							
-							<div class="text-center pull-left">
-								<a href="#">Nasdaq</a><br>
-								<span class="text-white">5,212.20</span>
-							</div>
-							<div class="text-center width-40 pull-right">
-								<span class="sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2"}'>
-									-1,1,0,-2,3,1,2
-								</span>
-							</div>
-						</div>
-						<div class="col-xs-6 col-sm-3 padding-10">
-							
-							<div class="text-center pull-left">
-								<a href="#">GOOGL</a><br>
-								<span class="text-white">4,676.80</span>
-							</div>
-							<div class="text-center width-40 pull-right">
-								<span class="sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2"}'>
-									1,3,1,-1,0,2,1
-								</span>
-							</div>
-						</div>
-						<div class="col-xs-6 col-sm-3 padding-10">
-							
-							<div class="text-center pull-left">
-								<a href="#">APPL</a><br>
-								<span class="text-white">12,172.47</span>
-							</div>
-							<div class="text-center width-40 pull-right">
-								<span class="sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2"}'>
-									1,-1,1,3,0,2,-1
-								</span>
-							</div>
-						</div>
-						
-
-						
+						<?php
+					}
+					?>
 					</div>
 
 					
