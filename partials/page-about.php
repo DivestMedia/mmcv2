@@ -54,13 +54,13 @@ and also the ambitious novice individual who needs some simple financial advice 
 	<!-- / -->
 	
 	<!-- ABOUT -->
-	<section id="about_heads" class="parallax dark alternate primary-bg" style="background: #1ab05d url('fxaces.jpg') repeat top left!important ;">
+	<section id="about_heads" class="about_heads parallax dark alternate primary-bg" style="background: #1ab05d url('fxaces.jpg') repeat top left!important ;">
 		
 		<div class="overlay dark-9"><!-- dark overlay [1 to 9 opacity] --></div>
 		<div class="container">
 
 			<header class="text-center margin-bottom-60">
-				<h3 class="size-26 uppercase">Lorem Ipsum<span> Team</span></h3>
+				<h3 class="size-26 uppercase">Biographies of <span>Our Team</span></h3>
 				<p class="lead font-lato"></p>
 				<hr />
 				
@@ -68,39 +68,99 @@ and also the ambitious novice individual who needs some simple financial advice 
 
 			
 			<div class="row margin-bottom-20">
-				<div class="col-sm-6 col-md-3 item">
+				<!-- <div class="col-sm-6 col-md-3 item">
 					<div class=" noradius">
-						<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/prof-1.png" alt="" />
+						<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Daniel-Stracey.png" alt="" />
 						<div class="caption">
 							<h4 class="nomargin">John Walker</h4><hr/>
 							<span class="size-16 margin-bottom-20 block">Investment Advisor</span>
 						</div>
 					</div>
-				</div>
-				<div class="col-sm-6 col-md-3 item">
-					<div class=" noradius">
-						<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/prof-2.png" alt="" />
-						<div class="caption">
-							<h4 class="nomargin">Jack Daniel</h4><hr/>
-							<span class="size-16 margin-bottom-20 block">Financial Planner</span>
+				</div> -->
+				<div class="col-md-3 col-sm-6 item">
+					<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
+						<div class="front">
+							<div class=" noradius">
+								<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Daniel-Stracey.png" alt="" />
+								<div class="caption">
+									<h4 class="nomargin">Daniel Stracey</h4><hr/>
+									<span class="size-16 margin-bottom-20 block"></span>
+								</div>
+							</div>
+						</div>
+						<div class="back">
+							<div class="box2" style="background-color:#a0ce4e;">
+								<h4>Daniel Stracey</h4>
+								<hr />
+								<p>Nullam id dolor id nibh ultricies vehicula ut id elit. Integer posuere erat a ante venenatis dapibus posuere</p>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-6 col-md-3 item">
-					<div class=" noradius">
-						<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/prof-5.png" alt="" />
-						<div class="caption">
-							<h4 class="nomargin">Jose Cuervo</h4><hr/>
-							<span class="size-16 margin-bottom-20 block">Asset Manager</span>
+				<div class="col-md-3 col-sm-6 item">
+					<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
+						<div class="front">
+							<div class=" noradius">
+								<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Cameron-Clark.png" alt="" />
+								<div class="caption">
+									<h4 class="nomargin">Cameron Clark</h4><hr/>
+									<span class="size-16 margin-bottom-20 block"></span>
+								</div>
+							</div>
+						</div>
+						<div class="back">
+							<div class="box2" style="background-color:#a0ce4e;">
+								<h4>Cameron Clark</h4>
+								<hr />
+								<p> 
+Cameron Clark
+Cameron has been involved in the investment world since the early 1980’s when he started out a career in investment consultancy, providing expert advice in corporate off shore investment. He moved over to Zurich Financial Services where he became a specialized broker consultant, dealing with IFA’s, accountants and solicitors and bringing in corporate business in both on and off shore, and also dealing with group pensions. He moved to Asia in 2003 where he moved to the sales side of the business, before then investing his money in various stocks and commodities and eventually breaking out and becoming an independent investor forging his own path. He has a wealth of experience in both investing and business management, as well as sales and marketing. He has been making his money grow through investments for the last two decades.</p>
+<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
+							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-sm-6 col-md-3 item">
-					<div class=" noradius">
-						<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/prof-3.png" alt="" />
-						<div class="caption">
-							<h4 class="nomargin">Evan Williams</h4><hr/>
-							<span class="size-16 margin-bottom-20 block">Broker-Dealer</span>
+				<div class="col-md-3 col-sm-6 item">
+					<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
+						<div class="front">
+							<div class=" noradius">
+								<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Shaun-Hurley.png" alt="" />
+								<div class="caption">
+									<h4 class="nomargin">Shaun Hurley</h4><hr/>
+									<span class="size-16 margin-bottom-20 block">Sales Director </span>
+								</div>
+							</div>
+						</div>
+						<div class="back">
+							<div class="box2" style="background-color:#a0ce4e;">
+								<h4>Shaun Hurley</h4>
+								<hr />
+								<p>Shaun started off in sales at a very young age, trading in the markets before moving into insurance and pensions. Fresh out of his teens he took a bold decision to take his future into his own hands and invested some money in stocks, managing to make a good profit in the process. He then left England while still in his early twenties and moved to Europe where he lived in several different countries while engaging in his favorite pastime; gambling. He eventually became a full-time gambler and spent a few years living the hectic life of a punter, before moving to Asia and deciding to step out of the gambling circuit in order to settle down, stepping back into sales with the safe gamble of Divest Media. He loves making nothing into something and turning ideas into money.</p>
+								<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-6 item">
+					<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
+						<div class="front">
+							<div class=" noradius">
+								<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Dimitri-Leemon.png" alt="" />
+								<div class="caption">
+									<h4 class="nomargin">Dimitri Leemon</h4><hr/>
+									<span class="size-16 margin-bottom-20 block">Editorial Director </span>
+								</div>
+							</div>
+						</div>
+						<div class="back">
+							<div class="box2" style="background-color:#a0ce4e;">
+								<h4>Dimitri Leemon</h4>
+								<hr />
+								<p>Dimitri has worked across many industries in his peripatetic life and has spent most of his time leading editorial teams of one kind or another in a variety of different fields. He has written and provided content, under various pen names, for several magazines and websites , he has been an editor in both printed publications and online websites, he has led advertising and marketing campaigns, and he has also been part of an event organizing team.
+
+He has lived in the UK, France, Germany and Spain, and has been living in Asia since 2008, settling in the Philippines after spending a few months in Thailand and India. He has a passion for hiking and scuba diving, and he has invested a portion of his earnings throughout most of his life, always leaning on the conservative side.</p>
+<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -109,58 +169,59 @@ and also the ambitious novice individual who needs some simple financial advice 
 	</section>
 	<!-- / -->
 	
-	<section class="">
+	<section class="about_heads">
 		<div class="container">
-			<header class="text-center margin-bottom-50 tiny-line">
-				<h2 class="font-proxima uppercase">Teams <span>f*ck</span></h2>
-			</header>
-			<p class="horizontal-center text-center  block max-width-700">
-				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. 
-				Aenean commodo ligula eget dolor. Aenean massa. 
-				Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
-			</p>
-			
 			<div class="row margin-bottom-40">
+				<div class="col-sm-4 col-md-3">
 					
-				<div class="col-sm-4 col-md-3">
-					<div class=" noradius">
-						<img class="img-responsive liner margin-bottom-10" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/people/300x300/a-min.jpg" alt="" />
-						<div class="caption">
-							<h4 class="nomargin font-proxima uppercase">John Doe</h4>
-							<span class="uppercase text-gray">Writer</span>
+				</div>
+				<div class="col-md-3 col-sm-4 item">
+					<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
+						<div class="front">
+							<div class=" noradius">
+								<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Anwar-Ratag.png" alt="" />
+								<div class="caption">
+									<h4 class="nomargin cont-name">Anwar Ratag</h4><hr/>
+									<span class="size-16 margin-bottom-20 block">Creative Director</span>
+								</div>
+							</div>
+						</div>
+						<div class="back">
+							<div class="box2" style="background-color:#a0ce4e;">
+								<h4>Anwar Ratag</h4>
+								<hr />
+								<p>Anwar has more than two decades of experience in Visual/Creative and Multimedia Design, as well as over ten years of involvement in Web Design and Development, and he has worked for various Network, Multimedia, Ad Agency and Online Gaming companies. 
+
+An artist since birth, with exceptional skills in traditional and digital arts, he loves drawing, sketching and painting, and is also highly skilled in photography and videography and 3-D animation, as well as being well versed in HTML and CSS, and with extensive knowledge in PHP and Java. Also an avid fan of heavy metal music and video games. He just loves anything computer-related.</p>
+<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-4 item">
+					<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
+						<div class="front">
+							<div class=" noradius">
+								<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Charlie-Apostol.png" alt="" />
+								<div class="caption">
+									<h4 class="nomargin cont-name">Charlie Apostol</h4><hr/>
+									<span class="size-16 margin-bottom-20 block">Business Manager</span>
+								</div>
+							</div>
+						</div>
+						<div class="back">
+							<div class="box2" style="background-color:#a0ce4e;">
+								<h4>Charlie Apostol</h4>
+								<hr />
+								<p>Charlie brings more than a decade of experience in overall business operations including training and evaluation, budget forecasting and control, and overseeing general business functions such as Customer Service, Payment, Fraud Control, and Risk Management. He has successfully set up online casinos, spearheaded the creation of company documents, and formulated business continuity plans. If it’s anything to do with running a business, he’s been there, done that, and overseen the design of the t-shirt. 
+
+Motivated through inspiring others to perform above and beyond expectations, he spreads enthusiasm and promotes inventive thinking while keeping it all structured and on track. Also ardent on both the music and culinary world, he ventured into music-inspired bistros. Good food, good music. Just a few things he loves about life.</p>
+<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
+							</div>
 						</div>
 					</div>
 				</div>
 				
-				<div class="col-sm-4 col-md-3">
-					<div class=" noradius">
-						<img class="img-responsive liner margin-bottom-10" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/people/300x300/6-min.jpg" alt="" />
-						<div class="caption">
-							<h4 class="nomargin font-proxima uppercase">Jenny Chu</h4>
-							<span class="uppercase text-gray">Writer/ Editor</span>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-sm-4 col-md-3">
-					<div class=" noradius">
-						<img class="img-responsive liner margin-bottom-10" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/people/300x300/11-min.jpg" alt="" />
-						<div class="caption">
-							<h4 class="nomargin font-proxima uppercase">Rose Craige</h4>
-							<span class="uppercase text-gray">Photographer / graphics Artist</span>
-						</div>
-					</div>
-				</div>
-				
-				<div class="col-sm-4 col-md-3">
-					<div class=" noradius">
-						<img class="img-responsive liner margin-bottom-10" src="<?=get_stylesheet_directory_uri();?>/assets/images/demo/people/300x300/1-min.jpg" alt="" />
-						<div class="caption">
-							<h4 class="nomargin font-proxima uppercase">Anna Soun</h4>
-							<span class="uppercase text-gray">Programmer</span>
-						</div>
-					</div>
-				</div>
 			</div>
 		</div>
 	</section>

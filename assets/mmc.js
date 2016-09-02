@@ -18,4 +18,16 @@ jQuery(function($){
 	    })
 	    $("#glossaryList-nav .ln-letters").find("a:first-child").trigger("click"); 
     });
+
+    $('.btn-team-show-more').click(function(){
+        $(this).hide();
+        $(this).siblings('p').css('height','100%');
+         $(this).parents('.box2').css('height','100%');
+    });
+
+    $('.about_heads .item img').hover(function(){
+        console.log(1);
+    }, function(){
+       console.log(1);
+    });
 });
