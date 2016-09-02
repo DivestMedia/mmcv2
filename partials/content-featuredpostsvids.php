@@ -49,7 +49,7 @@ global $featuredVids,$featuredTitle;
 									if(count($featCat['child'])): ?>
 									<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
 										<?php foreach ($featCat['child'] as $featCatChild): ?>
-											<li class="list-group-item <?=((!empty($featCatChild['active']) && $featCat['active']==true) ? 'active' : '')?>">
+											<li class="list-group-item <?=((!empty($featCatChild['active']) && $featCatChild['active']==true) ? 'active' : '')?>">
 												<a href="<?=($featCatChild['link'] ?: '#')?>"><?=($featCatChild['name'] ?: 'Uncategorized')?></a>
 											</li>
 										<?php endforeach;?>

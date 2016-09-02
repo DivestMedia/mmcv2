@@ -152,10 +152,6 @@ foreach ($video_cats as $key => $cat) {
 		'iod_category' => get_query_var('taxonomy')=='iod_category' ? get_query_var('iod_category') : false
 	]);
 
-	foreach ($featuredVidsNews as $key => $postNews) {
-		$featuredVidsNews[$key] = $postNews->ID;
-	}
-
 	$featuredVids = [
 		'categories' => $featuredVidsCategories,
 		'posts' => $featuredVidsNews
