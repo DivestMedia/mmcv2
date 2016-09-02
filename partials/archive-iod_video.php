@@ -57,12 +57,13 @@ foreach ($post as $key => $video) {
 		'link' => $iod_video ?: get_the_permalink($video->ID)
 	];
 }
-
-$post = $latestnews;
-$GLOBALS['featureTitle'] = 'Latest <span>Videos</span>';
-$GLOBALS['featureButton'] = 'PLAY NOW';
-$GLOBALS['featureNoMore'] = true;
-get_template_part( 'partials/content', 'featuredvideos' );
+if(count($latestnews)>=5):
+	$post = $latestnews;
+	$GLOBALS['featureTitle'] = 'Latest <span>Videos</span>';
+	$GLOBALS['featureButton'] = 'PLAY NOW';
+	$GLOBALS['featureNoMore'] = true;
+	get_template_part( 'partials/content', 'featuredvideos' );
+endif;
 $post = $mainpost;
 
 $video_cats = get_categories([

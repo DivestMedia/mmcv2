@@ -81,6 +81,8 @@ global $featuredPost,$featuredTitle;
 									</div>
 									<?php
 								endforeach;
+							else:
+								echo '<h4 class="text-center">No Articles yet</h4>';
 							endif;
 							$post = $mainpost;
 							?>

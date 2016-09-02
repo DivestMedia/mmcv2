@@ -42,11 +42,12 @@ foreach ($post as $key => $news) {
 		'link' => get_the_permalink($news->ID)
 	];
 }
-
-$post = $latestnews;
-$GLOBALS['featureTitle'] = 'Latest <span>'.$tagData->name .' News</span>';
-$GLOBALS['featureButton'] = 'READ MORE';
-get_template_part( 'partials/content', 'featuredgrid' );
+if(count($latestnews)>4):
+	$post = $latestnews;
+	$GLOBALS['featureTitle'] = 'Latest <span>'.$tagData->name .' News</span>';
+	$GLOBALS['featureButton'] = 'READ MORE';
+	get_template_part( 'partials/content', 'featuredgrid' );
+endif;
 $post = $mainpost;
 
 
@@ -71,44 +72,44 @@ foreach ($category_tags as $key => $cat) {
 		'bonds',
 		'funds',
 		'etfs'
-	])) continue;
+		])) continue;
 
-	$featuredPostCategories[] = [
-		'id' => $cat->ID,
-		'name' => $cat->name,
-		'link' => $cat->link,
-		'active' => ($taghere==$cat->slug)
+		$featuredPostCategories[] = [
+			'id' => $cat->ID,
+			'name' => $cat->name,
+			'link' => $cat->link,
+			'active' => ($taghere==$cat->slug)
+		];
+	}
+
+	$featuredPostNews =  get_posts([
+		'posts_per_page'   => 9,
+		'category_name'    => 'News',
+		'orderby'          => 'date',
+		'order'            => 'DESC',
+		'post_type'        => 'post',
+		'post_status'      => 'publish',
+		'offset' => 5,
+		'suppress_filters' => true,
+		'tag_slug__in' => $taghere,
+	]);
+
+
+
+
+	foreach ($featuredPostNews as $key => $postNews) {
+		$featuredPostNews[$key] = $postNews->ID;
+	}
+
+	$featuredPost = [
+		'categories' => $featuredPostCategories,
+		'posts' => $featuredPostNews
 	];
-}
 
-$featuredPostNews =  get_posts([
-	'posts_per_page'   => 9,
-	'category_name'    => 'News',
-	'orderby'          => 'date',
-	'order'            => 'DESC',
-	'post_type'        => 'post',
-	'post_status'      => 'publish',
-	'offset' => 5,
-	'suppress_filters' => true,
-	'tag_slug__in' => $taghere,
-]);
+	$GLOBALS['featuredPost'] = $featuredPost;
+	$GLOBALS['featuredTitle'] = $tagData->name . ' News';
 
-
-
-
-foreach ($featuredPostNews as $key => $postNews) {
-	$featuredPostNews[$key] = $postNews->ID;
-}
-
-$featuredPost = [
-	'categories' => $featuredPostCategories,
-	'posts' => $featuredPostNews
-];
-
-$GLOBALS['featuredPost'] = $featuredPost;
-$GLOBALS['featuredTitle'] = $tagData->name . ' News';
-
-get_template_part( 'partials/content', 'featuredposts' );
-get_template_part( 'partials/content', 'investordivest' );
-get_template_part( 'partials/content', 'vipsubscribers' );
-?>
+	get_template_part( 'partials/content', 'featuredposts' );
+	get_template_part( 'partials/content', 'investordivest' );
+	get_template_part( 'partials/content', 'vipsubscribers' );
+	?>
