@@ -1,5 +1,8 @@
 <?php
 
+
+include_once( get_stylesheet_directory() .'/_inc/stocks.class.php');
+
 function backstage_smarty_setup() {
     add_image_size( 'main-image', 600, 400, true ); // Hard Crop Mode
     add_image_size( 'mid-image', 450, 300, true ); // Hard Crop Mode
