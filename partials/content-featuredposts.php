@@ -68,9 +68,7 @@ global $featuredPost,$featuredTitle;
 								?>
 								<div class="col-sm-4">
 									<a href="<?=get_the_permalink()?>">
-										<?=get_the_post_thumbnail($post->ID,'mid-image',[
-											'class' => 'liner img-responsive g-mb-20'
-											])?>
+										<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 150px;"></figure>
 										</a>
 										<h4 class="margin-top-20 size-14 weight-700 uppercase height-50" style="overflow:hidden;"><a href="<?=get_the_permalink($post->ID)?>"><?=xyr_smarty_limit_chars(get_the_title($post->ID),80)?></a></h4>
 										<p class="text-justify height-100" style="overflow:hidden;"><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode($post->post_content)),200);?></p>
@@ -78,12 +76,6 @@ global $featuredPost,$featuredTitle;
 											<li>
 												<i class="fa fa-calendar"></i>
 												<?=get_the_date()?>
-											</li>
-											<li>
-												<a href="<?=get_comments_link()?>">
-													<i class="fa fa-comments"></i>
-													<?=(comments_number( 'No Comments yet', 'One Comment', '% Comments' ))?>
-												</a>
 											</li>
 										</ul>
 									</div>

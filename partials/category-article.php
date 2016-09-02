@@ -91,7 +91,7 @@ foreach ($category_tags as $key => $cat) {
 }
 
 $featuredPostNews =  get_posts([
-	'posts_per_page'   => 9,
+	'posts_per_page'   => -1,
 	'category'    	   => (!empty($taghere)?$taghere:$temptaghere),
 	'orderby'          => 'date',
 	'order'            => 'DESC',
