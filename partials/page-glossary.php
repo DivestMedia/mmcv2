@@ -1,6 +1,6 @@
 <section>
 	<div class="container">
-		<div id="container-glossary" class="col-md-12">
+		<div id="container-glossary" class="col-md-9">
 			<header class="margin-bottom-30">
 				<h2 class="section-title"><?=the_title()?></h2>
 			</header>
@@ -11,6 +11,12 @@
 					</div>
 				</article>
 			<?php endwhile;?>
+		</div>
+		<div class="col-md-3">
+			<?php
+                if(is_active_sidebar('sidebar-single'))
+                dynamic_sidebar('sidebar-single');
+                ?>
 		</div>
 	</div>
 </section>

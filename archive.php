@@ -5,6 +5,7 @@ if(is_category('news')){
 }elseif(is_category('press-release') || (is_category() && get_category(get_category(get_query_var('cat'))->parent)->slug=='press-release')){
 	include 'partials/category-press-release.php';
 }elseif(is_category('article')){
+}elseif(is_category('articles')){
 	include 'partials/category-article.php';
 }elseif(is_category('starting-out')){
 	include 'partials/category-article.php';

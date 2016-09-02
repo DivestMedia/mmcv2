@@ -134,7 +134,7 @@
 
 								$_menu = wp_nav_menu(array(
 									'menu' => 'Main menu',
-									'walker' => new xyren_smarty_walker_nav_menu(), 
+									'walker' => new custom_xyren_smarty_walker_nav_menu(), 
 									'menu_id'=>'topMain',
 									'container' =>'ul',
 									'menu_class' =>'nav nav-pills nav-main has-topBar',

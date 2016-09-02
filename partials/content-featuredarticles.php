@@ -20,23 +20,18 @@
 
 							<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
 								<li class="list-group-item active">
-									<a href="#planning" data-toggle="tab">
-										All Articles
-									</a>
-								</li>
-								<li class="list-group-item">
 									<a href="#documentation" data-toggle="tab">
 										Rogue Trader
 									</a>
 								</li>
 								<li class="list-group-item">
-									<a href="#materials" data-toggle="tab">
-										Our Offshore Experts
+									<a href="#exterior-d" data-toggle="tab">
+										Starting Out
 									</a>
 								</li>
 								<li class="list-group-item">
-									<a href="#exterior-d" data-toggle="tab">
-										Starting Out
+									<a href="#materials" data-toggle="tab">
+										Our Offshore Experts
 									</a>
 								</li>
 							</ul>
@@ -47,55 +42,7 @@
 					</div>
 					<div class="col-sm-9">
 						<div class="tab-content">
-							<div class="tab-pane fade in active" id="planning">
-								<div class="row">
-									<?php
-										$args = array(
-
-										);
-										$catIDs = get_cat_ID( 'Rogue Trader' );
-										$catIDs .= ',' . get_cat_ID( 'Our Offshore Experts' );
-										$catIDs .= ',' . get_cat_ID( 'Starting Out' );
-										$starting_out = get_posts([
-											'posts_per_page'   => 3,
-											'category'    => $catIDs ,
-											'orderby'          => 'date',
-											'order'            => 'DESC',
-											'post_type'        => 'post',
-											'post_status'      => 'publish',
-											'suppress_filters' => true
-										]);
-										if(count($starting_out)): 
-											foreach($starting_out as $post):
-									?>
-										<div class="col-sm-4">
-											<a href="<?=get_the_permalink()?>">
-											<?=get_the_post_thumbnail($post->ID,'mid-image',[
-												'class' => 'liner img-responsive g-mb-20'
-												])?>
-											</a>
-											<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
-											<p class="text-justify"><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_excerpt())), 0, 150, "&hellip;");?></p>
-											<ul class="text-left size-12 list-inline list-separator">
-												<li>
-													<i class="fa fa-calendar"></i> 
-													<?=get_the_date()?>
-												</li>
-												<li>
-													<a href="<?=get_comments_link()?>">
-														<i class="fa fa-comments"></i>
-														<?=(comments_number( 'No Comments yet', 'One Comment', '% Comments' ))?>
-													</a>
-												</li>
-											</ul>
-										</div>
-									<?php
-											endforeach;
-										endif;
-									?>
-								</div>
-							</div>
-							<div class="tab-pane fade in" id="documentation">
+							<div class="tab-pane fade in active" id="documentation">
 								<div class="row">
 									<?php
 										$args = array(
@@ -115,29 +62,32 @@
 									?>
 										<div class="col-sm-4">
 											<a href="<?=get_the_permalink()?>">
-											<?=get_the_post_thumbnail($post->ID,'mid-image',[
-												'class' => 'liner img-responsive g-mb-20'
-												])?>
+												<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 180px;"></figure>
 											</a>
-											<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
-											<p class="text-justify"><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_excerpt())), 0, 150, '...');?></p>
+											<h4 class="margin-top-20 size-14 weight-700 uppercase p-limit-title"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
+											<p class="text-justify p-limit-content"><?=strip_tags(html_entity_decode(get_the_excerpt()));?></p>
 											<ul class="text-left size-12 list-inline list-separator">
 												<li>
 													<i class="fa fa-calendar"></i> 
 													<?=get_the_date()?>
 												</li>
+												<?php if(get_comments_number()){?>
 												<li>
 													<a href="<?=get_comments_link()?>">
 														<i class="fa fa-comments"></i>
 														<?=(comments_number( 'No Comments yet', 'One Comment', '% Comments' ))?>
 													</a>
 												</li>
+												<?php }?>
 											</ul>
 										</div>
 									<?php
 											endforeach;
 										endif;
 									?>
+								</div>
+								<div class="heading-title heading-dotted text-right margin-top-20 link-viewmore-article">
+									<a href="/articles"><h4>View more<span> Articles</span></h4></a>
 								</div>
 							</div>
 							<div class="tab-pane fade in" id="materials">
@@ -160,29 +110,32 @@
 									?>
 										<div class="col-sm-4">
 											<a href="<?=get_the_permalink()?>">
-											<?=get_the_post_thumbnail($post->ID,'mid-image',[
-												'class' => 'liner img-responsive g-mb-20'
-												])?>
+											<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 180px;"></figure>
 											</a>
-											<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
-											<p class="text-justify"><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_excerpt())), 0, 150, '...');?></p>
+											<h4 class="margin-top-20 size-14 weight-700 uppercase p-limit-title"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
+											<p class="text-justify p-limit-content"><?=strip_tags(html_entity_decode(get_the_excerpt()))?></p>
 											<ul class="text-left size-12 list-inline list-separator">
 												<li>
 													<i class="fa fa-calendar"></i> 
 													<?=get_the_date()?>
 												</li>
+												<?php if(get_comments_number()){?>
 												<li>
 													<a href="<?=get_comments_link()?>">
 														<i class="fa fa-comments"></i>
 														<?=(comments_number( 'No Comments yet', 'One Comment', '% Comments' ))?>
 													</a>
 												</li>
+												<?php }?>
 											</ul>
 										</div>
 									<?php
 											endforeach;
 										endif;
 									?>
+								</div>
+								<div class="heading-title heading-dotted text-right margin-top-20 link-viewmore-article">
+									<a href="/articles"><h4>View more<span> Articles</span></h4></a>
 								</div>
 							</div>
 							<div class="tab-pane fade in" id="exterior-d">
@@ -205,29 +158,32 @@
 									?>
 										<div class="col-sm-4">
 											<a href="<?=get_the_permalink()?>">
-											<?=get_the_post_thumbnail($post->ID,'mid-image',[
-												'class' => 'liner img-responsive g-mb-20'
-												])?>
+												<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 180px;"></figure>
 											</a>
-											<h4 class="margin-top-20 size-14 weight-700 uppercase"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
-											<p class="text-justify"><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_excerpt())), 0, 150, '...');?></p>
+											<h4 class="margin-top-20 size-14 weight-700 uppercase p-limit-title"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
+											<p class="text-justify p-limit-content"><?=strip_tags(html_entity_decode(get_the_excerpt()))?></p>
 											<ul class="text-left size-12 list-inline list-separator">
 												<li>
 													<i class="fa fa-calendar"></i> 
 													<?=get_the_date()?>
 												</li>
+												<?php if(get_comments_number()){?>
 												<li>
 													<a href="<?=get_comments_link()?>">
 														<i class="fa fa-comments"></i>
 														<?=(comments_number( 'No Comments yet', 'One Comment', '% Comments' ))?>
 													</a>
 												</li>
+												<?php }?>
 											</ul>
 										</div>
 									<?php
 											endforeach;
 										endif;
 									?>
+								</div>
+								<div class="heading-title heading-dotted text-right margin-top-20 link-viewmore-article">
+									<a href="/articles"><h4>View more<span> Articles</span></h4></a>
 								</div>
 							</div>
 						</div>

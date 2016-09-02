@@ -19,7 +19,7 @@ $post = get_posts([
 	'posts_per_archive_page' => 5,
 	'orderby' => 'date',
 	'order' => 'DESC',
-	'category_name' => 'Article',
+	'category_name' => 'Articles',
 ]);
 
 
@@ -49,15 +49,15 @@ $GLOBALS['featureButton'] = 'READ MORE';
 get_template_part( 'partials/content', 'featuredgrid' );
 $post = $mainpost;
 
-$category_tags = get_categories(['parent'=>get_category_by_slug('article')->term_id]);
-if(get_category_by_slug('article')->term_id==$taghere)
+$category_tags = get_categories(['parent'=>get_category_by_slug('articles')->term_id]);
+if(get_category_by_slug('articles')->term_id==$taghere)
 	$taghere = 0;
 $featuredPostCategories = [];
 if(!empty($taghere)){
 	$featuredPostCategories[] = [
 		'id' => 0,
 		'name' => 'All Articles',
-		'link' => '/article'
+		'link' => '/articles'
 	];
 }else{
 	$featuredPostCategories[] = [
@@ -89,16 +89,15 @@ foreach ($category_tags as $key => $cat) {
 		}
 	}
 }
-
 $featuredPostNews =  get_posts([
-	'posts_per_page'   => -1,
+	'posts_per_page'   => 6,
+	'posts_per_archive_page' => 6,
+	'paged' 			=> get_query_var('paged') ?: 1,
 	'category'    	   => (!empty($taghere)?$taghere:$temptaghere),
 	'orderby'          => 'date',
 	'order'            => 'DESC',
 	'post_type'        => 'post',
 	'post_status'      => 'publish',
-	'suppress_filters' => true,
-	'fields' => 'ID'
 ]);
 
 foreach ($featuredPostNews as $key => $postNews) {
