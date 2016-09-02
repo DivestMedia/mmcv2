@@ -1,3 +1,13 @@
+<?php
+
+
+
+$_datas = stockMarket::request(array('AAPL','GOOG','YHOO','NDAQ'));
+
+
+print_r($_datas);
+
+?>
 <section class="dark nopadding noborder" id="scroll-market">
 		<div class="container black-bg border-bottom">
 			<div class="row liner-bottom">
