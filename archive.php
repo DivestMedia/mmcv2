@@ -7,6 +7,8 @@ if(is_category('news')){
 }elseif(is_category('article')){
 }elseif(is_category('articles')){
 	include 'partials/category-article.php';
+}elseif(is_category('brokerage-firms')){
+	include 'partials/category-brokerage-firms.php';
 }elseif(is_category('starting-out')){
 	include 'partials/category-article.php';
 }elseif(is_category('rogue-trader')){
