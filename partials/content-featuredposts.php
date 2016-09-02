@@ -86,6 +86,7 @@ global $featuredPost,$featuredTitle;
 							endif;
 							$post = $mainpost;
 							?>
+							<div class="pagination"><?=posts_pagination()?></div>
 						</div>
 					</div>
 				</div>
