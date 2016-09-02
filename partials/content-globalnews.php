@@ -46,9 +46,8 @@
 			<?php foreach($global_news as $post): ?>
 				<div class="img-hover">
 					<a href="<?=get_the_permalink()?>">
-						<?=get_the_post_thumbnail($post->ID,'mid-image',[
-							'class' => 'liner img-responsive'
-							])?>
+						
+					<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 200px;"></figure>
 						</a>
 
 						<h4 class="text-left margin-top-20 height-50 post-title"><a href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),80)?></a></h4>
@@ -68,6 +67,9 @@
 					</div>
 				<?php endforeach; ?>
 			<?php endif; ?>
+		</div>
+		<div class="heading-title heading-dotted text-right margin-top-20 link-viewmore-news">
+			<a href="/news/"><h4>View more<span> News</span></h4></a>
 		</div>
 	</div>
 </section>
