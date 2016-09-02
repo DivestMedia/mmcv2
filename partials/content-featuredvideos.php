@@ -12,7 +12,7 @@ global $post,$featureTitle,$featureButton;
 
 ?>
 
-<section class="" >
+<section class="featured-grid" >
 	<div class="container">
 		<header class="text-left margin-bottom-10">
 			<h3 class="font-proxima uppercase"><?=($featureTitle ?: 'Most Popular <span>Videos</span>')?></h3>
