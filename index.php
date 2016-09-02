@@ -72,13 +72,14 @@ foreach ($featuredcats as $cat) {
         'description' => $cat['description'] ,
         'date' => $videohere->post_date,
         'thumbnail' => $iod_video_thumbnail,
-        'link' => $cat['link'] ?: get_permalink($videohere->ID)
+        'link' => $iod_video ?: $cat['link']
     ];
 
 }
 
 $post = $featuredvideos;
 get_template_part( 'partials/content', 'featuredvideos' );
+
 $post = $mainpost;
 
 get_template_part( 'partials/content', 'featuredarticles' );

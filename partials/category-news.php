@@ -45,7 +45,7 @@ foreach ($post as $key => $news) {
 $post = $latestnews;
 $GLOBALS['featureTitle'] = 'Latest <span>News</span>';
 $GLOBALS['featureButton'] = 'READ MORE';
-get_template_part( 'partials/content', 'featuredvideos' );
+get_template_part( 'partials/content', 'featuredgrid' );
 $post = $mainpost;
 
 

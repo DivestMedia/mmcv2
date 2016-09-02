@@ -3,8 +3,7 @@ get_template_part( 'partials/content', 'indexwatch' );
 global $wpdb,$post;
 
 $mainpost = $post;
-$taghere = strtolower(get_query_var('tag'));
-$tagData = get_term_by( 'slug',$taghere,'post_tag' );
+
 
 $latestnews = [];
 // Get 5 Latest News for each category
@@ -18,13 +17,13 @@ $post = get_posts([
 	'posts_per_page' => 5,
 	'posts_per_archive_page' => 5,
 	'orderby' => 'date',
-	'category_name'    => 'News',
 	'order' => 'DESC',
-	'tag_slug__in' => $taghere
+	'offset' => 5,
+	'category_name'    => 'News',
 ]);
 
 foreach ($post as $key => $news) {
-	$tags_array = [$tagData];
+	$tags_array = get_the_tags( $news->ID );
 	$hastag = false;
 	if($tags_array){
 		$hastag = true;
@@ -44,7 +43,7 @@ foreach ($post as $key => $news) {
 }
 
 $post = $latestnews;
-$GLOBALS['featureTitle'] = 'Latest <span>'.$tagData->name .' News</span>';
+$GLOBALS['featureTitle'] = 'Latest <span>Videos</span>';
 $GLOBALS['featureButton'] = 'READ MORE';
 get_template_part( 'partials/content', 'featuredgrid' );
 $post = $mainpost;
@@ -56,10 +55,10 @@ $featuredPostCategories = [];
 $featuredPostCategories[] = [
 	'id' => 0,
 	'name' => 'All News',
-	'link' => '/news'
+	'active' => true
 ];
-
 foreach ($category_tags as $key => $cat) {
+
 	if(in_array($cat->slug,[
 		'pre-markets',
 		'usa',
@@ -76,8 +75,7 @@ foreach ($category_tags as $key => $cat) {
 	$featuredPostCategories[] = [
 		'id' => $cat->ID,
 		'name' => $cat->name,
-		'link' => $cat->link,
-		'active' => ($taghere==$cat->slug)
+		'link' => $cat->link
 	];
 }
 
@@ -88,13 +86,9 @@ $featuredPostNews =  get_posts([
 	'order'            => 'DESC',
 	'post_type'        => 'post',
 	'post_status'      => 'publish',
-	'offset' => 5,
 	'suppress_filters' => true,
-	'tag_slug__in' => $taghere,
+	'fields' => 'ID'
 ]);
-
-
-
 
 foreach ($featuredPostNews as $key => $postNews) {
 	$featuredPostNews[$key] = $postNews->ID;
@@ -104,9 +98,8 @@ $featuredPost = [
 	'categories' => $featuredPostCategories,
 	'posts' => $featuredPostNews
 ];
-
 $GLOBALS['featuredPost'] = $featuredPost;
-$GLOBALS['featuredTitle'] = $tagData->name . ' News';
+$GLOBALS['featuredTitle'] = 'All News';
 
 get_template_part( 'partials/content', 'featuredposts' );
 get_template_part( 'partials/content', 'investordivest' );

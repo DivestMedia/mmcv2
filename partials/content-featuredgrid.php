@@ -12,7 +12,7 @@ global $post,$featureTitle,$featureButton;
 
 ?>
 
-<section class="featured-grid video-grid" >
+<section class="featured-grid" >
 	<div class="container">
 		<header class="text-left margin-bottom-10">
 			<h3 class="font-proxima uppercase"><?=($featureTitle ?: 'Most Popular <span>Videos</span>')?></h3>
@@ -34,9 +34,7 @@ global $post,$featureTitle,$featureButton;
 									<span class="block size-11 text-center color-theme uppercase">
 										<?=date('F j, Y',strtotime($video['date']))?>
 									</span>
-									<a class="pos-bottom block btn-sm btn secondary-bg text-center noradius weight-700 lightbox" href="<?=$video['link']?>"  data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
-
-
+									<a class="pos-bottom block btn-sm btn secondary-bg text-center noradius weight-700" href="<?=$video['link']?>"><?=($featureButton ?: 'PLAY NOW')?></a>
 								</span>
 							</span>
 
@@ -60,7 +58,7 @@ global $post,$featureTitle,$featureButton;
 								<span class="inner padding-top-0">
 									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
-										<a class=" btn-sm btn primary-bg text-center noradius weight-700 lightbox" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
+										<a class=" btn-sm btn primary-bg text-center noradius weight-700" href="<?=$video['link']?>"><?=($featureButton ?: 'PLAY NOW')?></a>
 									</span>
 
 								</span>
@@ -70,7 +68,7 @@ global $post,$featureTitle,$featureButton;
 						</figure>
 					<?php endif; ?>
 				</div>
-				<div class="item-box noshadow hover-box margin-top-10">
+				<div class="item-box noshadow hover-box margin-top-20">
 					<?php if(isset($post[2])): $video = $post[2]; ?>
 						<figure>
 							<span class="item-hover">
@@ -81,7 +79,7 @@ global $post,$featureTitle,$featureButton;
 								<span class="inner padding-top-0">
 									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
-										<a class=" btn-sm btn primary-bg text-center noradius weight-700 lightbox" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
+										<a class=" btn-sm btn primary-bg text-center noradius weight-700" href="<?=$video['link']?>"><?=($featureButton ?: 'PLAY NOW')?></a>
 									</span>
 
 								</span>
@@ -107,7 +105,7 @@ global $post,$featureTitle,$featureButton;
 								<span class="inner padding-top-0">
 									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
-										<a class=" btn-sm btn primary-bg text-center noradius weight-700 lightbox" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
+										<a class=" btn-sm btn primary-bg text-center noradius weight-700" href="<?=$video['link']?>"><?=($featureButton ?: 'PLAY NOW')?></a>
 									</span>
 
 								</span>
@@ -117,7 +115,7 @@ global $post,$featureTitle,$featureButton;
 						</figure>
 					<?php endif; ?>
 				</div>
-				<div class="item-box noshadow hover-box margin-top-10">
+				<div class="item-box noshadow hover-box margin-top-20">
 					<?php if(isset($post[4])): $video = $post[4]; ?>
 						<figure>
 							<span class="item-hover">
@@ -128,7 +126,7 @@ global $post,$featureTitle,$featureButton;
 								<span class="inner padding-top-0">
 									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
-										<a class=" btn-sm btn primary-bg text-center noradius weight-700 lightbox" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
+										<a class=" btn-sm btn primary-bg text-center noradius weight-700" href="<?=$video['link']?>"><?=($featureButton ?: 'PLAY NOW')?></a>
 									</span>
 
 								</span>
@@ -140,10 +138,8 @@ global $post,$featureTitle,$featureButton;
 				</div>
 
 			</div>
+			<!-- End Col 3 -->
 		</div>
 
-		<div class="heading-title heading-dotted text-right margin-top-20 ">
-			<a href="#"><h4>Watch more<span> Videos</span></h4></a>
-		</div>
 	</div>
 </section>
