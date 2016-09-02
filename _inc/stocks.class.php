@@ -21,10 +21,10 @@ class stockMarket{
 		echo 'heres----------------------------------';
 		
 		$_stocksData = self::parseStocks($_ret);
-		
+		/* 
 		
 		print_r($_stocksData);
-		exit;
+		exit; */
 		return $_stocksData;
 		
 		
