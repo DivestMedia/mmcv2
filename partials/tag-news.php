@@ -4,6 +4,7 @@ global $wpdb,$post;
 
 $mainpost = $post;
 $taghere = strtolower(get_query_var('tag'));
+$tagData = get_term_by( 'slug',$taghere,'post_tag' );
 
 $latestnews = [];
 // Get 5 Latest News for each category
@@ -23,7 +24,7 @@ $post = get_posts([
 ]);
 
 foreach ($post as $key => $news) {
-	$tags_array = [get_term_by( 'slug',$taghere,'post_tag' )];
+	$tags_array = [$tagData];
 	$hastag = false;
 	if($tags_array){
 		$hastag = true;
@@ -43,7 +44,7 @@ foreach ($post as $key => $news) {
 }
 
 $post = $latestnews;
-$GLOBALS['featureTitle'] = 'Latest <span>News</span>';
+$GLOBALS['featureTitle'] = 'Latest <span>'.$tagData->name .' News</span>';
 $GLOBALS['featureButton'] = 'READ MORE';
 get_template_part( 'partials/content', 'featuredvideos' );
 $post = $mainpost;
@@ -54,11 +55,24 @@ $category_tags = get_category_tags(get_category_by_slug('news')->term_id);
 $featuredPostCategories = [];
 $featuredPostCategories[] = [
 	'id' => 0,
-	'name' => 'All Articles',
+	'name' => 'All News',
 	'link' => '/news'
 ];
 
 foreach ($category_tags as $key => $cat) {
+	if(in_array($cat->slug,[
+		'pre-markets',
+		'usa',
+		'asia',
+		'europe',
+		'stocks',
+		'commodities',
+		'currencies',
+		'bonds',
+		'funds',
+		'etfs'
+	])) continue;
+
 	$featuredPostCategories[] = [
 		'id' => $cat->ID,
 		'name' => $cat->name,
@@ -76,8 +90,11 @@ $featuredPostNews =  get_posts([
 	'post_status'      => 'publish',
 	'offset' => 5,
 	'suppress_filters' => true,
-	'tag_slug__in' => $taghere
+	'tag_slug__in' => $taghere,
 ]);
+
+
+
 
 foreach ($featuredPostNews as $key => $postNews) {
 	$featuredPostNews[$key] = $postNews->ID;
@@ -89,6 +106,7 @@ $featuredPost = [
 ];
 
 $GLOBALS['featuredPost'] = $featuredPost;
+$GLOBALS['featuredTitle'] = $tagData->name . ' News';
 
 get_template_part( 'partials/content', 'featuredposts' );
 get_template_part( 'partials/content', 'investordivest' );

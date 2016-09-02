@@ -54,10 +54,24 @@ $category_tags = get_category_tags(get_category_by_slug('news')->term_id);
 $featuredPostCategories = [];
 $featuredPostCategories[] = [
 	'id' => 0,
-	'name' => 'All Articles',
+	'name' => 'All News',
 	'active' => true
 ];
 foreach ($category_tags as $key => $cat) {
+
+	if(in_array($cat->slug,[
+		'pre-markets',
+		'usa',
+		'asia',
+		'europe',
+		'stocks',
+		'commodities',
+		'currencies',
+		'bonds',
+		'funds',
+		'etfs'
+	])) continue;
+
 	$featuredPostCategories[] = [
 		'id' => $cat->ID,
 		'name' => $cat->name,
@@ -85,6 +99,7 @@ $featuredPost = [
 	'posts' => $featuredPostNews
 ];
 $GLOBALS['featuredPost'] = $featuredPost;
+$GLOBALS['featuredTitle'] = 'All News';
 
 get_template_part( 'partials/content', 'featuredposts' );
 get_template_part( 'partials/content', 'investordivest' );

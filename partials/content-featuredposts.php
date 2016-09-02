@@ -1,5 +1,5 @@
 <?php
-global $featuredPost;
+global $featuredPost,$featuredTitle;
 // $featuredPost = [
 // 	'categories' => [
 // 		[
@@ -25,7 +25,7 @@ global $featuredPost;
 <section class="alternate">
 	<div class="container">
 		<header class="text-center margin-bottom-10 tiny-line">
-			<h2 class="font-proxima uppercase">Featured Articles</h2>
+			<h2 class="font-proxima uppercase"><?=($featuredTitle)?></h2>
 		</header>
 
 		<!-- Tab v3 -->
