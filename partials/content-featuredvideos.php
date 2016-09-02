@@ -30,7 +30,7 @@ global $post,$featureTitle,$featureButton,$featureNoMore;
 							<span class="item-description">
 								<span class="overlay primary-bg"></span>
 								<span class="inner margin-top-30">
-									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
+									<h3><em><a href="<?=($video['titlelink'])?>" style="color:#fff"><?=$video['title']?></a></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
 										<?=date('F j, Y',strtotime($video['date']))?>
 									</span>
@@ -58,7 +58,7 @@ global $post,$featureTitle,$featureButton,$featureNoMore;
 							<span class="item-description">
 								<span class="overlay primary-bg "></span>
 								<span class="inner padding-top-0">
-									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
+									<h3><em><a href="<?=($video['titlelink'])?>" style="color:#fff"><?=$video['title']?></a></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
 										<a class=" btn-sm btn primary-bg text-center noradius weight-700 lightbox" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
 									</span>
@@ -79,7 +79,7 @@ global $post,$featureTitle,$featureButton,$featureNoMore;
 							<span class="item-description">
 								<span class="overlay primary-bg "></span>
 								<span class="inner padding-top-0">
-									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
+									<h3><em><a href="<?=($video['titlelink'])?>" style="color:#fff"><?=$video['title']?></a></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
 										<a class=" btn-sm btn primary-bg text-center noradius weight-700 lightbox" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
 									</span>
@@ -105,7 +105,7 @@ global $post,$featureTitle,$featureButton,$featureNoMore;
 							<span class="item-description">
 								<span class="overlay primary-bg "></span>
 								<span class="inner padding-top-0">
-									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
+									<h3><em><a href="<?=($video['titlelink'])?>" style="color:#fff"><?=$video['title']?></a></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
 										<a class=" btn-sm btn primary-bg text-center noradius weight-700 lightbox" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
 									</span>
@@ -126,7 +126,7 @@ global $post,$featureTitle,$featureButton,$featureNoMore;
 							<span class="item-description">
 								<span class="overlay primary-bg "></span>
 								<span class="inner padding-top-0">
-									<h3><em><?=$video['title']?></em><?=$video['description']?></h3>
+									<h3><em><a href="<?=($video['titlelink'])?>" style="color:#fff"><?=$video['title']?></a></em><?=$video['description']?></h3>
 									<span class="block size-11 text-center color-theme uppercase">
 										<a class=" btn-sm btn primary-bg text-center noradius weight-700 lightbox" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
 									</span>
@@ -143,7 +143,7 @@ global $post,$featureTitle,$featureButton,$featureNoMore;
 		</div>
 		<?php if(!$featureNoMore): ?>
 			<div class="heading-title heading-dotted text-right margin-top-20 ">
-				<a href="#"><h4>Watch more<span> Videos</span></h4></a>
+				<a href="/videos"><h4>Watch more<span> Videos</span></h4></a>
 			</div>
 		<?php endif; ?>
 	</div>

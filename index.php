@@ -10,31 +10,31 @@ $featuredcats = [
         'category' => 'Board of Advisors',
         'title' => 'Kenyon Martin',
         'description' => 'How to be Dumbass',
-        'link' => '#',
+        'link' => '/video/kenyon-martin/#all-videos',
     ],
     [
         'category' => 'Daily Stock Picks',
         'title' => 'Kenyon Martin',
         'description' => 'Daily Stock Picks',
-        'link' => '#',
+        'link' => '/video/kenyon-martin/#all-videos',
     ],
     [
         'category' => 'Investment Tips',
         'title' => 'Bruce Curran',
         'description' => 'Investment Tips',
-        'link' => '#',
+        'link' => '/video/kenyon-martin/#all-videos',
     ],
     [
         'category' => 'World News',
         'title' => 'Bruce Curran',
         'description' => 'World News',
-        'link' => '#',
+        'link' => '/video/world-news/#all-videos',
     ],
     [
         'category' => 'Andy Penders',
         'title' => 'Headlines',
         'description' => 'Global Business News',
-        'link' => '#',
+        'link' => '/video/andy-penders/#all-videos',
     ]
 ];
 $featuredvideos = [];
@@ -69,6 +69,7 @@ foreach ($featuredcats as $cat) {
     }
     $featuredvideos[] = [
         'title' => $cat['title'] ,
+        'titlelink' => $cat['link'],
         'description' => $cat['description'] ,
         'date' => $videohere->post_date,
         'thumbnail' => $iod_video_thumbnail,

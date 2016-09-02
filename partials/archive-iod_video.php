@@ -86,21 +86,13 @@ $featuredVidsCategories = [];
 $featuredVidsCategories[] = [
 	'id' => 0,
 	'name' => 'All Videos',
-	'active' => get_query_var('taxonomy')!='iod_category'
+	'active' => get_query_var('taxonomy')!='iod_category',
+	'link' => '/videos'
 ];
 foreach ($video_cats as $key => $cat) {
 
 	if(in_array($cat->slug,[
-		// 'pre-markets',
-		// 'usa',
-		// 'asia',
-		// 'europe',
-		// 'stocks',
-		// 'commodities',
-		// 'currencies',
-		// 'bonds',
-		// 'funds',
-		// 'etfs'
+		'investment',
 		])) continue;
 		$child = [];
 		$child_cats = get_categories([
