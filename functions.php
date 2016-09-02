@@ -99,3 +99,51 @@ function backstage_smarty_widgets_init() {
         'after_title'   => '',
     ));
 }
+
+
+function posts_pagination() {
+    global $wp_query,$query_string;
+    $big = 999999999;
+    $pages = paginate_links(array(
+        'base' => str_replace($big, '%#%', get_pagenum_link($big)),
+        'format' => '?page=%#%',
+        'current' => max(1, get_query_var('paged')),
+        'total' => $wp_query->max_num_pages,
+        'prev_next' => false,
+        'type' => 'array',
+        'prev_next' => TRUE,
+        'prev_text' => '&larr; Prev',
+        'next_text' => 'Next &rarr;',
+    ));
+
+
+    if (is_array($pages)) {
+        $current_page = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+        echo '<ul class="pagination">';
+        foreach ($pages as $i => $page) {
+            if ($current_page == 1 && $i == 0) {
+                echo "<li class='active'>$page</li>";
+            } else {
+                if ($current_page != 1 && $current_page == $i) {
+                    echo "<li class='active'>$page</li>";
+                } else {
+                    echo "<li>$page</li>";
+                }
+            }
+        }
+        echo '</ul>';
+    }
+}
+
+
+function pre_get_vid_post_type($query) {
+
+    if ( !is_admin() && $query->is_main_query() && is_tax('iod_category')) {
+        $query->set('post_type', array( 'iod_video') );
+    }
+    if ( !is_admin() && $query->is_main_query() && is_post_type_archive('iod_video')) {
+        $query->set('post_type', array( 'iod_video') );
+    }
+}
+
+add_action('pre_get_posts','pre_get_vid_post_type');

@@ -14,13 +14,15 @@ $mainpost = $post;
 $post = get_posts([
 	'posts_per_page' => 5,
 	'posts_per_archive_page' => 5,
-	'paged' => get_query_var('paged'),
+	'paged' => get_query_var('paged') ?: 1,
 	'post_type' => [
 		'iod_video'
 	],
 	'orderby' => 'date',
 	'order' => 'DESC',
 	'post_status'      => 'publish',
+	'taxonomy' => get_query_var('taxonomy'),
+	'iod_category' => get_query_var('taxonomy')=='iod_category' ? get_query_var('iod_category') : false
 ]);
 
 foreach ($post as $key => $video) {
@@ -83,7 +85,7 @@ $featuredVidsCategories = [];
 $featuredVidsCategories[] = [
 	'id' => 0,
 	'name' => 'All Videos',
-	'active' => true
+	'active' => get_query_var('taxonomy')!='iod_category'
 ];
 foreach ($video_cats as $key => $cat) {
 
@@ -120,7 +122,8 @@ foreach ($video_cats as $key => $cat) {
 				$child_cats[$kk] = [
 					'id' => $cc->term_id,
 					'name' => $cc->name,
-					'link' => get_term_link($cc->term_id,'iod_category')
+					'link' => get_term_link($cc->term_id,'iod_category'),
+					'active' => get_query_var('iod_category')==$cc->slug
 				];
 			}
 			$child = $child_cats;
@@ -130,21 +133,23 @@ foreach ($video_cats as $key => $cat) {
 			'id' => $cat->term_id,
 			'name' => $cat->name,
 			'link' => get_term_link($cat->term_id,'iod_category'),
-			'child' => $child
+			'child' => $child,
+			'active' => get_query_var('iod_category')==$cat->slug
 		];
 
 	}
 	$featuredVidsNews =  get_posts([
 		'posts_per_page' => 9,
 		'posts_per_archive_page' => 9,
-		'paged' => get_query_var('paged'),
+		'paged' => get_query_var('paged') ?: 1,
 		'post_type' => [
 			'iod_video'
 		],
-		'offset' => 5,
 		'orderby' => 'date',
 		'order' => 'DESC',
 		'post_status'      => 'publish',
+		'taxonomy' => get_query_var('taxonomy'),
+		'iod_category' => get_query_var('taxonomy')=='iod_category' ? get_query_var('iod_category') : false
 	]);
 
 	foreach ($featuredVidsNews as $key => $postNews) {
