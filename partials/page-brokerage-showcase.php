@@ -1,20 +1,35 @@
 <?php
 get_template_part( 'partials/content', 'indexwatch' );
 ?>
-<section>
+<section class="alternate">
 	<div class="container">
-		<a href="#" class="text-gray bold size-10 uppercase letter-spacing-10"><?=!empty(get_the_category($post->ID)[0]->name)?get_the_category($post->ID)[0]->name:''?></a>
-		<header class="text-left margin-bottom-50 tiny-line">
-			<h2 class="font-proxima"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h2>
-			<!-- <a href="#" class="size-12 text-black uppercase bold">BY: John Doe</a>  &nbsp; -->
-			<a href="#" class="size-12 text-gray"><?=get_the_date()?></a>
-			<br/>
-		</header>
+
 
 		<div class="row">
-			<div class="col-md-9 col-sm-9 text-justify">
 
-				<p><img class="size-full wp-image-276016 alignleft" src="http://www.marketmasterclass.com/wp-content/uploads/2016/06/ama-1x1logo.jpg" alt="ama-1x1logo" width="161" height="161" srcset="http://www.marketmasterclass.com/wp-content/uploads/2016/06/ama-1x1logo-150x150.jpg 150w, http://www.marketmasterclass.com/wp-content/uploads/2016/06/ama-1x1logo.jpg 161w" sizes="(max-width: 161px) 100vw, 161px">Established over 24 years ago, AMA is by far the leading Wealth Management firm working on a global level today. Martyn Davies, Regional Manager for the Manila office has been working within the financial services sector for 20 years, firstly in Europe managing high level asset-backed financing deals through companies including GE Capital and De Lage Landen, before then moving into personal financial planning in Dubai, South Africa, and the Philippines. Matthew Arnold, Senior Consultant, was based in China with AMA for 10 years before moving to the Philippines two years ago.</p>
+			<div class="col-sm-3">
+				<!-- side navigation -->
+				<div class="side-nav margin-top-50">
+					<div class="side-nav-head">
+						<button class="fa fa-bars"></button>
+						<h4></h4>
+					</div>
+
+					<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
+						<li class="list-group-item"><a href="/find-a-broker" >Find a Broker</a></li>
+						<li class="list-group-item"><a href="/find-a-broker/#what-to-look-for-in-a-broker" >What to look for in a broker</a></li>
+						<li class="list-group-item"><a href="/category/brokerage-firms" >List of Brokerage Firms</a></li>
+						<li class="list-group-item active"><a href="/find-a-broker/brokerage-showcase" >Brokerage Showcase</a></li>
+					</ul>
+				</div>
+				<!-- /side navigation -->
+			</div>
+
+			<div class="col-md-9 col-sm-9 text-justify">
+				<header class="text-center margin-bottom-10 tiny-line">
+					<h2 class="font-proxima uppercase">Brokerage Showcase</h2>
+				</header>
+				<p><img class="size-full wp-image-276016 alignleft" src="http://www.marketmasterclass.com/wp-content/uploads/2016/06/ama-1x1logo.jpg" alt="ama-1x1logo" width="161" height="161" srcset="http://www.marketmasterclass.com/wp-content/uploads/2016/06/ama-1x1logo-150x150.jpg 150w, http://www.marketmasterclass.com/wp-content/uploads/2016/06/ama-1x1logo.jpg 161w" sizes="(max-width: 161px) 100vw, 161px" style="padding-right: 10px;float: left;">Established over 24 years ago, AMA is by far the leading Wealth Management firm working on a global level today. Martyn Davies, Regional Manager for the Manila office has been working within the financial services sector for 20 years, firstly in Europe managing high level asset-backed financing deals through companies including GE Capital and De Lage Landen, before then moving into personal financial planning in Dubai, South Africa, and the Philippines. Matthew Arnold, Senior Consultant, was based in China with AMA for 10 years before moving to the Philippines two years ago.</p>
 				<p>Austen Morris Associates differentiates itself from the competition by focusing on client-servicing through the short, medium and long term stages of financial planning and wealth management. All Austen Morris clients are reviewed with their consultant on at least a quarterly basis, which forms the core KPI of an adviser with the company and is rigorously enforced. Review meetings are important for clients to keep up to date with how their investments are performing, how the financial world is looking, and to be advised of any potential changes to their current portfolios. It is also equally as important for a consultant to keep up to date with what is happening in a client’s life as changes in employment, geography or family set up are all going to have an impact on the clients financial planning over the <span id="more-276859"></span></p>
 				<p>short, medium and long term.</p>
 				<p>An exclusive offering to AMA clients is our Wealth Management Service (WMS), and all our clients can access this system. It consolidates all of a client’s investments into one area which they can review on a 24/7 basis. The system also includes a quarterly portfolio recommendation which a client can accept or dismiss at the touch of a button.</p>
@@ -25,73 +40,6 @@ get_template_part( 'partials/content', 'indexwatch' );
 				<p>At Austen Morris Associates we are committed to long-term partnerships, integrity and innovation, and we will always strive to protect and develop a successful portfolio for you.</p>
 
 
-			</div>
-			<div class="col-lg-3 col-md-3 col-sm-3 text-left">
-				<!-- CATEGORIES -->
-				<div class="side-nav margin-bottom-60">
-
-					<div class="side-nav-head">
-						<button class="fa fa-bars"></button>
-						<h4>CATEGORIES</h4>
-					</div>
-					<?php if(in_category(['news'])):?>
-						<ul class="list-group list-group-bordered list-group-noicon uppercase">
-							<?php
-							$category_tags = get_category_tags(get_category_by_slug('news')->term_id);
-							?>
-							<?php foreach ($category_tags as $key => $tag):?>
-								<li class="list-group-item">
-									<a href="<?=($tag->link)?>" class="tag-<?=($tag->ID)?>" data-id="<?=($tag->ID)?>">
-										<span class="size-11 text-muted pull-right">(<?=(int)($tag->count)?>)</span>
-										<?=strtoupper($tag->name)?>
-									</a>
-								</li>
-							<?php endforeach; ?>
-						</ul>
-					<?php else: ?>
-						<ul class="list-group list-group-bordered list-group-noicon uppercase">
-
-							<li class="list-group-item active">
-								<a class="dropdown-toggle" href="#">GLOBAL</a>
-								<ul>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(123)</span> Shoes & Boots</a></li>
-									<li class="active"><a href="#"><span class="size-11 text-muted pull-right">(331)</span> Top & Blouses</a></li>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(234)</span> Dresses & Skirts</a></li>
-								</ul>
-							</li>
-							<li class="list-group-item">
-								<a class="dropdown-toggle" href="#">SPORTS</a>
-								<ul>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(88)</span> Accessories</a></li>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(67)</span> Shoes & Boots</a></li>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(32)</span> Dresses & Skirts</a></li>
-									<li class="active"><a href="#"><span class="size-11 text-muted pull-right">(78)</span> Top & Blouses</a></li>
-								</ul>
-							</li>
-							<li class="list-group-item">
-								<a class="dropdown-toggle" href="#">DUMMIES GUIDE</a>
-							</li>
-							<li class="list-group-item">
-								<a class="dropdown-toggle" href="#">BUSINESS</a>
-								<ul>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(88)</span> Shoes & Boots</a></li>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(22)</span> Dresses & Skirts</a></li>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(31)</span> Accessories</a></li>
-									<li class="active"><a href="#"><span class="size-11 text-muted pull-right">(18)</span> Top & Blouses</a></li>
-								</ul>
-							</li>
-							<li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(189)</span> NEWS</a></li>
-							<li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(61)</span> VIDEOS</a></li>
-
-						</ul>
-					<?php endif; ?>
-				</div>
-				<!-- /CATEGORIES -->
-
-				<?php
-				if(is_active_sidebar('sidebar-single'))
-				dynamic_sidebar('sidebar-single');
-				?>
 			</div>
 		</div>
 	</div>
