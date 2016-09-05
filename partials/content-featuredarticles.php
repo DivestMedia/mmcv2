@@ -1,15 +1,14 @@
 
 <section class="alternate">
 		<div class="container">
-			<header class="text-center margin-bottom-10 tiny-line">
-				<h2 class="font-proxima uppercase">Featured Articles</h2>
+			<header class="text-center margin-bottom-50 tiny-line">
+				<h2 class="font-proxima uppercase">Featured <span>Articles</span></h2>
 			</header>
-			
 			<!-- Tab v3 -->
 				<div class="row tab-v3">
 					<div class="col-sm-3">
-					
-					
+
+
 					<!-- side navigation -->
 						<div class="side-nav margin-top-50">
 
@@ -35,8 +34,8 @@
 									</a>
 								</li>
 							</ul>
-				
-				
+
+
 						</div>
 					<!-- /side navigation -->
 					</div>
@@ -57,7 +56,7 @@
 											'post_status'      => 'publish',
 											'suppress_filters' => true
 										]);
-										if(count($starting_out)): 
+										if(count($starting_out)):
 											foreach($starting_out as $post):
 									?>
 										<div class="col-sm-4">
@@ -68,7 +67,7 @@
 											<p class="text-justify p-limit-content"><?=strip_tags(html_entity_decode(get_the_excerpt()));?></p>
 											<ul class="text-left size-12 list-inline list-separator">
 												<li>
-													<i class="fa fa-calendar"></i> 
+													<i class="fa fa-calendar"></i>
 													<?=get_the_date()?>
 												</li>
 												<?php if(get_comments_number()){?>
@@ -105,7 +104,7 @@
 											'post_status'      => 'publish',
 											'suppress_filters' => true
 										]);
-										if(count($starting_out)): 
+										if(count($starting_out)):
 											foreach($starting_out as $post):
 									?>
 										<div class="col-sm-4">
@@ -116,7 +115,7 @@
 											<p class="text-justify p-limit-content"><?=strip_tags(html_entity_decode(get_the_excerpt()))?></p>
 											<ul class="text-left size-12 list-inline list-separator">
 												<li>
-													<i class="fa fa-calendar"></i> 
+													<i class="fa fa-calendar"></i>
 													<?=get_the_date()?>
 												</li>
 												<?php if(get_comments_number()){?>
@@ -153,7 +152,7 @@
 										'post_status'      => 'publish',
 										'suppress_filters' => true
 									]);
-										if(count($starting_out)): 
+										if(count($starting_out)):
 											foreach($starting_out as $post):
 									?>
 										<div class="col-sm-4">
@@ -164,7 +163,7 @@
 											<p class="text-justify p-limit-content"><?=strip_tags(html_entity_decode(get_the_excerpt()))?></p>
 											<ul class="text-left size-12 list-inline list-separator">
 												<li>
-													<i class="fa fa-calendar"></i> 
+													<i class="fa fa-calendar"></i>
 													<?=get_the_date()?>
 												</li>
 												<?php if(get_comments_number()){?>
