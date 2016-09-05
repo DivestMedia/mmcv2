@@ -59,12 +59,13 @@
 	}
 	.master-slider{background-color:#000!important;}
 	.master-slider .ms-slide h2{color:#fff;font-size:6em;text-transform:uppercase;margin-top:0;}
+	.master-slider .ms-slide h2.ms-promo-travel-place{     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);}
 	.master-slider .ms-slide .btn-primary{font-family: Proxima Nova Bold;text-transform:uppercase; transition: all 0.3s linear;}
 	.master-slider .ms-slide .btn-primary{border-width:0;}
 	.master-slider .ms-slide .btn-primary:hover{background-color:#F2C500;border-color:#d6a600}
 	.master-slider .ms-slide .btn-third{border-width:0;font-size:14px;background-color:#213240;text-transform:uppercase;color:#fff!important;}
 	.master-slider .ms-slide p{color:#fff}
-	.master-slider .ms-slide .ms-promo-travel-description{max-width:700px;}
+	.master-slider .ms-slide .ms-promo-travel-description{max-width:700px;text-shadow: 1px 1px 2px #000;}
 	
 	.master-slider .ms-thumb-frame.ms-thumb-frame-selected{ transition: all 0.3s linear;border-top: 7px solid #F2C500}
 	
