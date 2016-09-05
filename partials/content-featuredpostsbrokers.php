@@ -19,6 +19,7 @@ global $brokerage,$featuredTitle,$post;
 						<li class="list-group-item active"><a href="/category/brokerage-firms" >List of Brokerage Firms</a></li>
 						<li class="list-group-item"><a href="/find-a-broker/brokerage-showcase" >Brokerage Showcase</a></li>
 					</ul>
+					<?php render_side_bar_widget();?>
 				</div>
 				<!-- /side navigation -->
 			</div>
