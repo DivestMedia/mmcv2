@@ -6,7 +6,7 @@
 * @package bbPress
 * @subpackage Theme
 */
-
+// echo bbp_forum_content(  bbp_get_forum_id() );
 ?>
 
 <div id="bbpress-forums" tpl="archive-topic">
