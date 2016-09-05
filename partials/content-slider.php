@@ -6,6 +6,19 @@
 		if(!empty($_banners)){
 			foreach ($_banners as $_banner) {
 				$_banner_url = wp_get_attachment_url($_banner->banner_id);
+				
+				$thumb_url_c = wp_get_attachment_image_src( $_banner->banner_id, 'mid-image' );
+				if ( !empty( $thumb_url_c[0] ) ) {
+					/* printf( '<a href="%1$s" alt="%2$s">%3$s</a>',
+						esc_url( $thumb_url[0] ),
+						esc_attr( get_the_title_attribute( 'echo=0' ) ),
+						get_the_post_thumbnail()
+					); */
+					$thumb_url = $thumb_url_c[0];
+				}else{
+					$thumb_url = wp_get_attachment_url($_banner->banner_id);
+				}
+	
 	?>
 		<!-- Slide 1 -->
 		<div class="ms-slide">
@@ -20,7 +33,7 @@
 				<p class="g-mb-20 hidden-sm hidden-xs"><?=mb_strimwidth(strip_tags(html_entity_decode($_banner->description)), 0, 150, "&hellip;")?></p>
 				<p><a href="<?=$_banner->link?>" class="btn btn-lg btn-primary noradius">Read <span class="visible-3xs">More</span></a></p>
 			</div>
-			<img class="ms-thumb" src="<?=$_banner_url?>" alt="<?=$_banner->title?>">
+			<img class="ms-thumb" src="<?=$thumb_url?>" alt="<?=$_banner->title?>">
 		</div>
 		<!-- End Slide 1 -->
 	<?php
