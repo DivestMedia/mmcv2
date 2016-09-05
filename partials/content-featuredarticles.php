@@ -86,7 +86,7 @@
 									?>
 								</div>
 								<div class="heading-title heading-dotted text-right margin-top-20 link-viewmore-article">
-									<a href="/articles"><h4>View more<span> Articles</span></h4></a>
+									<a href="/category/articles"><h4>View more<span> Articles</span></h4></a>
 								</div>
 							</div>
 							<div class="tab-pane fade in" id="materials">
@@ -134,7 +134,7 @@
 									?>
 								</div>
 								<div class="heading-title heading-dotted text-right margin-top-20 link-viewmore-article">
-									<a href="/articles"><h4>View more<span> Articles</span></h4></a>
+									<a href="/category/articles"><h4>View more<span> Articles</span></h4></a>
 								</div>
 							</div>
 							<div class="tab-pane fade in" id="exterior-d">
@@ -182,7 +182,7 @@
 									?>
 								</div>
 								<div class="heading-title heading-dotted text-right margin-top-20 link-viewmore-article">
-									<a href="/articles"><h4>View more<span> Articles</span></h4></a>
+									<a href="/category/articles"><h4>View more<span> Articles</span></h4></a>
 								</div>
 							</div>
 						</div>

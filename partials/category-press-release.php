@@ -53,5 +53,4 @@ foreach ($video_cats as $key => $cat) {
 
 	get_template_part( 'partials/content', 'featuredpostspress' );
 	get_template_part( 'partials/content', 'investordivest' );
-	get_template_part( 'partials/content', 'vipsubscribers' );
 	?>

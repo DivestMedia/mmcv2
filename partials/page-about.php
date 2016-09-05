@@ -24,16 +24,14 @@ get_template_part( 'partials/content', 'indexwatch' );
 				</p>
 				<p>We are a crowd-sourced content aggregator for the financial markets, provided by successful investors and industry experts. We offer up articles, experts&#8217; insight with investment advice, and investment strategies which will enable any motivated and aspiring individual to realize their dream of a long, wealthy and stress-free retirement.</p>
 
-
 			</div>
 
 		</div>
 
 		<hr/>
 		<div class="row">
-
 			<div class="col-lg-3 col-md-3 col-sm-3 text-center">
-				<a href="www.divestmedia.com">
+				<a href="http://www.divestmedia.com">
 					<img class="img-responsive padding-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/dv-logo-blk.png" alt="">
 				</a>
 			</div>
@@ -227,6 +225,5 @@ get_template_part( 'partials/content', 'indexwatch' );
 		</section>
 		<?php
 
-		get_template_part( 'partials/content', 'contactus' );
-		get_template_part( 'partials/content', 'vipsubscribers' );
+
 		?>

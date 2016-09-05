@@ -13,10 +13,10 @@ jQuery(function($){
 	    $("body").find("#container-glossary").find(".cminds_poweredby").remove();
 	    $("#glossaryList").find(".glossaryLink").each(function() {
 	        var e = $(this).data("cmtooltip");
-	        $(this).removeData("cmtooltip").removeAttr("data-cmtooltip").clone().appendTo($(this).parent()); 
+	        $(this).removeData("cmtooltip").removeAttr("data-cmtooltip").clone().appendTo($(this).parent());
 	        $(this).parent().append("<div>" + e + "</div>"), $(this).remove();
 	    })
-	    $("#glossaryList-nav .ln-letters").find("a:first-child").trigger("click"); 
+	    $("#glossaryList-nav .ln-letters").find("a:first-child").trigger("click");
     });
 
     $('.btn-team-show-more').click(function(){
@@ -30,4 +30,6 @@ jQuery(function($){
     }, function(){
        console.log(1);
     });
+
+
 });

@@ -16,7 +16,7 @@
 						</a>
 					</li>
 					<?php
-					$_currentid = $post->ID; 
+					$_currentid = $post->ID;
 					$args = array(
 					    'post_type'      => 'page',
 					    'posts_per_page' => -1,
@@ -31,7 +31,7 @@
 					if ( $parent->have_posts() ) : ?>
 
 					    <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
-					    	
+
 		    				<li class="list-group-item <?=$_currentid==get_the_ID()?'active':''?>">
 								<a href="<?=get_home_url()?>/dummies-guide/<?=$post->post_name?>">
 									<?=the_title()?>
@@ -47,8 +47,8 @@
 		<div class="col-md-9">
 			<div class="tab-content">
 				<div class="tab-pane fade in active" id="getting-started">
-					<header class="margin-bottom-30">
-						<h2 class="section-title"><?=the_title()?></h2>
+					<header class="text-center margin-bottom-50 tiny-line">
+						<h2 class="font-proxima uppercase"><?=the_title()?></h2>
 					</header>
 					<?php while ( have_posts() ) : the_post();?>
 						<article id="post-<?php the_ID(); ?>">
@@ -72,10 +72,10 @@
 
 						if ( $parent->have_posts() ) : ?>
 							<div class="row margin-bottom-30">
-						    <?php 
+						    <?php
 						    	$ctr = 0;
-						    	while ( $parent->have_posts() ) : $parent->the_post(); 
-						    	
+						    	while ( $parent->have_posts() ) : $parent->the_post();
+
 						    	?>
 
 										<div class="col-md-6">
@@ -102,7 +102,7 @@
 												</div>
 											</div>
 										</div>
-						    <?php 
+						    <?php
 						    if($ctr++==1){
 						    		echo '</div>
 							<div class="row margin-bottom-30">';
@@ -113,7 +113,7 @@
 						<?php endif; wp_reset_query(); ?>
 					</div>
 				</div>
-				<?php 
+				<?php
 				$parent = new WP_Query( $args );
 
 					if ( $parent->have_posts() ) : ?>
@@ -132,10 +132,10 @@
 					    <?php endwhile; ?>
 
 					<?php endif; wp_reset_query(); ?>
-				
-			</div>	
-			
+
+			</div>
+
 		</div>
-		
+
 	</div>
 </section>

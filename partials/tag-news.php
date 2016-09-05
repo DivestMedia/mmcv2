@@ -111,5 +111,4 @@ foreach ($category_tags as $key => $cat) {
 
 	get_template_part( 'partials/content', 'featuredposts' );
 	get_template_part( 'partials/content', 'investordivest' );
-	get_template_part( 'partials/content', 'vipsubscribers' );
 	?>

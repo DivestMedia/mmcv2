@@ -1,3 +1,7 @@
+<?php
+get_template_part( 'partials/content', 'contactus' );
+get_template_part( 'partials/content', 'vipsubscribers' );
+?>
 <!-- FOOTER -->
 			<footer id="footer">
 				<div class="container padding-20 margin-bottom-10">

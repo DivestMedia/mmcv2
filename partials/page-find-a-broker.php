@@ -137,5 +137,4 @@ get_template_part( 'partials/content', 'indexwatch' );
 </div>
 </section>
 <?php
-get_template_part( 'partials/content', 'vipsubscribers' );
 ?>

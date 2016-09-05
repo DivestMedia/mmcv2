@@ -22,7 +22,7 @@ global $post,$featureTitle,$featureButton,$featureNoMore;
 			<!-- Col 1 -->
 			<div class="col-md-6">
 				<?php if(isset($post[0])): $video = $post[0]; ?>
-					<div class="item-box noshadow">
+					<div class="item-box item-box-big noshadow">
 						<figure>
 							<span class="item-hover">
 								<span class="overlay dark-5"></span>

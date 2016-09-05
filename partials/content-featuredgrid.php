@@ -22,7 +22,7 @@ global $post,$featureTitle,$featureButton;
 			<!-- Col 1 -->
 			<div class="col-md-6">
 				<?php if(isset($post[0])): $video = $post[0]; ?>
-					<div class="item-box noshadow">
+					<div class="item-box item-box-big noshadow">
 						<figure>
 							<span class="item-hover">
 								<span class="overlay dark-5"></span>
@@ -68,7 +68,7 @@ global $post,$featureTitle,$featureButton;
 						</figure>
 					<?php endif; ?>
 				</div>
-				<div class="item-box noshadow hover-box margin-top-20">
+				<div class="item-box noshadow hover-box margin-top-10">
 					<?php if(isset($post[2])): $video = $post[2]; ?>
 						<figure>
 							<span class="item-hover">
@@ -115,7 +115,7 @@ global $post,$featureTitle,$featureButton;
 						</figure>
 					<?php endif; ?>
 				</div>
-				<div class="item-box noshadow hover-box margin-top-20">
+				<div class="item-box noshadow hover-box margin-top-10">
 					<?php if(isset($post[4])): $video = $post[4]; ?>
 						<figure>
 							<span class="item-hover">

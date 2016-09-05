@@ -85,7 +85,7 @@ get_template_part( 'partials/content', 'indexwatch' );
 				</div>
 				<!-- /CATEGORIES -->
 
-				<?php 
+				<?php
 					if(is_active_sidebar('sidebar-single'))
 						dynamic_sidebar('sidebar-single');
 				?>
@@ -93,7 +93,3 @@ get_template_part( 'partials/content', 'indexwatch' );
 		</div>
 	</div>
 </section>
-<!-- / -->
-<?php
-get_template_part( 'partials/content', 'vipsubscribers' );
-?>

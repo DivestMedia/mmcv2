@@ -57,12 +57,13 @@ if(!empty($taghere)){
 	$featuredPostCategories[] = [
 		'id' => 0,
 		'name' => 'All Articles',
-		'link' => '/articles'
+		'link' => '/category/articles'
 	];
 }else{
 	$featuredPostCategories[] = [
 		'id' => 0,
 		'name' => 'All Articles',
+		'link' => '/category/articles',
 		'active' => true
 	];
 }
