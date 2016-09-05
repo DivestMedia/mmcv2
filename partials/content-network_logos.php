@@ -1,69 +1,57 @@
-<section class="dark alternate" >
+<section class=" alternatex" >
 		<div class="container">
 		
 			<header class="text-center margin-bottom-50 tiny-line">
 				<h2 class="font-proxima uppercase">Divest Media <span>Network</span></h2>
+				<br/>
+				<p>Unique, confident, charismatic and opinionated content for the worlds of Investing, Creative Designs, Online Gaming and Crypto-Currencies.</p>
 			</header>
 			
-			<div class="row">
-				<!-- Col 1 -->
-				<div class="col-sm-6 col-md-6 margin-bottom-20">
+			
+			<ul class="row clients-dotted list-inline">
+						
+						<li class="col-md-3 col-sm-3 col-xs-6" >
+							<a href="#" class="" title="Dummies Guide to FX">
+								<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/assets/img/network-logos/dummiesguide-FX-fin.jpg" alt="Dummies Guide to FX" />
+							</a>
+						</li>
+						<li class="col-md-3 col-sm-3 col-xs-6">
+							<a href="#" class="" title="Imagination">
+								<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/assets/img/network-logos/imagination-logo-fin.jpg" alt="Imagination" />
+							</a>
+						</li>
+						<li class="col-md-3 col-sm-3 col-xs-6">
+							<a href="#" class="" title="Dummies Guide to Investing">
+								<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/assets/img/network-logos/dummiesguide-investing-fin.jpg" alt="Dummies Guide to Investing" />
+							</a>
+						</li>
+						<li class="col-md-3 col-sm-3 col-xs-6">
+							<a href="#" class="" title="Investment Injection" >
+								<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/assets/img/network-logos/investment-injection.png" alt="Investment Injection" />
+							</a>
+						</li>
+						<li class="col-md-3 col-sm-3 col-xs-6">
+							<a href="#" class="" title="iSoftbet Casino">
+								<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/assets/img/network-logos/isoftbet-logo-fin.jpg" alt="iSoftbet Casino" />
+							</a>
+						</li>
+						<li class="col-md-3 col-sm-3 col-xs-6">
+							<a href="#" class="" title="The Best Casino Offers">
+								<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/assets/img/network-logos/thebestcasinooffers.png" alt="The Best Casino Offers" />
+							</a>
+						</li>
+						<li class="col-md-3 col-sm-3 col-xs-6">
+							<a href="#" class="" title="Virgin Investing">
+								<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/assets/img/network-logos/Virgin-Investing-pink.png" alt="Virgin Investing" />
+							</a>
+						</li>
+						<li class="col-md-3 col-sm-3 col-xs-6" >
+							<a href="#" class="" title="BTC Global Trader">
+								<img class="img-responsive" src="<?php echo get_stylesheet_directory_uri();?>/assets/img/network-logos/btc-gold-trader.png" alt="BTC Global Trader" />
+							</a>
+						</li>
+					</ul>
 					
-					<div class="item-box noshadow">
-						<figure>
-							<span class="item-hover">
-								<span class="overlay dark-5"></span>
-							</span>
-							<span class="item-description">
-								<span class="overlay primary-bg"></span>
-								<span class="inner margin-top-30p">
-									<h3><em>Dan Stracey</em>Be Stockwatcher</h3>
-									<span class="block size-11 text-center color-theme uppercase">
-										Lorem Ipsum sit<br>
-										dolor amet
-									</span>
-									<a class="pos-bottom block btn-sm btn secondary-bg text-center noradius weight-700" href="#">PLAY NOW</a>
-								</span>
-							</span>
-
-							<img class="img-responsive liner" src="<?=get_stylesheet_directory_uri();?>/img-temp/photo-1431274172761-fca41d930114.jpg" alt="">
-						</figure>
-					</div>
-					
-					
-				</div>
-				<!-- End Col 1 -->
-
-				<!-- Col 2 -->
-				<div class="col-sm-6 col-md-6 margin-bottom-20">
-					
-					<div class="item-box noshadow">
-						<figure>
-							<span class="item-hover">
-								<span class="overlay dark-5"></span>
-							</span>
-							<span class="item-description">
-								<span class="overlay primary-bg"></span>
-								<span class="inner margin-top-30p">
-									<h3><em>Bruce Curran</em>Investment Tips</h3>
-									<span class="block size-11 text-center color-theme uppercase">
-										Lorem Ipsum sit<br>
-										dolor amet
-									</span>
-									<a class="pos-bottom block btn-sm btn secondary-bg text-center noradius weight-700" href="#">PLAY NOW</a>
-								</span>
-							</span>
-
-							<img class="img-responsive liner" src="<?=get_stylesheet_directory_uri();?>/img-temp/picjumbo.com_HNCK8182.jpg" alt="">
-						</figure>
-					</div>
-					
-					
-				</div>
-				<!-- End Col 2 -->
-
-			</div>
-		
 		</div>
 	</section>
 	

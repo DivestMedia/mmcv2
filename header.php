@@ -90,7 +90,7 @@
 									<i class="fa fa-search"></i>
 								</a>
 								<div class="search-box">
-									<form action="page-search-result-1.html" method="get">
+									<form action="<?php echo site_url();?>" method="get">
 										<div class="input-group">
 											<input type="text" name="src" placeholder="Search" class="form-control" />
 											<span class="input-group-btn">

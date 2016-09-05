@@ -1,4 +1,4 @@
-<section class="">
+<section class=" alternate">
 		<div class="container">
 			<header class="text-center margin-bottom-50 tiny-line">
 				<span class="uppercase letter-spacing-10 size-10">What we Offer</span>
