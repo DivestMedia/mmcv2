@@ -48,6 +48,14 @@
 		background-color:#f7cbd5;
 	}
 	
+	img.grey ,img.grey-onhover:hover , .grey-onhover img:hover{
+		filter: grayscale(100%);
+		-webkit-filter: grayscale(100%);  /* For Webkit browsers */
+		filter: gray;  /* For IE 6 - 9 */
+		transition: all .6s ease;  /* Transition for Webkit browsers */
+		-moz-transition: all .6s ease;  /* Transition for Webkit browsers */
+		-webkit-transition: all .6s ease;  /* Transition for Webkit browsers */
+	}
 	
 	
 	header#topNav{border-top: 3px solid #27AE60;}

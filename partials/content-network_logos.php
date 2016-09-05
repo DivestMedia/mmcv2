@@ -8,7 +8,7 @@
 			</header>
 			
 			
-			<ul class="row clients-dotted list-inline">
+			<ul class="row clients-dotted list-inline grey-onhover">
 						
 						<li class="col-md-3 col-sm-3 col-xs-6" >
 							<a href="#" class="" title="Dummies Guide to FX">

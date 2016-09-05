@@ -92,7 +92,7 @@
 								<div class="search-box">
 									<form action="<?php echo site_url();?>" method="get">
 										<div class="input-group">
-											<input type="text" name="src" placeholder="Search" class="form-control" />
+											<input type="text" name="s" id="s" placeholder="Search" class="form-control" />
 											<span class="input-group-btn">
 												<button class="btn btn-primary" type="submit">Search</button>
 											</span>
