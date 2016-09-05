@@ -1,3 +1,4 @@
+<?=get_template_part( 'partials/content', 'indexwatch' );?>
 <section>
 	<div class="container cont-<?=basename(get_permalink())?>">
 		<div class="col-sm-3">
@@ -139,3 +140,4 @@
 		
 	</div>
 </section>
+<?=get_template_part( 'partials/content', 'vipsubscribers' );?>
