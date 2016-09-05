@@ -83,75 +83,104 @@ $video_cats = get_categories([
 
 
 $featuredVidsCategories = [];
-$featuredVidsCategories[] = [
-	'id' => 0,
-	'name' => 'All Videos',
-	'active' => get_query_var('taxonomy')!='iod_category',
-	'link' => '/videos'
-];
-foreach ($video_cats as $key => $cat) {
-
-	if(in_array($cat->slug,[
-		'investment',
-		])) continue;
-		$child = [];
-		$child_cats = get_categories([
-			'type'                     => 'iod_video',
-			'parent'                   => $cat->term_id,
-			'orderby'                  => 'name',
-			'order'                    => 'ASC',
-			'hide_empty'               => 1,
-			'hierarchical'             => 1,
-			'exclude'                  => '1',
-			'include'                  => '',
-			'number'                   => '',
-			'taxonomy'                 => 'iod_category',
-			'pad_counts'               => false
-		]);
-
-
-		if(!empty($child_cats)){
-			foreach ($child_cats as $kk => $cc) {
-				$child_cats[$kk] = [
-					'id' => $cc->term_id,
-					'name' => $cc->name,
-					'link' => get_term_link($cc->term_id,'iod_category'),
-					'active' => get_query_var('iod_category')==$cc->slug
-				];
-			}
-			$child = $child_cats;
-		}
-
-		$featuredVidsCategories[] = [
-			'id' => $cat->term_id,
-			'name' => $cat->name,
-			'link' => get_term_link($cat->term_id,'iod_category'),
-			'child' => $child,
-			'active' => get_query_var('iod_category')==$cat->slug
-		];
-
-	}
-	$featuredVidsNews =  get_posts([
-		'posts_per_page' => 9,
-		'posts_per_archive_page' => 9,
-		'paged' => get_query_var('paged') ?: 1,
-		'post_type' => [
-			'iod_video'
-		],
-		'orderby' => 'date',
-		'order' => 'DESC',
-		'post_status'      => 'publish',
-		'taxonomy' => get_query_var('taxonomy'),
-		'iod_category' => get_query_var('taxonomy')=='iod_category' ? get_query_var('iod_category') : false
-	]);
-
-	$featuredVids = [
-		'categories' => $featuredVidsCategories,
-		'posts' => $featuredVidsNews
+if(get_query_var('taxonomy')=='iod_category' && !get_query_var('iod_category')=='webinars'){
+	$featuredVidsCategories[] = [
+		'id' => 0,
+		'name' => 'All Videos',
+		'active' => get_query_var('taxonomy')!='iod_category',
+		'link' => '/videos'
 	];
-	$GLOBALS['featuredVids'] = $featuredVids;
-	$GLOBALS['featuredTitle'] = 'All Videos';
+}
 
-	get_template_part( 'partials/content', 'featuredpostsvids' );
-	get_template_part( 'partials/content', 'investordivest' );
-	?>
+foreach ($video_cats as $key => $cat) {
+	if(get_query_var('taxonomy')=='iod_category' && in_array(get_query_var('iod_category'),[
+		'webinars',
+		'investing-for-beginners',
+		'investing-in-alternjatives',
+		'investing-in-annuities',
+		'investing-in-bonds',
+		'investing-in-cash-equivalents',
+		'investing-in-commodities',
+		'investing-in-etfs',
+		'investing-in-forex',
+		'investing-in-futures',
+		'investing-in-hedge-funds',
+		'investing-in-mutual-funds',
+		'investing-in-options',
+		'investing-in-real-estate',
+		'investing-in-stocks',
+		])){
+			if(!in_array($cat->slug,[
+				'webinars',
+				])){
+					continue;
+				}
+			}else{
+				if(in_array($cat->slug,[
+					'webinars',
+					])){
+						continue;
+					}
+				}
+
+				$child = [];
+				$child_cats = get_categories([
+					'type'                     => 'iod_video',
+					'parent'                   => $cat->term_id,
+					'orderby'                  => 'name',
+					'order'                    => 'ASC',
+					'hide_empty'               => 1,
+					'hierarchical'             => 1,
+					'exclude'                  => '1',
+					'include'                  => '',
+					'number'                   => '',
+					'taxonomy'                 => 'iod_category',
+					'pad_counts'               => false
+				]);
+
+
+				if(!empty($child_cats)){
+					foreach ($child_cats as $kk => $cc) {
+						$child_cats[$kk] = [
+							'id' => $cc->term_id,
+							'name' => $cc->name,
+							'link' => get_term_link($cc->term_id,'iod_category'),
+							'active' => get_query_var('iod_category')==$cc->slug
+						];
+					}
+					$child = $child_cats;
+				}
+
+				$featuredVidsCategories[] = [
+					'id' => $cat->term_id,
+					'name' => $cat->name,
+					'link' => get_term_link($cat->term_id,'iod_category'),
+					'child' => $child,
+					'active' => get_query_var('iod_category')==$cat->slug
+				];
+
+			}
+			$featuredVidsNews =  get_posts([
+				'posts_per_page' => 9,
+				'posts_per_archive_page' => 9,
+				'paged' => get_query_var('paged') ?: 1,
+				'post_type' => [
+					'iod_video'
+				],
+				'orderby' => 'date',
+				'order' => 'DESC',
+				'post_status'      => 'publish',
+				'taxonomy' => get_query_var('taxonomy'),
+				'iod_category' => get_query_var('taxonomy')=='iod_category' ? get_query_var('iod_category') : false
+			]);
+
+			$featuredVids = [
+				'categories' => $featuredVidsCategories,
+				'posts' => $featuredVidsNews
+			];
+			$GLOBALS['featuredVids'] = $featuredVids;
+			$GLOBALS['featuredTitle'] = 'All Videos';
+
+			get_template_part( 'partials/content', 'featuredpostsvids' );
+			get_template_part( 'partials/content', 'investordivest' );
+			?>
