@@ -1,4 +1,4 @@
-<section>
+<!-- <section> -->
 	<div class="container cont-<?=basename(get_permalink())?>">
 		<div class="col-sm-3">
 		<!-- side navigation -->
@@ -8,7 +8,7 @@
 					<button class="fa fa-bars"></button>
 					<h4></h4>
 				</div>
-				<strong class="uppercase">Telling Tales</strong>
+				<!-- <strong class="uppercase">Telling Tales</strong> -->
 				<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
 					<?php
 					$args = array(
@@ -25,25 +25,25 @@
 					if ( $parent->have_posts() ) : ?>
 
 					    <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
-					    	
+
 		    				<li class="list-group-item open">
 								<a href="<?=get_home_url()?>/telling-tales/<?=$post->post_name?>">
 									<?=the_title()?>
 								</a>
-								<?php 
+								<?php
 									$_children = get_children(array(
 										'post_parent' => get_the_ID(),
-										'post_type'   => 'page', 
+										'post_type'   => 'page',
 										'numberposts' => -1,
 										'post_status' => 'publish',
 										'order'          => 'DESC',
-					    				'orderby'        => 'date' 
+					    				'orderby'        => 'date'
 									));
 
 									if (!empty($_children)) :
 										?>
 									<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
-										<?php 
+										<?php
 
 										foreach ($_children as $_child){
 										?>
@@ -53,7 +53,7 @@
 										<?php }?>
 									</ul>
 									<?php
-									endif; 
+									endif;
 								?>
 
 							</li>
@@ -67,8 +67,8 @@
 		<div class="col-md-9">
 			<div class="tab-content">
 				<div class="tab-pane fade in active" id="getting-started">
-					<header class="margin-bottom-30">
-						<h2 class="section-title"><?=the_title()?></h2>
+					<header class="text-center margin-top-40 margin-bottom-50 tiny-line">
+						<h2 class="font-proxima uppercase"><?=the_title()?></span></h2>
 					</header>
 					<?php while ( have_posts() ) : the_post();?>
 						<article id="post-<?php the_ID(); ?>">
@@ -77,7 +77,7 @@
 							</div>
 						</article>
 					<?php endwhile;?>
-					
+
 
 
 					<div class="row">
@@ -119,9 +119,9 @@
 							<?php endwhile; ?>
 							<?php endif; wp_reset_query(); ?>
 					</div>
-					
+
 				</div>
-				<?php 
+				<?php
 				$parent = new WP_Query( $args );
 
 					if ( $parent->have_posts() ) : ?>
@@ -140,10 +140,10 @@
 					    <?php endwhile; ?>
 
 					<?php endif; wp_reset_query(); ?>
-				
-			</div>	
-			
+
+			</div>
+
 		</div>
-		
+
 	</div>
 </section>

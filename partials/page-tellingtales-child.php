@@ -8,10 +8,10 @@
 					<button class="fa fa-bars"></button>
 					<h4></h4>
 				</div>
-				<strong class="uppercase">Telling Tales</strong>
+				<!-- <strong class="uppercase">Telling Tales</strong> -->
 				<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
 					<?php
-					$_currentid = $post->ID; 
+					$_currentid = $post->ID;
 					$args = array(
 					    'post_type'      => 'page',
 					    'posts_per_page' => -1,
@@ -26,25 +26,25 @@
 					if ( $parent->have_posts() ) : ?>
 
 					    <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
-					    	
+
 		    				<li class="list-group-item <?=$_currentid==get_the_ID()?'active':''?> open">
 								<a href="<?=get_home_url()?>/telling-tales/<?=$post->post_name?>">
 									<?=the_title()?>
 								</a>
-								<?php 
+								<?php
 									$_children = get_children(array(
 										'post_parent' => get_the_ID(),
-										'post_type'   => 'page', 
+										'post_type'   => 'page',
 										'numberposts' => -1,
 										'post_status' => 'publish',
 										'order'          => 'DESC',
-					    				'orderby'        => 'date' 
+					    				'orderby'        => 'date'
 									));
 
 									if (!empty($_children)) :
 										?>
 									<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
-										<?php 
+										<?php
 
 										foreach ($_children as $_child){
 										?>
@@ -54,7 +54,7 @@
 										<?php }?>
 									</ul>
 									<?php
-									endif; 
+									endif;
 								?>
 							</li>
 					    <?php endwhile; ?>
@@ -67,9 +67,10 @@
 		<div class="col-md-9">
 			<div class="tab-content">
 				<div class="tab-pane fade in active" id="getting-started">
-					<header class="margin-bottom-30">
-						<h2 class="section-title"><?=the_title()?></h2>
-					</header>
+
+						<header class="text-center margin-top-40 margin-bottom-50 tiny-line">
+							<h2 class="font-proxima uppercase"><?=the_title()?></span></h2>
+						</header>
 					<?php while ( have_posts() ) : the_post();?>
 						<article id="post-<?php the_ID(); ?>">
 							<div class="text-black size-14 entry-content post-<?=get_post_format();?>">
@@ -92,10 +93,10 @@
 
 						if ( $parent->have_posts() ) : ?>
 							<div class="row margin-bottom-30">
-						    <?php 
+						    <?php
 						    	$ctr = 0;
-						    	while ( $parent->have_posts() ) : $parent->the_post(); 
-						    	
+						    	while ( $parent->have_posts() ) : $parent->the_post();
+
 						    	?>
 
 										<div class="col-md-6">
@@ -122,7 +123,7 @@
 												</div>
 											</div>
 										</div>
-						    <?php 
+						    <?php
 						    if($ctr++==1){
 						    		echo '</div>
 							<div class="row margin-bottom-30">';
@@ -133,7 +134,7 @@
 						<?php endif; wp_reset_query(); ?>
 					</div>
 				</div>
-				<?php 
+				<?php
 				$parent = new WP_Query( $args );
 
 					if ( $parent->have_posts() ) : ?>
@@ -152,10 +153,10 @@
 					    <?php endwhile; ?>
 
 					<?php endif; wp_reset_query(); ?>
-				
-			</div>	
-			
+
+			</div>
+
 		</div>
-		
+
 	</div>
 </section>

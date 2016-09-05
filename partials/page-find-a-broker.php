@@ -13,7 +13,7 @@ get_template_part( 'partials/content', 'indexwatch' );
 				</div>
 
 				<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
-					<li class="list-group-item active"><a href="/find-a-broker" >Find a Broker</a></li>
+					<li class="list-group-item active"><a href="/find-a-broker" >Introduction</a></li>
 					<li class="list-group-item"><a href="#what-to-look-for-in-a-broker" >What to look for in a broker</a></li>
 					<li class="list-group-item"><a href="/category/brokerage-firms" >List of Brokerage Firms</a></li>
 					<li class="list-group-item"><a href="/find-a-broker/brokerage-showcase" >Brokerage Showcase</a></li>
