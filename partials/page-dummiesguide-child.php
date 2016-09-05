@@ -42,6 +42,12 @@
 
 					<?php endif; wp_reset_query(); ?>
 				</ul>
+				<div class="side-nav-head">
+					<h4>QUOTE OF THE DAY</h4>
+				</div>
+				<blockquote class="quote">
+					<?php echo do_shortcode('[quotcoll limit="1" orderby="random"]')?>
+				</blockquote>
 				<?php
 					if(is_active_sidebar('sidebar-single'))
 						dynamic_sidebar('sidebar-single');
