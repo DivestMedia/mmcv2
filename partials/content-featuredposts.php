@@ -31,16 +31,13 @@ global $featuredPost,$featuredTitle;
 		<!-- Tab v3 -->
 		<div class="row tab-v3">
 			<div class="col-sm-3">
-
-
 				<!-- side navigation -->
 				<div class="side-nav margin-top-50">
-
-					<div class="side-nav-head">
-						<button class="fa fa-bars"></button>
-						<h4>CATEGORIES</h4>
-					</div>
 					<?php if(count($featuredPost['categories'])): ?>
+						<div class="side-nav-head">
+							<button class="fa fa-bars"></button>
+							<h4>CATEGORIES</h4>
+						</div>
 						<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
 							<?php foreach ($featuredPost['categories'] as $featCat): ?>
 								<li class="list-group-item <?=((!empty($featCat['active']) && $featCat['active']==true) ? 'active' : '')?>">
@@ -49,9 +46,8 @@ global $featuredPost,$featuredTitle;
 							<?php endforeach;?>
 						</ul>
 					<?php endif;?>
-				</ul>
 
-
+				<?php render_side_bar_widget();?>
 			</div>
 			<!-- /side navigation -->
 		</div>

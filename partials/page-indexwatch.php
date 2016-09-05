@@ -59,12 +59,12 @@ get_template_part( 'partials/content', 'indexwatch' );
             <div class="col-lg-3 col-md-3 col-sm-3 text-left">
                 <!-- CATEGORIES -->
                 <div class="side-nav margin-bottom-60">
-
-                    <div class="side-nav-head">
-                        <button class="fa fa-bars"></button>
-                        <h4>CATEGORIES</h4>
-                    </div>
                     <?php if(in_category(['news'])):?>
+
+                        <div class="side-nav-head">
+                            <button class="fa fa-bars"></button>
+                            <h4>CATEGORIES</h4>
+                        </div>  
                         <ul class="list-group list-group-bordered list-group-noicon uppercase">
                             <?php
                             $category_tags = get_category_tags(get_category_by_slug('news')->term_id);
@@ -79,49 +79,10 @@ get_template_part( 'partials/content', 'indexwatch' );
                             <?php endforeach; ?>
                         </ul>
                     <?php else: ?>
-                        <ul class="list-group list-group-bordered list-group-noicon uppercase">
-
-                            <li class="list-group-item active">
-                                <a class="dropdown-toggle" href="#">GLOBAL</a>
-                                <ul>
-                                    <li><a href="#"><span class="size-11 text-muted pull-right">(123)</span> Shoes & Boots</a></li>
-                                    <li class="active"><a href="#"><span class="size-11 text-muted pull-right">(331)</span> Top & Blouses</a></li>
-                                    <li><a href="#"><span class="size-11 text-muted pull-right">(234)</span> Dresses & Skirts</a></li>
-                                </ul>
-                            </li>
-                            <li class="list-group-item">
-                                <a class="dropdown-toggle" href="#">SPORTS</a>
-                                <ul>
-                                    <li><a href="#"><span class="size-11 text-muted pull-right">(88)</span> Accessories</a></li>
-                                    <li><a href="#"><span class="size-11 text-muted pull-right">(67)</span> Shoes & Boots</a></li>
-                                    <li><a href="#"><span class="size-11 text-muted pull-right">(32)</span> Dresses & Skirts</a></li>
-                                    <li class="active"><a href="#"><span class="size-11 text-muted pull-right">(78)</span> Top & Blouses</a></li>
-                                </ul>
-                            </li>
-                            <li class="list-group-item">
-                                <a class="dropdown-toggle" href="#">DUMMIES GUIDE</a>
-                            </li>
-                            <li class="list-group-item">
-                                <a class="dropdown-toggle" href="#">BUSINESS</a>
-                                <ul>
-                                    <li><a href="#"><span class="size-11 text-muted pull-right">(88)</span> Shoes & Boots</a></li>
-                                    <li><a href="#"><span class="size-11 text-muted pull-right">(22)</span> Dresses & Skirts</a></li>
-                                    <li><a href="#"><span class="size-11 text-muted pull-right">(31)</span> Accessories</a></li>
-                                    <li class="active"><a href="#"><span class="size-11 text-muted pull-right">(18)</span> Top & Blouses</a></li>
-                                </ul>
-                            </li>
-                            <li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(189)</span> NEWS</a></li>
-                            <li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(61)</span> VIDEOS</a></li>
-
-                        </ul>
+                    <?php render_side_bar_widget();?>
                     <?php endif; ?>
                 </div>
                 <!-- /CATEGORIES -->
-
-                <?php
-                if(is_active_sidebar('sidebar-single'))
-                dynamic_sidebar('sidebar-single');
-                ?>
             </div>
         </div>
     </div>
