@@ -42,8 +42,12 @@
 
 						</div>
 						<!-- /Social Icons -->
+
+						<p>
+							Market MasterClass is part of the <a href="www.divestmedia.com" style="color: #0072bc;font-weight: bold;">Divest Media Network</a>
+						</p>
 					</div>
-					
+
 					<hr/>
 					<div class="row ">
 						<div class="col-sm-6">
@@ -57,7 +61,7 @@
 							<a href="http://www.divestmedia.com/terms-and-conditions">Terms and Conditions</a>
 							&nbsp;&nbsp;&bullet;&nbsp;&nbsp;
 							<a href="http://www.divestmedia.com/sitemap">Sitemap</a>
-							
+
 						</div>
 
 
@@ -66,11 +70,11 @@
 				</div>
 				<div class="copyright">
 					<div class="container size-12 text-center">
-						Market MasterClass is a financial publisher that does not offer any personal financial advice, or advocate the 
-						purchase or sale of any security or investment for any specific individual. Members should be aware that investment 
-						markets have inherent risks, and past performance does not assure future results. 
-						In accordance with FTC guidelines, Market MasterClass has financial relationships with some of the products and 
-						services mentioned on this web site, and Market MasterClass may be compensated if consumers choose to click these 
+						Market MasterClass is a financial publisher that does not offer any personal financial advice, or advocate the
+						purchase or sale of any security or investment for any specific individual. Members should be aware that investment
+						markets have inherent risks, and past performance does not assure future results.
+						In accordance with FTC guidelines, Market MasterClass has financial relationships with some of the products and
+						services mentioned on this web site, and Market MasterClass may be compensated if consumers choose to click these
 						links in our content and ultimately sign up for them. For more information please visit our disclaimer web page.
 
 					</div>
@@ -83,7 +87,7 @@
 
 		</div>
 		<!-- /wrapper -->
-		
+
 
 		<!-- SCROLL TO TOP -->
 		<a href="#" id="toTop"></a>
@@ -109,10 +113,10 @@
 		<script>
 		$(function() {
     $('.box').matchHeight(true);
-	
-	
-	
-	
+
+
+
+
 	/** Sparkline Graph
 
 			USAGE
@@ -133,17 +137,17 @@
 							jQuery(this).sparkline('html', jQuery(this).data("plugin-options"));
 						});
 				}
-			
+
 			});
 
 		}
-	
-	
-	
-	
-	
+
+
+
+
+
 });</script>
-		
+
 
 	</body>
 </html>

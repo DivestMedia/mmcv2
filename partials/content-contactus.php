@@ -3,9 +3,9 @@
 			<header class="text-center margin-bottom-50 tiny-line">
 				<span class="uppercase letter-spacing-10 size-10">Have Questions?</span>
 				<h2 class="font-proxima uppercase">Get in<span> Touch</span></h2>
-			</header>	
-	
-	
+			</header>
+
+
 			<div class="row box-gradient box-black">
 				<div class="col-xs-6 col-sm-3 cols-primary">
 					<i class="fa fa-comments-o fa-4x"></i>
@@ -17,19 +17,19 @@
 					<i class="fa fa-mobile fa-4x"></i>
 					<br/><br/>
 					<small class="text-gray">PHONE NUMBER</small>
-					<p>+63 123 0000</p>
+					<p>(632) 555-1734</p>
 				</div>
 				<div class="col-xs-6 col-sm-3">
 					<i class="fa fa-comments-o fa-4x"></i>
 					<br/><br/>
 					<small class="text-gray">EMAIL</small>
-					<p>no-reply@marketmasterclass.com</p>
+					<p>support@marketmasterclass.com</p>
 				</div>
 				<div class="col-xs-6 col-sm-3">
 					<i class="fa fa-comments-o fa-4x"></i>
 					<br/><br/>
 					<small class="text-gray">ADDRESS</small>
-					<p>3rd Flr. CBL Bldg, Makati City, PH</p>
+					<p>#2698 CBL Building Gen. Cailles St, Brgy. Bangkal, Makati City , PH 1233 </p>
 				</div>
 			</div>
 		</div>
