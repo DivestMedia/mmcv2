@@ -31,7 +31,9 @@ get_template_part( 'partials/content', 'indexwatch' );
 						<button class="fa fa-bars"></button>
 						<h4>CATEGORIES</h4>
 					</div>
-					<?php if(in_category(['news'])):?>
+					<?php 
+					$_category = get_categories( array( 'child_of' => get_the_category()[0]->category_parent ));
+					if(in_category(['news'])):?>
 						<ul class="list-group list-group-bordered list-group-noicon uppercase">
 							<?php
 							$category_tags = get_category_tags(get_category_by_slug('news')->term_id);
@@ -45,42 +47,23 @@ get_template_part( 'partials/content', 'indexwatch' );
 								</li>
 							<?php endforeach; ?>
 						</ul>
-					<?php else: ?>
+					<?php elseif(!empty($_category)): ?>
 						<ul class="list-group list-group-bordered list-group-noicon uppercase">
-
-							<li class="list-group-item active">
-								<a class="dropdown-toggle" href="#">GLOBAL</a>
-								<ul>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(123)</span> Shoes & Boots</a></li>
-									<li class="active"><a href="#"><span class="size-11 text-muted pull-right">(331)</span> Top & Blouses</a></li>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(234)</span> Dresses & Skirts</a></li>
-								</ul>
-							</li>
-							<li class="list-group-item">
-								<a class="dropdown-toggle" href="#">SPORTS</a>
-								<ul>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(88)</span> Accessories</a></li>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(67)</span> Shoes & Boots</a></li>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(32)</span> Dresses & Skirts</a></li>
-									<li class="active"><a href="#"><span class="size-11 text-muted pull-right">(78)</span> Top & Blouses</a></li>
-								</ul>
-							</li>
-							<li class="list-group-item">
-								<a class="dropdown-toggle" href="#">DUMMIES GUIDE</a>
-							</li>
-							<li class="list-group-item">
-								<a class="dropdown-toggle" href="#">BUSINESS</a>
-								<ul>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(88)</span> Shoes & Boots</a></li>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(22)</span> Dresses & Skirts</a></li>
-									<li><a href="#"><span class="size-11 text-muted pull-right">(31)</span> Accessories</a></li>
-									<li class="active"><a href="#"><span class="size-11 text-muted pull-right">(18)</span> Top & Blouses</a></li>
-								</ul>
-							</li>
-							<li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(189)</span> NEWS</a></li>
-							<li class="list-group-item"><a href="#"><span class="size-11 text-muted pull-right">(61)</span> VIDEOS</a></li>
-
+						<?php
+							foreach ($_category as $key => $_cat) {
+						?>
+								<li class="list-group-item">
+									<a href="<?=(get_category_link($_cat->cat_ID))?>" class="tag-<?=($_cat->ID)?>" data-id="<?=($_cat->ID)?>">
+										<span class="size-11 text-muted pull-right">(<?=(int)($_cat->count)?>)</span>
+										<?=strtoupper($_cat->name)?>
+									</a>
+								</li>
+						<?php
+							}
+						?>
 						</ul>
+					<?php else: ?>
+						<div>No categories available</div>
 					<?php endif; ?>
 				</div>
 				<!-- /CATEGORIES -->

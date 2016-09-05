@@ -41,6 +41,10 @@
 
 				<?php endif; wp_reset_query(); ?>
 			</ul>
+			<?php
+					if(is_active_sidebar('sidebar-single'))
+						dynamic_sidebar('sidebar-single');
+				?>
 		</div>
 		<!-- /side navigation -->
 	</div>
