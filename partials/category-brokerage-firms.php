@@ -8,5 +8,5 @@ query_posts([
     'paged' => get_query_var('paged') ?: 1,
 ]);
 get_template_part( 'partials/content', 'featuredpostsbrokers' );
-get_template_part( 'partials/content', 'investordivest' );
+// get_template_part( 'partials/content', 'investordivest' );
 ?>

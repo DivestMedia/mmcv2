@@ -114,6 +114,6 @@ $GLOBALS['featuredPost'] = $featuredPost;
 $GLOBALS['featuredTitle'] = (!empty($taghere)?get_cat_name($taghere):'All Articles');
 
 get_template_part( 'partials/content', 'featuredposts' );
-get_template_part( 'partials/content', 'investordivest' );
-get_template_part( 'partials/content', 'vipsubscribers' );
+// get_template_part( 'partials/content', 'investordivest' );
+// get_template_part( 'partials/content', 'vipsubscribers' );
 ?>

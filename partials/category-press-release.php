@@ -52,5 +52,5 @@ foreach ($video_cats as $key => $cat) {
 	$GLOBALS['featuredTitle'] = get_cat_ID('Press Release')==get_query_var('cat') ? 'All Press Releases' : 'All '.get_category(get_query_var('cat'))->name;
 
 	get_template_part( 'partials/content', 'featuredpostspress' );
-	get_template_part( 'partials/content', 'investordivest' );
+	// get_template_part( 'partials/content', 'investordivest' );
 	?>

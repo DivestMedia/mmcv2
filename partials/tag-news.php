@@ -110,5 +110,5 @@ foreach ($category_tags as $key => $cat) {
 	$GLOBALS['featuredTitle'] = $tagData->name . ' News';
 
 	get_template_part( 'partials/content', 'featuredposts' );
-	get_template_part( 'partials/content', 'investordivest' );
+	// get_template_part( 'partials/content', 'investordivest' );
 	?>
