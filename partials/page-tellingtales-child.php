@@ -1,3 +1,5 @@
+
+<?=get_template_part( 'partials/content', 'indexwatch' );?>
 <section>
 	<div class="container cont-<?=basename(get_permalink())?>">
 		<div class="col-sm-3">
@@ -81,6 +83,24 @@
 						<header class="text-center margin-top-40 margin-bottom-50 tiny-line">
 							<h2 class="font-proxima uppercase"><?=the_title()?></span></h2>
 						</header>
+					<?php 
+						if(!strcasecmp(basename(get_permalink()),'quotes-quotes-quotes')){
+							global $wpdb;
+							$_tablename = $wpdb->prefix.'quotescollection';
+							$_quotes = $wpdb->get_results(' SELECT * FROM '.$_tablename);
+							if(!empty($_quotes)){
+								foreach ($_quotes as $key =>$q) {
+						?>
+								<blockquote class="quote ">
+									<p><?=$q->quote?></p>
+									<cite><?=$q->author?></cite>
+								</blockquote>
+						<?php
+								}
+							}
+					?>
+
+					<?php }?>
 					<?php while ( have_posts() ) : the_post();?>
 						<article id="post-<?php the_ID(); ?>">
 							<div class="text-black size-14 entry-content post-<?=get_post_format();?>">
