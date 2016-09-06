@@ -91,7 +91,7 @@
 														<div class="section-content">
 															<div class="text-left">
 																<h4 class="title"><strong><?=the_title()?></strong></h4>
-																<label><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_content())), 0, 167, "&hellip;");?></label>
+																<label><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_content())), 167);?></label>
 															</div>
 														</div>
 													</div>
@@ -100,7 +100,7 @@
 													<div class="box2">
 														<a href="<?=get_the_permalink()?>"><h4><?=the_title()?></h4></a>
 														<hr />
-														<p><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_content())), 0, 500, "&hellip;");?></p>
+														<p><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_content())), 500);?></p>
 														<a href="<?=get_the_permalink()?>" class="link-read-more">Read more</a>
 													</div>
 												</div>

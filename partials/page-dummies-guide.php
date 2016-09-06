@@ -61,7 +61,7 @@
 					</article>
 				<?php endwhile;?>
 
-				<div class="row">
+				<div class="row investment-assets">
 					<?php
 					$args = array(
 						'post_type'      => 'page',
@@ -73,20 +73,45 @@
 					$parent = new WP_Query( $args );
 
 					if ( $parent->have_posts() ) : ?>
+<div class="row margin-bottom-30">
+						    <?php
+						    	$ctr = 0;
+						    	while ( $parent->have_posts() ) : $parent->the_post();
 
-					<?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
-						<div class="tab-pane fade in" id="<?=$post->post_name?>">
-							<header class="margin-bottom-30">
-								<h2 class="section-title"><?=the_title()?></h2>
-							</header>
-							<article id="post-<?php the_ID(); ?>">
-								<div class="text-black size-14 entry-content post-<?=get_post_format();?>">
-									<? the_content();?>
-								</div>
-							</article>
-						</div>
-					<?php endwhile; ?>
+						    	?>
 
+										<div class="col-md-6">
+											<div class="box-flip box-icon box-icon-round box-icon-large">
+												<div class="front">
+													<div class="box1" style="padding: 0;">
+														<figure style="background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 250px;">
+														</figure>
+														<div class="section-content">
+															<div class="text-left">
+																<h4 class="title"><strong><?=the_title()?></strong></h4>
+																<label><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_content())), 167);?></label>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="back">
+													<div class="box2">
+														<a href="<?=get_the_permalink()?>"><h4><?=the_title()?></h4></a>
+														<hr />
+														<p><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_content())), 500);?></p>
+														<a href="<?=get_the_permalink()?>" class="link-read-more">Read more</a>
+													</div>
+												</div>
+											</div>
+										</div>
+						    <?php
+						    if($ctr++==1){
+						    		echo '</div>
+							<div class="row margin-bottom-30">';
+									$ctr = 0;
+						    	}
+						    endwhile; ?>
+						    </div>
 				<?php endif; wp_reset_query(); ?>
 
 			</div>

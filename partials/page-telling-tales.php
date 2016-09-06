@@ -107,7 +107,7 @@
 												<span class="section-content">
 													<div class="text-left">
 														<h4 class="title"><strong><?=the_title()?></strong></h4>
-														<label><?=mb_strimwidth(strip_tags(html_entity_decode(get_the_content())), 0, 167, "&hellip;");?></label>
+														<label><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_content())), 150);?></label>
 													</div>
 												</span>
 											</div>
@@ -116,7 +116,7 @@
 											<div class="box2">
 												<a href="<?=get_the_permalink()?>"><h4><?=the_title()?></h4></a>
 												<hr />
-												<p>The world of investing is complex and multi-faceted, with a myriad of different choices and decisions you can make and a wealth of investment opportunities which will crop up. As an inexperienced novice investor, it can often seem perplexing, especially when trying to take that nerve-racking initial cold plunge. The problem is that it’s easy to get tripped up by bad advice and lies, silly speculation, lack of information...</p>
+												<p><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_content())), 500)?></p>
 											</div>
 										</div>
 									</div>
