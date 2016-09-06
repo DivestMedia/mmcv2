@@ -14,9 +14,8 @@
 		</div>
 		<div class="col-md-3">
 			<?php
-                if(is_active_sidebar('sidebar-single'))
-                dynamic_sidebar('sidebar-single');
-                ?>
+              render_side_bar_widget();
+            ?>
 		</div>
 	</div>
 </section>

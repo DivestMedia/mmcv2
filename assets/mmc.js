@@ -35,6 +35,8 @@ jQuery(function($){
         assignnewsimage();
     }
 
+    $('#subscribenow').find('.btn').removeClass('btn-default').addClass('secondary-bg border-1');
+
 });
 
 function assignnewsimage(){
