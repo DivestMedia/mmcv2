@@ -103,7 +103,7 @@
 
         <!-- RIGHT -->
         <div class="col-md-3 col-sm-3">
-            <?php dynamic_sidebar('sidebar-single')?>
+            <?php render_side_bar_widget()?>
         </div>
     </div>
 </div>
