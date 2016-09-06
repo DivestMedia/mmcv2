@@ -65,7 +65,7 @@
 						}else{
 							?>
 							<li>
-								<a href="/news"><i class="fa fa-fw fa-tag"></i>News</a>
+								<a href="/category/news"><i class="fa fa-fw fa-tag"></i>News</a>
 							</li>
 							<?php
 						}
@@ -115,7 +115,7 @@
 		?>
 	</div>
 	<div class="heading-title heading-dotted text-right margin-top-20 link-viewmore-news">
-		<a href="/news/"><h4>View more<span> News</span></h4></a>
+		<a href="/category/news/"><h4>View more<span> News</span></h4></a>
 	</div>
 </div>
 </section>

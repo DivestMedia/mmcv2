@@ -70,38 +70,41 @@ foreach ($category_tags as $key => $cat) {
 		'bonds',
 		'funds',
 		'etfs'
-	])) continue;
+		])) continue;
 
-	$featuredPostCategories[] = [
-		'id' => $cat->ID,
-		'name' => $cat->name,
-		'link' => $cat->link
+		$featuredPostCategories[] = [
+			'id' => $cat->ID,
+			'name' => $cat->name,
+			'link' => $cat->link
+		];
+	}
+
+	$featuredPostNews =  get_posts([
+		'posts_per_page'   => 9,
+		'category_name'    => 'News',
+		'orderby'          => 'date',
+		'order'            => 'DESC',
+		'paged' => get_query_var('paged') ?: 1,
+		'post_type'        => 'post',
+		'post_status'      => 'publish',
+		'suppress_filters' => true,
+		'fields' => 'ID'
+	]);
+
+	foreach ($featuredPostNews as $key => $postNews) {
+		$featuredPostNews[$key] = $postNews->ID;
+	}
+
+	$featuredPost = [
+		'categories' => $featuredPostCategories,
+		'posts' => $featuredPostNews
 	];
-}
+	$GLOBALS['featuredPost'] = $featuredPost;
+	$GLOBALS['featuredTitle'] = 'All News';
 
-$featuredPostNews =  get_posts([
-	'posts_per_page'   => 9,
-	'category_name'    => 'News',
-	'orderby'          => 'date',
-	'order'            => 'DESC',
-	'post_type'        => 'post',
-	'post_status'      => 'publish',
-	'suppress_filters' => true,
-	'fields' => 'ID'
-]);
-
-foreach ($featuredPostNews as $key => $postNews) {
-	$featuredPostNews[$key] = $postNews->ID;
-}
-
-$featuredPost = [
-	'categories' => $featuredPostCategories,
-	'posts' => $featuredPostNews
-];
-$GLOBALS['featuredPost'] = $featuredPost;
-$GLOBALS['featuredTitle'] = 'All News';
-
-get_template_part( 'partials/content', 'featuredposts' );
-// get_template_part( 'partials/content', 'investordivest' );
-// get_template_part( 'partials/content', 'vipsubscribers' );
-?>
+	echo '<div class="news-feature-grid">';
+	get_template_part( 'partials/content', 'featuredposts' );
+	echo '</div>';
+	// get_template_part( 'partials/content', 'investordivest' );
+	// get_template_part( 'partials/content', 'vipsubscribers' );
+	?>

@@ -89,6 +89,7 @@ foreach ($category_tags as $key => $cat) {
 		'order'            => 'DESC',
 		'post_type'        => 'post',
 		'post_status'      => 'publish',
+		'paged' => get_query_var('paged') ?: 1,
 		'offset' => 5,
 		'suppress_filters' => true,
 		'tag_slug__in' => $taghere,
@@ -108,7 +109,8 @@ foreach ($category_tags as $key => $cat) {
 
 	$GLOBALS['featuredPost'] = $featuredPost;
 	$GLOBALS['featuredTitle'] = $tagData->name . ' News';
-
+	echo '<div class="news-feature-grid">';
 	get_template_part( 'partials/content', 'featuredposts' );
+	echo '</div>';
 	// get_template_part( 'partials/content', 'investordivest' );
 	?>
