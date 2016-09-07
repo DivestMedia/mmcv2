@@ -167,13 +167,13 @@ $postnotin = [];
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-xs-12">
+						<div class="col-md-4">
 							<div class="heading-title heading-dotted">
-								<h2>US <span>News</span></h2>
+								<h4>US <span>News</span></h4>
 							</div>
 							<?php
 							$usa_news = get_posts([
-								'posts_per_page' => 10,
+								'posts_per_page' => 5,
 								'category_name' => 'News',
 								'orderby' => 'date',
 								'order' => 'DESC',
@@ -185,36 +185,31 @@ $postnotin = [];
 							]);
 							?>
 							<?php if(count($usa_news)): ?>
-								<div class="owl-carousel owl-padding-10 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items":"4", "autoPlay": 4000, "navigation": true, "pagination": false, "stopOnHover": true }' id="global-news-post-slider-usa">
+								<div class="" id="global-news-post-slider-usa">
 									<?php foreach($usa_news as $post):  $postnotin[] = $post->ID; ?>
-										<div class="img-hover">
-											<a href="<?=get_the_permalink()?>">
-												<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 200px;" class="lazyOwl" data-src="<?=the_post_thumbnail_url()?>"></figure>
-											</a>
+										<div class="link-gray">
+											<a class="size-14" href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),80)?></a>
 
-											<h4 class="text-left margin-top-20 height-50 post-title"><a href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),50)?></a></h4>
-
-											<ul class="text-left size-12 list-inline list-separator hidden">
-												<li><i class="fa fa-calendar"></i><?=get_the_date('M j')?>&nbsp;<small><?=get_the_date('g:i a')?></small></li>
-												<li><a href="#"><i class="fa fa-fw fa-tag"></i>USA</a></li>
+											<ul class="text-left size-12 list-inline list-separator text-gray">
+												<li><i class="fa fa-calendar-o"></i><?=get_the_date('M j')?>&nbsp;<small><?=get_the_date('g:i a')?></small></li>
 											</ul>
 										</div>
 									<?php endforeach; ?>
 								</div>
+								<div class="divider margin-bottom-0"><!-- divider --></div>
 								<div class="heading-title text-right margin-top-20 link-viewmore-news">
 									<a href="/tag/usa/"><h4 class="size-15">View more<span> News</span></h4></a>
 								</div>
 							<?php endif; ?>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12">
+						
+						<div class="col-md-4">
 							<div class="heading-title heading-dotted">
-								<h2>Asia <span>News</span></h2>
+								<h4>Asia <span>News</span></h4>
 							</div>
 							<?php
 							$asia_news = get_posts([
-								'posts_per_page' => 10,
+								'posts_per_page' => 5,
 								'category_name' => 'News',
 								'orderby' => 'date',
 								'order' => 'DESC',
@@ -226,36 +221,32 @@ $postnotin = [];
 							]);
 							?>
 							<?php if(count($asia_news)): ?>
-								<div class="owl-carousel owl-padding-10 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items":"4", "autoPlay": 4000, "navigation": true, "pagination": false, "stopOnHover": true }' id="global-news-post-slider-asia">
+								<div class="" id="global-news-post-slider-asia">
 									<?php foreach($asia_news as $post): $postnotin[] = $post->ID; ?>
-										<div class="img-hover">
-											<a href="<?=get_the_permalink()?>">
-												<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 200px;" class="lazyOwl" data-src="<?=the_post_thumbnail_url()?>"></figure>
-											</a>
+										<div class="link-gray">
+											<a class="size-14" href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),80)?></a>
 
-											<h4 class="text-left margin-top-20 height-50 post-title"><a href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),50)?></a></h4>
-
-											<ul class="text-left size-12 list-inline list-separator hidden">
-												<li><i class="fa fa-calendar"></i><?=get_the_date('M j')?>&nbsp;<small><?=get_the_date('g:i a')?></small></li>
-												<li><a href="#"><i class="fa fa-fw fa-tag"></i>Asia</a></li>
+											<ul class="text-left size-12 list-inline list-separator">
+												<li><i class="fa fa-calendar-o"></i><?=get_the_date('M j')?>&nbsp;<small><?=get_the_date('g:i a')?></small></li>
 											</ul>
 										</div>
 									<?php endforeach; ?>
 								</div>
+								<div class="divider margin-bottom-0"><!-- divider --></div>
 								<div class="heading-title text-right margin-top-20 link-viewmore-news">
 									<a href="/tag/asia/"><h4 class="size-15">View more<span> News</span></h4></a>
 								</div>
 							<?php endif; ?>
 						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-12">
+					
+					
+						<div class="col-md-4">
 							<div class="heading-title heading-dotted">
-								<h2>Stock <span>News</span></h2>
+								<h4>Stock <span>News</span></h4>
 							</div>
 							<?php
 							$stocks_news = get_posts([
-								'posts_per_page' => 10,
+								'posts_per_page' => 5,
 								'category_name' => 'News',
 								'orderby' => 'date',
 								'order' => 'DESC',
@@ -267,22 +258,18 @@ $postnotin = [];
 							]);
 							?>
 							<?php if(count($stocks_news)): ?>
-								<div class="owl-carousel owl-padding-10 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items":"4", "autoPlay": 4000, "navigation": true, "pagination": false, "stopOnHover": true }' id="global-news-post-slider-stocks">
+								<div class="" id="global-news-post-slider-stocks">
 									<?php foreach($stocks_news as $post): $postnotin[] = $post->ID; ?>
-										<div class="img-hover">
-											<a href="<?=get_the_permalink()?>">
-												<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 200px;" class="lazyOwl" data-src="<?=the_post_thumbnail_url()?>"></figure>
-											</a>
+										<div class="link-gray">
+											<a class="size-14" href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),80)?></a>
 
-											<h4 class="text-left margin-top-20 height-50 post-title"><a href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),50)?></a></h4>
-
-											<ul class="text-left size-12 list-inline list-separator hidden">
-												<li><i class="fa fa-calendar"></i><?=get_the_date('M j')?>&nbsp;<small><?=get_the_date('g:i a')?></small></li>
-												<li><a href="#"><i class="fa fa-fw fa-tag"></i>Stocks</a></li>
+											<ul class="text-left size-12 list-inline list-separator">
+												<li><i class="fa fa-calendar-o"></i><?=get_the_date('M j')?>&nbsp;<small><?=get_the_date('g:i a')?></small></li>
 											</ul>
 										</div>
 									<?php endforeach; ?>
 								</div>
+								<div class="divider margin-bottom-0"><!-- divider --></div>
 								<div class="heading-title text-right margin-top-20 link-viewmore-news">
 									<a href="/tag/stocks/"><h4 class="size-15">View more<span> News</span></h4></a>
 								</div>

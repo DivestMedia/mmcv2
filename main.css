@@ -155,6 +155,9 @@
 	.price-table li{color:#999;}
 	.price-table li b{color:#333;}
 	
+	.link-gray a{color:#555;}
+	.link-gray a:hover{color:#000;}
+	
 	.trading-graph .box-gradient .col-sm-3:hover{background-color:#F2C500!important;}
 	
 	
