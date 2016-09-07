@@ -1,5 +1,9 @@
 <?php
 get_template_part( 'partials/content', 'indexwatch' );
+$hide_date = false;
+if(!strcasecmp(get_the_category($post->ID)[0]->name,'Brokerage Firms')){
+	$hide_date = true;
+}
 ?>
 <section>
 	<div class="container">
@@ -7,7 +11,7 @@ get_template_part( 'partials/content', 'indexwatch' );
 		<header class="text-left margin-bottom-50 tiny-line">
 			<h2 class="font-proxima"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h2>
 			<!-- <a href="#" class="size-12 text-black uppercase bold">BY: John Doe</a>  &nbsp; -->
-			<a href="#" class="size-12 text-gray"><?=get_the_date()?></a>
+			<?php if($hide_date===false){?><a href="#" class="size-12 text-gray"><?=get_the_date()?></a><?php }?>
 			<br/>
 		</header>
 

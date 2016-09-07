@@ -43,12 +43,12 @@ global $brokerage,$featuredTitle,$post;
 									</figure>
 									<h4 class="margin-top-20 size-14 weight-700 uppercase height-20" style="overflow:hidden;"><a href="<?=get_the_permalink($post->ID)?>"><?=xyr_smarty_limit_chars(get_the_title($post->ID),80)?></a></h4>
 									<p class="text-left height-100" style="overflow:hidden;"><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(strip_shortcodes($post->post_excerpt))),100);?></p>
-									<ul class="text-left size-12 list-inline list-separator">
+									<!-- <ul class="text-left size-12 list-inline list-separator">
 										<li>
 											<i class="fa fa-calendar"></i>
 											<?=get_the_date('D M j, Y')?>
 										</li>
-									</ul>
+									</ul> -->
 								</div>
 								<?php
 							endwhile;
