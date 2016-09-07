@@ -1,4 +1,4 @@
-
+var newsimages = [];
 
 jQuery(function($){
     
@@ -34,7 +34,11 @@ jQuery(function($){
     }
 
     if( $('#global_news').length > 0 ){
+        newsimages = [];
         assignnewsimage(jQuery('#global-news-post-slider .img-hover .list-separator li:last-child()'),jQuery('#global-news-post-slider .img-hover figure'),true);
+        assignnewsimage(jQuery('#global-news-post-slider-usa .img-hover .list-separator li:last-child()'),jQuery('#global-news-post-slider-usa .img-hover figure'),true);
+        assignnewsimage(jQuery('#global-news-post-slider-asia .img-hover .list-separator li:last-child()'),jQuery('#global-news-post-slider-asia .img-hover figure'),true);
+        assignnewsimage(jQuery('#global-news-post-slider-stocks .img-hover .list-separator li:last-child()'),jQuery('#global-news-post-slider-stocks .img-hover figure'),true);
     }
 
     $('#subscribenow').find('.btn').removeClass('btn-default').addClass('secondary-bg border-1');
@@ -44,7 +48,6 @@ jQuery(function($){
     });
 });
 
-var newsimages = [];
 
 function assignnewsimage(tagelem,itemelem,taglist){
 
@@ -73,6 +76,10 @@ function assignnewsimage(tagelem,itemelem,taglist){
             var imgsrc = jQuery(this).css('background-image') || '';
             if(taglist){
                 var tagkey = tags[ii].toString().replace(/\s+/g, '-').toLowerCase();
+
+                if(['asia','usa'].indexOf(tagkey)!=-1){
+                    tagkey = 'default';
+                }
                 newimgsrc = switch_tags(tagkey);
             }
             // if(imgsrc.length > 0){
@@ -108,6 +115,9 @@ function assignnewsimage(tagelem,itemelem,taglist){
                 if(tags.length>0){
                     if(taglist){
                         var tagkey = tags[ii].toString().replace(/\s+/g, '-').toLowerCase();
+                        if(['asia','usa'].indexOf(tagkey)!=-1){
+                            tagkey = 'default';
+                        }
                         if(typeof newsimages[tagkey] == 'undefined'){
                             newsimages[tagkey] = 0;
                         }
@@ -115,13 +125,16 @@ function assignnewsimage(tagelem,itemelem,taglist){
                     }
                     if(jQuery.isArray(newimgsrc)){
                         if(taglist){
-                            rnewimgsrc = newimgsrc[newsimages[tagkey]];
-
-                            if(newsimages[tagkey]>=newimgsrc.length){
-                                newimgsrc[newsimages[tagkey]] = 0;
+                            var tagkey = tags[ii].toString().replace(/\s+/g, '-').toLowerCase();
+                            if(['asia','usa'].indexOf(tagkey)!=-1){
+                                tagkey = 'default';
                             }
-                            newimgsrc[newsimages[tagkey]]++;
-
+                            rnewimgsrc = newimgsrc[newsimages[tagkey]];
+                            if(newsimages[tagkey]>=newimgsrc.length){
+                                newsimages[tagkey] = 0;
+                            }
+                            newsimages[tagkey]++;
+                            console.log(newsimages[tagkey]);
                         }else{
                             rnewimgsrc = newimgsrc[ctr];
                             if(ctr++>=max)
@@ -142,6 +155,7 @@ function assignnewsimage(tagelem,itemelem,taglist){
         newscount = countnow;
     }
     // },1000);
+    console.log(newsimages);
 }
 
 function switch_tags(tags){
@@ -174,10 +188,12 @@ function switch_tags(tags){
         ];
         break;
         case 'banking-finance':
+        case 'stocks':
         newimgsrc = [
             '/wp-content/uploads/sites/8/2016/09/glocdn.investing.comtrkd-imagesLYNXNPEC3S1CP_L-1391d561df4fd8ca7c1ac0a9be36cc1690d251db.jpg',
             '/wp-content/uploads/sites/8/2016/09/Banking-and-Finance-banner.jpg',
-            '/wp-content/uploads/sites/8/2016/09/banking-finance-insurance.jpg','/wp-content/uploads/sites/8/2016/09/Finance-Bank.jpg',
+            '/wp-content/uploads/sites/8/2016/09/banking-finance-insurance.jpg',
+            '/wp-content/uploads/sites/8/2016/09/Finance-Bank.jpg',
             '/wp-content/uploads/sites/8/2016/09/pakistan-s-islamic-banking-push-faces-industry-gaps-1413296787-9951.jpg',
             '/wp-content/uploads/sites/8/2016/09/bankingfinance_5.jpg',
             '/wp-content/uploads/sites/8/2016/09/bankingfinance_3.jpg',
@@ -267,6 +283,7 @@ function switch_tags(tags){
             '/wp-content/uploads/sites/8/2016/09/gen-news-16.jpg'
         ];
         break;
+        case 'industrial':
         case 'industrial-goods':
         newimgsrc = [
             '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-1.jpg',
@@ -355,6 +372,7 @@ function switch_tags(tags){
         ];
         break;
         case 'pharmaceutical':
+        case 'pharmaceuticals':
         case 'pharmacueticals':
         case 'pharmacueticals-medical':
         newimgsrc = [
@@ -379,7 +397,6 @@ function switch_tags(tags){
         break;
         case 'retail':
         newimgsrc = [
-            '/wp-content/uploads/sites/8/2016/09/Floating-Markets-in-Asia-640x375.jpg',
             '/wp-content/uploads/sites/8/2016/09/retail-news-1.jpg',
             '/wp-content/uploads/sites/8/2016/09/retail-news-2.jpg',
             '/wp-content/uploads/sites/8/2016/09/retail-news-3.jpg',
@@ -453,7 +470,6 @@ function switch_tags(tags){
             '/wp-content/uploads/sites/8/2016/09/stock-market-1.jpg',
             '/wp-content/uploads/sites/8/2016/09/stock-market-2.jpg',
             '/wp-content/uploads/sites/8/2016/09/glocdn.investing.comnewsLYNXNPEB7A004_L-55a0d1b38df4279dbc302f3d57dc3ef9c9925239.jpg',
-            '/wp-content/uploads/sites/8/2016/09/stock-watch.jpg',
             '/wp-content/uploads/sites/8/2016/09/WideModern_StockMarketChart_062613-e1462847698711.jpg',
             '/wp-content/uploads/sites/8/2016/09/glocdn.investing.comnewsBrazil-Stock-Market_1_309X149._800x533_L_1413121146-896630eb895cfa2c8e6ca0df38eeef72301215f9.jpg',
             '/wp-content/uploads/sites/8/2016/09/gen-news-1.jpg',
