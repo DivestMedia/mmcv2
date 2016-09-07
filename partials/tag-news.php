@@ -11,43 +11,62 @@ $latestnews = [];
 // WP_Query arguments
 
 $mainpost = $post;
+$hascharts = false;
+$stockwatch_child = [
+	'pre-markets',
+	'usa',
+	'asia',
+	'europe',
+	'stocks',
+	'commodities',
+	'currencies',
+	'bonds',
+	'funds',
+	'etfs'
+];
 
-$post = get_posts([
-	'post_type'   => 'post',
-	'post_status' => 'publish',
-	'posts_per_page' => 5,
-	'posts_per_archive_page' => 5,
-	'orderby' => 'date',
-	'category_name'    => 'News',
-	'order' => 'DESC',
-	'tag_slug__in' => $taghere
-]);
+if(!in_array(strtolower($tagData->slug),$stockwatch_child)){
+    $post = get_posts([
+        'post_type'   => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => 5,
+        'posts_per_archive_page' => 5,
+        'orderby' => 'date',
+        'category_name'    => 'News',
+        'order' => 'DESC',
+        'tag_slug__in' => $taghere
+    ]);
 
-foreach ($post as $key => $news) {
-	$tags_array = [$tagData];
-	$hastag = false;
-	if($tags_array){
-		$hastag = true;
-		$tags = [];
-		foreach ($tags_array as $tag) {
-			$tags[] = '<a href="'.get_tag_link($tag->term_id).'">'.$tag->name.'</a>';
-		}
-	}
-	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $news->ID ), 'mid-image' );
-	$latestnews[] = [
-		'title' => $hastag ? implode(',',$tags) : 'News',
-		'description' => xyr_smarty_limit_chars($news->post_title,40),
-		'date' => $news->post_date,
-		'thumbnail' => $image[0],
-		'link' => get_the_permalink($news->ID)
-	];
+    foreach ($post as $key => $news) {
+        $tags_array = [$tagData];
+        $hastag = false;
+        if($tags_array){
+            $hastag = true;
+            $tags = [];
+            foreach ($tags_array as $tag) {
+                $tags[] = '<a href="'.get_tag_link($tag->term_id).'">'.$tag->name.'</a>';
+            }
+        }
+        $image = wp_get_attachment_image_src( get_post_thumbnail_id( $news->ID ), 'mid-image' );
+        $latestnews[] = [
+            'title' => $hastag ? implode(',',$tags) : 'News',
+            'description' => xyr_smarty_limit_chars($news->post_title,40),
+            'date' => $news->post_date,
+            'thumbnail' => $image[0],
+            'link' => get_the_permalink($news->ID)
+        ];
+    }
+    if(count($latestnews)>4):
+        $post = $latestnews;
+        $GLOBALS['featureTitle'] = 'Latest <span>'.$tagData->name .' News</span>';
+        $GLOBALS['featureButton'] = 'READ MORE';
+        get_template_part( 'partials/content', 'featuredgrid' );
+    endif;
+}else{
+		$hascharts = true;
+		echo '<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>';
+    get_template_part( 'partials/chart', $tagData->slug );
 }
-if(count($latestnews)>4):
-	$post = $latestnews;
-	$GLOBALS['featureTitle'] = 'Latest <span>'.$tagData->name .' News</span>';
-	$GLOBALS['featureButton'] = 'READ MORE';
-	get_template_part( 'partials/content', 'featuredgrid' );
-endif;
 $post = $mainpost;
 
 
@@ -108,7 +127,11 @@ foreach ($category_tags as $key => $cat) {
 	];
 
 	$GLOBALS['featuredPost'] = $featuredPost;
-	$GLOBALS['featuredTitle'] = $tagData->name . ' News';
+	if($hascharts==false)
+		$GLOBALS['featuredTitle'] = $tagData->name . ' News';
+	else
+		$GLOBALS['featuredTitle'] = 'Related News';
+
 	echo '<div class="news-feature-grid">';
 	get_template_part( 'partials/content', 'featuredposts' );
 	echo '</div>';
