@@ -10,6 +10,38 @@
 		background: #27AE60; /* Safari */
 	}
 	
+	
+	#about_advisors .item{text-align:center;}
+	#about_advisors .item .bg-advisor{background-color: #6d7577;  outline: 1px solid #fff; outline-offset: -10px;
+		-webkit-box-shadow: 0px 10px 5px -7px rgba(0,0,0,0.7);
+		-moz-box-shadow: 0px 10px 5px -7px rgba(0,0,0,0.7);
+		box-shadow: 0px 10px 5px -7px rgba(0,0,0,0.7);
+		
+	}
+	
+	#about_advisors .item .bg-advisor,
+	#about_advisors .item .caption,
+	#about_advisors .item .caption h4,
+	#about_advisors .item .caption span,
+	#about_advisors .item .caption p
+	{transition: all 0.5s ease;}
+	
+	#about_advisors .item .caption{background-image:url(laurel.png);background-repeat:no-repeat; padding: 1em 0;transition: all 0.5s ease;}
+	 
+	#about_advisors .item hr{margin-top:5px;margin-bottom:5px;width: 70%;}
+	#about_advisors .item .caption p{padding-top:15px;transition: all 0.5s ease;color:#bbb;}
+	
+	
+	#about_advisors .item{cursor:pointer;}
+	#about_advisors .item:hover .bg-advisor{background-color: #d7d7d7!important;  outline: 1px solid #000;}
+	#about_advisors .item:hover .caption h4,#about_advisors .item:hover .caption span{color:#59ba41;}
+	#about_advisors .item:hover .caption p{color:#fff;}
+	
+	
+	
+	
+	.board-advisor p{margin-bottom:1em;}
+	
 	@media only screen and (max-width : 767px) {
 		.box {
 			height: auto !important;

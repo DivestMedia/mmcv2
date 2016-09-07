@@ -7,6 +7,8 @@ if(!strcasecmp(get_the_title($post->post_parent),'Dummies Guide')&&get_the_title
 	get_template_part("partials/page", 'tellingtales-child' );
 }elseif((!strcasecmp(get_the_title($post->post_parent),'Celebrity Investments')||!strcasecmp(get_the_title($post->post_parent),'Entrepreneurial Exploits'))&&get_the_title()!=get_the_title($post->post_parent)){
 	get_template_part("partials/page", 'tellingtales-child-haschild' );
+}elseif(!strcasecmp(get_the_title($post->post_parent),'Advisors')&&get_the_title()!=get_the_title($post->post_parent)){
+	get_template_part("partials/page", 'advisors-child' );
 }else{
 	get_template_part("partials/page", locate_template('partials/page-'.basename(get_permalink()).'.php')!='' ? basename(get_permalink()) : '' );
 }
