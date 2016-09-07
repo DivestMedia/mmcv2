@@ -55,6 +55,234 @@ get_template_part( 'partials/content', 'indexwatch' );
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-12 margin-bottom-20">
+                        <h4>FTSE 100</h4>
+                        <div class="col-sm-4">
+                            <?php
+                            echo wp_get_attachment_image(348886,'mid-image',false,[
+                                'class' => 'img-responsive'
+                            ]);
+                            ?>
+                            <p>TThis is an index of the 100 largest companies listed on the London Stock Exchange and is the best indicator of the performance of major companies listed in the UK.</p>
+                        </div>
+                        <div class="col-sm-8">
+                            <!-- TradingView Widget BEGIN -->
+                            <div id="tv-medium-widget-2" class="margin-bottom-20"></div>
+                            <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+                            <script type="text/javascript">
+                            new TradingView.MediumWidget({
+                                "container_id": "tv-medium-widget-2",
+                                "symbols": [
+                                    [
+                                        "FTSE",
+                                        "INDEX:FTSE"
+                                    ]
+                                ],
+                                "gridLineColor": "rgba(233, 233, 234, 1)",
+                                "fontColor": "#83888D",
+                                "underLineColor": "rgba(217, 234, 211, 1)",
+                                "trendLineColor": "rgba(70, 148, 36, 1)",
+                                "width": "100%",
+                                "height": "300px",
+                                "tradeItWidget": false,
+                                "locale": "en"
+                            });
+                            </script>
+                            <!-- TradingView Widget END -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 margin-bottom-20">
+                        <h4>NASDAQ</h4>
+                        <div class="col-sm-4">
+                            <?php
+                            echo wp_get_attachment_image(348887,'mid-image',false,[
+                                'class' => 'img-responsive'
+                            ]);
+                            ?>
+                            <p>This is the index where technology stocks are traded, although it also includes stocks from financial, industrial, insurance, and transportation industries. It includes both small and large companies and it is a good indicator for the technology industry as a whole.</p>
+                        </div>
+                        <div class="col-sm-8">
+                            <!-- TradingView Widget BEGIN -->
+                            <div id="tv-medium-widget-3" class="margin-bottom-20"></div>
+                            <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+                            <script type="text/javascript">
+                            new TradingView.MediumWidget({
+                                "container_id": "tv-medium-widget-3",
+                                "symbols": [
+                                    [
+                                      "NASDAQ",
+                                      "INDEX:NASX|1y"
+                                    ]
+                                ],
+                                "gridLineColor": "rgba(233, 233, 234, 1)",
+                                "fontColor": "#83888D",
+                                "underLineColor": "rgba(217, 234, 211, 1)",
+                                "trendLineColor": "rgba(70, 148, 36, 1)",
+                                "width": "100%",
+                                "height": "300px",
+                                "tradeItWidget": false,
+                                "locale": "en"
+                            });
+                            </script>
+                            <!-- TradingView Widget END -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 margin-bottom-20">
+                        <h4>S&P 500</h4>
+                        <div class="col-sm-4">
+                            <?php
+                            echo wp_get_attachment_image(348891,'mid-image',false,[
+                                'class' => 'img-responsive'
+                            ]);
+                            ?>
+                            <p>A larger and more diverse index than the Dow Jones, it’s made up of 500 of the most widely tracked stocks in the USA and represents about 70% of the total value of the US market. This is a very good indicator of the movement of the US market as a whole. It’s market weighted, which means that every stock is represented in proportion to its total market capitalization, and many people consider this to be the best measure of the market’s movement since it is measured in percentages rather than dollars.</p>
+                        </div>
+                        <div class="col-sm-8">
+                            <!-- TradingView Widget BEGIN -->
+                            <div id="tv-medium-widget-4" class="margin-bottom-20"></div>
+                            <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+                            <script type="text/javascript">
+                            new TradingView.MediumWidget({
+                                "container_id": "tv-medium-widget-4",
+                                "symbols": [
+                                    [
+                                      "S&P 500",
+                                      "INDEX:INX"
+                                    ]
+                                ],
+                                "gridLineColor": "rgba(233, 233, 234, 1)",
+                                "fontColor": "#83888D",
+                                "underLineColor": "rgba(217, 234, 211, 1)",
+                                "trendLineColor": "rgba(70, 148, 36, 1)",
+                                "width": "100%",
+                                "height": "300px",
+                                "tradeItWidget": false,
+                                "locale": "en"
+                            });
+                            </script>
+                            <!-- TradingView Widget END -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 margin-bottom-20">
+                        <h4>NIKKEI</h4>
+                        <div class="col-sm-4">
+                            <?php
+                            echo wp_get_attachment_image(348888,'mid-image',false,[
+                                'class' => 'img-responsive'
+                            ]);
+                            ?>
+                            <p>This index is the leading and most respected index of Japanese stocks, and it’s a price-weighted index comprised of Japan’s top 225 blue chip companies traded on the Japan Stock Exchange. Basically, this is Japan’s equivalent of the Dow Jones.</p>
+                        </div>
+                        <div class="col-sm-8">
+                            <!-- TradingView Widget BEGIN -->
+                            <div id="tv-medium-widget-5" class="margin-bottom-20"></div>
+                            <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+                            <script type="text/javascript">
+                            new TradingView.MediumWidget({
+                                "container_id": "tv-medium-widget-5",
+                                "symbols": [
+                                    [
+                                      "NIKKEI",
+                                      "INDEX:NKY"
+                                    ]
+                                ],
+                                "gridLineColor": "rgba(233, 233, 234, 1)",
+                                "fontColor": "#83888D",
+                                "underLineColor": "rgba(217, 234, 211, 1)",
+                                "trendLineColor": "rgba(70, 148, 36, 1)",
+                                "width": "100%",
+                                "height": "300px",
+                                "tradeItWidget": false,
+                                "locale": "en"
+                            });
+                            </script>
+                            <!-- TradingView Widget END -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 margin-bottom-20">
+                        <h4>DOW JONES INDUSTRIAL AVERAGE</h4>
+                        <div class="col-sm-4">
+                            <?php
+                            echo wp_get_attachment_image(348885,'mid-image',false,[
+                                'class' => 'img-responsive'
+                            ]);
+                            ?>
+                            <p>One of the oldest and most frequently used indexes, the DJIA is a price-weighted index and it includes 30 of the largest and most influential companies in the USA, representing about a quarter of the value of the entire US stock market. A change in the DJIA represents changes in investors’ expectations of the earnings and risks of the large companies.</p>
+                        </div>
+                        <div class="col-sm-8">
+                            <!-- TradingView Widget BEGIN -->
+                            <div id="tv-medium-widget-6" class="margin-bottom-20"></div>
+                            <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+                            <script type="text/javascript">
+                            new TradingView.MediumWidget({
+                                "container_id": "tv-medium-widget-6",
+                                "symbols": [
+                                    [
+                                      "DOW JONES",
+                                      "INDEX:DJY0"
+                                    ]
+                                ],
+                                "gridLineColor": "rgba(233, 233, 234, 1)",
+                                "fontColor": "#83888D",
+                                "underLineColor": "rgba(217, 234, 211, 1)",
+                                "trendLineColor": "rgba(70, 148, 36, 1)",
+                                "width": "100%",
+                                "height": "300px",
+                                "tradeItWidget": false,
+                                "locale": "en"
+                            });
+                            </script>
+                            <!-- TradingView Widget END -->
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 margin-bottom-20">
+                        <h4>RUSSELL 2000</h4>
+                        <div class="col-sm-4">
+                            <?php
+                            echo wp_get_attachment_image(348890,'mid-image',false,[
+                                'class' => 'img-responsive'
+                            ]);
+                            ?>
+                            <p>This is the index for the 2000 smallest stocks in the Russell 3000 (which is an index of the 3000 largest publicly traded companies, based on cap, in the US stock market) and represents the best indicator of the daily performance of small companies in the market.</p>
+                        </div>
+                        <div class="col-sm-8">
+                            <!-- TradingView Widget BEGIN -->
+                            <div id="tv-medium-widget-7" class="margin-bottom-20"></div>
+                            <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
+                            <script type="text/javascript">
+                            new TradingView.MediumWidget({
+                                "container_id": "tv-medium-widget-7",
+                                "symbols": [
+                                    [
+                                      "RUSSELL 2000",
+                                      "INDEX:IUX"
+                                    ]
+                                ],
+                                "gridLineColor": "rgba(233, 233, 234, 1)",
+                                "fontColor": "#83888D",
+                                "underLineColor": "rgba(217, 234, 211, 1)",
+                                "trendLineColor": "rgba(70, 148, 36, 1)",
+                                "width": "100%",
+                                "height": "300px",
+                                "tradeItWidget": false,
+                                "locale": "en"
+                            });
+                            </script>
+                            <!-- TradingView Widget END -->
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-3 text-left">
                 <!-- CATEGORIES -->
@@ -64,7 +292,7 @@ get_template_part( 'partials/content', 'indexwatch' );
                         <div class="side-nav-head">
                             <button class="fa fa-bars"></button>
                             <h4>CATEGORIES</h4>
-                        </div>  
+                        </div>
                         <ul class="list-group list-group-bordered list-group-noicon uppercase">
                             <?php
                             $category_tags = get_category_tags(get_category_by_slug('news')->term_id);
