@@ -61,7 +61,7 @@
 									?>
 										<div class="col-sm-4">
 											<a href="<?=get_the_permalink()?>">
-												<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 180px;"></figure>
+												<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url("mid-image")?>');background-size: cover;background-repeat: no-repeat;height: 180px;"></figure>
 											</a>
 											<h4 class="margin-top-20 size-14 weight-700 uppercase p-limit-title"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
 											<p class="text-justify p-limit-content"><?=strip_tags(html_entity_decode(get_the_excerpt()));?></p>
@@ -109,7 +109,7 @@
 									?>
 										<div class="col-sm-4">
 											<a href="<?=get_the_permalink()?>">
-											<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 180px;"></figure>
+											<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url("mid-image")?>');background-size: cover;background-repeat: no-repeat;height: 180px;"></figure>
 											</a>
 											<h4 class="margin-top-20 size-14 weight-700 uppercase p-limit-title"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
 											<p class="text-justify p-limit-content"><?=strip_tags(html_entity_decode(get_the_excerpt()))?></p>
@@ -157,7 +157,7 @@
 									?>
 										<div class="col-sm-4">
 											<a href="<?=get_the_permalink()?>">
-												<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 180px;"></figure>
+												<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url("mid-image")?>');background-size: cover;background-repeat: no-repeat;height: 180px;"></figure>
 											</a>
 											<h4 class="margin-top-20 size-14 weight-700 uppercase p-limit-title"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h4>
 											<p class="text-justify p-limit-content"><?=strip_tags(html_entity_decode(get_the_excerpt()))?></p>

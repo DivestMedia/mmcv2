@@ -6,7 +6,7 @@ get_template_part( 'partials/content', 'vipsubscribers' );
 			<footer id="footer">
 				<div class="container padding-20 margin-bottom-10">
 					<div class="text-center">
-						<a href="#" class="text-white underline">
+						<a href="<?=site_url()?>" class="text-white underline">
 						<img src="<?=get_stylesheet_directory_uri();?>/assets/img/mmc-logo-light.png" class="width-150">
 						</a>
 							<!-- Social Icons -->
@@ -48,7 +48,7 @@ get_template_part( 'partials/content', 'vipsubscribers' );
 						<!-- /Social Icons -->
 
 						<p>
-							Market MasterClass is part of the <a href="www.divestmedia.com" style="color: #0072bc;font-weight: bold;">Divest Media Network</a>
+							Market MasterClass is part of the <a href="http://www.divestmedia.com" style="color: #0072bc;font-weight: bold;">Divest Media Network</a>
 						</p>
 					</div>
 

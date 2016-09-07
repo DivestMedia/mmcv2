@@ -71,7 +71,7 @@ global $featuredPost,$featuredTitle;
 										<ul class="text-left size-12 list-inline list-separator">
 											<li>
 												<i class="fa fa-calendar"></i>
-												<?=get_the_date()?>
+												<?=get_the_date()?>&nbsp;<small><?=get_the_date('h:i a')?></small>
 											</li>
 										</ul>
 									</div>
