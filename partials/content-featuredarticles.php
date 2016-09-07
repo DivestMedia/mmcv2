@@ -1,5 +1,5 @@
 
-<section class="alternate">
+<section class="">
 		<div class="container">
 			<header class="text-center margin-bottom-50 tiny-line">
 				<h2 class="font-proxima uppercase">Featured <span>Articles</span></h2>
