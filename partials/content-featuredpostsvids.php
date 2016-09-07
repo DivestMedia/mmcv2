@@ -92,11 +92,11 @@ global $featuredVids,$featuredTitle;
 
 							?>
 							<div class="col-sm-4 margin-bottom-20">
-								<a href="<?=get_the_permalink()?>">
+								<a href="#all-videos" class="btn-play-vid-a">
 									<img class="img-responsive" src="<?=($iod_video_thumbnail)?>" />
 								</a>
-								<h4 class="margin-top-20 size-14 weight-700 uppercase height-20 text-center"><a href="<?=get_the_permalink($post->ID)?>"><?=xyr_smarty_limit_chars(get_the_title($post->ID),80)?></a></h4>
-								<a class="block  btn-sm btn primary-bg text-center noradius weight-700 lightbox lightbox" href="<?=($iod_video)?>" data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}">PLAY NOW</a>
+								<h4 class="margin-top-20 size-14 weight-700 uppercase height-20 text-center"><a href="#all-videos" class="btn-play-vid-a"><?=xyr_smarty_limit_chars(get_the_title($post->ID),80)?></a></h4>
+								<a class="block btn-play-vid btn-sm btn primary-bg text-center noradius weight-700 lightbox lightbox" href="<?=($iod_video)?>" data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}">PLAY NOW</a>
 								<!-- <ul class="text-left size-12 list-inline list-separator">
 								<li>
 								<i class="fa fa-calendar"></i>

@@ -1,7 +1,7 @@
 
 
 jQuery(function($){
-
+    
 
     if(jQuery.browser.mobile)
     {
@@ -38,7 +38,10 @@ jQuery(function($){
     }
 
     $('#subscribenow').find('.btn').removeClass('btn-default').addClass('secondary-bg border-1');
-
+    
+    $('.btn-play-vid-a').click(function(){
+        $('.btn-play-vid').trigger('click');
+    });
 });
 
 var newsimages = [];
