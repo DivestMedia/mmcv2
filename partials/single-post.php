@@ -1,8 +1,8 @@
 <?php
 get_template_part( 'partials/content', 'indexwatch' );
-$hide_date = false;
+$is_brokeragefirms = false;
 if(!strcasecmp(get_the_category($post->ID)[0]->name,'Brokerage Firms')){
-	$hide_date = true;
+	$is_brokeragefirms = true;
 }
 ?>
 <section>
@@ -11,7 +11,7 @@ if(!strcasecmp(get_the_category($post->ID)[0]->name,'Brokerage Firms')){
 		<header class="text-left margin-bottom-50 tiny-line">
 			<h2 class="font-proxima"><a href="<?=get_the_permalink()?>"><?=the_title()?></a></h2>
 			<!-- <a href="#" class="size-12 text-black uppercase bold">BY: John Doe</a>  &nbsp; -->
-			<?php if($hide_date===false){?><a href="#" class="size-12 text-gray"><?=get_the_date()?></a><?php }?>
+			<?php if($is_brokeragefirms===false){?><a href="#" class="size-12 text-gray"><?=get_the_date()?></a><?php }?>
 			<br/>
 		</header>
 
@@ -25,7 +25,26 @@ if(!strcasecmp(get_the_category($post->ID)[0]->name,'Brokerage Firms')){
 				<div class="post-content">
 					<?=$post->post_content?>
 				</div>
-
+				<?php 
+					if($is_brokeragefirms){
+						$_phone = get_post_meta($post->ID,'bf_phone')[0];
+						$_address = get_post_meta($post->ID,'bf_address')[0];
+						$_website = get_post_meta($post->ID,'bf_website')[0];
+						$_facebook = get_post_meta($post->ID,'bf_facebook')[0];
+						$_twitter = get_post_meta($post->ID,'bf_twitter')[0];
+						$_linkedin = get_post_meta($post->ID,'bf_linkedin')[0];
+				?>
+					<div class="brokerage-cont-other-details row margin-top-10">
+						<?=!empty($_phone)?'<div class="col-md-12"><i class="fa fa-fw fa-phone-square"></i>'.$_phone.'</div>':''?>
+						<?=!empty($_address)?'<div class="col-md-12"><i class="fa fa-fw fa-globe"></i>'.$_address.'</div>':''?>
+						<?=!empty($_website)?'<div class="col-md-6"><i class="fa fa-fw fa-link"></i><a href="'.$_website.'">'.$_website.'</a></div>':''?>
+						<?=!empty($_linkedin)?'<div class="col-md-6"><i class="fa fa-fw fa-linkedin-square"></i><a href="'.$_linkedin.'">'.$_linkedin.'</a></div>':''?>
+						<?=!empty($_facebook)?'<div class="col-md-6"><i class="fa fa-fw fa-facebook-square"></i><a href="'.$_facebook.'">'.$_facebook.'</a></div>':''?>
+						<?=!empty($_twitter)?'<div class="col-md-6"><i class="fa fa-fw fa-twitter-square"></i><a href="'.$_twitter.'">'.$_twitter.'</a></div>':''?>
+					</div>
+				<?php
+					}
+				?>
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-3 text-left">
 				<!-- CATEGORIES -->
