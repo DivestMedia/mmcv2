@@ -36,10 +36,10 @@
                 </ul>
                 <div class="blog-single-small-media">
                     <figure class="margin-bottom-20 text-center">
-                        <?=(the_post_thumbnail( 'full', [ 'alt' => $post->post_name ] ))?>
+                        <?=(the_post_thumbnail( 'full', [ 'alt' => $post->post_name, 'style' => 'width:300px;height:auto;' ] ))?>
                     </figure>
                 </div>
-                <div class="dropcap">
+                <div class="dropcap" style="min-height: 450px;">
                     <?php the_content();?>
                 </div>
                 <div class="divider divider-dotted"><!-- divider --></div>
