@@ -92,29 +92,42 @@ global $featuredVids,$featuredTitle;
 
 							?>
 							<div class="col-sm-4 margin-bottom-20">
-								<a href="#all-videos" class="btn-play-vid-a">
-									<img class="img-responsive" src="<?=($iod_video_thumbnail)?>" />
-								</a>
-								<h4 class="margin-top-20 size-14 weight-700 uppercase height-20 text-center"><a href="#all-videos" class="btn-play-vid-a"><?=xyr_smarty_limit_chars(get_the_title($post->ID),80)?></a></h4>
-								<a class="block btn-play-vid btn-sm btn primary-bg text-center noradius weight-700 lightbox lightbox" href="<?=($iod_video)?>" data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}">PLAY NOW</a>
-								<!-- <ul class="text-left size-12 list-inline list-separator">
-								<li>
-								<i class="fa fa-calendar"></i>
-								<?=get_the_date('D M j')?>
-							</li>
-						</ul> -->
-					</div>
-					<?php
-				endforeach;
+								<div class="item-box noshadow hover-box margin-top-10">
+									<figure>
+										<span class="item-hover">
+											<span class="overlay dark-5"></span>
+										</span>
+										<span class="item-description">
+											<span class="overlay primary-bg "></span>
+											<span class="inner padding-top-0">
+												<h3><em><a href="#" style="color:#fff"></a></em><?=xyr_smarty_limit_chars(get_the_title($post->ID),40)?></h3>
+												<span class="block size-11 text-center color-theme uppercase">
+													<a class=" btn-sm btn primary-bg text-center noradius weight-700 lightbox" href="<?=($iod_video)?>" data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}">PLAY NOW</a>
+												</span>
 
-			endif;
-			$post = $mainpost;
-			?>
-			<div class="pagination"><?=posts_pagination()?></div>
+											</span>
+										</span>
+
+										<img class="img-responsive" src="<?=($iod_video_thumbnail)?>" alt="">
+									</figure>
+								</div>
+
+							</div>
+
+
+
+
+							<?php
+						endforeach;
+
+					endif;
+					$post = $mainpost;
+					?>
+					<div class="pagination"><?=posts_pagination()?></div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
-</div>
 </div>
 <!-- Tab v3 -->
 

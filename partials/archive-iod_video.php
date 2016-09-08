@@ -92,7 +92,7 @@ $featuredVidsCategories[] = [
 foreach ($video_cats as $key => $cat) {
 
 	if(in_array($cat->slug,[
-		'investment',
+		'webinars',
 		])) continue;
 		$child = [];
 		$child_cats = get_categories([
@@ -132,8 +132,8 @@ foreach ($video_cats as $key => $cat) {
 
 	}
 	$featuredVidsNews =  get_posts([
-		'posts_per_page' => 9,
-		'posts_per_archive_page' => 9,
+		'posts_per_page' => 12,
+		'posts_per_archive_page' => 12,
 		'paged' => get_query_var('paged') ?: 1,
 		'post_type' => [
 			'iod_video'

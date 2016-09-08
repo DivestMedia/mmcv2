@@ -90,6 +90,5 @@ global $featuredPost,$featuredTitle;
 			</div>
 		</div>
 		<!-- Tab v3 -->
-
 	</div>
 </section>

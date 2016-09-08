@@ -367,10 +367,12 @@ div.side-nav{
 {
     .link-gray{
         a{
-            height: 40px;
             overflow: hidden;
             display: block;
             color: #333;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            padding-top: 5px;
             &:hover,&:active,&:focus,&.active{
                 color: #27AE60;
             }
@@ -446,5 +448,14 @@ ul.widget-twitter{
     canvas{
         width: auto!important;
         height: 35px!important;
+    }
+}
+.channel-item-box{
+    .post-title{
+        a{
+            &:hover,&:active,&:focus,&.active{
+                color: #27AE60!important;
+            }
+        }
     }
 }
