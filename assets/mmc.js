@@ -1,7 +1,7 @@
 var newsimages = [];
 
 jQuery(function($){
-    
+
 
     if(jQuery.browser.mobile)
     {
@@ -36,13 +36,13 @@ jQuery(function($){
     if( $('#global_news').length > 0 ){
         newsimages = [];
         assignnewsimage(jQuery('#global-news-post-slider .img-hover .list-separator li:last-child()'),jQuery('#global-news-post-slider .img-hover figure'),true);
-        assignnewsimage(jQuery('#global-news-post-slider-usa .img-hover .list-separator li:last-child()'),jQuery('#global-news-post-slider-usa .img-hover figure'),true);
-        assignnewsimage(jQuery('#global-news-post-slider-asia .img-hover .list-separator li:last-child()'),jQuery('#global-news-post-slider-asia .img-hover figure'),true);
-        assignnewsimage(jQuery('#global-news-post-slider-stocks .img-hover .list-separator li:last-child()'),jQuery('#global-news-post-slider-stocks .img-hover figure'),true);
+        assignnewsimage(jQuery('<span>USA</span>'),jQuery('#global-news-post-slider-usa a figure'),true);
+        assignnewsimage(jQuery('<span>Asia</span>'),jQuery('#global-news-post-slider-asia a figure'),true);
+        assignnewsimage(jQuery('<span>Stocks</span>'),jQuery('#global-news-post-slider-stocks a figure'),true);
     }
 
     $('#subscribenow').find('.btn').removeClass('btn-default').addClass('secondary-bg border-1');
-    
+
     $('.btn-play-vid-a').click(function(){
         $('.btn-play-vid').trigger('click');
     });
