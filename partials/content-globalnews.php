@@ -113,20 +113,8 @@ $postnotin = [];
 								<?php foreach($global_news as $post): $postnotin[] = $post->ID?>
 									<div class="img-hover">
 										<a href="<?=get_the_permalink()?>">
-											<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 200px;" class="lazyOwl" data-src="<?=the_post_thumbnail_url()?>"></figure>
-										</a>
-
-										<h4 class="text-left margin-top-20 height-50 post-title"><a href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),80)?></a></h4>
-										<div class="text-left margin-bottom-10 height-100 post-excerpt"><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_excerpt())),200)?></div>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i>
-												<?=get_the_date('M j')?>&nbsp;<small><?=get_the_date('g:i a')?></small>
-											</li>
-
 											<?php
 											$posttags = get_the_tags();
-
 											$posttags = array_filter($posttags,function($t){
 												if(!in_array($t->slug,[
 													'pre-markets',
@@ -145,20 +133,29 @@ $postnotin = [];
 												if ($posttags) {
 													$ftag = array_rand($posttags);
 													?>
-													<li>
-														<a href="<?=$ftag->link?>"><i class="fa fa-fw fa-tag"></i><?=$posttags[$ftag]->name?></a>
-													</li>
+													<label class="badge badge-green pull-right margin-top-10 margin-right-10">
+														<span href="<?=$ftag->link?>" class="text-white"><i class="fa fa-fw fa-tag"></i><?=$posttags[$ftag]->name?></span>
+													</label>
 													<?php
 												}else{
 													?>
-													<li>
-														<a href="/category/news"><i class="fa fa-fw fa-tag"></i>News</a>
-													</li>
+													<label class="badge badge-green pull-right margin-top-10 margin-right-10">
+														<span href="/category/news" class="text-white"><i class="fa fa-fw fa-tag"></i>News</span>
+													</label>
 													<?php
 												}
 
 												?>
-											</ul>
+											<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 200px;" class="lazyOwl" data-src="<?=the_post_thumbnail_url()?>"></figure>
+										</a>
+
+										<h4 class="text-left margin-top-20 height-50 post-title"><a href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),80)?></a></h4>
+										<div class="text-left margin-bottom-10 height-100 post-excerpt"><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_excerpt())),200)?></div>
+										<ul class="text-left size-12 list-inline list-separator">
+											<li class="block">
+												<i class="fa fa-calendar"></i>
+												<?=get_the_date('D M j, Y')?>&nbsp;<small class="pull-right"><?=human_time_diff( get_the_time('U'), current_time('timestamp') ) . " ago"?></small>
+											</li>
 										</div>
 									<?php endforeach; ?>
 
@@ -190,19 +187,19 @@ $postnotin = [];
 										<div class="link-gray">
 											<a class="size-14" href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),80)?></a>
 
-											<ul class="text-left size-12 list-inline list-separator text-gray">
-												<li><i class="fa fa-calendar-o"></i><?=get_the_date('M j')?>&nbsp;<small><?=get_the_date('g:i a')?></small></li>
+											<ul class="text-left size-12 list-inline list-separator">
+												<li class="block"><i class="fa fa-calendar"></i><?=get_the_date('D M j, Y')?>&nbsp;<small class="pull-right"><?=human_time_diff( get_the_time('U'), current_time('timestamp') ) . " ago"?></small></li>
 											</ul>
 										</div>
 									<?php endforeach; ?>
 								</div>
-								<div class="divider margin-bottom-0"><!-- divider --></div>
-								<div class="heading-title text-right margin-top-20 link-viewmore-news">
+								<div class="divider margin-bottom-0 margin-top-10"><!-- divider --></div>
+								<div class="heading-title text-right margin-top-0 link-viewmore-news">
 									<a href="/tag/usa/"><h4 class="size-15">View more<span> News</span></h4></a>
 								</div>
 							<?php endif; ?>
 						</div>
-						
+
 						<div class="col-md-4">
 							<div class="heading-title heading-dotted">
 								<h4>Asia <span>News</span></h4>
@@ -227,19 +224,19 @@ $postnotin = [];
 											<a class="size-14" href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),80)?></a>
 
 											<ul class="text-left size-12 list-inline list-separator">
-												<li><i class="fa fa-calendar-o"></i><?=get_the_date('M j')?>&nbsp;<small><?=get_the_date('g:i a')?></small></li>
+												<li class="block"><i class="fa fa-calendar"></i><?=get_the_date('D M j, Y')?>&nbsp;<small class="pull-right"><?=human_time_diff( get_the_time('U'), current_time('timestamp') ) . " ago"?></small></li>
 											</ul>
 										</div>
 									<?php endforeach; ?>
 								</div>
-								<div class="divider margin-bottom-0"><!-- divider --></div>
-								<div class="heading-title text-right margin-top-20 link-viewmore-news">
+								<div class="divider margin-bottom-0 margin-top-10"><!-- divider --></div>
+								<div class="heading-title text-right margin-top-0 link-viewmore-news">
 									<a href="/tag/asia/"><h4 class="size-15">View more<span> News</span></h4></a>
 								</div>
 							<?php endif; ?>
 						</div>
-					
-					
+
+
 						<div class="col-md-4">
 							<div class="heading-title heading-dotted">
 								<h4>Stock <span>News</span></h4>
@@ -264,13 +261,13 @@ $postnotin = [];
 											<a class="size-14" href="<?=get_the_permalink()?>"><?=xyr_smarty_limit_chars(get_the_title(),80)?></a>
 
 											<ul class="text-left size-12 list-inline list-separator">
-												<li><i class="fa fa-calendar-o"></i><?=get_the_date('M j')?>&nbsp;<small><?=get_the_date('g:i a')?></small></li>
+												<li class="block"><i class="fa fa-calendar"></i><?=get_the_date('D M j, Y')?>&nbsp;<small class="pull-right"><?=human_time_diff( get_the_time('U'), current_time('timestamp') ) . " ago"?></small></li>
 											</ul>
 										</div>
 									<?php endforeach; ?>
 								</div>
-								<div class="divider margin-bottom-0"><!-- divider --></div>
-								<div class="heading-title text-right margin-top-20 link-viewmore-news">
+								<div class="divider margin-bottom-0 margin-top-10"><!-- divider --></div>
+								<div class="heading-title text-right margin-top-0 link-viewmore-news">
 									<a href="/tag/stocks/"><h4 class="size-15">View more<span> News</span></h4></a>
 								</div>
 							<?php endif; ?>
