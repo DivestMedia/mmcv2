@@ -9,9 +9,12 @@ get_template_part( 'partials/content', 'featuredvideos' );
 
 // get_template_part( 'partials/content', 'juicyextras' );
 get_template_part( 'partials/content', 'globalnews' );
+get_template_part( 'partials/content', 'ads' );
 get_template_part( 'partials/content', 'featuredarticles' );
 
-//get_template_part( 'partials/content', 'investordivest' );
+get_template_part( 'partials/content', 'ads' );
+
+get_template_part( 'partials/content', 'investordivest' );
 get_template_part( 'partials/content', 'subscription' );
 get_template_part( 'partials/content', 'network_logos' );
 

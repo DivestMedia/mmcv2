@@ -104,7 +104,7 @@ data-background="assets/images/boxed_background/1.jpg"
 					<?php endif; ?>
 					<li class="divest-logo-link">
 						<a href="http://divestmedia.com">
-							<img src="<?=get_stylesheet_directory_uri();?>/assets/img/DivestMedia.png"/>
+							<img src="<?=get_stylesheet_directory_uri();?>/assets/img/divestmedia-top-logo.png"/>
 						</a>
 					</li>
 				</ul>
