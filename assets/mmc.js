@@ -35,7 +35,7 @@ jQuery(function($){
 
     if( $('#global_news').length > 0 ){
         newsimages = [];
-        assignnewsimage(jQuery('#global-news-post-slider .img-hover .list-separator li:last-child()'),jQuery('#global-news-post-slider .img-hover figure'),true);
+        assignnewsimage(jQuery('#global-news-post-slider .img-hover label.badge'),jQuery('#global-news-post-slider .img-hover figure'),true);
         assignnewsimage(jQuery('<span>USA</span>'),jQuery('#global-news-post-slider-usa a figure'),true);
         assignnewsimage(jQuery('<span>Asia</span>'),jQuery('#global-news-post-slider-asia a figure'),true);
         assignnewsimage(jQuery('<span>Stocks</span>'),jQuery('#global-news-post-slider-stocks a figure'),true);
@@ -134,7 +134,7 @@ function assignnewsimage(tagelem,itemelem,taglist){
                                 newsimages[tagkey] = 0;
                             }
                             newsimages[tagkey]++;
-                            console.log(newsimages[tagkey]);
+                            // console.log(newsimages[tagkey]);
                         }else{
                             rnewimgsrc = newimgsrc[ctr];
                             if(ctr++>=max)
@@ -155,7 +155,7 @@ function assignnewsimage(tagelem,itemelem,taglist){
         newscount = countnow;
     }
     // },1000);
-    console.log(newsimages);
+    // console.log(newsimages);
 }
 
 function switch_tags(tags){
