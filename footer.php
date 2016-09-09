@@ -58,14 +58,15 @@ get_template_part( 'partials/content', 'vipsubscribers' );
 			&copy; 2016 Market MasterClass. All rights reserved
 		</div>
 		<div class="col-sm-6 text-right">
-
-
-			<a href="http://www.divestmedia.com/privacy-policy">Privacy Policy</a>
-			&nbsp;&nbsp;&bullet;&nbsp;&nbsp;
-			<a href="http://www.divestmedia.com/terms-and-conditions">Terms and Conditions</a>
-			&nbsp;&nbsp;&bullet;&nbsp;&nbsp;
-			<a href="http://www.divestmedia.com/sitemap">Sitemap</a>
-
+            <?php
+                if(!empty(wp_get_nav_menu_items('Footer Navigation'))){
+                    $footer_menu = [];
+                    foreach (wp_get_nav_menu_items('Footer Navigation') as $f) {
+                        array_push($footer_menu , '<a href="'.$f->url.'">'.$f->title.'</a>');
+                    }
+                }
+                print_r(implode(' | ', $footer_menu));
+            ?>
 		</div>
 
 

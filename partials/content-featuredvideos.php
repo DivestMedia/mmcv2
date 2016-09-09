@@ -241,9 +241,10 @@ $post = $featuredvideos;
 
             </div>
         </div>
+        <?php if(is_home()){?>
         <div class="row">
             <?php
-
+            
             $mainpost = $post;
             $featuredcats = [
                 [
@@ -307,7 +308,9 @@ $post = $featuredvideos;
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
-        <?php if(!$featureNoMore): ?>
+        <?php 
+        }
+        if(!$featureNoMore): ?>
             <div class="heading-title heading-dotted text-right margin-top-20 ">
                 <a href="<?=site_url('videos')?>"><h4>Watch more<span> Videos</span></h4></a>
             </div>
