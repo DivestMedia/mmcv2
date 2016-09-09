@@ -32,10 +32,24 @@ class stockMarket{
 			//range date
 			if(!empty($_from)){
 
+				$attr = [];
+				foreach($item->attributes() as $a => $b) {
+					$attr[$a] = $b;
+				}
+				$_symbol = (string)$attr['Symbol'];
+
+				$y = (float)$item->Open;
+				$z = (float)$item->Close;
+
+				$_stockInfo = (($z - $y) / $y)*100;
+
+
+				if(!isset($_datas[$_symbol])){
+					$_datas[$_symbol] = [];
+				}
+				$_datas[$_symbol][] = number_format($_stockInfo,2);
 
 			}else{
-
-
 				$_symbol = (string)$item['symbol'];
 
 				//$_sym = $item['symbol'];
@@ -46,8 +60,11 @@ class stockMarket{
 				);
 
 				$_datas[$_symbol] = $_stockInfo;
-
 			}
+
+
+
+			// }
 
 			/*
 			$item->title */
@@ -62,6 +79,7 @@ class stockMarket{
 			//echo "\n\n\n\n\n";
 
 		}
+
 		return $_datas;
 
 	}
@@ -90,29 +108,32 @@ class stockMarket{
 		}
 
 		$_apiURL = 'http://query.yahooapis.com/v1/public/yql?q='. $_req_URL .'&env=store://datatables.org/alltableswithkeys';
+
 		//echo $_apiURL ;
-		$_ret = wp_remote_retrieve_body( wp_remote_get($_apiURL) );
-		//$_ret = wp_remote_get( $_apiURL  );
-
-		return $_ret;
-	}
-
-	static function stockURL($_req_URL){
-		$_apiURL = rawurlencode('select * from yahoo.finance.quotes where symbol in ').'('. $_req_URL .')';
-		return $_apiURL;
-	}
-	function stockDateRange($_req_URL, $_from = '',$_to =''){
-
-		if(empty($_from)){
-			$_from = (string)date('Y-m-d');
+		// $_ret = wp_remote_retrieve_body( wp_remote_get($_apiURL) );
+		if(is_array($_ret = wp_remote_get( $_apiURL  ,[
+			'timeout'     => 120
+			]))){
+				return $_ret['body'];
+			}else{
+				return false;
+			}
 		}
-		if(empty($_to)){
-			$_to = (string)date('Y-m-d', strtotime('-7 days'));
-		}
-		$_apiURL = rawurlencode('select * from yahoo.finance.historicaldata where symbol in ').'('. $_req_URL .')'
-			. rawurlencode(' and startDate').'='.urlencode('"'.$_to . '"')
-			. rawurlencode(' and endDate').'='.urlencode('"'.$_from . '"');
 
-		return $_apiURL;
+		static function stockURL($_req_URL){
+			$_apiURL = rawurlencode('select * from yahoo.finance.quotes where symbol in ').'('. $_req_URL .')';
+			return $_apiURL;
+		}
+		static function stockDateRange($_req_URL, $_from = '',$_to =''){
+
+			if(empty($_from)){
+				$_from = (string)date('Y-m-d');
+			}
+			if(empty($_to)){
+				$_to = (string)date('Y-m-d', strtotime('-7 days'));
+			}
+			$_apiURL = rawurlencode('SELECT * FROM yahoo.finance.historicaldata where symbol in  ('. $_req_URL .')  and endDate = "'.$_to . '" and startDate = "'.$_from . '" ');
+
+			return $_apiURL;
+		}
 	}
-}

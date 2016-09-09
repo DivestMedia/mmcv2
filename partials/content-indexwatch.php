@@ -3,7 +3,8 @@
 
 
 //$_datas = stockMarket::request(array('AAPL','GOOG','YHOO','NDAQ'),date('Y-m-d'));
-$_datas = stockMarket::request(array('AAPL','GOOG','YHOO','^GSPC'));
+$_datas = stockMarket::request(array('AAPL','GOOG','YHOO','NDAQ'));
+$_datas2 = stockMarket::request(array('AAPL','GOOG','YHOO','NDAQ'),date('Y-m-d',strtotime("-5 week")),date('Y-m-d'));
 
 ?>
 <section class="dark nopadding noborder" id="scroll-market">
@@ -27,6 +28,7 @@ $_datas = stockMarket::request(array('AAPL','GOOG','YHOO','^GSPC'));
 					<?php
 
 					foreach($_datas as $_stock => $_info){
+
 						?>
 						<div class="col-xs-6 col-sm-3 padding-10">
 
@@ -49,8 +51,8 @@ $_datas = stockMarket::request(array('AAPL','GOOG','YHOO','^GSPC'));
 
 							</div>
 							<div class="clearfix"></div>
-							<div class=" sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2"}'>
-								1,3,1,-1,0,2,1,3,1,-1,0,2,1,0,2,1,3,1,-1,0,2,1
+							<div class=" sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2","tooltipSuffix" : "%"}'>
+								<?=implode(',',$_datas2[$_stock])?>
 							</div>
 						</div>
 						<?php
