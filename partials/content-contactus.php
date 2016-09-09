@@ -24,13 +24,13 @@
 				<i class="fa fa-envelope-o fa-4x"></i>
 				<br/><br/>
 				<small class="text-gray">EMAIL</small>
-				<p>support@marketmasterclass.com</p>
+				<p><a href="<?=site_url('/contact-us')?>" style="color:#fff;">support@marketmasterclass.com</a></p>
 			</div>
 			<div class="col-xs-6 col-sm-3">
 				<i class="fa fa-map-marker fa-4x"></i>
 				<br/><br/>
 				<small class="text-gray">ADDRESS</small>
-				<p>#2698 CBL Building Gen. Cailles St, Brgy. Bangkal, Makati City , PH 1233 </p>
+				<p>#2698 CBL Building Gen. Cailles St, Brgy. Bangkal, Makati City , PH 1233</p>
 			</div>
 		</div>
 	</div>

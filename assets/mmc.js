@@ -1,7 +1,8 @@
 var newsimages = [];
 
 jQuery(function($){
-
+    
+    
 
     if(jQuery.browser.mobile)
     {
@@ -46,6 +47,13 @@ jQuery(function($){
     $('.btn-play-vid-a').click(function(){
         $('.btn-play-vid').trigger('click');
     });
+    
+    if($('#masterslider-promo').length){
+        setTimeout(function(){
+            window.dispatchEvent(new Event('resize'));
+        },2000);
+        
+    }
 });
 
 

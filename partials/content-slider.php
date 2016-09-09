@@ -22,7 +22,7 @@
 	?>
 		<!-- Slide 1 -->
 		<div class="ms-slide">
-			<img src="blank.gif" data-src="<?=$_banner_url?>" alt="<?=$_banner->title?>">
+			<img src="" data-src="<?=$_banner_url?>" alt="<?=$_banner->title?>">
 			<div class="ms-layer btn btn-lg btn-third noradius hidden-xs" style="left: 15px; top: 182px; opacity: 1;" data-type="text" data-delay="10" data-effect="skewleft(50,340)" data-ease="easeOutExpo" data-duration="2200">
 				<?=ucwords($_banner->category)?>
 			</div>
