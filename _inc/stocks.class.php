@@ -36,7 +36,7 @@ class stockMarket{
 				foreach($item->attributes() as $a => $b) {
 					$attr[$a] = $b;
 				}
-				$_symbol = (string)$attr['Symbol'];
+				$_symbol = urldecode((string)$attr['Symbol']);
 
 				$y = (float)$item->Open;
 				$z = (float)$item->Close;
@@ -54,9 +54,9 @@ class stockMarket{
 
 				//$_sym = $item['symbol'];
 				$_stockInfo = array(
-					'bid' => (string)$item->Bid,
-					'change' => (string)$item->Change,
-					'change_percent' => (string)$item->PercentChange,
+					'bid' => (string)$item->Bid ?: 0,
+					'change' => (string)$item->Change ?: 0,
+					'change_percent' => (string)$item->PercentChange ?: 0,
 				);
 
 				$_datas[$_symbol] = $_stockInfo;
@@ -109,7 +109,7 @@ class stockMarket{
 
 		$_apiURL = 'http://query.yahooapis.com/v1/public/yql?q='. $_req_URL .'&env=store://datatables.org/alltableswithkeys';
 
-		//echo $_apiURL ;
+		// echo $_apiURL ;
 		// $_ret = wp_remote_retrieve_body( wp_remote_get($_apiURL) );
 		if(is_array($_ret = wp_remote_get( $_apiURL  ,[
 			'timeout'     => 120

@@ -1,14 +1,18 @@
 <section class="dark alternate" >
 		<div class="container">
-		
-			<header class="text-center margin-bottom-50 tiny-line">
-				<h2 class="font-proxima uppercase">Invest or <span>Divest</span></h2>
-			</header>
-			
+
+
+
 			<div class="row">
 				<!-- Col 1 -->
 				<div class="col-sm-6 col-md-6 margin-bottom-20">
-					
+					<header class="text-center margin-bottom-50 tiny-line">
+						<h2 class="font-proxima uppercase">Invest or <span>Divest</span></h2>
+						<p>
+							<strong class="uppercase">User-based Video Reviews</strong><br>
+							We give you the brutal truth
+						</p>
+					</header>
 					<div class="item-box noshadow">
 						<figure>
 							<span class="item-hover">
@@ -29,14 +33,20 @@
 							<img class="img-responsive liner" src="<?=get_stylesheet_directory_uri();?>/img-temp/photo-1431274172761-fca41d930114.jpg" alt="">
 						</figure>
 					</div>
-					
-					
+
+
 				</div>
 				<!-- End Col 1 -->
 
 				<!-- Col 2 -->
 				<div class="col-sm-6 col-md-6 margin-bottom-20">
-					
+					<header class="text-center margin-bottom-50 tiny-line">
+						<h2 class="font-proxima uppercase">Dummies <span>Guide</span></h2>
+						<p>
+							<strong class="uppercase">Beginner's Manual</strong><br>
+							What you need to know about investing
+						</p>
+					</header>
 					<div class="item-box noshadow">
 						<figure>
 							<span class="item-hover">
@@ -57,13 +67,12 @@
 							<img class="img-responsive liner" src="<?=get_stylesheet_directory_uri();?>/img-temp/picjumbo.com_HNCK8182.jpg" alt="">
 						</figure>
 					</div>
-					
-					
+
+
 				</div>
 				<!-- End Col 2 -->
 
 			</div>
-		
+
 		</div>
 	</section>
-	

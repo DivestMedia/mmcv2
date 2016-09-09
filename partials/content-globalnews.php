@@ -45,12 +45,12 @@ $postnotin = [];
 					<div class="side-nav margin-top-50">
 						<div class="side-nav-head">
 							<button class="fa fa-bars"></button>
-							<h4>NEWS HEADLINES</h4>
+							<h4>LATEST <span>NEWS HEADLINES</span></h4>
 						</div>
 
 						<?php
 						$newsHeadlines =  get_posts([
-							'posts_per_page'   => 15,
+							'posts_per_page'   => 10,
 							'category_name'    => 'Headlines',
 							'orderby'          => 'date',
 							'order'            => 'DESC',

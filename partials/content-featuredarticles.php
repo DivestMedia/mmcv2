@@ -34,9 +34,10 @@
 									</a>
 								</li>
 							</ul>
-
-
 						</div>
+						<blockquote class="quote">
+					        <?php echo do_shortcode('[quotcoll limit="1" orderby="random"]')?>
+					    </blockquote>
 					<!-- /side navigation -->
 					</div>
 					<div class="col-sm-9">

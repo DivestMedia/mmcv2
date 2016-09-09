@@ -3,8 +3,9 @@
 
 
 //$_datas = stockMarket::request(array('AAPL','GOOG','YHOO','NDAQ'),date('Y-m-d'));
-$_datas = stockMarket::request(array('AAPL','GOOG','YHOO','NDAQ'));
-$_datas2 = stockMarket::request(array('AAPL','GOOG','YHOO','NDAQ'),date('Y-m-d',strtotime("-5 week")),date('Y-m-d'));
+$quotes = ['AAPL','GOOG','YHOO','NDAQ','NKE','DOW','^VIX','^FTSE','SBUX'];
+$_datas = stockMarket::request($quotes);
+$_datas2 = stockMarket::request($quotes,date('Y-m-d',strtotime("-5 week")),date('Y-m-d'));
 
 ?>
 <section class="dark nopadding noborder" id="scroll-market">
@@ -25,39 +26,41 @@ $_datas2 = stockMarket::request(array('AAPL','GOOG','YHOO','NDAQ'),date('Y-m-d',
 			<div class="col-sm-12 col-md-9 nopadding nomargin primary-bg noborder trading-graph">
 
 				<div class="row box-gradient box-black noborder nopadding primary-bg">
-					<?php
-
-					foreach($_datas as $_stock => $_info){
-
-						?>
-						<div class="col-xs-6 col-sm-3 padding-10">
-
-							<div class="text-center pull-left">
-								<a href="#"><?php echo $_stock;?></a><br>
-								<span class="text-white"><?php echo $_info['bid'];?></span>
-							</div>
-							<div class="text-center width-60 pull-right text-gray">
-								<?php echo $_info['change_percent'];?><br/>
-								<?php echo $_info['change'];?>
-								<?php
-								$_perc = (float)$_info['change'];
-								if($_perc > 0){
-									echo '<span class="text-green"> <i class="fa fa-long-arrow-up"></i><span> ';
-								}elseif($_perc < 0){
-									echo '<span class="text-red"> <i class="fa fa-long-arrow-down"></i><span> ';
-								}else{
-									echo '<span class="text-white"> <i class="fa fa-exchange"></i><span> ';
-								}?>
-
-							</div>
-							<div class="clearfix"></div>
-							<div class=" sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2","tooltipSuffix" : "%"}'>
-								<?=implode(',',$_datas2[$_stock])?>
-							</div>
-						</div>
+					<div class="owl-carousel padding-0 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items":"4", "autoPlay": 2500, "navigation": false, "pagination": false }'>
 						<?php
-					}
-					?>
+
+						foreach($_datas as $_stock => $_info){
+
+							?>
+							<div class="padding-10" style="height:97px;">
+
+								<div class="text-center pull-left">
+									<a href="#"><?php echo $_stock;?></a><br>
+									<span class="text-white"><?php echo $_info['bid'];?></span>
+								</div>
+								<div class="text-center width-60 pull-right text-gray">
+									<?php echo $_info['change_percent'];?><br/>
+									<?php echo $_info['change'];?>
+									<?php
+									$_perc = (float)$_info['change'];
+									if($_perc > 0){
+										echo '<span class="text-green"> <i class="fa fa-long-arrow-up"></i><span> ';
+									}elseif($_perc < 0){
+										echo '<span class="text-red"> <i class="fa fa-long-arrow-down"></i><span> ';
+									}else{
+										echo '<span class="text-white"> <i class="fa fa-exchange"></i><span> ';
+									}?>
+
+								</div>
+								<div class="clearfix"></div>
+								<div class="sparkline" data-plugin-options='{"type":"bar","barColor":"#ffffff","height":"35px","width":"100%","zeroAxis":"false","barSpacing":"2","tooltipSuffix" : "%"}'>
+									<?=implode(',',$_datas2[$_stock])?>
+								</div>
+							</div>
+							<?php
+						}
+						?>
+					</div>
 				</div>
 
 
@@ -68,3 +71,9 @@ $_datas2 = stockMarket::request(array('AAPL','GOOG','YHOO','NDAQ'),date('Y-m-d',
 
 	</div>
 </section>
+<script>
+function initializeSpark(){
+	console.log("Should be initializeSpark");
+}
+
+</script>

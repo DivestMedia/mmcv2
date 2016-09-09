@@ -309,7 +309,7 @@ $post = $featuredvideos;
         </div>
         <?php if(!$featureNoMore): ?>
             <div class="heading-title heading-dotted text-right margin-top-20 ">
-                <a href="<?php site_url('videos');?>"><h4>Watch more<span> Videos</span></h4></a>
+                <a href="<?=site_url('videos')?>"><h4>Watch more<span> Videos</span></h4></a>
             </div>
         <?php endif; ?>
     </div>
