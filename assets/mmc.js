@@ -65,8 +65,15 @@ jQuery(function($){
 
 	
 	
+
+
+
+});
+
+
+
 function isScrolledIntoView(c){var e=$(window).scrollTop();var d=e+$(window).height();var a=$(c).offset().top;var b=a+$(c).height();return((b>=e)&&(a<=d))};
-function loadImg(){
+function xyrLoadImg(){
 			$(".img_place").each(function(){
 				if(isScrolledIntoView(this) == true){
 					if($(this).attr('org_img') !== undefined){
@@ -114,11 +121,6 @@ function loadImg(){
 				}
 			});
 		}
-
-
-
-});
-
 
 function assignnewsimage(tagelem,itemelem,taglist){
 
