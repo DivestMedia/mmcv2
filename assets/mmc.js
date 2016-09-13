@@ -33,6 +33,10 @@ jQuery(function($){
     if( $('.news-feature-grid').length > 0 ){
         assignnewsimage(jQuery('.news-feature-grid .font-proxima.uppercase'),jQuery('.news-feature-grid figure'),false);
     }
+
+    if( $('.video-grid').length > 0 ){
+        jQuery('.video-grid .item-box-big figure img').css('min-height',jQuery('.video-grid .col-md-3').first().height()-10)
+    }
     newsimages = [];
     if( $('#global_news').length > 0 ){
 
@@ -42,7 +46,7 @@ jQuery(function($){
         assignnewsimage(jQuery('<span>Stocks</span>'),jQuery('#global-news-post-slider-stocks a figure'),true);
     }
 
-    if( $('.featured-grid').length > 0 ){
+    if( $('.featured-grid').not('.video-grid').length > 0 ){
         assignnewsimage(jQuery('.featured-grid h3 em a'),jQuery('.featured-grid figure img'),true);
     }
 
@@ -58,6 +62,8 @@ jQuery(function($){
         },2000);
 
     }
+
+
 });
 
 
