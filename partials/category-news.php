@@ -24,6 +24,8 @@ $post = get_posts([
 
 foreach ($post as $key => $news) {
 	$tags_array = get_the_tags( $news->ID );
+
+	$tags_array = [$tags_array[array_rand($tags_array)]];
 	$hastag = false;
 	if($tags_array){
 		$hastag = true;
