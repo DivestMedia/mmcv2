@@ -4,6 +4,7 @@ $is_brokeragefirms = false;
 if(!strcasecmp(get_the_category($post->ID)[0]->name,'Brokerage Firms')){
 	$is_brokeragefirms = true;
 }
+$_parentcat = get_the_category()[0]->category_parent;
 ?>
 <section>
 	<div class="container">
@@ -26,6 +27,14 @@ if(!strcasecmp(get_the_category($post->ID)[0]->name,'Brokerage Firms')){
 					<?=$post->post_content?>
 				</div>
 				<?php 
+					if(!strcasecmp(get_cat_name($_parentcat),'Articles')){
+						$prev_articles_url = get_category_link(get_the_category()[0]);
+				?>
+					<div class="cont-previous-article pull-right">
+						<a href="<?=$prev_articles_url?>">View previous articles</a>
+					</div>
+				<?php
+					}
 					if($is_brokeragefirms){
 						$_phone = get_post_meta($post->ID,'bf_phone')[0];
 						$_address = get_post_meta($post->ID,'bf_address')[0];
@@ -55,7 +64,7 @@ if(!strcasecmp(get_the_category($post->ID)[0]->name,'Brokerage Firms')){
 						<h4>CATEGORIES</h4>
 					</div>
 					<?php 
-					$_parentcat = get_the_category()[0]->category_parent;
+					
 					$_category = get_categories( array( 'child_of' => $_parentcat ));
 					if(in_category(['news'])):?>
 						<ul class="list-group list-group-bordered list-group-noicon uppercase">
