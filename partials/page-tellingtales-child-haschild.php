@@ -48,7 +48,7 @@
 										foreach ($_children as $_child){
 										?>
 											<li class="list-group-item <?=$_currentid==$_child->ID?'active':''?>">
-												<a href="<?=($_child->guid ?: '#')?>"><?=($_child->post_title ?: 'Uncategorized')?></a>
+												<a href="<?=(get_the_permalink($_child->ID)?: '#')?>"><?=($_child->post_title ?: 'Uncategorized')?></a>
 											</li>
 										<?php }?>
 									</ul>

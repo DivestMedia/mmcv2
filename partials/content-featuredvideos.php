@@ -264,6 +264,7 @@ $post = $featuredvideos;
                 ?>
                 <?php if(count($featuredvideos)):
                     $catThumbs = get_option('taxonomy_image_plugin');
+                    if(!empty($catThumbs)){
                     ?>
                     <div class="heading-title heading-dotted text-left margin-top-20 ">
                         <a href="<?=site_url('videos')?>"><h4>Our<span> Channels</span></h4></a>
@@ -287,7 +288,8 @@ $post = $featuredvideos;
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    <?php endforeach; 
+                    }?>
                 <?php endif; ?>
             </div>
             <?php if(!$featureNoMore): ?>

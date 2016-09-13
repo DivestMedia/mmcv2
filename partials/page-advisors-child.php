@@ -19,8 +19,8 @@ setup_postdata($post);
 				
 
 				<blockquote>
-				<h2 class="size-25"><span><?=the_title()?>, MBA </span></h2>
-				<p>"<?=get_post_meta($post->ID,'advisor_quote')[0]?>"</p>
+				<h2 class="size-25" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);"><span><?=the_title()?></span></h2>
+				<p style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">"<?=get_post_meta($post->ID,'advisor_quote')[0]?>"</p>
 			</blockquote>
 
 			</div>
