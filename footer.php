@@ -111,9 +111,16 @@ get_template_part( 'partials/content', 'vipsubscribers' );
 wp_footer();
 global $_footers;
 echo $_footers;
+
+if(is_home()){
+	?>
+	
+	<script src="<?=get_stylesheet_directory_uri();?>/assets/js/master-slider/masterslider/masterslider.js"></script>
+	<script src="<?=get_stylesheet_directory_uri();?>/assets/js/slider.js"></script>
+	<?php
+}
 ?>
-<script src="<?=get_stylesheet_directory_uri();?>/assets/js/master-slider/masterslider/masterslider.js"></script>
-<script src="<?=get_stylesheet_directory_uri();?>/assets/js/slider.js"></script>
+
 <script src="<?=get_stylesheet_directory_uri();?>/assets/js/jquery.matchHeight-min.js"></script>
 <script>
 $(function() {
