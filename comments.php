@@ -30,7 +30,7 @@ global $post;
 <!-- COMMENTS -->
 <div id="comments" class="comments">
     <div class="comment-form-wrapper row">
-        <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+        <div class="col-xs-12">
             <?php include_once('comment-form.php'); ?>
              <?php // comment_form(); ?>
         </div>

@@ -7,9 +7,6 @@ get_template_part( 'partials/content', 'indexwatch' );
 			<h2 class="font-proxima uppercase">WHO WE <span>ARE</span></h2>
 		</header>
 
-		<blockquote class="quote">
-			<?php echo do_shortcode('[quotcoll limit="1" orderby="random"]')?>
-		</blockquote>
 		<div class="row">
 
 			<div class="col-lg-3 col-md-3 col-sm-3 text-center">
@@ -75,7 +72,7 @@ get_template_part( 'partials/content', 'indexwatch' );
 		</div>
 	</div>
 </div> -->
-<div class="col-md-3 col-sm-6 item">
+<div class="col-md-3 col-md-offset-3 col-sm-6 item">
 	<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
 		<div class="front">
 			<div class=" noradius">
@@ -112,57 +109,14 @@ get_template_part( 'partials/content', 'indexwatch' );
 				<hr />
 				<p>
 					Cameron Clark
-					Cameron has been involved in the investment world since the early 1980’s when he started out a career in investment consultancy, providing expert advice in corporate off shore investment. He moved over to Zurich Financial Services where he became a specialized broker consultant, dealing with IFA’s, accountants and solicitors and bringing in corporate business in both on and off shore, and also dealing with group pensions. He moved to Asia in 2003 where he moved to the sales side of the business, before then investing his money in various stocks and commodities and eventually breaking out and becoming an independent investor forging his own path. He has a wealth of experience in both investing and business management, as well as sales and marketing. He has been making his money grow through investments for the last two decades.</p>
-					<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
-				</div>
+					Cameron has been involved in the investment world since the early 1980’s when he started out a career in investment consultancy, providing expert advice in corporate off shore investment. He moved over to Zurich Financial Services where he became a specialized broker consultant, dealing with IFA’s, accountants and solicitors and bringing in corporate business in both on and off shore, and also dealing with group pensions. He moved to Asia in 2003 where he moved to the sales side of the business, before then investing his money in various stocks and commodities and eventually breaking out and becoming an independent investor forging his own path. He has a wealth of experience in both investing and business management, as well as sales and marketing. He has been making his money grow through investments for the last two decades.
+				</p>
+				<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
 			</div>
 		</div>
 	</div>
-	<div class="col-md-3 col-sm-6 item">
-		<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
-			<div class="front">
-				<div class=" noradius">
-					<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Shaun-Hurley.png" alt="" />
-					<div class="caption">
-						<h4 class="nomargin">Shaun Hurley</h4><hr/>
-						<span class="size-16 margin-bottom-20 block">Sales Director </span>
-					</div>
-				</div>
-			</div>
-			<div class="back">
-				<div class="box2" style="background-color:#a0ce4e;">
-					<h4>Shaun Hurley</h4>
-					<hr />
-					<p>Shaun started off in sales at a very young age, trading in the markets before moving into insurance and pensions. Fresh out of his teens he took a bold decision to take his future into his own hands and invested some money in stocks, managing to make a good profit in the process. He then left England while still in his early twenties and moved to Europe where he lived in several different countries while engaging in his favorite pastime; gambling. He eventually became a full-time gambler and spent a few years living the hectic life of a punter, before moving to Asia and deciding to step out of the gambling circuit in order to settle down, stepping back into sales with the safe gamble of Divest Media. He loves making nothing into something and turning ideas into money.</p>
-					<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-md-3 col-sm-6 item">
-		<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
-			<div class="front">
-				<div class=" noradius">
-					<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Dimitri-Leemon.png" alt="" />
-					<div class="caption">
-						<h4 class="nomargin">Dimitri Leemon</h4><hr/>
-						<span class="size-16 margin-bottom-20 block">Editorial Director </span>
-					</div>
-				</div>
-			</div>
-			<div class="back">
-				<div class="box2" style="background-color:#a0ce4e;">
-					<h4>Dimitri Leemon</h4>
-					<hr />
-					<p>Dimitri has worked across many industries in his peripatetic life and has spent most of his time leading editorial teams of one kind or another in a variety of different fields. He has written and provided content, under various pen names, for several magazines and websites , he has been an editor in both printed publications and online websites, he has led advertising and marketing campaigns, and he has also been part of an event organizing team.
-
-						He has lived in the UK, France, Germany and Spain, and has been living in Asia since 2008, settling in the Philippines after spending a few months in Thailand and India. He has a passion for hiking and scuba diving, and he has invested a portion of his earnings throughout most of his life, always leaning on the conservative side.</p>
-						<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+</div>
+</div>
 </div>
 </section>
 <!-- / -->
@@ -170,60 +124,80 @@ get_template_part( 'partials/content', 'indexwatch' );
 <section class="about_heads">
 	<div class="container">
 		<div class="row margin-bottom-40">
-			<div class="col-sm-4 col-md-3">
-
-			</div>
-			<div class="col-md-3 col-sm-4 item">
+			<div class="col-md-4 col-sm-4 item">
 				<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
 					<div class="front">
 						<div class=" noradius">
-							<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Anwar-Ratag.png" alt="" />
+							<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Shaun-Hurley.png" alt="" />
 							<div class="caption">
-								<h4 class="nomargin cont-name">Anwar Ratag</h4><hr/>
-								<span class="size-16 margin-bottom-20 block">Creative Director</span>
+								<h4 class="nomargin cont-name">Kenyon Martin</h4><hr/>
+								<span class="size-16 margin-bottom-20 block">Sales Director </span>
 							</div>
 						</div>
 					</div>
 					<div class="back">
 						<div class="box2" style="background-color:#a0ce4e;">
-							<h4>Anwar Ratag</h4>
+							<h4>Kenyon Martin</h4>
 							<hr />
-							<p>Anwar has more than two decades of experience in Visual/Creative and Multimedia Design, as well as over ten years of involvement in Web Design and Development, and he has worked for various Network, Multimedia, Ad Agency and Online Gaming companies.
+							<p>Kenyon started off in sales at a very young age, trading in the markets before moving into insurance and pensions. Fresh out of his teens he took a bold decision to take his future into his own hands and invested some money in stocks, managing to make a good profit in the process. He then left England while still in his early twenties and moved to Europe where he lived in several different countries while engaging in his favorite pastime; gambling. He eventually became a full-time gambler and spent a few years living the hectic life of a punter, before moving to Asia and deciding to step out of the gambling circuit in order to settle down, stepping back into sales with the safe gamble of Divest Media. He loves making nothing into something and turning ideas into money.</p>
+							<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 item">
+				<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
+					<div class="front">
+						<div class=" noradius">
+							<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Dimitri-Leemon.png" alt="" />
+							<div class="caption">
+								<h4 class="nomargin cont-name">Dimitri Leemon</h4><hr/>
+								<span class="size-16 margin-bottom-20 block">Editorial Director </span>
+							</div>
+						</div>
+					</div>
+					<div class="back">
+						<div class="box2" style="background-color:#a0ce4e;">
+							<h4>Dimitri Leemon</h4>
+							<hr />
+							<p>
+								Dimitri has worked across many industries in his peripatetic life and has spent most of his time leading editorial teams of one kind or another in a variety of different fields. He has written and provided content, under various pen names, for several magazines and websites , he has been an editor in both printed publications and online websites, he has led advertising and marketing campaigns, and he has also been part of an event organizing team.
 
-								An artist since birth, with exceptional skills in traditional and digital arts, he loves drawing, sketching and painting, and is also highly skilled in photography and videography and 3-D animation, as well as being well versed in HTML and CSS, and with extensive knowledge in PHP and Java. Also an avid fan of heavy metal music and video games. He just loves anything computer-related.</p>
+								He has lived in the UK, France, Germany and Spain, and has been living in Asia since 2008, settling in the Philippines after spending a few months in Thailand and India. He has a passion for hiking and scuba diving, and he has invested a portion of his earnings throughout most of his life, always leaning on the conservative side.
+							</p>
+							<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-4 col-sm-4 item">
+				<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
+					<div class="front">
+						<div class=" noradius">
+							<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Charlie-Apostol.png" alt="" />
+							<div class="caption">
+								<h4 class="nomargin cont-name">Charlie Apostol</h4><hr/>
+								<span class="size-16 margin-bottom-20 block">Business Manager</span>
+							</div>
+						</div>
+					</div>
+					<div class="back">
+						<div class="box2" style="background-color:#a0ce4e;">
+							<h4>Charlie Apostol</h4>
+							<hr />
+							<p>Charlie brings more than a decade of experience in overall business operations including training and evaluation, budget forecasting and control, and overseeing general business functions such as Customer Service, Payment, Fraud Control, and Risk Management. He has successfully set up online casinos, spearheaded the creation of company documents, and formulated business continuity plans. If it’s anything to do with running a business, he’s been there, done that, and overseen the design of the t-shirt.
+
+								Motivated through inspiring others to perform above and beyond expectations, he spreads enthusiasm and promotes inventive thinking while keeping it all structured and on track. Also ardent on both the music and culinary world, he ventured into music-inspired bistros. Good food, good music. Just a few things he loves about life.</p>
 								<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 col-sm-4 item">
-					<div class="box-flip box-color box-icon box-icon-center box-icon-round box-icon-large text-center">
-						<div class="front">
-							<div class=" noradius">
-								<img class="img-responsive bg-advisor margin-bottom-20" src="<?=get_stylesheet_directory_uri();?>/assets/img/Charlie-Apostol.png" alt="" />
-								<div class="caption">
-									<h4 class="nomargin cont-name">Charlie Apostol</h4><hr/>
-									<span class="size-16 margin-bottom-20 block">Business Manager</span>
-								</div>
-							</div>
-						</div>
-						<div class="back">
-							<div class="box2" style="background-color:#a0ce4e;">
-								<h4>Charlie Apostol</h4>
-								<hr />
-								<p>Charlie brings more than a decade of experience in overall business operations including training and evaluation, budget forecasting and control, and overseeing general business functions such as Customer Service, Payment, Fraud Control, and Risk Management. He has successfully set up online casinos, spearheaded the creation of company documents, and formulated business continuity plans. If it’s anything to do with running a business, he’s been there, done that, and overseen the design of the t-shirt.
-
-									Motivated through inspiring others to perform above and beyond expectations, he spreads enthusiasm and promotes inventive thinking while keeping it all structured and on track. Also ardent on both the music and culinary world, he ventured into music-inspired bistros. Good food, good music. Just a few things he loves about life.</p>
-									<button class="btn btn-xs btn-primary btn-team-show-more">show more</button>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
 			</div>
-		</section>
-		<?php
+		</div>
+	</section>
+	<?php
 
 
-		?>
+	?>
