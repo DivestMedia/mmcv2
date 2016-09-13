@@ -19,7 +19,8 @@ setup_postdata($post);
 				
 
 				<blockquote>
-				<h2 class="size-25" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);"><span><?=the_title()?></span></h2>
+				<h2 class="size-25" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);"><span><?=the_title()?></span><div class="size-17"><i><?=get_post_meta($post->ID,'advisor_position')[0]?></i></div class="size-17"></h2>
+
 				<p style="text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">"<?=get_post_meta($post->ID,'advisor_quote')[0]?>"</p>
 			</blockquote>
 
@@ -41,7 +42,7 @@ setup_postdata($post);
 			</div>
 
 			<div class="col-lg-9 col-md-7 col-sm-9">
-				<h2 class="size-25"><span><?=the_title()?>, MBA </span>
+				<h2 class="size-25"><span><?=the_title()?></span>
 					<a href="#" class="btn btn-md btn-theme-hover noradius italic">Ask John</a>
 					<a href="#" class="btn btn-md btn-theme-hover noradius">View webcast</a>
 				</h2>
