@@ -237,7 +237,7 @@ function render_side_bar_widget(){
     ?>
     <hr>
     <div class="side-nav-head">
-        <h4>QUOTE OF THE DAY</h4>
+        <h4>RANDOM QUOTES</h4>
     </div>
     <blockquote class="quote">
         <?php echo do_shortcode('[quotcoll limit="1" orderby="random"]')?>

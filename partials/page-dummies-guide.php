@@ -42,8 +42,8 @@
 				<?php endif; wp_reset_query(); ?>
 			</ul>
 			<?php
-					render_side_bar_widget();
-				?>
+			render_side_bar_widget();
+			?>
 		</div>
 		<!-- /side navigation -->
 	</div>
@@ -73,50 +73,50 @@
 					$parent = new WP_Query( $args );
 
 					if ( $parent->have_posts() ) : ?>
-<div class="row margin-bottom-30">
-						    <?php
-						    	$ctr = 0;
-						    	while ( $parent->have_posts() ) : $parent->the_post();
+					<div class="row margin-bottom-30">
+						<?php
+						$ctr = 0;
+						while ( $parent->have_posts() ) : $parent->the_post();
 
-						    	?>
+						?>
 
-										<div class="col-md-6">
-											<div class="box-flip box-icon box-icon-round box-icon-large">
-												<div class="front">
-													<div class="box1" style="padding: 0;">
-														<figure style="background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 250px;">
-														</figure>
-														<div class="section-content">
-															<div class="text-left">
-																<h4 class="title"><strong><?=the_title()?></strong></h4>
-																<label><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_content())), 167);?></label>
-															</div>
-														</div>
-													</div>
-												</div>
-												<div class="back">
-													<div class="box2">
-														<a href="<?=get_the_permalink()?>"><h4><?=the_title()?></h4></a>
-														<hr />
-														<p><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_content())), 500);?></p>
-														<a href="<?=get_the_permalink()?>" class="link-read-more">Read more</a>
-													</div>
-												</div>
+						<div class="col-md-6">
+							<div class="box-flip box-icon box-icon-round box-icon-large">
+								<div class="front">
+									<div class="box1" style="padding: 0;">
+										<figure style="background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 250px;">
+										</figure>
+										<div class="section-content">
+											<div class="text-left">
+												<h4 class="title"><strong><?=the_title()?></strong></h4>
+												<label><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_content())), 167);?></label>
 											</div>
 										</div>
-						    <?php
-						    if($ctr++==1){
-						    		echo '</div>
+									</div>
+								</div>
+								<div class="back">
+									<div class="box2">
+										<a href="<?=get_the_permalink()?>"><h4><?=the_title()?></h4></a>
+										<hr />
+										<p><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_content())), 500);?></p>
+										<a href="<?=get_the_permalink()?>" class="link-read-more">Read more</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<?php
+						if($ctr++==1){
+							echo '</div>
 							<div class="row margin-bottom-30">';
-									$ctr = 0;
-						    	}
-						    endwhile; ?>
-						    </div>
-				<?php endif; wp_reset_query(); ?>
-
-			</div>
+							$ctr = 0;
+						}
+					endwhile; ?>
+				</div>
+			<?php endif; wp_reset_query(); ?>
 
 		</div>
 
 	</div>
+
+</div>
 </section>

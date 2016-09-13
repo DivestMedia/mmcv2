@@ -74,7 +74,7 @@ $postnotin = [];
 				</div>
 				<div class="col-sm-9">
 					<?php if(count($global_news)): ?>
-						<div class="text-right news-category-labels margin-top-20 margin-bottom-30">
+						<div class="text-center news-category-labels margin-top-20 margin-bottom-30">
 							<a href="http://marketmasterclass.btcglobaltrader.dev/news" class="news-category-link active"><span class="badge badge-green">Categories</span></a>
 							<?php
 							$category_tags = get_category_tags(get_category_by_slug('news')->term_id);

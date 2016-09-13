@@ -98,6 +98,7 @@ foreach ($video_cats as $key => $cat) {
 		}else{
 			if(in_array($cat->slug,[
 				'webinars',
+				'andy-penders',
 				])) continue;
 			}
 

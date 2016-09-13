@@ -44,7 +44,7 @@ $featuredvids = get_posts([
     'post_status' => 'publish',
     'posts_per_page' => 5,
     'posts_per_archive_page' => 5,
-    'orderby' => 'date',
+    'orderby' => 'modified',
     'order' => 'DESC',
     // 'meta_key'   => '_is_featured',
     // 'meta_value' => 1,
@@ -249,7 +249,7 @@ $post = $featuredvideos;
                         'link' => '/video/kenyon-martin/#all-videos',
                     ],
                     [
-                        'category' => 'Board of Advisors',
+                        'category' => 'Bruce Curran Interviews',
                         'title' => 'Interviews',
                         'description' => 'World News',
                         'link' => '/video/world-news/#all-videos',
@@ -266,7 +266,7 @@ $post = $featuredvideos;
                     $catThumbs = get_option('taxonomy_image_plugin');
                     ?>
                     <div class="heading-title heading-dotted text-left margin-top-20 ">
-                        <a href="<?php site_url('videos');?>"><h4>Our<span> Channels</span></h4></a>
+                        <a href="<?=site_url('videos')?>"><h4>Our<span> Channels</span></h4></a>
                     </div>
                     <?php foreach($featuredvideos as $fk=>$fv):
 
