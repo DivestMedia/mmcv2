@@ -8,6 +8,7 @@ get_template_part( 'partials/content', 'indexwatch' );
 get_template_part( 'partials/content', 'featuredvideos' );
 
 // get_template_part( 'partials/content', 'juicyextras' );
+ get_template_part( 'partials/content', 'ads_undervideo' );
 get_template_part( 'partials/content', 'globalnews' );
 get_template_part( 'partials/content', 'ads' );
 get_template_part( 'partials/content', 'featuredarticles' );
