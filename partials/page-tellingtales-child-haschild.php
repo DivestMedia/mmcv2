@@ -48,7 +48,7 @@
 										foreach ($_children as $_child){
 										?>
 											<li class="list-group-item <?=$_currentid==$_child->ID?'active':''?>">
-												<a href="<?=($_child->guid ?: '#')?>"><?=($_child->post_title ?: 'Uncategorized')?></a>
+												<a href="<?=(get_the_permalink($_child->ID)?: '#')?>"><?=($_child->post_title ?: 'Uncategorized')?></a>
 											</li>
 										<?php }?>
 									</ul>
@@ -69,7 +69,7 @@
 		<div class="col-md-9">
 			<div class="tab-content">
 				<div class="tab-pane fade in active" id="getting-started">
-				
+
 
 						<header class="text-center margin-top-40 margin-bottom-50 tiny-line">
 							<h2 class="font-proxima uppercase"><?=the_title()?></span></h2>
@@ -127,7 +127,7 @@
 														<a href="<?=get_the_permalink()?>"><h4><?=the_title()?></h4></a>
 														<hr />
 														<p><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_content())), 500);?></p>
-														<a href="<?=get_the_permalink()?>" class="link-read-more">Read more</a>
+														<a href="<?=get_the_permalink()?>" class="btn btn-black">Read More</a>
 													</div>
 												</div>
 											</div>

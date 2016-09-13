@@ -53,7 +53,7 @@ get_template_part( 'partials/content', 'indexwatch' );
 	<!-- / -->
 	
 	<!-- BUTTON CALLOUT -->
-	<a href="#contact-us" rel="nofollow" target="_blank" class="btn btn-xlg btn-theme size-20 fullwidth nomargin noradius padding-40">
+	<a href="<?=site_url('/contact-us/')?>" rel="nofollow" target="_blank" class="btn btn-xlg btn-theme size-20 fullwidth nomargin noradius padding-40">
 		<span class="font-lato size-30">
 			Seek investment advice from our Board of Advisors?
 			<strong>Click here &raquo;</strong>

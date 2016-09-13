@@ -99,7 +99,7 @@
 										<a href="<?=get_the_permalink()?>"><h4><?=the_title()?></h4></a>
 										<hr />
 										<p><?=xyr_smarty_limit_chars(strip_tags(html_entity_decode(get_the_content())), 500);?></p>
-										<a href="<?=get_the_permalink()?>" class="link-read-more">Read more</a>
+										<a href="<?=get_the_permalink()?>" class="link-read-more"><button class="btn btn-custom-dark">Read more</button></a>
 									</div>
 								</div>
 							</div>

@@ -58,15 +58,15 @@ get_template_part( 'partials/content', 'vipsubscribers' );
 			&copy; 2016 Market MasterClass. All rights reserved
 		</div>
 		<div class="col-sm-6 text-right">
-            <?php
-                if(!empty(wp_get_nav_menu_items('Footer Navigation'))){
-                    $footer_menu = [];
-                    foreach (wp_get_nav_menu_items('Footer Navigation') as $f) {
-                        array_push($footer_menu , '<a href="'.$f->url.'">'.$f->title.'</a>');
-                    }
-                }
-                print_r(implode(' | ', $footer_menu));
-            ?>
+			<?php
+			if(!empty(wp_get_nav_menu_items('Footer Navigation'))){
+				$footer_menu = [];
+				foreach (wp_get_nav_menu_items('Footer Navigation') as $f) {
+					array_push($footer_menu , '<a href="'.$f->url.'">'.$f->title.'</a>');
+				}
+			}
+			print_r(implode(' | ', $footer_menu));
+			?>
 		</div>
 
 
@@ -165,6 +165,78 @@ $(function() {
 	
 });
 </script>
+
+
+<?php
+
+
+global $post;
+$post_slug = $post->post_name;
+
+if(in_array($post_slug,[
+	'subscriptions',
+	'webinars',
+	'stockfocus',
+	'stockwatch',
+	'dummies-guide',
+	'find-a-broker',
+	'celebrity-watch',
+	])){
+		if(empty($_COOKIE['dm-intro-vid-'.$post_slug])){
+
+			$intros = [
+				'subscriptions' => 'https://youtu.be/_fqUtePTPj8',
+				'webinars' => 'https://www.youtube.com/watch?v=Bw2PD_9BF9Y',
+				'stockfocus' => 'https://www.youtube.com/watch?v=54cQar5LDrU',
+				'stockwatch' => 'https://www.youtube.com/watch?v=637TJ_9XMak',
+				'dummies-guide' => 'https://www.youtube.com/watch?v=y3_21xTqOhg',
+				'find-a-broker' => 'https://www.youtube.com/watch?v=0IOrhWs9SKg',
+				'celebrity-watch' => 'https://www.youtube.com/watch?v=VxrZ2w4Ad0I',
+			];
+
+			if(!empty($intros[$post_slug])){
+				?>
+				<!-- ANDY PENDER VIDEOS -->
+				<script>
+				function setCookie(c_name, value, exdays) {
+					var exdate = new Date();
+					exdate.setDate(exdate.getDate() + exdays);
+					var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+					document.cookie = c_name + "=" + c_value;
+				}
+
+				loadScript(plugin_path + 'magnific-popup/jquery.magnific-popup.min.js', function() {
+
+					if(typeof(jQuery.magnificPopup) == "undefined") {
+						return false;
+					}
+					jQuery.magnificPopup.open({
+						"type":"iframe",
+						"closeOnBgClick":false,
+						"autoload":true,
+						"autoload-delay":2000,
+						"items": {
+							src: "<?=($intros[$post_slug])?>"
+						},
+						callbacks : {
+							afterClose: function() {
+								setCookie('<?=('dm-intro-vid-'.$post_slug)?>','true',7);
+							}
+						}
+					});
+
+				});
+
+				</script>
+
+
+				<?php
+			}
+		}
+	}
+	?>
+
+
 
 
 </body>
