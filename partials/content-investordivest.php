@@ -8,10 +8,6 @@
 				<div class="col-sm-6 col-md-6 margin-bottom-20">
 					<header class="text-center margin-bottom-50 tiny-line">
 						<h2 class="font-proxima uppercase">Invest or <span>Divest</span></h2>
-						<p>
-							<strong class="uppercase">User-based Video Reviews</strong><br>
-							We give you the brutal truth
-						</p>
 					</header>
 					<div class="item-box noshadow">
 						<figure>
@@ -19,18 +15,17 @@
 								<span class="overlay dark-5"></span>
 							</span>
 							<span class="item-description">
-								<span class="overlay primary-bg"></span>
-								<span class="inner margin-top-30p">
-									<h3><em>Dan Stracey</em>Be Stockwatcher</h3>
+								<span class="overlay primary-bg height-150"></span>
+								<span class="inner margin-top-30p height-150">
+									<h3 class="margin-top-10 margin-bottom-10">User-based Video Reviews</h3>
 									<span class="block size-11 text-center color-theme uppercase">
-										Lorem Ipsum sit<br>
-										dolor amet
+										We give you the brutal truth
 									</span>
-									<a class="pos-bottom block btn-sm btn secondary-bg text-center noradius weight-700" href="#">PLAY NOW</a>
+									<a class="pos-bottom block btn-sm btn secondary-bg text-center noradius weight-700" href="#">COMING SOON</a>
 								</span>
 							</span>
 
-							<img class="img-responsive liner" src="<?=get_stylesheet_directory_uri();?>/img-temp/photo-1431274172761-fca41d930114.jpg" alt="">
+							<img class="img-responsive liner" src="<?=site_url('/wp-content/uploads/sites/8/2016/09/DUMMIESGUIDE1-1.jpg');?>" alt="">
 						</figure>
 					</div>
 
@@ -41,11 +36,7 @@
 				<!-- Col 2 -->
 				<div class="col-sm-6 col-md-6 margin-bottom-20">
 					<header class="text-center margin-bottom-50 tiny-line">
-						<h2 class="font-proxima uppercase">Dummies <span>Guide</span></h2>
-						<p>
-							<strong class="uppercase">Beginner's Manual</strong><br>
-							What you need to know about investing
-						</p>
+						<h2 class="font-proxima uppercase"><a href="<?=site_url('dummies-guide')?>">Dummies <span>Guide</span></a></h2>
 					</header>
 					<div class="item-box noshadow">
 						<figure>
@@ -53,18 +44,17 @@
 								<span class="overlay dark-5"></span>
 							</span>
 							<span class="item-description">
-								<span class="overlay primary-bg"></span>
-								<span class="inner margin-top-30p">
-									<h3><em>Bruce Curran</em>Investment Tips</h3>
+								<span class="overlay primary-bg height-150"></span>
+								<span class="inner margin-top-30p height-150">
+									<h3 class="margin-top-10 margin-bottom-10">Beginner's Manual</h3>
 									<span class="block size-11 text-center color-theme uppercase">
-										Lorem Ipsum sit<br>
-										dolor amet
+										What you need to know about investing
 									</span>
-									<a class="pos-bottom block btn-sm btn secondary-bg text-center noradius weight-700" href="#">PLAY NOW</a>
+									<a class="pos-bottom block btn-sm btn secondary-bg text-center noradius weight-700" href="<?=site_url('dummies-guide')?>">READ MORE</a>
 								</span>
 							</span>
 
-							<img class="img-responsive liner" src="<?=get_stylesheet_directory_uri();?>/img-temp/picjumbo.com_HNCK8182.jpg" alt="">
+							<img class="img-responsive liner" src="<?=site_url('/wp-content/uploads/sites/8/2016/09/DUMMIESGUIDE.jpg');?>" alt="">
 						</figure>
 					</div>
 

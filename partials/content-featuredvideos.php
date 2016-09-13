@@ -56,23 +56,6 @@ $featuredvids = get_posts([
 
 foreach ($featuredvids as $videohere) {
 
-    // $catobj = get_term_by('slug', sanitize_title($cat['category']) , 'iod_category' );
-    //
-    // $videohere = get_posts([
-    //     'post_type'   => 'iod_video',
-    //     'post_status' => 'publish',
-    //     'posts_per_page' => 1,
-    //     'posts_per_archive_page' => 1,
-    //     'orderby' => 'date',
-    //     'order' => 'DESC',
-    //     // 'meta_key'   => '_is_featured',
-    //     // 'meta_value' => 1,
-    //     'post__not_in' => $excludevideoid,
-    //     'taxonomy'=>'iod_category',
-    //     'term'=> $catobj->slug
-    // ]);
-
-
     $iod_video = '';
     $iod_video_thumbnail = '';
     if($videohere){
@@ -241,79 +224,77 @@ $post = $featuredvideos;
 
             </div>
         </div>
-        <?php if(is_home()){?>
-        <div class="row">
-            <?php
-            
-            $mainpost = $post;
-            $featuredcats = [
-                [
-                    'category' => 'Daily Stock Picks',
-                    'title' => 'Kenyon Martin',
-                    'description' => 'Daily Stock Picks',
-                    'link' => '/video/kenyon-martin/#all-videos',
-                ],
-                [
-                    'category' => 'Bruce Curran',
-                    'title' => 'Bruce Curran',
-                    'description' => 'How to be Dumbass',
-                    'link' => '/video/kenyon-martin/#all-videos',
-                ],
-                [
-                    'category' => 'MMC Headlines',
-                    'title' => 'Global Headlines',
-                    'description' => 'Investment Tips',
-                    'link' => '/video/kenyon-martin/#all-videos',
-                ],
-                [
-                    'category' => 'Board of Advisors',
-                    'title' => 'Interviews',
-                    'description' => 'World News',
-                    'link' => '/video/world-news/#all-videos',
-                ]
-            ];
-            $featuredvideos = [];
-            foreach ($featuredcats as $cat) {
+        <?php if(is_home()): ?>
+            <div class="row">
+                <?php
 
-                $catobj = get_term_by('slug', sanitize_title($cat['category']) , 'iod_category' );
-                $featuredvideos[] = $catobj;
-            }
+                $mainpost = $post;
+                $featuredcats = [
+                    [
+                        'category' => 'Daily Stock Picks',
+                        'title' => 'Kenyon Martin',
+                        'description' => 'Daily Stock Picks',
+                        'link' => '/video/kenyon-martin/#all-videos',
+                    ],
+                    [
+                        'category' => 'Bruce Curran',
+                        'title' => 'Bruce Curran',
+                        'description' => 'How to be Dumbass',
+                        'link' => '/video/kenyon-martin/#all-videos',
+                    ],
+                    [
+                        'category' => 'MMC Headlines',
+                        'title' => 'Global Headlines',
+                        'description' => 'Investment Tips',
+                        'link' => '/video/kenyon-martin/#all-videos',
+                    ],
+                    [
+                        'category' => 'Board of Advisors',
+                        'title' => 'Interviews',
+                        'description' => 'World News',
+                        'link' => '/video/world-news/#all-videos',
+                    ]
+                ];
+                $featuredvideos = [];
+                foreach ($featuredcats as $cat) {
 
-            ?>
-            <?php if(count($featuredvideos)):
-                $catThumbs = get_option('taxonomy_image_plugin');
+                    $catobj = get_term_by('slug', sanitize_title($cat['category']) , 'iod_category' );
+                    $featuredvideos[] = $catobj;
+                }
                 ?>
-                <div class="heading-title heading-dotted text-left margin-top-20 ">
-                    <a href="<?php site_url('videos');?>"><h4>Our<span> Channels</span></h4></a>
-                </div>
-                <?php foreach($featuredvideos as $fk=>$fv):
-
-                    $img = wp_get_attachment_image_src( $catThumbs[$fv->term_id], 'mid-image', false );
+                <?php if(count($featuredvideos)):
+                    $catThumbs = get_option('taxonomy_image_plugin');
                     ?>
-                    <div class="col-md-3 col-sm-6 col-xs-6 col-2xs-12">
-                        <div class="item-box noshadow hover-box margin-bottom-10 channel-item-box">
-                            <div class="img-hover">
-                                <a href="<?=(get_term_link($fv->term_id,'iod_category'))?>#all-videos">
-                                    <figure style="border-bottom: 5px solid rgb(30, 205, 110); height: 200px; background-image: url(<?=$img[0]?>); background-size: cover; background-repeat: no-repeat;" class="lazyOwl" data-src=""></figure>
-                                </a>
+                    <div class="heading-title heading-dotted text-left margin-top-20 ">
+                        <a href="<?php site_url('videos');?>"><h4>Our<span> Channels</span></h4></a>
+                    </div>
+                    <?php foreach($featuredvideos as $fk=>$fv):
 
-                                <h4 class="text-center margin-top-20 height-50 post-title ">
+                        $img = wp_get_attachment_image_src( $catThumbs[$fv->term_id], 'mid-image', false );
+                        ?>
+                        <div class="col-md-3 col-sm-6 col-xs-6 col-2xs-12">
+                            <div class="item-box noshadow hover-box margin-bottom-10 channel-item-box">
+                                <div class="img-hover">
                                     <a href="<?=(get_term_link($fv->term_id,'iod_category'))?>#all-videos">
-                                        <?=($featuredcats[$fk]['title'])?>
+                                        <figure style="border-bottom: 5px solid rgb(30, 205, 110); height: 200px; background-image: url(<?=$img[0]?>); background-size: cover; background-repeat: no-repeat;" class="lazyOwl" data-src=""></figure>
                                     </a>
-                                </h4>
+
+                                    <h4 class="text-center margin-top-20 height-50 post-title ">
+                                        <a href="<?=(get_term_link($fv->term_id,'iod_category'))?>#all-videos">
+                                            <?=($featuredcats[$fk]['title'])?>
+                                        </a>
+                                    </h4>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-        <?php 
-        }
-        if(!$featureNoMore): ?>
-            <div class="heading-title heading-dotted text-right margin-top-20 ">
-                <a href="<?=site_url('videos')?>"><h4>Watch more<span> Videos</span></h4></a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
+            <?php if(!$featureNoMore): ?>
+                <div class="heading-title heading-dotted text-right margin-top-20 ">
+                    <a href="<?=site_url('videos')?>"><h4>Watch more<span> Videos</span></h4></a>
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 </section>
