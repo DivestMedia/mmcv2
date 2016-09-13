@@ -155,6 +155,14 @@ $(function() {
 			},1000);
 		});
 	}
+
+	
+	
+	
+	xyrLoadImg();
+		
+	
+	
 });
 </script>
 

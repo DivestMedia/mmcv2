@@ -25,7 +25,7 @@
 								</span>
 							</span>
 
-							<img class="img-responsive img_place liner" src="<?php echo get_stylesheet_directory_uri();?>/assets/img/blank.gif" org_img="<?=site_url('/wp-content/uploads/sites/8/2016/09/DUMMIESGUIDE1-1.jpg');?>" alt="">
+							<img class="img-responsive liner" src="<?php echo site_url('/wp-content/uploads/sites/8/2016/09/DUMMIESGUIDE1-1.jpg');?>" alt="">
 						</figure>
 					</div>
 
@@ -54,7 +54,7 @@
 								</span>
 							</span>
 
-							<img class="img-responsive img_place liner" src="<?php echo get_stylesheet_directory_uri();?>/assets/img/blank.gif" org_img="<?=site_url('/wp-content/uploads/sites/8/2016/09/DUMMIESGUIDE.jpg');?>" alt="">
+							<img class="img-responsive liner" src="<?php echo site_url('/wp-content/uploads/sites/8/2016/09/DUMMIESGUIDE.jpg');?>" alt="">
 						</figure>
 					</div>
 
@@ -66,3 +66,9 @@
 
 		</div>
 	</section>
+	
+		<script>
+			$(function() {
+				xyrLoadImg();
+			});
+		</script>

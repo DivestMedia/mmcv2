@@ -85,6 +85,8 @@ function xyrLoadImg(){
 	  
 						$(this).removeAttr("org_img");
 						$(this).removeClass("img_place");
+						
+						console.log(the_orig_img);
 					}
 				}
 			});

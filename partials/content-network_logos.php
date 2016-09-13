@@ -52,11 +52,7 @@
 		</div>
 		
 
-		<script>
-			$(function() {
-				xyrLoadImg();
-			});
-		</script>
+		
 
 		<!-- <ul class="row clients-dotted list-inline grey-onhover">
 
