@@ -56,18 +56,16 @@ jQuery(function($){
         $('.btn-play-vid').trigger('click');
     });
 
+    $(window).resize(function(){
+        var width = 'width: '+$(window).width()+'px !important;';
+        $('body').find('.ms-thumb-list').css('cssText',width);
+    });
+
     if($('#masterslider-promo').length){
         setTimeout(function(){
             window.dispatchEvent(new Event('resize'));
         },2000);
-
     }
-
-	
-	
-
-
-
 });
 
 
