@@ -36,7 +36,7 @@
 				<!-- Col 2 -->
 				<div class="col-sm-6 col-md-6 margin-bottom-20">
 					<header class="text-center margin-bottom-50 tiny-line">
-						<h2 class="font-proxima uppercase"><a href="<?=site_url('dummies-guide')?>">Dummies <span>Guide</span></a></h2>
+						<h2 class="font-proxima uppercase"><a href="<?=site_url('dummies-guide')?>">Dummies&apos; <span>Guide</span></a></h2>
 					</header>
 					<div class="item-box noshadow">
 						<figure>
@@ -66,7 +66,7 @@
 
 		</div>
 	</section>
-	
+
 		<script>
 			$(function() {
 				xyrLoadImg();
