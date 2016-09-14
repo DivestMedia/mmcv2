@@ -18,13 +18,13 @@
 				<i class="fa fa-mobile fa-4x"></i>
 				<br/><br/>
 				<small class="text-gray">PHONE NUMBER</small>
-				<p>(632) 555-1734</p>
+				<p><a href="tel:+6325551734">(632) 555-1734</a></p>
 			</div>
 			<div class="col-xs-6 col-sm-3">
 				<i class="fa fa-envelope-o fa-4x"></i>
 				<br/><br/>
 				<small class="text-gray">EMAIL</small>
-				<p><a href="<?=site_url('/contact-us')?>" style="color:#fff;">support@marketmasterclass.com</a></p>
+				<p><a href="mailto:support@marketmasterclass.com" style="color:#fff;">support@marketmasterclass.com</a></p>
 			</div>
 			<div class="col-xs-6 col-sm-3">
 				<i class="fa fa-map-marker fa-4x"></i>

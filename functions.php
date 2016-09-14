@@ -106,6 +106,15 @@ function backstage_smarty_widgets_init() {
         'before_title'  => '',
         'after_title'   => '',
     ));
+    register_sidebar( array(
+        'name' => __( 'Ads Sidebar', XYR_SMARTY),
+        'id' => 'sidebar-ads',
+        'description' => __( 'Widgets in this area will be shown on the right most side of single pages.', XYR_SMARTY ),
+        'before_widget' => '<div id="%1$s" class="row widget %2$s"><div class="col-sm-12 col-md-12 col-lg-12">',
+        'after_widget'  => '</div></div>',
+        'before_title'  => '',
+        'after_title'   => '',
+    ));
 }
 
 

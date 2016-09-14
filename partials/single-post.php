@@ -201,6 +201,13 @@ $_parentcat = get_the_category()[0]->category_parent;
 
 
 						</div>
+						<div class="col-sm-6 col-md-3">
+							<?php
+							if(is_active_sidebar('sidebar-ads')){
+								dynamic_sidebar('sidebar-ads');
+							}
+							?>
+						</div>
 					</div>
 				</div>
 			</section>
