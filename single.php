@@ -54,7 +54,7 @@ if(!strcasecmp(get_post_type(), 'newsletter')){
 
 	$_post_link = get_the_permalink();
 	$_site_link = site_url();
-	$_site_logo = 'http://mmc.divestmedialocal.com/wp-content/themes/mmcv2/assets/img/mmc-logo-light.png';
+	$_site_logo = 'http://beta.marketmasterclass.com/wp-content/themes/mmcv2/assets/img/mmc-logo-light.png';
 	$_site_logo_black = 'http://mmc.divestmedialocal.com/wp-content/themes/mmcv2/assets/img/mmc-logo.png';
 	$_icons_link = get_stylesheet_directory_uri().'/assets/img/icons/';
 	$_subscribe_link = 'http://beta.marketmasterclass.com/subscribe/';
