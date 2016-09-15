@@ -36,7 +36,7 @@ jQuery(function($){
     });
 
     if( $('.news-feature-grid').length > 0 ){
-        assignnewsimage(jQuery('.news-feature-grid .font-proxima.uppercase'),jQuery('.news-feature-grid figure'),false);
+        // assignnewsimage(jQuery('.news-feature-grid .font-proxima.uppercase'),jQuery('.news-feature-grid figure'),false);
     }
 
     if( $('.video-grid').length > 0 ){

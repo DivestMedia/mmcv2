@@ -11,37 +11,37 @@ $latestnews = [];
 // WP_Query arguments
 
 $mainpost = $post;
+$per_page = 5;
+$tags =null;
+$categories = 2;
+$page = 1;
 
-$post = get_posts([
-	'post_type'   => 'post',
-	'post_status' => 'publish',
-	'posts_per_page' => 5,
-	'posts_per_archive_page' => 5,
-	'orderby' => 'date',
-	'order' => 'DESC',
-	'offset' => 5,
-	'category_name'    => 'News',
-]);
+
+$post = json_decode(file_get_contents_curl(add_query_arg([
+	'page' => $page,
+	'tags' => $tags,
+	'categories' => $categories,
+	'per_page' => $per_page
+],'http://wordpress-16884-37649-153865.cloudwaysapps.com/wp-json/wp/v2/posts')));
 
 foreach ($post as $key => $news) {
-	$tags_array = get_the_tags( $news->ID );
 
-	$tags_array = [$tags_array[array_rand($tags_array)]];
-	$hastag = false;
-	if($tags_array){
-		$hastag = true;
-		$tags = [];
-		foreach ($tags_array as $tag) {
-			$tags[] = '<a href="'.get_tag_link($tag->term_id).'">'.$tag->name.'</a>';
+	$image ='';
+	if(!empty($news->featured_media)){
+		$imagedata = json_decode(file_get_contents_curl('http://wordpress-16884-37649-153865.cloudwaysapps.com/wp-json/wp/v2/media/'.$news->featured_media));
+		if($imagedata->data->status!==404){
+			var_dump($imagedata);
+			$image = $imagedata->media_details->sizes->medium->source_url;
 		}
+
 	}
-	$image = wp_get_attachment_image_src( get_post_thumbnail_id( $news->ID ), 'mid-image' );
+
 	$latestnews[] = [
-		'title' => $hastag ? implode(',',$tags) : 'News',
-		'description' => xyr_smarty_limit_chars($news->post_title,40),
-		'date' => $news->post_date,
-		'thumbnail' => $image[0],
-		'link' => get_the_permalink($news->ID)
+		'title' => '<a href="'.site_url('/category/news').'">News</a>',
+		'description' => xyr_smarty_limit_chars($news->title->rendered,40),
+		'date' => $news->date,
+		'thumbnail' => $image,
+		'link' => $news->link
 	];
 }
 
@@ -106,12 +106,11 @@ foreach ($category_tags as $key => $cat) {
 	$GLOBALS['featuredPost'] = $featuredPost;
 	$GLOBALS['featuredTitle'] = 'All News';
 
-	echo '<div class="news-feature-grid" data-limit="12" data-tag="'.$taghere.'" data-cat="2" data-page="'.(get_query_var('paged') ?: 1).'">';
+	echo '<div class="news-feature-grid" data-limit="12" data-tag="null" data-cat="2" data-page="'.(get_query_var('paged') ?: 1).'">';
 	?>
 
 	<?php
 	get_template_part( 'partials/content', 'featuredposts' );
 	echo '</div>';
-	// get_template_part( 'partials/content', 'investordivest' );
-	// get_template_part( 'partials/content', 'vipsubscribers' );
+	
 	?>
