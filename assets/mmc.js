@@ -23,6 +23,8 @@ jQuery(function($){
             $(this).parent().append("<div>" + e + "</div>"), $(this).remove();
         })
         $("#glossaryList-nav .ln-letters").find("a:first-child").trigger("click");
+        $('.glossary-container,#glossaryList-nav').show();
+        $('.cont-progress-loader').remove();
     });
 
     $('.btn-team-show-more').click(function(){
