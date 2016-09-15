@@ -311,3 +311,11 @@ function trim_text($input, $length, $ellipses = true, $strip_html = true) {
 
     return $trimmed_text;
 }
+
+add_action( 'json_api', function( $controller, $method )
+{
+    # DEBUG
+    // wp_die( "To target only this method use <pre><code>add_action('$controller-$method', function(){ /*YOUR-STUFF*/ });</code></pre>" );
+
+    header( "Access-Control-Allow-Origin: *" );
+}, 10, 2 );

@@ -21,7 +21,6 @@ global $featuredPost,$featuredTitle;
 
 ?>
 
-
 <section class="alternate">
 	<div class="container">
 		<header class="text-center margin-bottom-10 tiny-line">
@@ -47,48 +46,54 @@ global $featuredPost,$featuredTitle;
 						</ul>
 					<?php endif;?>
 
-				<?php render_side_bar_widget();?>
-			</div>
-			<!-- /side navigation -->
-		</div>
-		<div class="col-sm-9">
-			<div class="tab-content">
-				<div class="tab-pane fade in active" id="planning">
-					<div class="row">
-						<?php
-						$mainpost = $post;
-						if(count($featuredPost['posts'])):
-							foreach($featuredPost['posts'] as $post):
-								$post = get_post($post);
-								setup_postdata($post);
-								?>
-								<div class="col-sm-4">
-									<a href="<?=get_the_permalink()?>">
-										<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 150px;"></figure>
-										</a>
-										<h4 class="margin-top-20 size-14 weight-700 uppercase height-50" style="overflow:hidden;"><a href="<?=get_the_permalink($post->ID)?>"><?=xyr_smarty_limit_chars(get_the_title($post->ID),80)?></a></h4>
-										<p class="text-justify height-100" style="overflow:hidden;"><?=trim_text($post->post_content,180)?></p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i>
-												<?=get_the_date()?>&nbsp;<small><?=get_the_date('h:i a')?></small>
-											</li>
-										</ul>
-									</div>
-									<?php
-								endforeach;
-							else:
-								echo '<h4 class="text-center">No Articles yet</h4>';
-							endif;
-							$post = $mainpost;
-							wp_reset_postdata();
-							?>
-							<div class="pagination"><?=posts_pagination()?></div>
-						</div>
-					</div>
+					<?php render_side_bar_widget();?>
 				</div>
+				<!-- /side navigation -->
+			</div>
+			<div class="col-sm-9">
+				<div class="tab-content">
+					<div class="tab-pane fade in active" id="planning">
+						<div class="row" id="news-row">
+
+							<?php
+							// $mainpost = $post;
+							// if(count($featuredPost['posts'])):
+							// 	foreach($featuredPost['posts'] as $post):
+							// 		$post = get_post($post);
+							// 		setup_postdata($post);
+							?>
+							<!-- <div class="col-sm-4">
+							<a href="<?=get_the_permalink()?>">
+							<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=the_post_thumbnail_url()?>');background-size: cover;background-repeat: no-repeat;height: 150px;"></figure>
+						</a>
+						<h4 class="margin-top-20 size-14 weight-700 uppercase height-50" style="overflow:hidden;"><a href="<?=get_the_permalink($post->ID)?>"><?=xyr_smarty_limit_chars(get_the_title($post->ID),80)?></a></h4>
+						<p class="text-justify height-100" style="overflow:hidden;"><?=trim_text($post->post_content,180)?></p>
+						<ul class="text-left size-12 list-inline list-separator">
+						<li>
+						<i class="fa fa-calendar"></i>
+						<?=get_the_date()?>&nbsp;<small><?=get_the_date('h:i a')?></small>
+					</li>
+				</ul>
+			</div> -->
+			<?php
+			// 	endforeach;
+			// else:
+			// 	echo '<h4 class="text-center">No Articles yet</h4>';
+			// endif;
+			// $post = $mainpost;
+			// wp_reset_postdata();
+			?>
+			<!-- <div class="pagination"><?=posts_pagination()?></div> -->
+
+		</div>
+		<div class="row">
+			<div class="pagination">
 			</div>
 		</div>
-		<!-- Tab v3 -->
 	</div>
+</div>
+</div>
+</div>
+<!-- Tab v3 -->
+</div>
 </section>

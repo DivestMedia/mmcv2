@@ -1,4 +1,5 @@
 <?php
+wp_enqueue_script( 'mmc-smarty-pagination-js', get_stylesheet_directory_uri() . '/assets/js/jquery.bootpag.min.js',['jquery'],null,true);
 get_template_part( 'partials/content', 'indexwatch' );
 global $wpdb,$post;
 
@@ -104,7 +105,10 @@ foreach ($category_tags as $key => $cat) {
 	$GLOBALS['featuredPost'] = $featuredPost;
 	$GLOBALS['featuredTitle'] = 'All News';
 
-	echo '<div class="news-feature-grid">';
+	echo '<div class="news-feature-grid" data-limit="12" data-tag="'.$taghere.'" data-cat="2" data-page="'.(get_query_var('paged') ?: 1).'">';
+	?>
+
+	<?php
 	get_template_part( 'partials/content', 'featuredposts' );
 	echo '</div>';
 	// get_template_part( 'partials/content', 'investordivest' );

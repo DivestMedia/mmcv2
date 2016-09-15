@@ -1,8 +1,13 @@
 var newsimages = [];
-
+var getKeyByValue = function( elem, value ) {
+    for( var prop in elem ) {
+        if( elem.hasOwnProperty( prop ) ) {
+            if( elem[ prop ] == value )
+            return prop;
+        }
+    }
+}
 jQuery(function($){
-
-
 
     if(jQuery.browser.mobile)
     {
@@ -63,69 +68,179 @@ jQuery(function($){
 
     }
 
-	
-	
+    if($('.news-feature-grid').length){
+        grabNewsByPage();
 
-
+    }
 
 });
 
+function grabNewsByPage(){
+    var baseurl = "http://wordpress-16884-37649-153865.cloudwaysapps.com";
 
+    var tagids = {
+        'asia' : '7',
+        'banking-finance' : '21',
+        'bonds' : '19',
+        'commodities' : '16',
+        'construction' : '14',
+        'consumer-goods' : '22',
+        'currencies' : '8',
+        'energy' : '15',
+        'etfs' : '25',
+        'europe' : '3',
+        'funds' : '13',
+        'industrial' : '9',
+        'industrial-goods' : '26',
+        'manufacturing' : '17',
+        'media' : '24',
+        'mining' : '12',
+        'pharmaceuticals' : '18',
+        'pre-markets' : '4',
+        'real-estate' : '10',
+        'retail' : '23',
+        'stocks' : '5',
+        'technology' : '20',
+        'travel' : '11',
+        'usa' : '6'
+    };
+
+    var limit = $('.news-feature-grid').data('limit');
+    var tag = $('.news-feature-grid').data('tag');
+    var cat = $('.news-feature-grid').data('cat');
+    var page = $('.news-feature-grid').data('page');
+
+    var tag = tagids[tag];
+    $.getJSON( baseurl + "/wp-json/wp/v2/posts?_envelope&page="+page+"&per_page="+limit+""+(tag ? "&tags=" +tag : "")+"&categories="+cat, function( data ) {
+        if(data.status == 200){
+            $("#news-row").empty();
+            $('.pagination').bootpag({
+                total: data.headers['X-WP-TotalPages'],
+                maxVisible : 5,
+                page : page,
+            }).on("page", function(event, num){
+                $('.news-feature-grid').data('page',num);
+                // Change URL
+                var origurl = window.location.href;
+                var pagepos = origurl.search('/page/');
+                if(pagepos!=-1){
+                    newurl = origurl.substring(0,pagepos);
+                }else{
+                    newurl = origurl.trim('/');
+                }
+                newurl += '/page/' + num ;
+                window.history.pushState(null,null,newurl);
+                $('html, body').animate({
+                    scrollTop: $(".news-feature-grid").offset().top - 100
+                }, 300);
+                grabNewsByPage();
+            });
+
+            data = data.body;
+            var newscount = data.length;
+            var newsloaded = 0;
+            $.each(data,function(i,v){
+                var randtag = 'all';
+                if(v.tags.length > 0){
+                    var randtagid = v.tags[Math.floor(Math.random() * v.tags.length)];
+                    randtag = getKeyByValue( tagids , randtagid );
+                }
+
+                var title = truncateString(v.title.rendered.replace(/(<([^>]+)>)/ig,"").trim(),80,' ','');
+                var excerpt = truncateString(v.content.rendered.replace(/(<([^>]+)>)/ig,"").trim(),180,' ','...');
+                var newsitem = '<div class="col-sm-4"><a href="'+v.link+'"><figure style="border-bottom: 5px solid #1ecd6e;background-size: cover;background-repeat: no-repeat;height: 150px;"><label class="hidden">'+randtag+'</label></figure></a><h4 class="margin-top-20 size-14 weight-700 uppercase height-50" style="overflow:hidden;"><a href="'+v.link+'">'+title+'</a></h4><p class="text-justify height-100" style="overflow:hidden;">'+excerpt+'</p><ul class="text-left size-12 list-inline list-separator"><li><i class="fa fa-calendar"></i>'+v.date+'&nbsp;<small>10:10pm</small></li></ul></div>';
+                var news = $(newsitem);
+                news.appendTo("#news-row");
+                if(v.featured_media == 0){
+                    newscount--;
+                    checkcount(newsloaded, newscount);
+                }else{
+                    $.getJSON( baseurl + "/wp-json/wp/v2/media/"+v.featured_media, function( image ) {
+                        news.find('figure').first().css({
+                            'background-image' : 'url('+image.media_details.sizes.medium.source_url+')'
+                        });
+                        newsloaded++;
+
+                        checkcount(newsloaded, newscount);
+
+                    }).error(function() { newscount--; checkcount(newsloaded, newscount); });
+                }
+            });
+        }
+    });
+}
+
+function checkcount(newsloaded, newscount){
+    if(newsloaded==newscount){
+        assignnewsimage(jQuery('.news-feature-grid .font-proxima.uppercase'),jQuery('.news-feature-grid figure'),false);
+    }
+}
+
+function truncateString (string, limit, breakChar, rightPad) {
+    if (string.length <= limit) return string;
+    var substr = string.substr(0, limit);
+    if ((breakPoint = substr.lastIndexOf(breakChar)) >= 0) {
+        if (breakPoint < string.length -1) {
+            return string.substr(0, breakPoint) + rightPad;
+        }
+    }
+    return string;
+}
 
 function isScrolledIntoView(c){var e=$(window).scrollTop();var d=e+$(window).height();var a=$(c).offset().top;var b=a+$(c).height();return((b>=e)&&(a<=d))};
+
 function xyrLoadImg(){
-			$(".img_place").each(function(){
-				if(isScrolledIntoView(this) == true){
-					if($(this).attr('org_img') !== undefined){
-						var the_orig_img=$(this).attr("org_img");
-						this.src=the_orig_img;
-						
-						$(this).animate({opacity: 0.01},1);
-						$(this).animate({opacity: 1}, 800);
-	  
-						$(this).removeAttr("org_img");
-						$(this).removeClass("img_place");
-						
-						console.log(the_orig_img);
-					}
-				}
-			});
-		}
-		function loadIframe(){
-			$(".iframe_content").each(function(){
-				if(isScrolledIntoView(this) == true){
-					if($(this).attr('iframe_url') !== undefined){
-						var the_orig_url=$(this).attr("iframe_url");
-						this.src=the_orig_url;
-						
-						$(this).animate({opacity: 0.01},1);
-						$(this).animate({opacity: 1}, 800);
-	  
-						$(this).removeAttr("iframe_url");
-						$(this).removeClass("iframe_content");
-					}
-				}
-			});
-		}
-		
-		function loadAjax(){
-			$(".ajax_content").each(function(){
-				if(isScrolledIntoView(this) == true){
-					if($(this).attr('ajax_url') !== undefined){
-						var the_orig_ajax=$(this).attr("ajax_url");
-						var the_div_id=$(this).attr("id");
-						$.ajax({url:the_orig_ajax,success:function(c){$("#"+the_div_id).html(c)}});
-						$(this).animate({opacity: 0.01},1);
-						$(this).animate({opacity: 1}, 800);
-						$(this).removeAttr("ajax_url");
-						$(this).removeClass("ajax_content");
-					}
-				}
-			});
-		}
+    $(".img_place").each(function(){
+        if(isScrolledIntoView(this) == true){
+            if($(this).attr('org_img') !== undefined){
+                var the_orig_img=$(this).attr("org_img");
+                this.src=the_orig_img;
+
+                $(this).animate({opacity: 0.01},1);
+                $(this).animate({opacity: 1}, 800);
+
+                $(this).removeAttr("org_img");
+                $(this).removeClass("img_place");
+
+                console.log(the_orig_img);
+            }
+        }
+    });
+}
+function loadIframe(){
+    $(".iframe_content").each(function(){
+        if(isScrolledIntoView(this) == true){
+            if($(this).attr('iframe_url') !== undefined){
+                var the_orig_url=$(this).attr("iframe_url");
+                this.src=the_orig_url;
+
+                $(this).animate({opacity: 0.01},1);
+                $(this).animate({opacity: 1}, 800);
+
+                $(this).removeAttr("iframe_url");
+                $(this).removeClass("iframe_content");
+            }
+        }
+    });
+}
+
+function loadAjax(){
+    $(".ajax_content").each(function(){
+        if(isScrolledIntoView(this) == true){
+            if($(this).attr('ajax_url') !== undefined){
+                var the_orig_ajax=$(this).attr("ajax_url");
+                var the_div_id=$(this).attr("id");
+                $.ajax({url:the_orig_ajax,success:function(c){$("#"+the_div_id).html(c)}});
+                $(this).animate({opacity: 0.01},1);
+                $(this).animate({opacity: 1}, 800);
+                $(this).removeAttr("ajax_url");
+                $(this).removeClass("ajax_content");
+            }
+        }
+    });
+}
 
 function assignnewsimage(tagelem,itemelem,taglist){
-
     var tags = '';
     var newimgsrc = '';
     var newscount = 0;
@@ -139,6 +254,8 @@ function assignnewsimage(tagelem,itemelem,taglist){
         tags = tagelem.text().trim().toLowerCase().replace(/[^0-9a-z]/gi,'-').replace('-news', '');
         newimgsrc = switch_tags(tags);
     }
+
+
     // setInterval(function(){
     countnow = itemelem.length;
     if(countnow>newscount){
@@ -160,7 +277,6 @@ function assignnewsimage(tagelem,itemelem,taglist){
                 }
                 newimgsrc = switch_tags(tagkey);
             }
-            // if(imgsrc.length > 0){
             var fnd = 0;
             var terms = [
                 'comrssmarketwatch',
@@ -186,9 +302,10 @@ function assignnewsimage(tagelem,itemelem,taglist){
 
 
             var cloneimgsrc = imgsrc;
-            if(imgsrc.length== 0 || cloneimgsrc.replace('url("','').replace('")','').trim().length == 0 || imgsrc== 'url("'+window.location+'")' ){
+            if(imgsrc.length== 0 || cloneimgsrc.replace('url("','').replace('")','').trim().length == 0 || imgsrc== 'url("'+window.location+'")' || imgsrc== 'none' ){
                 fnd++;
             }
+
             if(fnd>0){
                 if(tags.length>0){
                     if(taglist){
@@ -229,18 +346,12 @@ function assignnewsimage(tagelem,itemelem,taglist){
                     }
                 }
             }
-            // }else{
-            //     jQuery(this).css('background-image','url("http://www.marketmasterclass.com/wp-content/themes/sage-8.4/dist/images/placeholder.png")');
-            // }
+
         });
         newscount = countnow;
     }
-    // },1000);
-    // console.log(newsimages);
+
 }
-
-
-
 
 function switch_tags(tags){
     switch(tags){
