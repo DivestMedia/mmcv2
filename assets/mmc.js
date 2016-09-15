@@ -61,12 +61,17 @@ jQuery(function($){
         $('.btn-play-vid').trigger('click');
     });
 
+    $(window).resize(function(){
+        var width = 'width: '+$(window).width()+'px !important;';
+        $('body').find('.ms-thumb-list').css('cssText',width);
+    });
+
     if($('#masterslider-promo').length){
         setTimeout(function(){
             window.dispatchEvent(new Event('resize'));
         },2000);
-
     }
+
 
     if($('.news-feature-grid').length){
         grabNewsByPage();
@@ -126,7 +131,7 @@ function grabNewsByPage(){
                 if(pagepos!=-1){
                     newurl = origurl.substring(0,pagepos);
                 }else{
-                    newurl = origurl.trim('/');
+                    newurl = origurl.replace(/\/$/, "");
                 }
                 newurl += '/page/' + num ;
                 window.history.pushState(null,null,newurl);

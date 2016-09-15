@@ -1,5 +1,6 @@
 <?php
 global $post;
+setup_postdata($post);
 if(!strcasecmp(get_post_type(), 'newsletter')){
 	$_fa_image = get_post_meta($post->ID,'_nltg_fa_image')[0];
 	$_fa_title = get_post_meta($post->ID,'_nltg_fa_title')[0];
@@ -51,10 +52,10 @@ if(!strcasecmp(get_post_type(), 'newsletter')){
 
 	$_ab_lgimage = get_post_meta($post->ID,'_nltg_ab_lgimage')[0];
 	$_ab_lgurl = get_post_meta($post->ID,'_nltg_ab_lgurl')[0];
-
+	$_custom_text = get_the_content();
 	$_post_link = get_the_permalink();
 	$_site_link = site_url();
-	$_site_logo = 'http://mmc.divestmedialocal.com/wp-content/themes/mmcv2/assets/img/mmc-logo-light.png';
+	$_site_logo = 'http://beta.marketmasterclass.com/wp-content/themes/mmcv2/assets/img/mmc-logo-light.png';
 	$_site_logo_black = 'http://mmc.divestmedialocal.com/wp-content/themes/mmcv2/assets/img/mmc-logo.png';
 	$_icons_link = get_stylesheet_directory_uri().'/assets/img/icons/';
 	$_subscribe_link = 'http://beta.marketmasterclass.com/subscribe/';

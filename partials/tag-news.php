@@ -79,7 +79,7 @@ $featuredPostCategories = [];
 $featuredPostCategories[] = [
 	'id' => 0,
 	'name' => 'All News',
-	'link' => '/news'
+	'link' => '/category/news'
 ];
 
 foreach ($category_tags as $key => $cat) {
