@@ -30,7 +30,8 @@ $_datas2 = stockMarket::request($quotes,date('Y-m-d',strtotime("-5 week")),date(
 						<?php
 
 						foreach($_datas as $_stock => $_info){
-
+							$_stock = urldecode((string)$_stock);
+							if(empty($_datas2[$_stock])) continue;
 							?>
 							<div class="padding-10" style="height:97px;">
 

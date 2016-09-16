@@ -283,37 +283,44 @@ $category_tags = [
 						<div class="owl-carousel owl-padding-10 buttons-autohide controlls-over" data-plugin-options='{"singleItem": false, "items":"3", "autoPlay": 4000, "navigation": true, "pagination": false, "stopOnHover": true }' id="global-news-post-slider">
 							<?php foreach($global_news as $post):
 
-								$postnotin[] = $post->ID;
+								$postnotin[] = $post->id;
 
 								?>
 								<div class="img-hover">
 									<a href="<?=$post->link?>">
 										<?php
 
-										$posttags = $post->post_tags;
+										$posttags = null;
 
-										$posttags = array_filter($posttags,function($t){
-											if(!in_array($t->slug,[
-												'pre-markets',
-												'usa',
-												'asia',
-												'europe',
-												'stocks',
-												'commodities',
-												'currencies',
-												'bonds',
-												'funds',
-												'etfs'
-												])) return true;
-												return false;
-											});
+										if(!empty($post->post_tags)){
+											$posttags = $post->post_tags;
+
+											$posttags = array_filter($posttags,function($t){
+												if(!in_array($t->slug,[
+													'pre-markets',
+													'usa',
+													'asia',
+													'europe',
+													'stocks',
+													'commodities',
+													'currencies',
+													'bonds',
+													'funds',
+													'etfs'
+													])) return true;
+													return false;
+												});
+											}
+
 											if ($posttags) {
 												$ftag = array_rand($posttags);
-												?>
-												<label class="badge badge-green pull-right margin-top-10 margin-right-10">
-													<span href="<?=$ftag->link?>" class="text-white"><i class="fa fa-fw fa-tag"></i><?=$posttags[$ftag]->name?></span>
-												</label>
-												<?php
+												if($posttags[$ftag]){
+													?>
+													<label class="badge badge-green pull-right margin-top-10 margin-right-10">
+														<span href="<?=(site_url('tags/'.$posttags[$ftag]->slug))?>" class="text-white"><i class="fa fa-fw fa-tag"></i><?=$posttags[$ftag]->name?></span>
+													</label>
+													<?php
+												}
 											}else{
 												?>
 												<label class="badge badge-green pull-right margin-top-10 margin-right-10">
@@ -370,7 +377,7 @@ $category_tags = [
 						?>
 						<?php if(count($usa_news)): ?>
 							<div class="" id="global-news-post-slider-usa">
-								<?php foreach($usa_news as $k=>$post):  $postnotin[] = $post->ID; ?>
+								<?php foreach($usa_news as $k=>$post):  $postnotin[] = $post->id; ?>
 									<div class="link-gray"<?php if($k==0):?> style="height: 106px;" <?php endif;?>>
 										<?php if($k==0):?>
 											<a href="<?=$post->link?>" class="height-100 pull-left width-100 margin-right-10">
@@ -429,7 +436,7 @@ $category_tags = [
 							?>
 							<?php if(count($asia_news)): ?>
 								<div class="" id="global-news-post-slider-asia">
-									<?php foreach($asia_news as $k=>$post): $postnotin[] = $post->ID; ?>
+									<?php foreach($asia_news as $k=>$post): $postnotin[] = $post->id; ?>
 										<div class="link-gray"<?php if($k==0):?> style="height: 106px;" <?php endif;?>>
 											<?php if($k==0):?>
 												<a href="<?=$post->link?>" class="height-100 pull-left width-100 margin-right-10">
@@ -488,7 +495,7 @@ $category_tags = [
 								?>
 								<?php if(count($stocks_news)): ?>
 									<div class="" id="global-news-post-slider-stocks">
-										<?php foreach($stocks_news as $k=>$post): $postnotin[] = $post->ID; ?>
+										<?php foreach($stocks_news as $k=>$post): $postnotin[] = $post->id; ?>
 											<div class="link-gray"<?php if($k==0):?> style="height: 106px;" <?php endif;?>>
 												<?php if($k==0):?>
 													<a href="<?=$post->link?>" class="height-100 pull-left width-100 margin-right-10">
