@@ -1,5 +1,5 @@
 <?php
-
+define('NEWSBASEURL','http://news.marketmasterclass.com/');
 
 
 include_once( get_stylesheet_directory() .'/_inc/stocks.class.php');
@@ -311,4 +311,48 @@ function file_get_contents_curl($url){
     curl_close($ch);
 
     return $result;
+}
+
+
+// WP API
+
+add_action( 'rest_api_init', 'slug_register_post_thumbnail' );
+function slug_register_post_thumbnail() {
+    register_rest_field( 'post',
+        'post_thumbnail',
+        array(
+            'get_callback'    => 'slug_get_post_thumbnail',
+            'update_callback' => null,
+            'schema'          => null,
+        )
+    );
+        register_rest_field( 'post',
+            'post_tags',
+            array(
+                'get_callback'    => 'slug_get_post_tags',
+                'update_callback' => null,
+                'schema'          => null,
+            )
+        );
+}
+
+/**
+ * Get the value of the "starship" field
+ *
+ * @param array $object Details of current post.
+ * @param string $field_name Name of field.
+ * @param WP_REST_Request $request Current request
+ *
+ * @return mixed
+ */
+function slug_get_post_thumbnail( $post, $field_name, $request ) {
+    $imagesizes = get_intermediate_image_sizes();
+    $imagesrc = [];
+    foreach ($imagesizes as $size) {
+        $imagesrc[$size] = wp_get_attachment_image_src($post['featured_media'],$size);
+    }
+    return $imagesrc;
+}
+function slug_get_post_tags( $post, $field_name, $request ) {
+   return get_the_tags($post['id']);
 }

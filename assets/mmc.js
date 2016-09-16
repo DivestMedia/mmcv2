@@ -97,7 +97,7 @@ function grabNewsByPage(){
         'etfs' : '25',
         'europe' : '3',
         'funds' : '13',
-        'industrial' : '9',
+        // 'industrial' : '9',
         'industrial-goods' : '26',
         'manufacturing' : '17',
         'media' : '24',
@@ -162,15 +162,23 @@ function grabNewsByPage(){
                     newscount--;
                     checkcount(newsloaded, newscount);
                 }else{
-                    $.getJSON( baseurl + "/wp-json/wp/v2/media/"+v.featured_media, function( image ) {
+                    // $.getJSON( baseurl + "/wp-json/wp/v2/media/"+v.featured_media, function( image ) {
+                    //     news.find('figure').first().css({
+                    //         'background-image' : 'url('+image.media_details.sizes['mid-image'].source_url+')'
+                    //     });
+                    //     newsloaded++;
+                    //
+                    //     checkcount(newsloaded, newscount);
+                    //
+                    // }).error(function() { newscount--; checkcount(newsloaded, newscount); });
+                    if(v.post_thumbnail["mid-image"]){
                         news.find('figure').first().css({
-                            'background-image' : 'url('+image.media_details.sizes.medium.source_url+')'
+                            'background-image' : 'url('+v.post_thumbnail["mid-image"]["0"]+')'
                         });
-                        newsloaded++;
+                    }
 
-                        checkcount(newsloaded, newscount);
-
-                    }).error(function() { newscount--; checkcount(newsloaded, newscount); });
+                    newsloaded++;
+                    checkcount(newsloaded, newscount);
                 }
             });
         }
@@ -270,6 +278,9 @@ function assignnewsimage(tagelem,itemelem,taglist){
         var ctr = 0;
 
         itemelem.each(function(ii,v){
+            if($(v).data('imgchanged')){
+                return true;
+            }
             var imgsrc = '';
             if($(v).prop("tagName")=='IMG'){
                 imgsrc = jQuery(v).attr('src') || '';
@@ -309,7 +320,7 @@ function assignnewsimage(tagelem,itemelem,taglist){
 
 
             var cloneimgsrc = imgsrc;
-            if(imgsrc.length== 0 || cloneimgsrc.replace('url("','').replace('")','').trim().length == 0 || imgsrc== 'url("'+window.location+'")' || imgsrc== 'none' ){
+            if(imgsrc.length== 0 || cloneimgsrc.replace('url("','').replace('")','').trim().length == 0 || imgsrc== 'url("'+window.location+'")' || imgsrc== 'url("undefined")' || imgsrc== 'undefined' || imgsrc== 'none' ){
                 fnd++;
             }
 
@@ -345,12 +356,17 @@ function assignnewsimage(tagelem,itemelem,taglist){
                     }
                     else
                     rnewimgsrc = newimgsrc;
-                    if($(v).prop("tagName")=='IMG'){
-                        jQuery(v).attr('src', rnewimgsrc );
+
+                    if(rnewimgsrc!="undefined"){
+                        if($(v).prop("tagName")=='IMG'){
+                            jQuery(v).attr('src', rnewimgsrc );
+                        }
+                        else{
+                            jQuery(v).css('background-image','url("'+ rnewimgsrc +'")');
+                        }
                     }
-                    else{
-                        jQuery(v).css('background-image','url("'+ rnewimgsrc +'")');
-                    }
+
+                    jQuery(v).data('imgchanged', true );
                 }
             }
 
@@ -441,6 +457,7 @@ function switch_tags(tags){
 
         ];
         break;
+        case 'consumer':
         case 'consumer-goods':
         newimgsrc = [
             '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-1.jpg',

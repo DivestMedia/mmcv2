@@ -7,26 +7,7 @@ global $wpdb,$post;
 
 $mainpost = $post;
 $taghere = strtolower(get_query_var('tag'));
-$tagData = get_term_by( 'slug',$taghere,'post_tag' );
-
-$latestnews = [];
-// Get 5 Latest News for each category
-// WP_Query arguments
-
-$mainpost = $post;
-$hascharts = false;
-$stockwatch_child = [
-	'pre-markets',
-	'usa',
-	'asia',
-	'europe',
-	'stocks',
-	'commodities',
-	'currencies',
-	'bonds',
-	'funds',
-	'etfs'
-];
+// $tagData = get_term_by( 'slug',$taghere,'post_tag' );
 
 
 $category_tags = [
@@ -102,12 +83,12 @@ $category_tags = [
 		'name' => 'Funds',
 		'slug' => 'funds',
 	],
-	[
-		'id' => 9,
-		'link' => '/tag/industrial/',
-		'name' => 'Industrial',
-		'slug' => 'industrial',
-	],
+	// [
+	// 	'id' => 9,
+	// 	'link' => '/tag/industrial/',
+	// 	'name' => 'Industrial',
+	// 	'slug' => 'industrial',
+	// ],
 	[
 		'id' => 26,
 		'link' => '/tag/industrial-goods/',
@@ -185,7 +166,35 @@ $category_tags = [
 	],
 ];
 
-if(!in_array(strtolower($tagData->slug),$stockwatch_child)){
+foreach ($category_tags as $cattags) {
+	if($cattags['slug']==$taghere){
+		$tagData = $cattags;
+	}
+}
+
+$latestnews = [];
+// Get 5 Latest News for each category
+// WP_Query arguments
+
+$mainpost = $post;
+$hascharts = false;
+$stockwatch_child = [
+	'pre-markets',
+	'usa',
+	'asia',
+	'europe',
+	'stocks',
+	'commodities',
+	'currencies',
+	'bonds',
+	'funds',
+	'etfs'
+];
+
+
+
+
+if(!in_array(strtolower($tagData['slug']),$stockwatch_child)){
 
 	$mainpost = $post;
 	$per_page = 5;
@@ -206,17 +215,23 @@ if(!in_array(strtolower($tagData->slug),$stockwatch_child)){
 		'tags' => $tags,
 		'categories' => $categories,
 		'per_page' => $per_page
-	],'http://wordpress-16884-37649-153865.cloudwaysapps.com/wp-json/wp/v2/posts')));
+	], NEWSBASEURL . 'wp-json/wp/v2/posts')));
 
 	foreach ($post as $key => $news) {
 		$image ='';
-		if(!empty($news->featured_media)){
-			$imagedata = json_decode(file_get_contents_curl('http://wordpress-16884-37649-153865.cloudwaysapps.com/wp-json/wp/v2/media/'.$news->featured_media.'?_envelope'));
-			if($imagedata->status!==404){
-				$image = $imagedata->body->media_details->sizes->medium->source_url;
-			}
+		// if(!empty($news->featured_media)){
+		// 	$imagedata = json_decode(file_get_contents_curl('http://wordpress-16884-37649-153865.cloudwaysapps.com/wp-json/wp/v2/media/'.$news->featured_media.'?_envelope'));
+		// 	if($imagedata->status!==404){
+		// 		$image = $imagedata->body->media_details->sizes->medium->source_url;
+		// 	}
+		//
+		// }
 
+
+		if(!empty($news->post_thumbnail->{"mid-image"})){
+			$image = $news->post_thumbnail->{"mid-image"}["0"];
 		}
+
 		$latestnews[] = [
 			'title' => '<a href="'.site_url('/category/news').'">News</a>',
 			'description' => xyr_smarty_limit_chars($news->title->rendered,40),
@@ -228,7 +243,7 @@ if(!in_array(strtolower($tagData->slug),$stockwatch_child)){
 
 	if(count($latestnews)>4):
 		$post = $latestnews;
-		$GLOBALS['featureTitle'] = 'Latest <span>'.$tagData->name .' News</span>';
+		$GLOBALS['featureTitle'] = 'Latest <span>'.$tagData['name'] .' News</span>';
 		$GLOBALS['featureButton'] = 'READ MORE';
 		get_template_part( 'partials/content', 'featuredgrid' );
 	endif;
@@ -237,7 +252,7 @@ if(!in_array(strtolower($tagData->slug),$stockwatch_child)){
 
 	$hascharts = true;
 	echo '<script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>';
-	get_template_part( 'partials/chart', $tagData->slug );
+	get_template_part( 'partials/chart', $tagData['slug'] );
 
 }
 $post = $mainpost;
@@ -276,26 +291,26 @@ foreach ($category_tags as $key => $cat) {
 			'active' => ($taghere==$cat['slug'])
 		];
 	}
-
-	$featuredPostNews =  get_posts([
-		'posts_per_page'   => 9,
-		'category_name'    => 'News',
-		'orderby'          => 'date',
-		'order'            => 'DESC',
-		'post_type'        => 'post',
-		'post_status'      => 'publish',
-		'paged' => get_query_var('paged') ?: 1,
-		'offset' => 5,
-		'suppress_filters' => true,
-		'tag_slug__in' => $taghere,
-	]);
-
-
+	$featuredPostNews = [];
+	// $featuredPostNews =  get_posts([
+	// 	'posts_per_page'   => 9,
+	// 	'category_name'    => 'News',
+	// 	'orderby'          => 'date',
+	// 	'order'            => 'DESC',
+	// 	'post_type'        => 'post',
+	// 	'post_status'      => 'publish',
+	// 	'paged' => get_query_var('paged') ?: 1,
+	// 	'offset' => 5,
+	// 	'suppress_filters' => true,
+	// 	'tag_slug__in' => $taghere,
+	// ]);
 
 
-	foreach ($featuredPostNews as $key => $postNews) {
-		$featuredPostNews[$key] = $postNews->ID;
-	}
+
+	//
+	// foreach ($featuredPostNews as $key => $postNews) {
+	// 	$featuredPostNews[$key] = $postNews->ID;
+	// }
 
 	$featuredPost = [
 		'categories' => $featuredPostCategories,
@@ -304,7 +319,7 @@ foreach ($category_tags as $key => $cat) {
 
 	$GLOBALS['featuredPost'] = $featuredPost;
 	if($hascharts==false)
-	$GLOBALS['featuredTitle'] = $tagData->name . ' News';
+	$GLOBALS['featuredTitle'] = $tagData['name'] . ' News';
 	else
 	$GLOBALS['featuredTitle'] = 'Related News';
 
