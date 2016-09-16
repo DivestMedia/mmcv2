@@ -102,12 +102,12 @@
 	.master-slider .ms-slide h2.ms-promo-travel-place{     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);}
 	.master-slider .ms-slide .btn-primary{font-family: Proxima Nova Bold;text-transform:uppercase; transition: all 0.3s linear;}
 	.master-slider .ms-slide .btn-primary{border-width:0;}
-	.master-slider .ms-slide .btn-primary:hover{background-color:#F2C500;border-color:#d6a600}
+	.master-slider .ms-slide .btn-primary:hover{background-color:#0087dd;border-color:#d6a600}
 	.master-slider .ms-slide .btn-third{border-width:0;font-size:14px;background-color:#213240;text-transform:uppercase;color:#fff!important;}
 	.master-slider .ms-slide p{color:#fff}
 	.master-slider .ms-slide .ms-promo-travel-description{max-width:700px;text-shadow: 1px 1px 2px #000;}
 	
-	.master-slider .ms-thumb-frame.ms-thumb-frame-selected{ transition: all 0.3s linear;border-top: 7px solid #F2C500}
+	.master-slider .ms-thumb-frame.ms-thumb-frame-selected{ transition: all 0.3s linear;border-top: 7px solid #0087dd}
 	
 	
 	.dark.nav li{background-color:#333!important;}
@@ -124,15 +124,15 @@
 	section.alternate2{background-color:#ececec;}
 	.black-bg{background-color:#222!important}
 	.primary-bg{background-color:#27AE60!important}
-	.secondary-bg{background-color:#F2C500!important}
+	.secondary-bg{background-color:#0087dd!important}
 	.third-bg{background-color:#213240!important}
 	.primary-color{color:#27AE60!important}
-	.secondary-color{color:#F2C500!important}
+	.secondary-color{color:#0087dd!important}
 	.third-color{color:#213240!important}
 	
 	.btn.primary-bg,.btn.secondary-bg{color:#fff;}
 	.btn.secondary-bg{color:#fff;}
-	.btn.primary-bg:hover{background-color:#F2C500!important;}
+	.btn.primary-bg:hover{background-color:#0087dd!important;}
 	.btn.secondary-bg:hover{background-color:#1ecd6e!important;}
 	.border-1{border-width:1px!important;}
 	.max-width-500{max-width:500px}
@@ -150,7 +150,7 @@
 	
 	.cols-primary{background-color:#1ecd6e!important;}
 	.cols-primary small{color:#fff!important;}
-	.cols-secondary{background-color:#F2C500!important;}
+	.cols-secondary{background-color:#0087dd!important;}
 	
 	.price-table li{color:#999;}
 	.price-table li b{color:#333;}
@@ -158,7 +158,7 @@
 	.link-gray a{color:#555;}
 	.link-gray a:hover{color:#000;}
 	
-	.trading-graph .box-gradient .col-sm-3:hover{background-color:#F2C500!important;}
+	.trading-graph .box-gradient .col-sm-3:hover{background-color:#0087dd!important;}
 	
 	
 	#scroll-market::before,
@@ -182,9 +182,9 @@ and (max-device-width : 480px) {
 	#scroll-market .container{z-index:2;}
 	
  	header.tiny-line h2{padding:0!important;margin:0!important;}
- 	header.tiny-line h2 span{color:#F2C500!important;}
+ 	header.tiny-line h2 span{color:#0087dd!important;}
 	header.tiny-line::after {margin:0!important;padding:0!important;
-    background: #F2C500 none repeat scroll 0 0;
+    background: #0087dd none repeat scroll 0 0;
     bottom: 0;
     content: "";
     display: inline-block;
@@ -204,7 +204,7 @@ and (max-device-width : 480px) {
 		width:100%;margin:0!important;height:100%;background-color:rgba(26,176,93,0)!important;}
 		.item-box.hover-box .item-description .overlay{background-color:rgba(0,0,0,0.5)!important;}
 	.item-box.hover-box .item-description:hover .inner{background-color:rgba(26,176,93,0.8)!important;}
-	.item-box.hover-box .item-description:hover .inner .btn{background-color:#F2C500!important;}
+	.item-box.hover-box .item-description:hover .inner .btn{background-color:#0087dd!important;}
 	
 	
 	.item-box .item-description .inner h3{text-transform:uppercase;margin-top: 2em;margin-bottom:1em;color:#fff;font-size:1.2em;font-weight:bold;}
@@ -276,8 +276,8 @@ and (max-device-width : 480px) {
 	
 	
 	#about_heads .item{cursor:pointer;}
-	#about_heads .item:hover .bg-advisor{background-color: #F2C500!important;  outline: 1px solid #000;}
-	#about_heads .item:hover .caption h4,#about_heads .item:hover .caption span{color:#F2C500;}
+	#about_heads .item:hover .bg-advisor{background-color: #0087dd!important;  outline: 1px solid #000;}
+	#about_heads .item:hover .caption h4,#about_heads .item:hover .caption span{color:#0087dd;}
 	#about_heads .item:hover .caption p{color:#fff;}
 	
 	
