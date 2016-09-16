@@ -3,7 +3,8 @@ define('NEWSBASEURL','http://news.marketmasterclass.com/');
 
 
 include_once( get_stylesheet_directory() .'/_inc/stocks.class.php');
-
+include_once( get_stylesheet_directory() .'/_inc/getmenu.php');
+$GetMenu = New GetMenu();
 add_filter( 'jpeg_quality', create_function( '', 'return 80;' ) );
 
 
