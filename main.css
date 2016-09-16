@@ -128,6 +128,7 @@
 	.third-bg{background-color:#213240!important}
 	.primary-color{color:#27AE60!important}
 	.secondary-color{color:#0087dd!important}
+	.secondary-color-hover:hover{color:#0087dd!important}
 	.third-color{color:#213240!important}
 	
 	.btn.primary-bg,.btn.secondary-bg{color:#fff;}
