@@ -3,12 +3,12 @@
 			<header class="text-center margin-bottom-50 tiny-line">
 				<span class="uppercase letter-spacing-10 size-10">What we Offer</span>
 				<h2 class="font-proxima uppercase">Membership<span> Levels</span></h2>
-			</header>	
-			
+			</header>
+
 			<div class="row">
 				<div class="col-md-4 col-sm-4">
-						                            
-					<div class="price-clean box">                                
+
+					<div class="price-clean box">
 						<h4>
 							<sup>$</sup>9<em>.99/month</em>
 						</h4>
@@ -21,14 +21,14 @@
 								<li class="legalcase"><b class="uppercase">Newsletters</b><br/>Received on a daily basis, keeping you abreast of the major events of the day</li>
 							</ul>
 						</div>
-						<a href="#" class="btn btn-3d btn-teal noradius">Subscribe Now</a>
+						<a href="<?=site_url('accounts/register')?>" class="btn btn-3d btn-teal noradius">Subscribe Now</a>
 					</div>
-				
+
 				</div>
-				
+
 				<div class="col-md-4 col-sm-4">
-						                            
-					<div class="price-clean box">                                
+
+					<div class="price-clean box">
 						<h4>
 							<sup>$</sup>24<em>.99/month</em>
 						</h4>
@@ -45,14 +45,14 @@
 								<li class="legalcase"><b class="uppercase">My Account </b><br/>Set own account with your own tailor-made stock watch alarm</li>
 							</ul>
 						</div>
-						<a href="#" class="btn btn-3d btn-teal noradius">Subscribe Now</a>
+						<a href="<?=site_url('accounts/register')?>" class="btn btn-3d btn-teal noradius">Subscribe Now</a>
 					</div>
-				
+
 				</div>
 
 				<div class="col-md-4 col-sm-4">
 					<div class="box price-clean price-clean-popular">
-						<div class="ribbon"> 
+						<div class="ribbon">
 							<div class="ribbon-inner">LIMITED</div>
 						</div>
 						<h4>
@@ -71,12 +71,12 @@
 								<li class="legalcase"><b class="uppercase">My Account </b><br/>Set own account with your own tailor-made stock watch alarm</li>
 							</ul>
 						</div>
-						<a href="#" class="btn primary-bg noradius">Learn More</a>
+						<a href="<?=site_url('accounts/register')?>" class="btn primary-bg noradius">Learn More</a>
 					</div>
-					
+
 				</div>
 
 			</div>
-				
+
 		</div>
 	</section>

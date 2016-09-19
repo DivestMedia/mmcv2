@@ -299,7 +299,10 @@ header( "Access-Control-Allow-Origin: *" );
 
 
 function file_get_contents_curl($url){
+
     $ch = curl_init();
+
+    curl_setopt($ch,CURLOPT_USERAGENT,"Mozilla/5.0 (Linux; Android 6.0.1; MotoG3 Build/MPI24.107-55) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.81 Mobile Safari/537.36");
     // Disable SSL verification
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     // Will return the response, if false it print the response
@@ -320,40 +323,438 @@ function file_get_contents_curl($url){
 add_action( 'rest_api_init', 'slug_register_post_thumbnail' );
 function slug_register_post_thumbnail() {
     register_rest_field( 'post',
-        'post_thumbnail',
-        array(
-            'get_callback'    => 'slug_get_post_thumbnail',
-            'update_callback' => null,
-            'schema'          => null,
-        )
-    );
-        register_rest_field( 'post',
-            'post_tags',
-            array(
-                'get_callback'    => 'slug_get_post_tags',
-                'update_callback' => null,
-                'schema'          => null,
-            )
-        );
+    'post_thumbnail',
+    array(
+        'get_callback'    => 'slug_get_post_thumbnail',
+        'update_callback' => null,
+        'schema'          => null,
+    )
+);
+register_rest_field( 'post',
+'post_tags',
+array(
+    'get_callback'    => 'slug_get_post_tags',
+    'update_callback' => null,
+    'schema'          => null,
+)
+);
 }
 
 /**
- * Get the value of the "starship" field
- *
- * @param array $object Details of current post.
- * @param string $field_name Name of field.
- * @param WP_REST_Request $request Current request
- *
- * @return mixed
- */
+* Get the value of the "starship" field
+*
+* @param array $object Details of current post.
+* @param string $field_name Name of field.
+* @param WP_REST_Request $request Current request
+*
+* @return mixed
+*/
+
+function pickdefaultimage($tag){
+    switch ($tag) {
+        case 'real-estate':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/ei.marketwatch.comMultimedia20160510PhotosZHMW-EM390_roofto_20160510093609_ZH-cf2792d26d887ed37889f6b4e15b816cefb25830.jpg',
+            '/wp-content/uploads/2016/09/real-estate-news-1.jpg',
+            '/wp-content/uploads/2016/09/real-estate-news-2.jpg',
+            '/wp-content/uploads/2016/09/real-estate-news-3.jpg',
+            '/wp-content/uploads/2016/09/real-estate-news-4.jpg',
+            '/wp-content/uploads/2016/09/real-estate-5.jpg',
+            '/wp-content/uploads/2016/09/real-estate-6.jpg',
+            '/wp-content/uploads/2016/09/real-estate-7.jpg',
+            '/wp-content/uploads/2016/09/real-estate-8.jpg',
+            '/wp-content/uploads/2016/09/real-estate-9.jpg',
+            '/wp-content/uploads/2016/09/real-estate-10.jpg',
+            '/wp-content/uploads/2016/09/real-estate-11.jpg',
+            '/wp-content/uploads/2016/09/gen-news-1.jpg',
+            '/wp-content/uploads/2016/09/gen-news-2.jpg',
+            '/wp-content/uploads/2016/09/gen-news-3.jpg',
+            '/wp-content/uploads/2016/09/gen-news-4.jpg',
+            '/wp-content/uploads/2016/09/gen-news-5.jpg',
+            '/wp-content/uploads/2016/09/gen-news-6.jpg',
+            '/wp-content/uploads/2016/09/gen-news-7.jpg',
+            '/wp-content/uploads/2016/09/gen-news-8.jpg',
+            '/wp-content/uploads/2016/09/gen-news-9.jpg',
+            '/wp-content/uploads/2016/09/gen-news-10.jpg',
+            '/wp-content/uploads/2016/09/gen-news-11.jpg'
+        ];
+        break;
+        case 'banking-finance':
+        case 'stocks':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/glocdn.investing.comtrkd-imagesLYNXNPEC3S1CP_L-1391d561df4fd8ca7c1ac0a9be36cc1690d251db.jpg',
+            '/wp-content/uploads/2016/09/Banking-and-Finance-banner.jpg',
+            '/wp-content/uploads/2016/09/banking-finance-insurance.jpg',
+            '/wp-content/uploads/2016/09/Finance-Bank.jpg',
+            '/wp-content/uploads/2016/09/pakistan-s-islamic-banking-push-faces-industry-gaps-1413296787-9951.jpg',
+            '/wp-content/uploads/2016/09/bankingfinance_5.jpg',
+            '/wp-content/uploads/2016/09/bankingfinance_3.jpg',
+            '/wp-content/uploads/2016/09/bankingfinance_2.jpg',
+            '/wp-content/uploads/2016/09/bankingfinance_1.jpg',
+            '/wp-content/uploads/2016/09/bankingfinance_6.jpg',
+            '/wp-content/uploads/2016/09/bankingfinance_7.jpg',
+            '/wp-content/uploads/2016/09/bankingfinance_8.jpg',
+            '/wp-content/uploads/2016/09/bankingfinance_9.jpg',
+            '/wp-content/uploads/2016/09/bankingfinance_10.jpg',
+            '/wp-content/uploads/2016/09/bankingfinance_11.jpg',
+            '/wp-content/uploads/2016/09/gen-news-8.jpg',
+            '/wp-content/uploads/2016/09/gen-news-9.jpg',
+            '/wp-content/uploads/2016/09/gen-news-10.jpg',
+            '/wp-content/uploads/2016/09/gen-news-11.jpg',
+            '/wp-content/uploads/2016/09/gen-news-12.jpg',
+            '/wp-content/uploads/2016/09/gen-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-14.jpg',
+            '/wp-content/uploads/2016/09/gen-news-15.jpg',
+            '/wp-content/uploads/2016/09/gen-news-16.jpg'
+        ];
+        break;
+        case 'construction':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/ei.marketwatch.comMultimedia20141230PhotosMGMW-DC458_morton_20141230161657_MG-646c06ceed097bbcea9357e607583e0e9e14dff8.jpg',
+            '/wp-content/uploads/2016/09/construction-news-1.jpg',
+            '/wp-content/uploads/2016/09/construction-news-2.jpg',
+            '/wp-content/uploads/2016/09/construction-news-3.jpg',
+            '/wp-content/uploads/2016/09/construction-news-4.jpg',
+            '/wp-content/uploads/2016/09/construction_10.jpg',
+            '/wp-content/uploads/2016/09/construction_6.jpg',
+            '/wp-content/uploads/2016/09/construction_7.jpg',
+            '/wp-content/uploads/2016/09/construction_8.jpg',
+            '/wp-content/uploads/2016/09/construction_9.jpg',
+            '/wp-content/uploads/2016/09/construction_10.jpg',
+            '/wp-content/uploads/2016/09/construction_11.jpg',
+            '/wp-content/uploads/2016/09/construction_12.jpg',
+            '/wp-content/uploads/2016/09/construction_13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-8.jpg',
+            '/wp-content/uploads/2016/09/gen-news-9.jpg',
+            '/wp-content/uploads/2016/09/gen-news-10.jpg',
+            '/wp-content/uploads/2016/09/gen-news-11.jpg'
+
+        ];
+        break;
+        case 'consumer':
+        case 'consumer-goods':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/consumer-goods-news-1.jpg',
+            '/wp-content/uploads/2016/09/consumer-goods-news-3.jpg',
+            '/wp-content/uploads/2016/09/consumer-goods-news-4.jpg',
+            '/wp-content/uploads/2016/09/consumer-goods-news-5.jpg',
+            '/wp-content/uploads/2016/09/consumer-goods-news-6.jpg',
+            '/wp-content/uploads/2016/09/consumer-goods-news-7.jpg',
+            '/wp-content/uploads/2016/09/consumer-goods-news-8.jpg',
+            '/wp-content/uploads/2016/09/consumer-goods-news-9.jpg',
+            '/wp-content/uploads/2016/09/consumer-goods-news-10.jpg',
+            '/wp-content/uploads/2016/09/consumer-goods-news-11.jpg',
+            '/wp-content/uploads/2016/09/consumer-goods-news-12.jpg',
+            '/wp-content/uploads/2016/09/gen-news-1.jpg',
+            '/wp-content/uploads/2016/09/gen-news-2.jpg',
+            '/wp-content/uploads/2016/09/gen-news-3.jpg',
+            '/wp-content/uploads/2016/09/gen-news-4.jpg',
+            '/wp-content/uploads/2016/09/gen-news-5.jpg',
+            '/wp-content/uploads/2016/09/gen-news-6.jpg',
+            '/wp-content/uploads/2016/09/gen-news-7.jpg'
+        ];
+        break;
+        case 'energy':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/energy-news-1.jpg',
+            '/wp-content/uploads/2016/09/energy-news-2.jpg',
+            '/wp-content/uploads/2016/09/energy_7.jpg',
+            '/wp-content/uploads/2016/09/energy_6.jpg',
+            '/wp-content/uploads/2016/09/energy-news-3.jpg',
+            '/wp-content/uploads/2016/09/energy-news-4.jpg',
+            '/wp-content/uploads/2016/09/energy-news-5.jpg',
+            '/wp-content/uploads/2016/09/energy-news-8.jpg',
+            '/wp-content/uploads/2016/09/energy-news-9.jpg',
+            '/wp-content/uploads/2016/09/energy-news-10.jpg',
+            '/wp-content/uploads/2016/09/energy-news-11.jpg',
+            '/wp-content/uploads/2016/09/energy-news-12.jpg',
+            '/wp-content/uploads/2016/09/energy-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-12.jpg',
+            '/wp-content/uploads/2016/09/gen-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-14.jpg',
+            '/wp-content/uploads/2016/09/gen-news-15.jpg',
+            '/wp-content/uploads/2016/09/gen-news-16.jpg'
+        ];
+        break;
+        case 'industrial':
+        case 'industrial-goods':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/industrial-goods-news-1.jpg',
+            '/wp-content/uploads/2016/09/industrial-goods-news-2.jpg',
+            '/wp-content/uploads/2016/09/industrial-goods-news-3.jpg',
+            '/wp-content/uploads/2016/09/industrial-goods-news-4.jpg',
+            '/wp-content/uploads/2016/09/industrial-goods-news-5.jpg',
+            '/wp-content/uploads/2016/09/industrial-goods-news-6.jpg',
+            '/wp-content/uploads/2016/09/industrial-goods-news-7.jpg',
+            '/wp-content/uploads/2016/09/industrial-goods-news-8.jpg',
+            '/wp-content/uploads/2016/09/industrial-goods-news-9.jpg',
+            '/wp-content/uploads/2016/09/industrial-goods-news-10.jpg',
+            '/wp-content/uploads/2016/09/industrial-goods-news-11.jpg',
+            '/wp-content/uploads/2016/09/industrial-goods-news-12.jpg',
+            '/wp-content/uploads/2016/09/industrial-goods-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-8.jpg',
+            '/wp-content/uploads/2016/09/gen-news-9.jpg',
+            '/wp-content/uploads/2016/09/gen-news-10.jpg',
+            '/wp-content/uploads/2016/09/gen-news-11.jpg'
+        ];
+        break;
+        case 'manufacturing':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/manufacturing-news-1.jpg',
+            '/wp-content/uploads/2016/09/manufacturing-news-2.jpg',
+            '/wp-content/uploads/2016/09/manufacturing-news-3.jpg',
+            '/wp-content/uploads/2016/09/manufacturing-news-4.jpg',
+            '/wp-content/uploads/2016/09/manufacturing-news-5.jpg',
+            '/wp-content/uploads/2016/09/manufacturing-news-6.jpg',
+            '/wp-content/uploads/2016/09/manufacturing-news-7.jpg',
+            '/wp-content/uploads/2016/09/manufacturing-news-8.jpg',
+            '/wp-content/uploads/2016/09/manufacturing-news-9.jpg',
+            '/wp-content/uploads/2016/09/manufacturing-news-10.jpg',
+            '/wp-content/uploads/2016/09/manufacturing-news-11.jpg',
+            '/wp-content/uploads/2016/09/manufacturing-news-12.jpg',
+            '/wp-content/uploads/2016/09/manufacturing-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-12.jpg',
+            '/wp-content/uploads/2016/09/gen-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-14.jpg',
+            '/wp-content/uploads/2016/09/gen-news-15.jpg',
+            '/wp-content/uploads/2016/09/gen-news-16.jpg'
+        ];
+        break;
+        case 'media':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/media_4.jpg',
+            '/wp-content/uploads/2016/09/media_3.jpg',
+            '/wp-content/uploads/2016/09/media_2.jpg',
+            '/wp-content/uploads/2016/09/media_3.jpg',
+            '/wp-content/uploads/2016/09/media_4.jpg',
+            '/wp-content/uploads/2016/09/media_5.jpg',
+            '/wp-content/uploads/2016/09/media_6.jpg',
+            '/wp-content/uploads/2016/09/gen-news-1.jpg',
+            '/wp-content/uploads/2016/09/gen-news-2.jpg',
+            '/wp-content/uploads/2016/09/gen-news-3.jpg',
+            '/wp-content/uploads/2016/09/gen-news-4.jpg',
+            '/wp-content/uploads/2016/09/gen-news-5.jpg',
+            '/wp-content/uploads/2016/09/gen-news-6.jpg',
+            '/wp-content/uploads/2016/09/gen-news-7.jpg',
+            '/wp-content/uploads/2016/09/gen-news-12.jpg',
+            '/wp-content/uploads/2016/09/gen-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-14.jpg',
+            '/wp-content/uploads/2016/09/gen-news-15.jpg',
+            '/wp-content/uploads/2016/09/gen-news-16.jpg'
+        ]; break;
+        case 'mining':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/mining-news-1.jpg',
+            '/wp-content/uploads/2016/09/mining-news-2.jpg',
+            '/wp-content/uploads/2016/09/mining-news-3.jpg',
+            '/wp-content/uploads/2016/09/mining-news-4.jpg',
+            '/wp-content/uploads/2016/09/mining_5.jpg',
+            '/wp-content/uploads/2016/09/mining_7.jpg',
+            '/wp-content/uploads/2016/09/mining-news-6.jpg',
+            '/wp-content/uploads/2016/09/mining-news-8.jpg',
+            '/wp-content/uploads/2016/09/mining-news-9.jpg',
+            '/wp-content/uploads/2016/09/mining-news-10.jpg',
+            '/wp-content/uploads/2016/09/mining-news-11.jpg',
+            '/wp-content/uploads/2016/09/mining-news-12.jpg',
+            '/wp-content/uploads/2016/09/mining-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-12.jpg',
+            '/wp-content/uploads/2016/09/gen-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-14.jpg',
+            '/wp-content/uploads/2016/09/gen-news-15.jpg',
+            '/wp-content/uploads/2016/09/gen-news-16.jpg'
+        ];
+        break;
+        case 'pharmaceutical':
+        case 'pharmaceuticals':
+        case 'pharmacueticals':
+        case 'pharmacueticals-medical':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/medical-news-1.jpg',
+            '/wp-content/uploads/2016/09/medical-news-2.jpg',
+            '/wp-content/uploads/2016/09/medical-news-3.jpg',
+            '/wp-content/uploads/2016/09/medical-news-4.jpg',
+            '/wp-content/uploads/2016/09/medical-news-5.jpg',
+            '/wp-content/uploads/2016/09/medical-news-6.jpg',
+            '/wp-content/uploads/2016/09/medical-news-7.jpg',
+            '/wp-content/uploads/2016/09/medical-news-8.jpg',
+            '/wp-content/uploads/2016/09/medical-news-9.jpg',
+            '/wp-content/uploads/2016/09/medical-news-10.jpg',
+            '/wp-content/uploads/2016/09/medical-news-11.jpg',
+            '/wp-content/uploads/2016/09/medical-news-12.jpg',
+            '/wp-content/uploads/2016/09/gen-news-12.jpg',
+            '/wp-content/uploads/2016/09/gen-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-14.jpg',
+            '/wp-content/uploads/2016/09/gen-news-15.jpg',
+            '/wp-content/uploads/2016/09/gen-news-16.jpg'
+        ];
+        break;
+        case 'retail':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/retail-news-1.jpg',
+            '/wp-content/uploads/2016/09/retail-news-2.jpg',
+            '/wp-content/uploads/2016/09/retail-news-3.jpg',
+            '/wp-content/uploads/2016/09/retail-news-4.jpg',
+            '/wp-content/uploads/2016/09/retail-news-5.jpg',
+            '/wp-content/uploads/2016/09/retail-news-6.jpg',
+            '/wp-content/uploads/2016/09/retail-news-7.jpg',
+            '/wp-content/uploads/2016/09/retail-news-8.jpg',
+            '/wp-content/uploads/2016/09/retail-news-9.jpg',
+            '/wp-content/uploads/2016/09/retail-news-10.jpg',
+            '/wp-content/uploads/2016/09/retail-news-11.jpg',
+            '/wp-content/uploads/2016/09/retail-news-12.jpg',
+            '/wp-content/uploads/2016/09/retail-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-12.jpg',
+            '/wp-content/uploads/2016/09/gen-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-14.jpg',
+            '/wp-content/uploads/2016/09/gen-news-15.jpg',
+            '/wp-content/uploads/2016/09/gen-news-16.jpg'
+        ];
+        break;
+        case 'technology':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/technology-news-1.jpg',
+            '/wp-content/uploads/2016/09/technology-news-2.jpg',
+            '/wp-content/uploads/2016/09/technology-news-3.jpg',
+            '/wp-content/uploads/2016/09/techonology_4.jpg',
+            '/wp-content/uploads/2016/09/techonology_5.jpg',
+            '/wp-content/uploads/2016/09/technology-news-6.jpg',
+            '/wp-content/uploads/2016/09/technology-news-7.jpg',
+            '/wp-content/uploads/2016/09/technology-news-8.jpg',
+            '/wp-content/uploads/2016/09/technology-news-9.jpg',
+            '/wp-content/uploads/2016/09/technology-news-10.jpg',
+            '/wp-content/uploads/2016/09/technology-news-11.jpg',
+            '/wp-content/uploads/2016/09/technology-news-12.jpg',
+            '/wp-content/uploads/2016/09/technology-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-8.jpg',
+            '/wp-content/uploads/2016/09/gen-news-9.jpg',
+            '/wp-content/uploads/2016/09/gen-news-10.jpg',
+            '/wp-content/uploads/2016/09/gen-news-11.jpg'
+        ];
+        break;
+        case 'travel':
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/travel-news-1.jpg',
+            '/wp-content/uploads/2016/09/travel-news-2.jpg',
+            '/wp-content/uploads/2016/09/travel-news-3.jpg',
+            '/wp-content/uploads/2016/09/travel-news-4.jpg',
+            '/wp-content/uploads/2016/09/travel-news-5.jpg',
+            '/wp-content/uploads/2016/09/travel-news-6.jpg',
+            '/wp-content/uploads/2016/09/travel-news-7.jpg',
+            '/wp-content/uploads/2016/09/travel-news-8.jpg',
+            '/wp-content/uploads/2016/09/travel-news-9.jpg',
+            '/wp-content/uploads/2016/09/gen-news-1.jpg',
+            '/wp-content/uploads/2016/09/gen-news-2.jpg',
+            '/wp-content/uploads/2016/09/gen-news-3.jpg',
+            '/wp-content/uploads/2016/09/gen-news-4.jpg',
+            '/wp-content/uploads/2016/09/gen-news-5.jpg',
+            '/wp-content/uploads/2016/09/gen-news-6.jpg',
+            '/wp-content/uploads/2016/09/gen-news-7.jpg',
+            '/wp-content/uploads/2016/09/gen-news-8.jpg',
+            '/wp-content/uploads/2016/09/gen-news-9.jpg',
+            '/wp-content/uploads/2016/09/gen-news-10.jpg',
+            '/wp-content/uploads/2016/09/gen-news-11.jpg'
+        ];
+        break;
+        default:
+        $newimgsrc = [
+            '/wp-content/uploads/2016/09/www.newsoracle.comwp-contentuploads201509how-to-buy-stocks-e8ba2c93ea77c74045ee9d6badfe17c688654767.jpg',
+            '/wp-content/uploads/2016/09/www.newsoracle.comwp-contentuploads201509Stock-Investment-1-4c260dbd76e9480e0d12c9c11d882f6c3a9f43e0.jpg',
+            '/wp-content/uploads/2016/09/glocdn.investing.comnewsWarsWarsaw-Stock-Exchange_800x533_L_1430991033-dae82efb6283addfa779cad83ad60f22338685a5.jpg',
+            '/wp-content/uploads/2016/09/stock-market-1.jpg',
+            '/wp-content/uploads/2016/09/stock-market-2.jpg',
+            '/wp-content/uploads/2016/09/glocdn.investing.comnewsLYNXNPEB7A004_L-55a0d1b38df4279dbc302f3d57dc3ef9c9925239.jpg',
+            '/wp-content/uploads/2016/09/WideModern_StockMarketChart_062613-e1462847698711.jpg',
+            '/wp-content/uploads/2016/09/glocdn.investing.comnewsBrazil-Stock-Market_1_309X149._800x533_L_1413121146-896630eb895cfa2c8e6ca0df38eeef72301215f9.jpg',
+            '/wp-content/uploads/2016/09/gen-news-1.jpg',
+            '/wp-content/uploads/2016/09/gen-news-2.jpg',
+            '/wp-content/uploads/2016/09/gen-news-3.jpg',
+            '/wp-content/uploads/2016/09/gen-news-4.jpg',
+            '/wp-content/uploads/2016/09/gen-news-5.jpg',
+            '/wp-content/uploads/2016/09/gen-news-6.jpg',
+            '/wp-content/uploads/2016/09/gen-news-7.jpg',
+            '/wp-content/uploads/2016/09/gen-news-8.jpg',
+            '/wp-content/uploads/2016/09/gen-news-9.jpg',
+            '/wp-content/uploads/2016/09/gen-news-10.jpg',
+            '/wp-content/uploads/2016/09/gen-news-11.jpg',
+            '/wp-content/uploads/2016/09/gen-news-12.jpg',
+            '/wp-content/uploads/2016/09/gen-news-13.jpg',
+            '/wp-content/uploads/2016/09/gen-news-14.jpg',
+            '/wp-content/uploads/2016/09/gen-news-15.jpg',
+            '/wp-content/uploads/2016/09/gen-news-16.jpg',
+            '/wp-content/uploads/2016/09/gen-news-17.jpg',
+            '/wp-content/uploads/2016/09/gen-news-18.jpg',
+            '/wp-content/uploads/2016/09/gen-news-19.jpg'
+        ];
+        break;
+    }
+
+
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    return $newimgsrc[array_rand($newimgsrc)];
+}
+
 function slug_get_post_thumbnail( $post, $field_name, $request ) {
     $imagesizes = get_intermediate_image_sizes();
     $imagesrc = [];
     foreach ($imagesizes as $size) {
         $imagesrc[$size] = wp_get_attachment_image_src($post['featured_media'],$size);
     }
+
+    if(empty($imagesrc['mid-image']) || checkIfDefaultFileName($imagesrc['mid-image'][0])){
+        $tags = get_the_tags($post['id']);
+        $tag = 'default';
+        if(!empty($tags)){
+            $tag = $tags[array_rand($tags)]->slug;
+        }
+
+        $imagefile = pickdefaultimage($tag);
+        $imagepath = 'http://news.marketmasterclass.com' . $imagefile;
+        // $imagepath = ABSPATH . $imagefile;
+        $imageurl = site_url($imagefile);
+        list($width, $height) = getimagesize($imagepath);
+        $imagesrc['mid-image'] = [$imageurl,$width,$height,true];
+    }
+
     return $imagesrc;
 }
+
 function slug_get_post_tags( $post, $field_name, $request ) {
-   return get_the_tags($post['id']);
+    return get_the_tags($post['id']);
+}
+
+
+function in_array_strpos($word, $array){
+    foreach($array as $a){
+        if (strpos($word,$a) !== false) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function checkIfDefaultFileName($url){
+    $fnd = 0;
+    $terms = [
+        'comrssmarketwatch',
+        'invlogosinv',
+        'ft-news',
+        'Default_Image',
+        'vc_gitem_image',
+        'moneycontrol_logo',
+        'cms-59',
+        'v2imagesreuters',
+        'default',
+        'bbc_news_logo',
+        'cnnmoney_logo',
+        'rcom-default',
+        'mw_logo_social',
+        '6325547',
+    ];
+    if(in_array_strpos($url,$terms)){
+        $fnd++;
+    }
+    return $fnd;
 }

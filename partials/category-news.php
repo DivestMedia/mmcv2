@@ -27,15 +27,6 @@ $post = json_decode(file_get_contents_curl(add_query_arg([
 foreach ($post as $key => $news) {
 
 	$image ='';
-	// if(!empty($news->featured_media)){
-	// 	$imagedata = json_decode(file_get_contents_curl('http://wordpress-16884-37649-153865.cloudwaysapps.com/wp-json/wp/v2/media/'.$news->featured_media));
-	// 	if($imagedata->data->status!==404){
-	// 		var_dump($imagedata);
-	// 		$image = $imagedata->media_details->sizes->medium->source_url;
-	// 	}
-	//
-	// }
-
 
 	if(!empty($news->post_thumbnail->{"mid-image"})){
 		$image = $news->post_thumbnail->{"mid-image"}["0"];
@@ -246,22 +237,6 @@ foreach ($category_tags as $key => $cat) {
 	}
 
 	$featuredPostNews = [];
-	//
-	// $featuredPostNews =  get_posts([
-	// 	'posts_per_page'   => 9,
-	// 	'category_name'    => 'News',
-	// 	'orderby'          => 'date',
-	// 	'order'            => 'DESC',
-	// 	'paged' => get_query_var('paged') ?: 1,
-	// 	'post_type'        => 'post',
-	// 	'post_status'      => 'publish',
-	// 	'suppress_filters' => true,
-	// 	'fields' => 'ID'
-	// ]);
-	//
-	// foreach ($featuredPostNews as $key => $postNews) {
-	// 	$featuredPostNews[$key] = $postNews->ID;
-	// }
 
 	$featuredPost = [
 		'categories' => $featuredPostCategories,

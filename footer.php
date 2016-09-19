@@ -114,7 +114,7 @@ echo $_footers;
 
 if(is_home()){
 	?>
-	
+
 	<script src="<?=get_stylesheet_directory_uri();?>/assets/js/master-slider/masterslider/masterslider.js"></script>
 	<script src="<?=get_stylesheet_directory_uri();?>/assets/js/slider.js"></script>
 	<?php
@@ -163,13 +163,13 @@ $(function() {
 		});
 	}
 
-	
-	
-	
+
+
+
 	xyrLoadImg();
-		
-	
-	
+
+
+
 });
 </script>
 
@@ -177,74 +177,77 @@ $(function() {
 <?php
 
 
-global $post;
-$post_slug = $post->post_name;
+$post_slug = basename(get_permalink());
+if(!empty($post_slug)):
+	if(in_array($post_slug,[
+		'subscriptions',
+		'webinars',
+		'stockfocus',
+		'stockwatch',
+		'dummies-guide',
+		'find-a-broker',
+		'celebrity-watch',
+		])){
+			if(empty($_COOKIE['dm-intro-vid-'.$post_slug])){
 
-if(in_array($post_slug,[
-	'subscriptions',
-	'webinars',
-	'stockfocus',
-	'stockwatch',
-	'dummies-guide',
-	'find-a-broker',
-	'celebrity-watch',
-	])){
-		if(empty($_COOKIE['dm-intro-vid-'.$post_slug])){
+				$intros = [
+					'subscriptions' => 'https://www.youtube.com/watch?v=_fqUtePTPj8',
+					'webinars' => 'https://www.youtube.com/watch?v=Bw2PD_9BF9Y',
+					'stockfocus' => 'https://www.youtube.com/watch?v=54cQar5LDrU',
+					'stockwatch' => 'https://www.youtube.com/watch?v=637TJ_9XMak',
+					'dummies-guide' => 'https://www.youtube.com/watch?v=y3_21xTqOhg',
+					'find-a-broker' => 'https://www.youtube.com/watch?v=0IOrhWs9SKg',
+					'celebrity-watch' => 'https://www.youtube.com/watch?v=VxrZ2w4Ad0I',
+				];
 
-			$intros = [
-				'subscriptions' => 'https://youtu.be/_fqUtePTPj8',
-				'webinars' => 'https://www.youtube.com/watch?v=Bw2PD_9BF9Y',
-				'stockfocus' => 'https://www.youtube.com/watch?v=54cQar5LDrU',
-				'stockwatch' => 'https://www.youtube.com/watch?v=637TJ_9XMak',
-				'dummies-guide' => 'https://www.youtube.com/watch?v=y3_21xTqOhg',
-				'find-a-broker' => 'https://www.youtube.com/watch?v=0IOrhWs9SKg',
-				'celebrity-watch' => 'https://www.youtube.com/watch?v=VxrZ2w4Ad0I',
-			];
+				if(!empty($intros[$post_slug])){
 
-			if(!empty($intros[$post_slug])){
-				?>
-				<!-- ANDY PENDER VIDEOS -->
-				<script>
-				function setCookie(c_name, value, exdays) {
-					var exdate = new Date();
-					exdate.setDate(exdate.getDate() + exdays);
-					var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
-					document.cookie = c_name + "=" + c_value;
-				}
-
-				loadScript(plugin_path + 'magnific-popup/jquery.magnific-popup.min.js', function() {
-
-					if(typeof(jQuery.magnificPopup) == "undefined") {
-						return false;
+					?>
+					<!-- ANDY PENDER VIDEOS -->
+					<script>
+					function setCookie(c_name, value, exdays) {
+						var exdate = new Date();
+						exdate.setDate(exdate.getDate() + exdays);
+						var c_value = escape(value) + ((exdays == null) ? "" : "; expires=" + exdate.toUTCString());
+						document.cookie = c_name + "=" + c_value;
 					}
-					jQuery.magnificPopup.open({
-						"type":"iframe",
-						"closeOnBgClick":false,
-						"autoload":true,
-						"autoload-delay":2000,
-						"items": {
-							src: "<?=($intros[$post_slug])?>"
-						},
-						callbacks : {
-							afterClose: function() {
-								setCookie('<?=('dm-intro-vid-'.$post_slug)?>','true',7);
-							}
+
+					loadScript(plugin_path + 'magnific-popup/jquery.magnific-popup.min.js', function() {
+
+						if(typeof(jQuery.magnificPopup) == "undefined") {
+							return false;
 						}
+						jQuery.magnificPopup.open({
+							"preloader" : true,
+							"type":"iframe",
+							"closeOnBgClick":false,
+							"autoload":true,
+							"autoload-delay":2000,
+							"items": {
+								src: "<?=($intros[$post_slug])?>"
+							},
+							callbacks : {
+								afterClose: function() {
+									setCookie('<?=('dm-intro-vid-'.$post_slug)?>','true',7);
+								}
+							}
+						});
+
 					});
 
-				});
-
-				</script>
+					</script>
 
 
-				<?php
+					<?php
+				}
 			}
 		}
-	}
+	endif;
 	?>
 
 
 
 
 </body>
+
 </html>

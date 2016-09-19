@@ -38,7 +38,7 @@ global $post,$featureTitle,$featureButton;
 								</span>
 							</span>
 
-							<img class="img-responsive" src="<?=$video['thumbnail']?>" alt="">
+							<img class="img-responsive" src="<?=$video['thumbnail']?>" alt="" height="381px">
 						</figure>
 					</div>
 				<?php endif; ?>
