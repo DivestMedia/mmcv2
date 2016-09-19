@@ -92,14 +92,14 @@ foreach ($category_tags as $key => $cat) {
 	}
 }
 $featuredPostNews =  get_posts([
-	'posts_per_page'   => 6,
-	'posts_per_archive_page' => 6,
+	'posts_per_page'   => 12,
 	'paged' 			=> get_query_var('paged') ?: 1,
-	'category'    	   => (!empty($taghere)?$taghere:$temptaghere),
+	'category_name'    	   => 	get_cat_name(!empty($taghere)?$taghere:$temptaghere),
 	'orderby'          => 'date',
 	'order'            => 'DESC',
 	'post_type'        => 'post',
 	'post_status'      => 'publish',
+	'suppress_filters' => true,
 ]);
 
 foreach ($featuredPostNews as $key => $postNews) {

@@ -84,9 +84,13 @@ global $featuredPost,$featuredTitle,$is_article;
 							$post = $mainpost;
 							wp_reset_postdata();
 							?>
-							<div class="pagination"><?=posts_pagination()?></div>
+							
 							<?php }?>
+
 		</div>
+		<?php if(!empty($is_article)){?>
+		<div class="pagination block"><?=posts_pagination()?></div>
+		<?php }?>
 		<div class="row">
 			<div class="pagination">
 			</div>
