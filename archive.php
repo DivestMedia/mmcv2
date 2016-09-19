@@ -2,9 +2,9 @@
 get_header();
 if(is_category('news')){
 	include 'partials/category-news.php';
-}elseif(is_category('press-release') || (is_category() && get_category(get_category(get_query_var('cat'))->parent)->slug=='press-release')){
+}elseif(is_category('press-release') || (is_category() && get_category(get_query_var('cat'))->parent != 0 && get_category(get_category(get_query_var('cat'))->parent)->slug=='press-release')){
 	include 'partials/category-press-release.php';
-}elseif(is_category('articles') || (is_category() && get_category(get_category(get_query_var('cat'))->parent)->slug=='articles')){
+}elseif(is_category('articles') || (is_category() && get_category(get_query_var('cat'))->parent != 0 && get_category(get_category(get_query_var('cat'))->parent)->slug=='articles')){
 	include 'partials/category-article.php';
 }elseif(is_category('brokerage-firms')){
 	include 'partials/category-brokerage-firms.php';

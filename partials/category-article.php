@@ -6,6 +6,7 @@ $mainpost = $post;
 $taghere = strtolower(get_query_var('cat'));
 $temptaghere = $taghere;
 
+
 $latestnews = [];
 // Get 5 Latest News for each category
 // WP_Query arguments
@@ -112,6 +113,8 @@ $featuredPost = [
 $GLOBALS['featuredPost'] = $featuredPost;
 
 $GLOBALS['featuredTitle'] = (!empty($taghere)?get_cat_name($taghere):'All Articles');
+
+$GLOBALS['is_article'] = true;
 
 get_template_part( 'partials/content', 'featuredposts' );
 // get_template_part( 'partials/content', 'investordivest' );
