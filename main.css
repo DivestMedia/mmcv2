@@ -98,14 +98,15 @@
 		/* border-bottom:1px solid rgba(255,255,255,0.2) !important; */
 	}
 	.master-slider{background-color:#000!important;}
-	.master-slider .ms-slide h2{color:#fff;font-size:6em;text-transform:uppercase;margin-top:0;}
-	.master-slider .ms-slide h2.ms-promo-travel-place{     text-shadow: 1px 1px 3px rgba(0,0,0,0.8);}
+	.master-slider .ms-slide h2{color:#fff;font-size:5.5em;text-transform:uppercase;margin-top:0;}
+	.master-slider .ms-slide h2.ms-promo-travel-place{margin-top:9px;z-index:7!important; background-color:rgba(0,0,0,0.9);padding:0.1em;line-height:1em;display:inline-block;width:auto!important;}
 	.master-slider .ms-slide .btn-primary{font-family: Proxima Nova Bold;text-transform:uppercase; transition: all 0.3s linear;}
 	.master-slider .ms-slide .btn-primary{border-width:0;}
 	.master-slider .ms-slide .btn-primary:hover{background-color:#0087dd;border-color:#d6a600}
-	.master-slider .ms-slide .btn-third{border-width:0;font-size:14px;background-color:#213240;text-transform:uppercase;color:#fff!important;}
+	.master-slider .ms-slide .btn-third{z-index:9!important;border-width:0;font-size:14px;background-color:#213240;text-transform:uppercase;color:#fff!important;}
 	.master-slider .ms-slide p{color:#fff}
-	.master-slider .ms-slide .ms-promo-travel-description{max-width:700px;text-shadow: 1px 1px 2px #000;}
+	.master-slider .ms-slide .ms-promo-travel-description{ max-width:700px;}
+	.master-slider .ms-slide .ms-promo-travel-description p{display:inline-block!important; background-color:rgba(0,0,0,0.8);padding:0.3em;line-height:1.2em;color:#fff!important;}
 	
 	.master-slider .ms-thumb-frame.ms-thumb-frame-selected{ transition: all 0.3s linear;border-top: 7px solid #0087dd}
 	
