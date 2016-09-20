@@ -4,7 +4,7 @@ get_template_part( 'partials/content', 'indexwatch' );
 <section class="alternate">
 <div class="container ">
 	<div class="row">
-		<div class="col-sm-3">
+		<div class="col-sm-3 hidden-xs hidden-sm">
 			<!-- side navigation -->
 			<div class="side-nav margin-top-50">
 				<div class="side-nav-head">

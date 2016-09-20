@@ -6,7 +6,7 @@
 			</header>
 			<!-- Tab v3 -->
 				<div class="row tab-v3">
-					<div class="col-sm-3">
+					<div class="col-sm-3 hidden-xs hidden-sm">
 
 
 					<!-- side navigation -->

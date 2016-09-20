@@ -445,6 +445,14 @@ div.side-nav{
     .navbar-collapse{
         padding-right: 0px;
     }
+
+    nav{
+        &.nav-main{
+            @media only screen and (max-width: 992px){
+                background-color: transparent!important;
+            }
+        }
+    }
 }
 
 #header.fixed.dark, #header.fixed.dark.transparent{
@@ -485,7 +493,15 @@ ul.widget-twitter{
     color: transparent!important;
 }
 .jqstooltip {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.nav-tabs.nav-alternate{
+    >li{
+        >a{
+            background: transparent!important;
+        }
+    }
 }

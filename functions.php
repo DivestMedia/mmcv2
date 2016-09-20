@@ -711,7 +711,7 @@ function slug_get_post_thumbnail( $post, $field_name, $request ) {
         }
 
         $imagefile = pickdefaultimage($tag);
-        $imagepath = 'http://news.marketmasterclass.com' . $imagefile;
+        $imagepath = NEWSBASEURL . $imagefile;
         // $imagepath = ABSPATH . $imagefile;
         $imageurl = site_url($imagefile);
         list($width, $height) = getimagesize($imagepath);
@@ -719,6 +719,56 @@ function slug_get_post_thumbnail( $post, $field_name, $request ) {
     }
 
     return $imagesrc;
+}
+add_filter( 'wp_get_attachment_image_src' , 'wp_get_attachment_image_src_cb' , 10,4 );
+function wp_get_attachment_image_src_cb($image = [],$attachment_id,$size,$icon){
+
+    // Get Parent Post Data
+    $post = wp_get_post_parent_id($attachment_id);
+    $postCategory = get_the_category($post);
+    $isnews = false;
+    if(count($postCategory)){
+        foreach ($postCategory as $term) {
+            if($term->slug=='news'){
+                $isnews = true;
+                break;
+            }
+        }
+    }
+
+    if($isnews){
+        if(empty($image[0]) || checkIfDefaultFileName($image[0])){
+            $tags = get_the_tags($$post);
+            $tag = 'default';
+            if(!empty($tags)){
+                $tag = $tags[array_rand($tags)]->slug;
+            }
+
+            $imagefile = pickdefaultimage($tag);
+            $imagepath = NEWSBASEURL . $imagefile;
+            // $imagepath = wp_upload_dir()['basedir'] . str_replace('wp-content/uploads','',$imagefile);
+            if(is_readable($imagepath)){
+                $imageurl = site_url($imagefile);
+                list($width, $height) = getimagesize($imagepath);
+                return [$imageurl,$width,$height,true];
+            }else{
+
+                $imagefile = 'wp-content/uploads/2016/09/gen-news-2.jpg';
+                $imagepath = wp_upload_dir()['basedir'] . str_replace('wp-content/uploads','',$imagefile);
+                $imageurl = site_url($imagefile);
+                list($width, $height) = getimagesize($imagepath);
+                return [$imageurl,$width,$height,true];
+
+            }
+        }else{
+            return $image;
+        }
+    }else{
+        return $image;
+    }
+
+    if($image && isset($image[0])) return $image;
+    return false;
 }
 
 function slug_get_post_tags( $post, $field_name, $request ) {

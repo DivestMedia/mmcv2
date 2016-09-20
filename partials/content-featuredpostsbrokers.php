@@ -5,7 +5,7 @@ global $brokerage,$featuredTitle,$post;
 <section id="all-press-releases" class="alternate">
 	<div class="container">
 		<div class="row tab-v3">
-			<div class="col-sm-3">
+			<div class="col-sm-3 hidden-xs hidden-sm">
 				<!-- side navigation -->
 				<div class="side-nav margin-top-50">
 					<div class="side-nav-head">

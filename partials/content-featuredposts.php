@@ -29,7 +29,7 @@ global $featuredPost,$featuredTitle,$is_article;
 
 		<!-- Tab v3 -->
 		<div class="row tab-v3">
-			<div class="col-sm-3">
+			<div class="col-sm-3 hidden-xs hidden-sm">
 				<!-- side navigation -->
 				<div class="side-nav margin-top-50">
 					<?php if(count($featuredPost['categories'])): ?>

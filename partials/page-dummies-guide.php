@@ -1,7 +1,7 @@
 <?=get_template_part( 'partials/content', 'indexwatch' );?>
 <section>
 	<div class="container cont-<?=basename(get_permalink())?>">
-		<div class="col-sm-3">
+		<div class="col-sm-3 hidden-xs hidden-sm">
 			<!-- side navigation -->
 			<div class="side-nav margin-top-50">
 

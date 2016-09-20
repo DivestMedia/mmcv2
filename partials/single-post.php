@@ -17,7 +17,7 @@ $_parentcat = get_the_category()[0]->category_parent;
 		</header>
 
 		<div class="row">
-			<div class="col-md-6 col-sm-9 text-justify">
+			<div class="col-md-6 col-sm-12 text-justify ">
 				<figure>
 					<?php the_post_thumbnail('mid-image',[
 						'class' => 'img-responsive margin-bottom-30'
@@ -118,9 +118,9 @@ $_parentcat = get_the_category()[0]->category_parent;
 						<?php comments_template(); ?>
 					<?php endif;?>
 				</div>
-				<div class="col-lg-3 col-md-3 col-sm-3 text-left">
+				<div class="col-lg-3 col-md-3 col-sm-3 text-left hidden-xs hidden-sm">
 					<!-- CATEGORIES -->
-					<div class="side-nav margin-bottom-10">
+					<div class="side-nav margin-bottom-10 ">
 
 						<div class="side-nav-head">
 							<button class="fa fa-bars"></button>
@@ -201,7 +201,7 @@ $_parentcat = get_the_category()[0]->category_parent;
 
 
 						</div>
-						<div class="col-sm-6 col-md-3">
+						<div class="col-sm-6 col-md-3 hidden-xs hidden-sm">
 							<?php
 							if(is_active_sidebar('sidebar-ads')){
 								dynamic_sidebar('sidebar-ads');
