@@ -473,7 +473,6 @@ ul.widget-twitter{
     }
 }
 
-
 .sparkline{
     canvas{
         width: auto!important;
@@ -502,6 +501,84 @@ ul.widget-twitter{
     >li{
         >a{
             background: transparent!important;
+        }
+    }
+}
+
+
+.video-grid{
+    .video-now-playing{
+        .item-hover{
+            opacity: 0;
+        }
+        .item-description{
+            opacity: 0;
+            // transition: opacity 200ms linear;
+            // z-index: 1000;
+            // position: relative;
+        }
+        // &:hover{
+        //     .item-description{
+        //         opacity: 1!important;
+        //     }
+        // }
+        figure{
+            iframe{
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                top: 0;
+                left: 0;
+            }
+        }
+    }
+    .video-grid-column-wrapper{
+        &.video-grid-playing{
+            h3{
+                text-align: left;
+                font-size: 1em!important;
+
+                margin-top: 10px!important;
+                margin-bottom: 26px!important;
+                min-height: 40px!important;
+
+            }
+            .inner{
+                span.block{
+                    text-align: left;
+                    margin-left: 10px;
+                    a{
+                        padding: 3px 6px;
+                        line-height: 15px;
+                        width: 35%;
+                    }
+                }
+                img{
+                    height: auto;
+                    width: 35%;
+                    float: left;
+                    margin-right: 10px;
+                    margin-top: 10px;
+                    margin-left: 10px;
+                    margin-bottom: 10px;
+                }
+
+                small{
+                    float: right;
+                    padding-right: 10px;
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+}
+
+.video-grid-details{
+    h3{
+        a{
+            color: #121212!important;
+            font-size: 14px!important;
+            float: right!important;
         }
     }
 }

@@ -8,6 +8,7 @@
 				<div class="col-sm-6 col-md-6 margin-bottom-20">
 					<header class="text-center margin-bottom-50 tiny-line">
 						<h2 class="font-proxima uppercase">Invest or <span>Divest</span></h2>
+						<p class="text-uppercase">User-based Video Reviews</p>
 					</header>
 					<div class="item-box noshadow">
 						<figure>
@@ -15,9 +16,9 @@
 								<span class="overlay dark-5"></span>
 							</span>
 							<span class="item-description">
-								<span class="overlay primary-bg height-150"></span>
-								<span class="inner margin-top-30p height-150">
-									<h3 class="margin-top-10 margin-bottom-10">User-based Video Reviews</h3>
+								<span class="overlay primary-bg height-100"></span>
+								<span class="inner margin-top-30p height-100 padding-top-20">
+									<!-- <h3 class="margin-top-10 margin-bottom-10">User-based Video Reviews</h3> -->
 									<span class="block size-11 text-center color-theme uppercase">
 										We give you the brutal truth
 									</span>
@@ -25,7 +26,7 @@
 								</span>
 							</span>
 
-							<img class="img-responsive liner" src="<?php echo site_url('/wp-content/uploads/sites/8/2016/09/DUMMIESGUIDE1-1.jpg');?>" alt="">
+							<img class="img-responsive liner" src="<?=wp_get_attachment_image_src(358038,'mid-image')[0]?>" alt="">
 						</figure>
 					</div>
 
@@ -37,6 +38,7 @@
 				<div class="col-sm-6 col-md-6 margin-bottom-20">
 					<header class="text-center margin-bottom-50 tiny-line">
 						<h2 class="font-proxima uppercase"><a href="<?=site_url('dummies-guide')?>">Dummies&apos; <span>Guide</span></a></h2>
+						<p class="text-uppercase">Beginner's Manual</p>
 					</header>
 					<div class="item-box noshadow">
 						<figure>
@@ -44,9 +46,9 @@
 								<span class="overlay dark-5"></span>
 							</span>
 							<span class="item-description">
-								<span class="overlay primary-bg height-150"></span>
-								<span class="inner margin-top-30p height-150">
-									<h3 class="margin-top-10 margin-bottom-10">Beginner's Manual</h3>
+								<span class="overlay primary-bg height-100"></span>
+								<span class="inner margin-top-30p height-100 padding-top-20">
+									<!-- <h3 class="margin-top-10 margin-bottom-10">Beginner's Manual</h3> -->
 									<span class="block size-11 text-center color-theme uppercase">
 										What you need to know about investing
 									</span>
@@ -54,7 +56,7 @@
 								</span>
 							</span>
 
-							<img class="img-responsive liner" src="<?php echo site_url('/wp-content/uploads/sites/8/2016/09/DUMMIESGUIDE.jpg');?>" alt="">
+							<img class="img-responsive liner" src="<?=wp_get_attachment_image_src(358039,'mid-image')[0]?>" alt="">
 						</figure>
 					</div>
 

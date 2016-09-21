@@ -715,3 +715,92 @@ function switch_tags(tags){
     }
     return newimgsrc;
 }
+
+jQuery(function($){
+    $('.video-grid').delegate('.video-grid-play','click',function(e){
+        e.preventDefault();
+
+
+
+        var $videogrid = $(this).closest('.video-grid');
+        var $videobig = $videogrid.find('.video-big-wrapper');
+        var $videourl = $(this).attr('href');
+        if($videourl.search('youtu.be/')!=-1){
+            var $id = $videourl.split('youtu.be/')[1];
+        }else{
+            var $id = $videourl.split('?v=')[1];
+        }
+
+        $videobig.find('figure iframe').remove();
+
+        // Swap the Vids
+        var $thisBox = $(this).closest('.item-box');
+
+        if(!($thisBox.hasClass('item-box-big'))){
+            // If this box not in the big box
+
+            var $theBiggerBox = $videobig.find('.item-box').first();
+            $theBiggerBox.find('img').css({
+                'min-height' : ""
+            });
+            $thisBox.css({
+                'height' : ""
+            });
+
+            $thisBox.find('.inner > img').remove();
+
+            var $biggerBoxSpanBlock = $theBiggerBox.find('span.block').first();
+            $biggerBoxSpanBlock.empty();
+            var $biggerBoxSpanBlockACSS = $theBiggerBox.find('.video-grid-play').first().attr('class');
+            var $thisBoxSpanBlock = $thisBox.find('.inner span.block').first();
+            var $thisBoxSpanBlockACSS = $thisBoxSpanBlock.find('a').first().attr('class');
+
+            $theBiggerBox.find('.inner .video-grid-play').attr('class',$thisBoxSpanBlockACSS);
+            $theBiggerBox.find('.inner .video-grid-play').appendTo($biggerBoxSpanBlock);
+            $thisBox.find('.inner span.block .video-grid-play').attr('class',$biggerBoxSpanBlockACSS);
+            $thisBox.find('.inner span.block .video-grid-play').insertAfter($thisBoxSpanBlock);
+            $theBiggerBox.removeClass().addClass($thisBox.attr('class'));
+            $thisBox.removeClass().addClass('item-box item-box-big noshadow margin-bottom-10');
+
+            $theBiggerBox.insertAfter($thisBox);
+            $thisBox.appendTo($videobig);
+
+            $('.video-grid-details').html($thisBox.find('.inner h3').first().clone());
+
+        }
+
+
+
+        // Change Height of NonPlaying Column
+
+            // Change Width
+            $videogrid.find('.video-big-wrapper').removeClass('col-md-6').addClass('col-md-9 video-now-playing');
+            $videogrid.find('.video-grid-column-wrapper').addClass('video-grid-playing');
+
+            var $videoPlayingHeight = $videogrid.find('.video-big-wrapper').height();
+            var $videoNonPlayingPadding = 10;
+            var $videoNonPlayingItemHeight = ( $videoPlayingHeight / 4 ) - $videoNonPlayingPadding;
+
+
+
+
+        $videogrid.find('.video-grid-column-wrapper .item-box').css('height',$videoNonPlayingItemHeight);
+
+        $videogrid.find('.video-grid-column-wrapper .item-box').each(function(i,v){
+
+            $(v).find('.inner > img').remove();
+
+            if(i>0){
+                $(v).addClass('margin-top-10');
+            }
+            var $newimage = $(v).find('img').clone();
+
+            $newimage.prependTo($(v).find('.inner'));
+        });
+
+
+
+        var $videoframe = $('<iframe width="100%" height="100%" src="//www.youtube.com/v/'+$id+'?autoplay=1&controls=0&modestbranding=1" frameborder="0" allowfullscreen>');
+        $videobig.find('figure').first().append($videoframe);
+    });
+});
