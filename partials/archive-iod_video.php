@@ -58,7 +58,7 @@ if(!in_array(get_query_var('iod_category'),['webinars'])):
 			'link' => $iod_video ?: get_the_permalink($video->ID)
 		];
 	}
-	if(count($latestnews)>=5):
+	if(count($latestnews)>=1):
 		$post = $latestnews;
 		$GLOBALS['featureTitle'] = 'Latest <span>Videos</span>';
 		$GLOBALS['featureButton'] = 'PLAY NOW';

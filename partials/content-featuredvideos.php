@@ -133,7 +133,7 @@ $post = $featuredvideos;
                                     <h3>
                                         <em>
                                             <?php if(is_home()): ?>
-                                            <a href="<?=($video['titlelink'])?>" class="text-white"><?=$video['title']?></a>
+                                            <a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(2, 119, 46, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a>
                                             <?php endif; ?>
                                         </em>
                                         <?=$video['description']?>
@@ -165,7 +165,7 @@ $post = $featuredvideos;
                             <span class="item-description">
                                 <span class="overlay primary-bg "></span>
                                 <span class="inner padding-top-0">
-                                    <h3><em><a href="<?=($video['titlelink'])?>" class="text-white"><?=$video['title']?></a></em><?=$video['description']?></h3>
+                                    <h3><em><a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a></em><?=$video['description']?></h3>
                                     <span class="block size-11 text-center color-theme uppercase">
                                         <a class=" btn-sm btn primary-bg text-center noradius weight-700 video-grid-play" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
                                     </span>
@@ -186,7 +186,7 @@ $post = $featuredvideos;
                             <span class="item-description">
                                 <span class="overlay primary-bg "></span>
                                 <span class="inner padding-top-0">
-                                    <h3><em><a href="<?=($video['titlelink'])?>" class="text-white"><?=$video['title']?></a></em><?=$video['description']?></h3>
+                                    <h3><em><a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a></em><?=$video['description']?></h3>
                                     <span class="block size-11 text-center color-theme uppercase">
                                         <a class=" btn-sm btn primary-bg text-center noradius weight-700 video-grid-play" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
                                     </span>
@@ -212,7 +212,7 @@ $post = $featuredvideos;
                             <span class="item-description">
                                 <span class="overlay primary-bg "></span>
                                 <span class="inner padding-top-0">
-                                    <h3><em><a href="<?=($video['titlelink'])?>" class="text-white"><?=$video['title']?></a></em><?=$video['description']?></h3>
+                                    <h3><em><a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a></em><?=$video['description']?></h3>
                                     <span class="block size-11 text-center color-theme uppercase">
                                         <a class=" btn-sm btn primary-bg text-center noradius weight-700 video-grid-play" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
                                     </span>
@@ -233,7 +233,7 @@ $post = $featuredvideos;
                             <span class="item-description">
                                 <span class="overlay primary-bg "></span>
                                 <span class="inner padding-top-0">
-                                    <h3><em><a href="<?=($video['titlelink'])?>" class="text-white"><?=$video['title']?></a></em><?=$video['description']?></h3>
+                                    <h3><em><a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a></em><?=$video['description']?></h3>
                                     <span class="block size-11 text-center color-theme uppercase">
                                         <a class=" btn-sm btn primary-bg text-center noradius weight-700 video-grid-play" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
                                     </span>

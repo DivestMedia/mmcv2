@@ -102,7 +102,7 @@ global $featuredVids,$featuredTitle;
 											<span class="inner padding-top-0">
 												<h3><em><a href="#" style="color:#fff"></a></em><?=xyr_smarty_limit_chars(get_the_title($post->ID),40)?></h3>
 												<span class="block size-11 text-center color-theme uppercase">
-													<a class=" btn-sm btn primary-bg text-center noradius weight-700 lightbox" href="<?=($iod_video)?>" data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}">PLAY NOW</a>
+													<a class=" btn-sm btn primary-bg text-center noradius weight-700 video-grid-play" href="<?=($iod_video)?>" data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}">PLAY NOW</a>
 												</span>
 
 											</span>

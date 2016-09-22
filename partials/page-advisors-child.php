@@ -43,8 +43,8 @@ setup_postdata($post);
 
 			<div class="col-lg-9 col-md-7 col-sm-9">
 				<h2 class="size-25"><span><?=the_title()?></span>
-					<a href="#" class="btn btn-md btn-theme-hover noradius italic">Ask <?=(current(explode(' ',the_title())))?></a>
-					<a href="<?=site_url('/video/bruce-curran-interviews/')?>" class="btn btn-md btn-theme-hover noradius">View webcast</a>
+					<a href="<?=site_url('contact-us')?>" class="btn btn-md btn-theme-hover noradius italic">Ask <?=(current(explode(' ',the_title())))?></a>
+					<a href="<?=site_url('/video/bruce-curran/#all-videos')?>" class="btn btn-md btn-theme-hover noradius">View webcast</a>
 				</h2>
 				<?=the_content()?>
 				<blockquote class="quote">
