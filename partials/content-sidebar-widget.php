@@ -16,7 +16,6 @@ dynamic_sidebar('sidebar-single');
 <ul class="widget-twitter" data-php="<?=get_template_directory_uri();?>/php/twitter/tweet.php" data-username="MyMarketMaster" data-limit="3">
     <li></li>
 </ul> -->
-<a class="twitter-timeline" data-width="270" data-height="400" data-dnt="true" data-link-color="#1ab05d" href="https://twitter.com/MyMarketMaster">Tweets by MyMarketMaster</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a class="twitter-timeline" data-height="400" data-dnt="true" data-link-color="#1ab05d" href="https://twitter.com/MyMarketMaster">Tweets by MyMarketMaster</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 <hr>
-<iframe class="hidden-xs noborder" height="258px" src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2FMarket-MasterClass-1657855544470731&width=263&height=258&colorscheme=light&show_faces=true&header=false&stream=false&show_border=false" style="width:263px; height:258px;">
-</iframe>
+<iframe class="hidden-xs hidden-sm noborder" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fmarketmasterclasscom-1657855544470731%2F&tabs=timeline&width=263&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" height="400" style="width:263px; height:400px;border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>

@@ -88,18 +88,32 @@ get_header();
 					<div class="row">
 						<div class="form-group">
 							<div class="col-md-8">
-								<label for="contact:subject">Subject *</label>
-								<input required type="text" value="" class="form-control" name="contact[subject][required]" id="contact:subject">
+								<label for="contact:subject">Topic *</label>
+								<!-- <input required type="text" value="" class="form-control" name="contact[subject][required]" id="contact:subject"> -->
+								<select class="form-control pointer" name="contact[subject][required]" id="contact:subject" required>
+									<option value="">--- Select ---</option>
+									<option value="Retirement">Retirement</option>
+									<option value="School Fees Planning">School Fees Planning</option>
+									<option value="Future Property Purchase">Future Property Purchase</option>
+									<option value="Risk Management">Risk Management</option>
+									<option value="Choosing Short, Medium and Long Term Investments">Choosing Short, Medium and Long Term Investments</option>
+									<option value="Choosing a Fund">Choosing a Fund</option>
+									<option value="Buying Stocks">Buying Stocks</option>
+									<option value="How to Diversify a Portfolio">How to Diversify a Portfolio</option>
+									<option value="Choosing Low, Medium and High Risk Investments">Choosing Low, Medium and High Risk Investments</option>
+									<option value="Tax and Succession Building">Tax and Succession Building</option>
+									<option value="Any Other Topics">Any Other Topics</option>
+								</select>
 							</div>
-							<div class="col-md-4">
+							<!-- <div class="col-md-4">
 								<label for="contact_department">Department</label>
 								<select class="form-control pointer" name="contact[department]">
 									<option value="">--- Select ---</option>
-									<option value="Marketing">Marketing</option>
+									<option value="Retirement ">Retirement </option>
 									<option value="Webdesign">Webdesign</option>
 									<option value="Architecture">Architecture</option>
 								</select>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<div class="row">
