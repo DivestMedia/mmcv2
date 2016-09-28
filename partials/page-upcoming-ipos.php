@@ -19,7 +19,7 @@ get_template_part( 'partials/content', 'indexwatch' );
                     <?php
                     $thisMonthsIPO =  get_posts([
                         'posts_per_page'   => -1,
-                        'category_name'    => 'IPO August 2016',
+                        'category_name'    => 'IPO September 2016',
                         'orderby'          => 'date',
                         'order'            => 'DESC',
                         'post_type'        => 'post',
