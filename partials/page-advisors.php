@@ -32,7 +32,7 @@ get_template_part( 'partials/content', 'indexwatch' );
 
 				    <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
 				    	
-				    	<div class="col-sm-6 col-md-3 item">
+				    	<div class="col-sm-6 col-md-3 item <?php if($_x == false){ echo "col-xs-offset-2";$_x = true;}?> ">
 				    		<a href="<?=the_permalink()?>">
 							<div class=" noradius">
 								<img class="img-responsive bg-advisor margin-bottom-20" src="<?=the_post_thumbnail_url()?>" alt="" />
