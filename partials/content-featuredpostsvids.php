@@ -124,8 +124,9 @@ global $featuredVids,$featuredTitle;
 						endif;
 						$post = $mainpost;
 						?>
-						<div class="pagination"><?=posts_pagination()?></div>
+						
 					</div>
+					<div class="pagination"><?=posts_pagination(12)?></div>
 				</div>
 			</div>
 		</div>
