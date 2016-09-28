@@ -20,4 +20,11 @@ class memberRestriction {
 		
 	}
 	
+	
+	
+	
+	
 }
+
+
+memberRestriction();
