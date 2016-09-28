@@ -89,7 +89,7 @@ global $featuredPost,$featuredTitle,$is_article;
 
 		</div>
 		<?php if(!empty($is_article)){?>
-		<div class="pagination block"><?=posts_pagination()?></div>
+		<div class="pagination block"><?=posts_pagination(12)?></div>
 		<?php }?>
 		<div class="row">
 			<div class="pagination">

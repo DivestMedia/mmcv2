@@ -121,14 +121,19 @@ function backstage_smarty_widgets_init() {
 
 
 
-function posts_pagination() {
+function posts_pagination($_limit=false) {
     global $wp_query,$query_string;
+    $total_page = $wp_query->max_num_pages;
+    if(!empty($_limit)){
+        $total_page = ceil($wp_query->found_posts/$_limit);
+    }
+
     $big = 999999999;
     $pages = paginate_links(array(
         'base' => str_replace($big, '%#%', get_pagenum_link($big)),
         'format' => '?page=%#%',
         'current' => max(1, get_query_var('paged')),
-        'total' => $wp_query->max_num_pages,
+        'total' => $total_page,
         'prev_next' => false,
         'type' => 'array',
         'prev_next' => TRUE,
