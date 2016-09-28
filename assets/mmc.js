@@ -1,83 +1,84 @@
 var newsimages = [];
-var getKeyByValue = function(elem, value) {
-    for (var prop in elem) {
-        if (elem.hasOwnProperty(prop)) {
-            if (elem[prop] == value)
+var getKeyByValue = function ( elem, value ) {
+    for ( var prop in elem ) {
+        if ( elem.hasOwnProperty( prop ) ) {
+            if ( elem[ prop ] == value )
                 return prop;
         }
     }
 }
-jQuery(function($) {
+jQuery( function ( $ ) {
 
-    if (jQuery.browser.mobile) {
-        $('.post-content img')
-            .each(function() {
-                $(this)
-                    .addClass('img-responsive');
-            });
+    if ( jQuery.browser.mobile ) {
+        $( '.post-content img' )
+            .each( function () {
+                $( this )
+                    .addClass( 'img-responsive' );
+            } );
     }
-    $(window)
-        .load(function() {
-            $("body")
-                .find(".cont-glossary")
-                .find(".cminds_poweredby")
+    $( window )
+        .load( function () {
+            $( "body" )
+                .find( ".cont-glossary" )
+                .find( ".cminds_poweredby" )
                 .remove();
-            $("#glossaryList")
-                .find(".glossaryLink")
-                .each(function() {
-                    var e = $(this)
-                        .data("cmtooltip");
-                    $(this)
-                        .removeData("cmtooltip")
-                        .removeAttr("data-cmtooltip")
-                        .removeAttr("href")
+            $( "#glossaryList" )
+                .find( ".glossaryLink" )
+                .each( function () {
+                    var e = $( this )
+                        .data( "cmtooltip" );
+                    $( this )
+                        .removeData( "cmtooltip" )
+                        .removeAttr( "data-cmtooltip" )
+                        .removeAttr( "href" )
                         .clone()
-                        .appendTo($(this)
-                            .parent());
-                    $(this)
+                        .appendTo( $( this )
+                            .parent() );
+                    $( this )
                         .parent()
-                        .append("<div>" + e + "</div>"), $(this)
+                        .append( "<div>" + e + "</div>" ), $(
+                            this )
                         .remove();
-                })
-            $("#glossaryList-nav .ln-letters")
-                .find("a:first-child")
-                .trigger("click");
-            $('.glossary-container,#glossaryList-nav')
+                } )
+            $( "#glossaryList-nav .ln-letters" )
+                .find( "a:first-child" )
+                .trigger( "click" );
+            $( '.glossary-container,#glossaryList-nav' )
                 .show();
-            $('.cont-progress-loader')
+            $( '.cont-progress-loader' )
                 .remove();
-        });
+        } );
 
-    $('.btn-team-show-more')
-        .click(function() {
-            $(this)
+    $( '.btn-team-show-more' )
+        .click( function () {
+            $( this )
                 .hide();
-            $(this)
-                .siblings('p')
-                .css('height', '100%');
-            $(this)
-                .parents('.box2')
-                .css('height', '100%');
-        });
+            $( this )
+                .siblings( 'p' )
+                .css( 'height', '100%' );
+            $( this )
+                .parents( '.box2' )
+                .css( 'height', '100%' );
+        } );
 
-    $('.about_heads .item img')
-        .hover(function() {}, function() {});
+    $( '.about_heads .item img' )
+        .hover( function () {}, function () {} );
 
-    if ($('.news-feature-grid')
-        .length > 0) {
+    if ( $( '.news-feature-grid' )
+        .length > 0 ) {
         // assignnewsimage(jQuery('.news-feature-grid .font-proxima.uppercase'),jQuery('.news-feature-grid figure'),false);
     }
 
-    if ($('.video-grid')
-        .length > 0) {
-        jQuery('.video-grid .item-box-big figure img')
-            .css('min-height', jQuery('.video-grid .col-md-3')
+    if ( $( '.video-grid' )
+        .length > 0 ) {
+        jQuery( '.video-grid .item-box-big figure img' )
+            .css( 'min-height', jQuery( '.video-grid .col-md-3' )
                 .first()
-                .height() - 10)
+                .height() - 10 )
     }
     newsimages = [];
-    if ($('#global_news')
-        .length > 0) {
+    if ( $( '#global_news' )
+        .length > 0 ) {
 
         // assignnewsimage(jQuery('#global-news-post-slider .img-hover label.badge'),jQuery('#global-news-post-slider .img-hover figure'),true);
         // assignnewsimage(jQuery('<span>USA</span>'),jQuery('#global-news-post-slider-usa a figure'),true);
@@ -85,140 +86,140 @@ jQuery(function($) {
         // assignnewsimage(jQuery('<span>Stocks</span>'),jQuery('#global-news-post-slider-stocks a figure'),true);
     }
 
-    if ($('.featured-grid')
-        .not('.video-grid')
-        .length > 0) {
-        assignnewsimage(jQuery('.featured-grid h3 em a'), jQuery(
-            '.featured-grid figure img'), true);
+    if ( $( '.featured-grid' )
+        .not( '.video-grid' )
+        .length > 0 ) {
+        assignnewsimage( jQuery( '.featured-grid h3 em a' ), jQuery(
+            '.featured-grid figure img' ), true );
     }
 
-    $('#subscribenow')
-        .find('.btn')
-        .removeClass('btn-default')
-        .addClass('secondary-bg border-1');
+    $( '#subscribenow' )
+        .find( '.btn' )
+        .removeClass( 'btn-default' )
+        .addClass( 'secondary-bg border-1' );
 
-    $('.btn-play-vid-a')
-        .click(function() {
-            $('.btn-play-vid')
-                .trigger('click');
-        });
+    $( '.btn-play-vid-a' )
+        .click( function () {
+            $( '.btn-play-vid' )
+                .trigger( 'click' );
+        } );
 
-    $(window)
-        .resize(function() {
-            var width = 'width: ' + $(window)
+    $( window )
+        .resize( function () {
+            var width = 'width: ' + $( window )
                 .width() + 'px !important;';
-            $('body')
-                .find('.ms-thumb-list')
-                .css('cssText', width);
-        });
+            $( 'body' )
+                .find( '.ms-thumb-list' )
+                .css( 'cssText', width );
+        } );
 
-    if ($('#masterslider-promo')
-        .length) {
-        setTimeout(function() {
-            window.dispatchEvent(new Event('resize'));
-        }, 2000);
+    if ( $( '#masterslider-promo' )
+        .length ) {
+        setTimeout( function () {
+            window.dispatchEvent( new Event( 'resize' ) );
+        }, 2000 );
     }
 
 
-    if ($('.news-feature-grid')
-        .length) {
+    if ( $( '.news-feature-grid' )
+        .length ) {
         grabNewsByPage();
 
     }
 
-});
+} );
 
 function grabNewsByPage() {
     var baseurl = "http://wordpress-16884-37649-153865.cloudwaysapps.com";
 
     var tagids = {
-        'asia': '7'
-        , 'banking-finance': '21'
-        , 'bonds': '19'
-        , 'commodities': '16'
-        , 'construction': '14'
-        , 'consumer-goods': '22'
-        , 'currencies': '8'
-        , 'energy': '15'
-        , 'etfs': '25'
-        , 'europe': '3'
-        , 'funds': '13', // 'industrial' : '9',
-        'industrial-goods': '26'
-        , 'manufacturing': '17'
-        , 'media': '24'
-        , 'mining': '12'
-        , 'pharmaceuticals': '18'
-        , 'pre-markets': '4'
-        , 'real-estate': '10'
-        , 'retail': '23'
-        , 'stocks': '5'
-        , 'technology': '20'
-        , 'travel': '11'
-        , 'usa': '6'
+        'asia': '7',
+        'banking-finance': '21',
+        'bonds': '19',
+        'commodities': '16',
+        'construction': '14',
+        'consumer-goods': '22',
+        'currencies': '8',
+        'energy': '15',
+        'etfs': '25',
+        'europe': '3',
+        'funds': '13', // 'industrial' : '9',
+        'industrial-goods': '26',
+        'manufacturing': '17',
+        'media': '24',
+        'mining': '12',
+        'pharmaceuticals': '18',
+        'pre-markets': '4',
+        'real-estate': '10',
+        'retail': '23',
+        'stocks': '5',
+        'technology': '20',
+        'travel': '11',
+        'usa': '6'
     };
 
-    var limit = $('.news-feature-grid')
-        .data('limit');
-    var tag = $('.news-feature-grid')
-        .data('tag');
-    var cat = $('.news-feature-grid')
-        .data('cat');
-    var page = $('.news-feature-grid')
-        .data('page');
+    var limit = $( '.news-feature-grid' )
+        .data( 'limit' );
+    var tag = $( '.news-feature-grid' )
+        .data( 'tag' );
+    var cat = $( '.news-feature-grid' )
+        .data( 'cat' );
+    var page = $( '.news-feature-grid' )
+        .data( 'page' );
 
-    var tag = tagids[tag];
-    $.getJSON(baseurl + "/wp-json/wp/v2/posts?_envelope&page=" + page +
-        "&per_page=" + limit + "" + (tag ? "&tags=" + tag : "") +
-        "&categories=" + cat
-        , function(data) {
-            if (data.status == 200) {
-                $("#news-row")
+    var tag = tagids[ tag ];
+    $.getJSON( baseurl + "/wp-json/wp/v2/posts?_envelope&page=" + page +
+        "&per_page=" + limit + "" + ( tag ? "&tags=" + tag : "" ) +
+        "&categories=" + cat,
+        function ( data ) {
+            if ( data.status == 200 ) {
+                $( "#news-row" )
                     .empty();
-                $('.pagination')
-                    .bootpag({
-                        total: data.headers['X-WP-TotalPages']
-                        , maxVisible: 5
-                        , page: page
-                    , })
-                    .on("page", function(event, num) {
-                        $('.news-feature-grid')
-                            .data('page', num);
+                $( '.pagination' )
+                    .bootpag( {
+                        total: data.headers[ 'X-WP-TotalPages' ],
+                        maxVisible: 5,
+                        page: page,
+                    } )
+                    .on( "page", function ( event, num ) {
+                        $( '.news-feature-grid' )
+                            .data( 'page', num );
                         // Change URL
                         var origurl = window.location.href;
-                        var pagepos = origurl.search('/page/');
-                        if (pagepos != -1) {
-                            newurl = origurl.substring(0, pagepos);
+                        var pagepos = origurl.search( '/page/' );
+                        if ( pagepos != -1 ) {
+                            newurl = origurl.substring( 0, pagepos );
                         } else {
-                            newurl = origurl.replace(/\/$/, "");
+                            newurl = origurl.replace( /\/$/, "" );
                         }
                         newurl += '/page/' + num;
-                        window.history.pushState(null, null, newurl);
-                        $('html, body')
-                            .animate({
-                                scrollTop: $(".news-feature-grid")
+                        window.history.pushState( null, null, newurl );
+                        $( 'html, body' )
+                            .animate( {
+                                scrollTop: $( ".news-feature-grid" )
                                     .offset()
                                     .top - 100
-                            }, 300);
+                            }, 300 );
                         grabNewsByPage();
-                    });
+                    } );
 
                 data = data.body;
                 var newscount = data.length;
                 var newsloaded = 0;
-                $.each(data, function(i, v) {
+                $.each( data, function ( i, v ) {
                     var randtag = 'all';
-                    if (v.tags.length > 0) {
-                        var randtagid = v.tags[Math.floor(Math.random() *
-                            v.tags.length)];
-                        randtag = getKeyByValue(tagids, randtagid);
+                    if ( v.tags.length > 0 ) {
+                        var randtagid = v.tags[ Math.floor( Math.random() *
+                            v.tags.length ) ];
+                        randtag = getKeyByValue( tagids, randtagid );
                     }
 
-                    var title = truncateString(v.title.rendered.replace(
-                            /(<([^>]+)>)/ig, "")
-                        .trim(), 80, ' ', '');
-                    var excerpt = truncateString(v.content.rendered
-                        .replace(/(<([^>]+)>)/ig, "")
-                        .trim(), 180, ' ', '...');
+                    var title = truncateString( v.title.rendered.replace(
+                            /(<([^>]+)>)/ig, "" )
+                        .trim(), 80, ' ', '' );
+                    var excerpt = truncateString( v.content.rendered
+                        .replace( /(<([^>]+)>)/ig, "" )
+                        .trim(), 180, ' ', '...' );
                     var newsitem =
                         '<div class="col-sm-4"><a href="' + v.link +
                         '"><figure style="border-bottom: 5px solid #1ecd6e;background-size: cover;background-repeat: no-repeat;height: 150px;"><label class="hidden">' +
@@ -230,11 +231,11 @@ function grabNewsByPage() {
                         '</p><ul class="text-left size-12 list-inline list-separator"><li><i class="fa fa-calendar"></i>' +
                         v.date +
                         '&nbsp;<small>10:10pm</small></li></ul></div>';
-                    var news = $(newsitem);
-                    news.appendTo("#news-row");
-                    if (v.featured_media == 0) {
+                    var news = $( newsitem );
+                    news.appendTo( "#news-row" );
+                    if ( v.featured_media == 0 ) {
                         newscount--;
-                        checkcount(newsloaded, newscount);
+                        checkcount( newsloaded, newscount );
                     } else {
                         // $.getJSON( baseurl + "/wp-json/wp/v2/media/"+v.featured_media, function( image ) {
                         //     news.find('figure').first().css({
@@ -245,201 +246,201 @@ function grabNewsByPage() {
                         //     checkcount(newsloaded, newscount);
                         //
                         // }).error(function() { newscount--; checkcount(newsloaded, newscount); });
-                        if (v.post_thumbnail["mid-image"]) {
-                            news.find('figure')
+                        if ( v.post_thumbnail[ "mid-image" ] ) {
+                            news.find( 'figure' )
                                 .first()
-                                .css({
+                                .css( {
                                     'background-image': 'url(' +
                                         v.post_thumbnail[
-                                            "mid-image"]["0"] +
+                                            "mid-image" ][ "0" ] +
                                         ')'
-                                });
+                                } );
                         }
 
                         newsloaded++;
-                        checkcount(newsloaded, newscount);
+                        checkcount( newsloaded, newscount );
                     }
-                });
+                } );
             }
-        });
+        } );
 }
 
-function checkcount(newsloaded, newscount) {
-    if (newsloaded == newscount) {
-        assignnewsimage(jQuery('.news-feature-grid .font-proxima.uppercase')
-            , jQuery('.news-feature-grid figure'), false);
+function checkcount( newsloaded, newscount ) {
+    if ( newsloaded == newscount ) {
+        assignnewsimage( jQuery( '.news-feature-grid .font-proxima.uppercase' ),
+            jQuery( '.news-feature-grid figure' ), false );
     }
 }
 
-function truncateString(string, limit, breakChar, rightPad) {
-    if (string.length <= limit) return string;
-    var substr = string.substr(0, limit);
-    if ((breakPoint = substr.lastIndexOf(breakChar)) >= 0) {
-        if (breakPoint < string.length - 1) {
-            return string.substr(0, breakPoint) + rightPad;
+function truncateString( string, limit, breakChar, rightPad ) {
+    if ( string.length <= limit ) return string;
+    var substr = string.substr( 0, limit );
+    if ( ( breakPoint = substr.lastIndexOf( breakChar ) ) >= 0 ) {
+        if ( breakPoint < string.length - 1 ) {
+            return string.substr( 0, breakPoint ) + rightPad;
         }
     }
     return string;
 }
 
-function isScrolledIntoView(c) {
-    var e = $(window)
+function isScrolledIntoView( c ) {
+    var e = $( window )
         .scrollTop();
-    var d = e + $(window)
+    var d = e + $( window )
         .height();
-    var a = $(c)
+    var a = $( c )
         .offset()
         .top;
-    var b = a + $(c)
+    var b = a + $( c )
         .height();
-    return ((b >= e) && (a <= d))
+    return ( ( b >= e ) && ( a <= d ) )
 };
 
 function xyrLoadImg() {
-    $(".img_place")
-        .each(function() {
-            if (isScrolledIntoView(this) == true) {
-                if ($(this)
-                    .attr('org_img') !== undefined) {
-                    var the_orig_img = $(this)
-                        .attr("org_img");
+    $( ".img_place" )
+        .each( function () {
+            if ( isScrolledIntoView( this ) == true ) {
+                if ( $( this )
+                    .attr( 'org_img' ) !== undefined ) {
+                    var the_orig_img = $( this )
+                        .attr( "org_img" );
                     this.src = the_orig_img;
 
-                    $(this)
-                        .animate({
+                    $( this )
+                        .animate( {
                             opacity: 0.01
-                        }, 1);
-                    $(this)
-                        .animate({
+                        }, 1 );
+                    $( this )
+                        .animate( {
                             opacity: 1
-                        }, 800);
+                        }, 800 );
 
-                    $(this)
-                        .removeAttr("org_img");
-                    $(this)
-                        .removeClass("img_place");
+                    $( this )
+                        .removeAttr( "org_img" );
+                    $( this )
+                        .removeClass( "img_place" );
 
-                    console.log(the_orig_img);
+                    console.log( the_orig_img );
                 }
             }
-        });
+        } );
 }
 
 function loadIframe() {
-    $(".iframe_content")
-        .each(function() {
-            if (isScrolledIntoView(this) == true) {
-                if ($(this)
-                    .attr('iframe_url') !== undefined) {
-                    var the_orig_url = $(this)
-                        .attr("iframe_url");
+    $( ".iframe_content" )
+        .each( function () {
+            if ( isScrolledIntoView( this ) == true ) {
+                if ( $( this )
+                    .attr( 'iframe_url' ) !== undefined ) {
+                    var the_orig_url = $( this )
+                        .attr( "iframe_url" );
                     this.src = the_orig_url;
 
-                    $(this)
-                        .animate({
+                    $( this )
+                        .animate( {
                             opacity: 0.01
-                        }, 1);
-                    $(this)
-                        .animate({
+                        }, 1 );
+                    $( this )
+                        .animate( {
                             opacity: 1
-                        }, 800);
+                        }, 800 );
 
-                    $(this)
-                        .removeAttr("iframe_url");
-                    $(this)
-                        .removeClass("iframe_content");
+                    $( this )
+                        .removeAttr( "iframe_url" );
+                    $( this )
+                        .removeClass( "iframe_content" );
                 }
             }
-        });
+        } );
 }
 
 function loadAjax() {
-    $(".ajax_content")
-        .each(function() {
-            if (isScrolledIntoView(this) == true) {
-                if ($(this)
-                    .attr('ajax_url') !== undefined) {
-                    var the_orig_ajax = $(this)
-                        .attr("ajax_url");
-                    var the_div_id = $(this)
-                        .attr("id");
-                    $.ajax({
-                        url: the_orig_ajax
-                        , success: function(c) {
-                            $("#" + the_div_id)
-                                .html(c)
+    $( ".ajax_content" )
+        .each( function () {
+            if ( isScrolledIntoView( this ) == true ) {
+                if ( $( this )
+                    .attr( 'ajax_url' ) !== undefined ) {
+                    var the_orig_ajax = $( this )
+                        .attr( "ajax_url" );
+                    var the_div_id = $( this )
+                        .attr( "id" );
+                    $.ajax( {
+                        url: the_orig_ajax,
+                        success: function ( c ) {
+                            $( "#" + the_div_id )
+                                .html( c )
                         }
-                    });
-                    $(this)
-                        .animate({
+                    } );
+                    $( this )
+                        .animate( {
                             opacity: 0.01
-                        }, 1);
-                    $(this)
-                        .animate({
+                        }, 1 );
+                    $( this )
+                        .animate( {
                             opacity: 1
-                        }, 800);
-                    $(this)
-                        .removeAttr("ajax_url");
-                    $(this)
-                        .removeClass("ajax_content");
+                        }, 800 );
+                    $( this )
+                        .removeAttr( "ajax_url" );
+                    $( this )
+                        .removeClass( "ajax_content" );
                 }
             }
-        });
+        } );
 }
 
-function assignnewsimage(tagelem, itemelem, taglist) {
+function assignnewsimage( tagelem, itemelem, taglist ) {
     var tags = '';
     var newimgsrc = '';
     var newscount = 0;
     newimgsrc = '';
-    if (taglist) {
+    if ( taglist ) {
         tags = [];
-        tagelem.each(function(i, v) {
-            tags.push($(this)
+        tagelem.each( function ( i, v ) {
+            tags.push( $( this )
                 .text()
                 .trim()
                 .toLowerCase()
-                .replace(/[^0-9a-z]/gi, '-'));
-        });
+                .replace( /[^0-9a-z]/gi, '-' ) );
+        } );
     } else {
         tags = tagelem.text()
             .trim()
             .toLowerCase()
-            .replace(/[^0-9a-z]/gi, '-')
-            .replace('-news', '');
-        newimgsrc = switch_tags(tags);
+            .replace( /[^0-9a-z]/gi, '-' )
+            .replace( '-news', '' );
+        newimgsrc = switch_tags( tags );
     }
 
 
     // setInterval(function(){
     countnow = itemelem.length;
-    if (countnow > newscount) {
+    if ( countnow > newscount ) {
         var max = newimgsrc.length - 1;
         var ctr = 0;
 
-        itemelem.each(function(ii, v) {
-            if ($(v)
-                .data('imgchanged')) {
+        itemelem.each( function ( ii, v ) {
+            if ( $( v )
+                .data( 'imgchanged' ) ) {
                 return true;
             }
             var imgsrc = '';
-            if ($(v)
-                .prop("tagName") == 'IMG') {
-                imgsrc = jQuery(v)
-                    .attr('src') || '';
+            if ( $( v )
+                .prop( "tagName" ) == 'IMG' ) {
+                imgsrc = jQuery( v )
+                    .attr( 'src' ) || '';
             } else {
-                imgsrc = jQuery(v)
-                    .css('background-image') || '';
+                imgsrc = jQuery( v )
+                    .css( 'background-image' ) || '';
             }
-            if (taglist) {
-                var tagkey = tags[ii].toString()
-                    .replace(/\s+/g, '-')
+            if ( taglist ) {
+                var tagkey = tags[ ii ].toString()
+                    .replace( /\s+/g, '-' )
                     .toLowerCase();
 
-                if (['asia', 'usa'].indexOf(tagkey) != -1) {
+                if ( [ 'asia', 'usa' ].indexOf( tagkey ) != -1 ) {
                     tagkey = 'default';
                 }
-                newimgsrc = switch_tags(tagkey);
+                newimgsrc = switch_tags( tagkey );
             }
             var fnd = 0;
             var terms = [
@@ -458,84 +459,85 @@ function assignnewsimage(tagelem, itemelem, taglist) {
                 , 'mw_logo_social'
                 , '6325547'
             , ];
-            for (var i in terms) {
-                if (imgsrc.search(terms[i]) > -1) {
+            for ( var i in terms ) {
+                if ( imgsrc.search( terms[ i ] ) > -1 ) {
                     fnd++;
                 }
             }
 
 
             var cloneimgsrc = imgsrc;
-            if (imgsrc.length == 0 || cloneimgsrc.replace('url("', '')
-                .replace('")', '')
+            if ( imgsrc.length == 0 || cloneimgsrc.replace( 'url("', '' )
+                .replace( '")', '' )
                 .trim()
                 .length == 0 || imgsrc == 'url("' + window.location +
                 '")' || imgsrc == 'url("undefined")' || imgsrc ==
-                'undefined' || imgsrc == 'none') {
+                'undefined' || imgsrc == 'none' ) {
                 fnd++;
             }
 
-            if (fnd > 0) {
-                if (tags.length > 0) {
-                    if (taglist) {
-                        var tagkey = tags[ii].toString()
-                            .replace(/\s+/g, '-')
+            if ( fnd > 0 ) {
+                if ( tags.length > 0 ) {
+                    if ( taglist ) {
+                        var tagkey = tags[ ii ].toString()
+                            .replace( /\s+/g, '-' )
                             .toLowerCase();
-                        if (['asia', 'usa'].indexOf(tagkey) != -1) {
+                        if ( [ 'asia', 'usa' ].indexOf( tagkey ) != -1 ) {
                             tagkey = 'default';
                         }
-                        if (typeof newsimages[tagkey] == 'undefined') {
-                            newsimages[tagkey] = 0;
+                        if ( typeof newsimages[ tagkey ] == 'undefined' ) {
+                            newsimages[ tagkey ] = 0;
                         }
 
                     }
-                    if (jQuery.isArray(newimgsrc)) {
-                        if (taglist) {
-                            var tagkey = tags[ii].toString()
-                                .replace(/\s+/g, '-')
+                    if ( jQuery.isArray( newimgsrc ) ) {
+                        if ( taglist ) {
+                            var tagkey = tags[ ii ].toString()
+                                .replace( /\s+/g, '-' )
                                 .toLowerCase();
-                            if (['asia', 'usa'].indexOf(tagkey) != -1) {
+                            if ( [ 'asia', 'usa' ].indexOf( tagkey ) !=
+                                -1 ) {
                                 tagkey = 'default';
                             }
-                            rnewimgsrc = newimgsrc[newsimages[tagkey]];
-                            if (newsimages[tagkey] >= newimgsrc.length) {
-                                newsimages[tagkey] = 0;
+                            rnewimgsrc = newimgsrc[ newsimages[ tagkey ] ];
+                            if ( newsimages[ tagkey ] >= newimgsrc.length ) {
+                                newsimages[ tagkey ] = 0;
                             }
-                            newsimages[tagkey]++;
+                            newsimages[ tagkey ]++;
                             // console.log(newsimages[tagkey]);
                         } else {
-                            rnewimgsrc = newimgsrc[ctr];
-                            if (ctr++ >= max)
+                            rnewimgsrc = newimgsrc[ ctr ];
+                            if ( ctr++ >= max )
                                 ctr = 0;
                         }
                     } else
                         rnewimgsrc = newimgsrc;
 
-                    if (rnewimgsrc != "undefined") {
-                        if ($(v)
-                            .prop("tagName") == 'IMG') {
-                            jQuery(v)
-                                .attr('src', rnewimgsrc);
+                    if ( rnewimgsrc != "undefined" ) {
+                        if ( $( v )
+                            .prop( "tagName" ) == 'IMG' ) {
+                            jQuery( v )
+                                .attr( 'src', rnewimgsrc );
                         } else {
-                            jQuery(v)
-                                .css('background-image', 'url("' +
-                                    rnewimgsrc + '")');
+                            jQuery( v )
+                                .css( 'background-image', 'url("' +
+                                    rnewimgsrc + '")' );
                         }
                     }
 
-                    jQuery(v)
-                        .data('imgchanged', true);
+                    jQuery( v )
+                        .data( 'imgchanged', true );
                 }
             }
 
-        });
+        } );
         newscount = countnow;
     }
 
 }
 
-function switch_tags(tags) {
-    switch (tags) {
+function switch_tags( tags ) {
+    switch ( tags ) {
         case 'real-estate':
             newimgsrc = [
                 '/wp-content/uploads/sites/8/2016/09/ei.marketwatch.comMultimedia20160510PhotosZHMW-EM390_roofto_20160510093609_ZH-cf2792d26d887ed37889f6b4e15b816cefb25830.jpg'
@@ -567,10 +569,13 @@ function switch_tags(tags) {
         case 'stocks':
             newimgsrc = [
                 '/wp-content/uploads/sites/8/2016/09/glocdn.investing.comtrkd-imagesLYNXNPEC3S1CP_L-1391d561df4fd8ca7c1ac0a9be36cc1690d251db.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/Banking-and-Finance-banner.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/banking-finance-insurance.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/Banking-and-Finance-banner.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/banking-finance-insurance.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/Finance-Bank.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/pakistan-s-islamic-banking-push-faces-industry-gaps-1413296787-9951.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/pakistan-s-islamic-banking-push-faces-industry-gaps-1413296787-9951.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/bankingfinance_5.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/bankingfinance_3.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/bankingfinance_2.jpg'
@@ -619,16 +624,26 @@ function switch_tags(tags) {
         case 'consumer-goods':
             newimgsrc = [
                 '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-1.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-3.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-4.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-5.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-6.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-7.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-8.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-9.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-10.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-11.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-12.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-3.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-4.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-5.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-6.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-7.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-8.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-9.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-10.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-11.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/consumer-goods-news-12.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/gen-news-1.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/gen-news-2.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/gen-news-3.jpg'
@@ -664,18 +679,30 @@ function switch_tags(tags) {
         case 'industrial-goods':
             newimgsrc = [
                 '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-1.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-2.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-3.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-4.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-5.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-6.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-7.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-8.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-9.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-10.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-11.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-12.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-13.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-2.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-3.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-4.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-5.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-6.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-7.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-8.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-9.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-10.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-11.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-12.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/industrial-goods-news-13.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/gen-news-8.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/gen-news-9.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/gen-news-10.jpg'
@@ -685,18 +712,30 @@ function switch_tags(tags) {
         case 'manufacturing':
             newimgsrc = [
                 '/wp-content/uploads/sites/8/2016/09/manufacturing-news-1.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/manufacturing-news-2.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/manufacturing-news-3.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/manufacturing-news-4.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/manufacturing-news-5.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/manufacturing-news-6.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/manufacturing-news-7.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/manufacturing-news-8.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/manufacturing-news-9.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/manufacturing-news-10.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/manufacturing-news-11.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/manufacturing-news-12.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/manufacturing-news-13.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/manufacturing-news-2.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/manufacturing-news-3.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/manufacturing-news-4.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/manufacturing-news-5.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/manufacturing-news-6.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/manufacturing-news-7.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/manufacturing-news-8.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/manufacturing-news-9.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/manufacturing-news-10.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/manufacturing-news-11.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/manufacturing-news-12.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/manufacturing-news-13.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/gen-news-12.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/gen-news-13.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/gen-news-14.jpg'
@@ -843,13 +882,18 @@ function switch_tags(tags) {
         default:
             newimgsrc = [
                 '/wp-content/uploads/sites/8/2016/09/www.newsoracle.comwp-contentuploads201509how-to-buy-stocks-e8ba2c93ea77c74045ee9d6badfe17c688654767.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/www.newsoracle.comwp-contentuploads201509Stock-Investment-1-4c260dbd76e9480e0d12c9c11d882f6c3a9f43e0.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/glocdn.investing.comnewsWarsWarsaw-Stock-Exchange_800x533_L_1430991033-dae82efb6283addfa779cad83ad60f22338685a5.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/www.newsoracle.comwp-contentuploads201509Stock-Investment-1-4c260dbd76e9480e0d12c9c11d882f6c3a9f43e0.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/glocdn.investing.comnewsWarsWarsaw-Stock-Exchange_800x533_L_1430991033-dae82efb6283addfa779cad83ad60f22338685a5.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/stock-market-1.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/stock-market-2.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/glocdn.investing.comnewsLYNXNPEB7A004_L-55a0d1b38df4279dbc302f3d57dc3ef9c9925239.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/WideModern_StockMarketChart_062613-e1462847698711.jpg'
-                , '/wp-content/uploads/sites/8/2016/09/glocdn.investing.comnewsBrazil-Stock-Market_1_309X149._800x533_L_1413121146-896630eb895cfa2c8e6ca0df38eeef72301215f9.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/glocdn.investing.comnewsLYNXNPEB7A004_L-55a0d1b38df4279dbc302f3d57dc3ef9c9925239.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/WideModern_StockMarketChart_062613-e1462847698711.jpg'
+                ,
+                '/wp-content/uploads/sites/8/2016/09/glocdn.investing.comnewsBrazil-Stock-Market_1_309X149._800x533_L_1413121146-896630eb895cfa2c8e6ca0df38eeef72301215f9.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/gen-news-1.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/gen-news-2.jpg'
                 , '/wp-content/uploads/sites/8/2016/09/gen-news-3.jpg'
@@ -875,249 +919,249 @@ function switch_tags(tags) {
     return newimgsrc;
 }
 
-jQuery(function($) {
-    $('.video-grid')
-        .delegate('.video-grid-play', 'click', function(e) {
+jQuery( function ( $ ) {
+    $( '.video-grid' )
+        .delegate( '.video-grid-play', 'click', function ( e ) {
             e.preventDefault();
 
 
 
-            var $videogrid = $(this)
-                .closest('.video-grid');
-            var $videobig = $videogrid.find('.video-big-wrapper');
-            var $videourl = $(this)
-                .attr('href');
-            if ($videourl.search('youtu.be/') != -1) {
-                var $id = $videourl.split('youtu.be/')[1];
+            var $videogrid = $( this )
+                .closest( '.video-grid' );
+            var $videobig = $videogrid.find( '.video-big-wrapper' );
+            var $videourl = $( this )
+                .attr( 'href' );
+            if ( $videourl.search( 'youtu.be/' ) != -1 ) {
+                var $id = $videourl.split( 'youtu.be/' )[ 1 ];
             } else {
-                var $id = $videourl.split('?v=')[1];
+                var $id = $videourl.split( '?v=' )[ 1 ];
             }
 
-            $videobig.find('figure iframe')
+            $videobig.find( 'figure iframe' )
                 .remove();
 
             // Swap the Vids
-            var $thisBox = $(this)
-                .closest('.item-box');
+            var $thisBox = $( this )
+                .closest( '.item-box' );
 
-            if (!($thisBox.hasClass('item-box-big'))) {
+            if ( !( $thisBox.hasClass( 'item-box-big' ) ) ) {
                 // If this box not in the big box
 
-                var $theBiggerBox = $videobig.find('.item-box')
+                var $theBiggerBox = $videobig.find( '.item-box' )
                     .first();
-                $theBiggerBox.find('img')
-                    .css({
+                $theBiggerBox.find( 'img' )
+                    .css( {
                         'min-height': ""
-                    });
-                $thisBox.css({
+                    } );
+                $thisBox.css( {
                     'height': ""
-                });
+                } );
 
-                $thisBox.find('.inner > img')
+                $thisBox.find( '.inner > img' )
                     .remove();
 
                 var $biggerBoxSpanBlock = $theBiggerBox.find(
-                        'span.block')
+                        'span.block' )
                     .first();
                 $biggerBoxSpanBlock.empty();
                 var $biggerBoxSpanBlockACSS = $theBiggerBox.find(
-                        '.video-grid-play')
+                        '.video-grid-play' )
                     .first()
-                    .attr('class');
+                    .attr( 'class' );
                 var $thisBoxSpanBlock = $thisBox.find(
-                        '.inner span.block')
+                        '.inner span.block' )
                     .first();
                 var $thisBoxSpanBlockACSS = $thisBoxSpanBlock.find(
-                        'a')
+                        'a' )
                     .first()
-                    .attr('class');
+                    .attr( 'class' );
 
-                $theBiggerBox.find('.inner .video-grid-play')
-                    .attr('class', $thisBoxSpanBlockACSS);
-                $theBiggerBox.find('.inner .video-grid-play')
-                    .appendTo($biggerBoxSpanBlock);
-                $thisBox.find('.inner span.block .video-grid-play')
-                    .attr('class', $biggerBoxSpanBlockACSS);
-                $thisBox.find('.inner span.block .video-grid-play')
-                    .insertAfter($thisBoxSpanBlock);
+                $theBiggerBox.find( '.inner .video-grid-play' )
+                    .attr( 'class', $thisBoxSpanBlockACSS );
+                $theBiggerBox.find( '.inner .video-grid-play' )
+                    .appendTo( $biggerBoxSpanBlock );
+                $thisBox.find( '.inner span.block .video-grid-play' )
+                    .attr( 'class', $biggerBoxSpanBlockACSS );
+                $thisBox.find( '.inner span.block .video-grid-play' )
+                    .insertAfter( $thisBoxSpanBlock );
                 $theBiggerBox.removeClass()
-                    .addClass($thisBox.attr('class'));
+                    .addClass( $thisBox.attr( 'class' ) );
                 $thisBox.removeClass()
                     .addClass(
                         'item-box item-box-big noshadow margin-bottom-10'
                     );
 
-                $theBiggerBox.insertAfter($thisBox);
-                $thisBox.appendTo($videobig);
+                $theBiggerBox.insertAfter( $thisBox );
+                $thisBox.appendTo( $videobig );
 
-                $('.video-grid-details')
-                    .html($thisBox.find('.inner h3')
+                $( '.video-grid-details' )
+                    .html( $thisBox.find( '.inner h3' )
                         .first()
-                        .clone());
+                        .clone() );
 
             }
 
             // Change Height of NonPlaying Column
 
             // Change Width
-            $videogrid.find('.video-big-wrapper')
-                .removeClass('col-md-6')
-                .addClass('col-md-9 video-now-playing');
-            $videogrid.find('.video-grid-column-wrapper')
-                .addClass('video-grid-playing');
+            $videogrid.find( '.video-big-wrapper' )
+                .removeClass( 'col-md-6' )
+                .addClass( 'col-md-9 video-now-playing' );
+            $videogrid.find( '.video-grid-column-wrapper' )
+                .addClass( 'video-grid-playing' );
 
             var $videoPlayingHeight = $videogrid.find(
-                    '.video-big-wrapper')
+                    '.video-big-wrapper' )
                 .height();
             var $videoNonPlayingPadding = 10;
-            var $videoNonPlayingItemHeight = ($videoPlayingHeight /
-                4) - $videoNonPlayingPadding;
+            var $videoNonPlayingItemHeight = ( $videoPlayingHeight /
+                4 ) - $videoNonPlayingPadding;
 
 
-            $videogrid.find('.video-grid-column-wrapper .item-box')
-                .css('height', $videoNonPlayingItemHeight);
+            $videogrid.find( '.video-grid-column-wrapper .item-box' )
+                .css( 'height', $videoNonPlayingItemHeight );
 
-            $videogrid.find('.video-grid-column-wrapper .item-box')
-                .each(function(i, v) {
+            $videogrid.find( '.video-grid-column-wrapper .item-box' )
+                .each( function ( i, v ) {
 
-                    $(v)
-                        .find('.inner > img')
+                    $( v )
+                        .find( '.inner > img' )
                         .remove();
 
-                    if (i > 0) {
-                        $(v)
-                            .addClass('margin-top-10');
+                    if ( i > 0 ) {
+                        $( v )
+                            .addClass( 'margin-top-10' );
                     }
-                    var $newimage = $(v)
-                        .find('img')
+                    var $newimage = $( v )
+                        .find( 'img' )
                         .clone();
 
-                    $newimage.prependTo($(v)
-                        .find('.inner'));
-                });
+                    $newimage.prependTo( $( v )
+                        .find( '.inner' ) );
+                } );
 
 
 
             var $videoframe = $(
                 '<iframe width="100%" height="100%" src="//www.youtube.com/v/' +
                 $id +
-                '?autoplay=1&controls=0&modestbranding=1&rel=0" frameborder="0" allowfullscreen>'
+                '?autoplay=1&controls=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen>'
             );
-            $videobig.find('figure')
+            $videobig.find( 'figure' )
                 .first()
-                .append($videoframe);
-        });
+                .append( $videoframe );
+        } );
 
-    $('#all-videos .video-grid-play')
-        .click(function(e) {
+    $( '#all-videos .video-grid-play' )
+        .click( function ( e ) {
             e.preventDefault();
-            $('.item-box-big .video-grid-play')
-                .trigger('click');
-            var $videogrid = $('.video-grid')
+            $( '.item-box-big .video-grid-play' )
+                .trigger( 'click' );
+            var $videogrid = $( '.video-grid' )
                 .first();
-            var $videobig = $videogrid.find('.video-big-wrapper');
-            var $itembox = $(this)
-                .closest('.item-box');
-            var $videourl = $(this)
-                .attr('href');
+            var $videobig = $videogrid.find( '.video-big-wrapper' );
+            var $itembox = $( this )
+                .closest( '.item-box' );
+            var $videourl = $( this )
+                .attr( 'href' );
 
-            if ($videourl.search('youtu.be/') != -1) {
-                var $id = $videourl.split('youtu.be/')[1];
+            if ( $videourl.search( 'youtu.be/' ) != -1 ) {
+                var $id = $videourl.split( 'youtu.be/' )[ 1 ];
             } else {
-                var $id = $videourl.split('?v=')[1];
+                var $id = $videourl.split( '?v=' )[ 1 ];
             }
 
-            $videobig.find('figure iframe')
+            $videobig.find( 'figure iframe' )
                 .remove();
-            $('.video-grid-details')
-                .html($itembox.find('.inner h3')
+            $( '.video-grid-details' )
+                .html( $itembox.find( '.inner h3' )
                     .first()
-                    .clone());
+                    .clone() );
             var $videoframe = $(
                 '<iframe width="100%" height="100%" src="//www.youtube.com/v/' +
                 $id +
-                '?autoplay=1&controls=0&modestbranding=1&rel=0" frameborder="0" allowfullscreen>'
+                '?autoplay=1&controls=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen>'
             );
-            $videobig.find('figure')
+            $videobig.find( 'figure' )
                 .first()
-                .append($videoframe);
+                .append( $videoframe );
 
-            $('html, body')
-                .animate({
+            $( 'html, body' )
+                .animate( {
                     scrollTop: $videogrid.offset()
                         .top - 100
-                }, 300);
+                }, 300 );
 
 
-            if ($('.video-grid-column-wrapper')
-                .length != 1) {
+            if ( $( '.video-grid-column-wrapper' )
+                .length != 1 ) {
 
                 var $newvidcolumnwrapper = $(
                     '<div class="col-md-3 col-sm-6 col-xs-6 col-2xs-12 video-grid-column-wrapper video-grid-playing" />'
                 );
-                $('.video-grid-column-wrapper')
+                $( '.video-grid-column-wrapper' )
                     .remove();
 
 
-                $('#planning .item-box')
-                    .each(function() {
-                        $newvidcolumnwrapper.append($(this)
-                            .clone());
-                    });
+                $( '#planning .item-box' )
+                    .each( function () {
+                        $newvidcolumnwrapper.append( $( this )
+                            .clone() );
+                    } );
 
-                $newvidcolumnwrapper.css('max-height', $videogrid.find(
-                        '.video-big-wrapper .item-box-big')
-                    .height());
-                $newvidcolumnwrapper.css('overflow', 'auto');
-                $newvidcolumnwrapper.insertAfter($videobig);
+                $newvidcolumnwrapper.css( 'max-height', $videogrid.find(
+                        '.video-big-wrapper .item-box-big' )
+                    .height() );
+                $newvidcolumnwrapper.css( 'overflow', 'auto' );
+                $newvidcolumnwrapper.insertAfter( $videobig );
 
 
-                $videogrid.find('.video-big-wrapper')
-                    .removeClass('col-md-6')
-                    .addClass('col-md-9 video-now-playing');
-                $videogrid.find('.video-grid-column-wrapper')
-                    .addClass('video-grid-playing');
+                $videogrid.find( '.video-big-wrapper' )
+                    .removeClass( 'col-md-6' )
+                    .addClass( 'col-md-9 video-now-playing' );
+                $videogrid.find( '.video-grid-column-wrapper' )
+                    .addClass( 'video-grid-playing' );
 
                 var $videoPlayingHeight = $videogrid.find(
-                        '.video-big-wrapper')
+                        '.video-big-wrapper' )
                     .height();
                 var $videoNonPlayingPadding = 10;
                 var $videoNonPlayingItemHeight = (
                     $videoPlayingHeight /
-                    4) - $videoNonPlayingPadding;
+                    4 ) - $videoNonPlayingPadding;
 
                 $videogrid.find(
-                        '.video-grid-column-wrapper .item-box')
-                    .css('height', $videoNonPlayingItemHeight);
+                        '.video-grid-column-wrapper .item-box' )
+                    .css( 'height', $videoNonPlayingItemHeight );
 
                 $videogrid.find(
-                        '.video-grid-column-wrapper .item-box')
-                    .each(function(i, v) {
+                        '.video-grid-column-wrapper .item-box' )
+                    .each( function ( i, v ) {
 
-                        $(v)
-                            .find('.inner > img')
+                        $( v )
+                            .find( '.inner > img' )
                             .remove();
 
-                        if (i > 0) {
-                            $(v)
-                                .addClass('margin-top-10');
+                        if ( i > 0 ) {
+                            $( v )
+                                .addClass( 'margin-top-10' );
                         } else {
-                            $(v)
-                                .removeClass('margin-top-10');
+                            $( v )
+                                .removeClass( 'margin-top-10' );
                         }
-                        var $newimage = $(v)
-                            .find('img')
+                        var $newimage = $( v )
+                            .find( 'img' )
                             .clone();
 
-                        $newimage.prependTo($(v)
-                            .find('.inner'));
-                    });
+                        $newimage.prependTo( $( v )
+                            .find( '.inner' ) );
+                    } );
 
 
             }
 
             return false;
-        });
+        } );
 
 
-});
+} );

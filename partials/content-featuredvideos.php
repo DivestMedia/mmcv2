@@ -44,12 +44,21 @@ $featuredvids = get_posts([
     'post_status' => 'publish',
     'posts_per_page' => 5,
     'posts_per_archive_page' => 5,
-    'orderby' => 'modified',
+    'orderby' => 'date',
     'order' => 'DESC',
+    'category__not_in' => [ 42 ],
     // 'meta_key'   => '_is_featured',
     // 'meta_value' => 1,
     // 'post__not_in' => $excludevideoid,
     'taxonomy'=>'iod_category',
+    'tax_query' => [
+        [
+            'taxonomy'  => 'iod_category',
+            'field'     => 'slug',
+            'terms'     => 'andy-penders', // exclude items media items in the news-cat custom taxonomy
+            'operator'  => 'NOT IN'
+        ]
+    ],
     // 'term'=> $catobj->slug
 ]);
 
@@ -133,13 +142,14 @@ $post = $featuredvideos;
                                     <h3>
                                         <em>
                                             <?php if(is_home()): ?>
-                                            <a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(2, 119, 46, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a>
+                                                <a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(2, 119, 46, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a>
                                             <?php endif; ?>
                                         </em>
                                         <?=$video['description']?>
+                                        <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($video['date']))?></small>
                                     </h3>
                                     <span class="block size-11 text-center color-theme uppercase">
-                                        <?=date('F j, Y',strtotime($video['date']))?>
+                                        <!-- <?=date('F j, Y',strtotime($video['date']))?> -->
                                     </span>
                                     <a class="pos-bottom block btn-sm btn secondary-bg text-center noradius weight-700 video-grid-play" href="<?=$video['link']?>"  data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
 
@@ -165,7 +175,13 @@ $post = $featuredvideos;
                             <span class="item-description">
                                 <span class="overlay primary-bg "></span>
                                 <span class="inner padding-top-0">
-                                    <h3><em><a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a></em><?=$video['description']?></h3>
+                                    <h3>
+                                        <em>
+                                            <a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a>
+                                        </em>
+                                        <?=$video['description']?>
+                                        <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($video['date']))?></small>
+                                    </h3>
                                     <span class="block size-11 text-center color-theme uppercase">
                                         <a class=" btn-sm btn primary-bg text-center noradius weight-700 video-grid-play" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
                                     </span>
@@ -186,7 +202,13 @@ $post = $featuredvideos;
                             <span class="item-description">
                                 <span class="overlay primary-bg "></span>
                                 <span class="inner padding-top-0">
-                                    <h3><em><a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a></em><?=$video['description']?></h3>
+                                    <h3>
+                                        <em>
+                                            <a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a>
+                                        </em>
+                                        <?=$video['description']?>
+                                        <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($video['date']))?></small>
+                                    </h3>
                                     <span class="block size-11 text-center color-theme uppercase">
                                         <a class=" btn-sm btn primary-bg text-center noradius weight-700 video-grid-play" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
                                     </span>
@@ -212,7 +234,13 @@ $post = $featuredvideos;
                             <span class="item-description">
                                 <span class="overlay primary-bg "></span>
                                 <span class="inner padding-top-0">
-                                    <h3><em><a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a></em><?=$video['description']?></h3>
+                                    <h3>
+                                        <em>
+                                            <a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a>
+                                        </em>
+                                        <?=$video['description']?>
+                                        <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($video['date']))?></small>
+                                    </h3>
                                     <span class="block size-11 text-center color-theme uppercase">
                                         <a class=" btn-sm btn primary-bg text-center noradius weight-700 video-grid-play" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
                                     </span>
@@ -233,7 +261,13 @@ $post = $featuredvideos;
                             <span class="item-description">
                                 <span class="overlay primary-bg "></span>
                                 <span class="inner padding-top-0">
-                                    <h3><em><a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a></em><?=$video['description']?></h3>
+                                    <h3>
+                                        <em>
+                                            <a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=$video['title']?></a>
+                                        </em>
+                                        <?=$video['description']?>
+                                        <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($video['date']))?></small>
+                                    </h3>
                                     <span class="block size-11 text-center color-theme uppercase">
                                         <a class=" btn-sm btn primary-bg text-center noradius weight-700 video-grid-play" href="<?=$video['link']?>"   data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}"><?=($featureButton ?: 'PLAY NOW')?></a>
                                     </span>

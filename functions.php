@@ -15,6 +15,7 @@ function backstage_smarty_setup() {
     add_image_size( 'thumb-image', 150, 99, true ); // Hard Crop Mode
     add_image_size( 'horizontal-image',500,200, true ); // Hard Crop Mode
     add_image_size( 'ratio-image',400,400, false ); // Hard Crop False
+    add_image_size( 'ratio-image-crop',400,400, true ); // Hard Crop False
     add_image_size( 'tiny-image',50,50, true ); // Hard Crop False
     add_image_size( 'mid-ratio-image',400,800, false ); // Hard Crop False - poster
     add_image_size( 'mini-ratio-image',100,100, true ); // Hard Crop False
@@ -807,4 +808,45 @@ function checkIfDefaultFileName($url){
         $fnd++;
     }
     return $fnd;
+}
+
+
+
+function unhook_thematic_functions() {
+    remove_action( 'template_redirect', 'xyren_smarty_search_url_redirect' );
+    if (function_exists('w3tc_pgcache_flush')) {
+        w3tc_pgcache_flush();
+    }
+    if (!current_user_can('administrator') && !is_admin()) {
+        show_admin_bar(false);
+    }
+}
+
+add_action( 'init', 'unhook_thematic_functions' );
+
+add_action( 'init', 'blockusers_init' );
+function blockusers_init() {
+    // If accessing the admin panel and not an admin
+    if ( is_admin() && current_user_can('subscriber') && !current_user_can('administrator') && !current_user_can('editor') && !current_user_can('moderator') ) {
+        // Redirect to the homepage
+        wp_redirect( home_url() );
+        exit;
+    }
+
+    if(is_user_logged_in()){
+        setcookie( 'dm-user-last-activity', time(), 30 * DAY_IN_SECONDS, '/' , '.marketmasterclass.com' );
+    }
+}
+
+
+
+
+add_action( 'wp_ajax_nopriv_save_user_preferences', 'save_user_preferences');
+add_action( 'wp_ajax_save_user_preferences', 'save_user_preferences' );
+
+function save_user_preferences(){
+    $tags = $_POST['tags'];
+    if(!empty($tags) && is_user_logged_in()){
+        update_user_meta( get_current_user_id(), 'preferred_news', $tags);
+    }
 }

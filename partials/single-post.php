@@ -58,6 +58,14 @@ $_parentcat = get_the_category()[0]->category_parent;
 					?>
 
 					<?php if(in_category(['news'])):?>
+						<div class="row">
+							<div class="col-md-12">
+								<a class="btn btn-3d btn-reveal btn-black pull-right" href="<?=site_url('category/news')?>">
+									<i class="fa fa-newspaper-o"></i>
+									<span>Go Back to All News</span>
+								</a>
+							</div>
+						</div>
 						<?php if($origpostlink = get_post_meta($post->ID,'dm_rss_feed_item_link',true)): ?>
 							<div class="divider divider-dotted"><!-- divider --></div>
 							<p class="text-left">

@@ -32,7 +32,6 @@ global $featuredVids,$featuredTitle;
 		<div class="row tab-v3">
 			<div class="col-sm-3 hidden-xs hidden-sm">
 
-
 				<!-- side navigation -->
 				<div class="side-nav margin-top-50">
 
@@ -45,91 +44,93 @@ global $featuredVids,$featuredTitle;
 							<?php foreach ($featuredVids['categories'] as $featCat): ?>
 								<li class="list-group-item <?=((!empty($featCat['active']) && $featCat['active']==true) ? 'active' : '')?> <?=(count($featCat['child'])? 'open' : '')?>">
 									<a href="<?=($featCat['link'] ?: '#')?>#all-videos"><?=($featCat['name'] ?: 'Uncategorized')?></a>
-									<?php
-									if(count($featCat['child'])): ?>
-									<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
-										<?php foreach ($featCat['child'] as $featCatChild): ?>
-											<li class="list-group-item <?=((!empty($featCatChild['active']) && $featCatChild['active']==true) ? 'active' : '')?>">
-												<a href="<?=($featCatChild['link'] ?: '#')?>#all-videos"><?=($featCatChild['name'] ?: 'Uncategorized')?></a>
-											</li>
-										<?php endforeach;?>
-									</ul>
-								<?php endif;?>
-							</li>
-						<?php endforeach;?>
-					</ul>
-				<?php endif;?>
-			</ul>
+									<?php if(count($featCat['child'])): ?>
+										<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
+											<?php foreach ($featCat['child'] as $featCatChild): ?>
+												<li class="list-group-item <?=((!empty($featCatChild['active']) && $featCatChild['active']==true) ? 'active' : '')?>">
+													<a href="<?=($featCatChild['link'] ?: '#')?>#all-videos"><?=($featCatChild['name'] ?: 'Uncategorized')?></a>
+												</li>
+											<?php endforeach;?>
+										</ul>
+									<?php endif;?>
+								</li>
+							<?php endforeach;?>
+						</ul>
+					<?php endif; ?>
+				</ul>
 
 
+			</div>
+			<!-- /side navigation -->
 		</div>
-		<!-- /side navigation -->
-	</div>
-	<div class="col-sm-9">
-		<div class="tab-content">
-			<div class="tab-pane fade in active" id="planning">
-				<div class="row">
-					<?php
-					$mainpost = $post;
+		<div class="col-sm-9">
+			<div class="tab-content">
+				<div class="tab-pane fade in active" id="planning">
+					<div class="row">
+						<?php
+						$mainpost = $post;
 
-					if(count($featuredVids['posts'])):
-						foreach($featuredVids['posts'] as $post):
+						if(count($featuredVids['posts'])):
+							foreach($featuredVids['posts'] as $post):
 
-							$post = get_post($post);
+								$post = get_post($post);
 
-							$iod_video = '';
-							$iod_video_thumbnail = '';
-							if($post){
-								// $videohere = $videohere[0];
-								$iod_video = json_decode(get_post_meta( $post->ID, '_iod_video',true))->embed->url;
-								$ytpattern = '/^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/';
-								if(preg_match($ytpattern,$iod_video,$vid_id)){
-									$iod_video_thumbnail = 'http://img.youtube.com/vi/'.end($vid_id).'/mqdefault.jpg';
-								}else{
-									$iod_video_thumbnail = 'http://www.askgamblers.com/uploads/original/isoftbet-2-5474883270a0f81c4b8b456b.png';
-								};
-							}
+								$iod_video = '';
+								$iod_video_thumbnail = '';
+								if($post){
+									// $videohere = $videohere[0];
+									$iod_video = json_decode(get_post_meta( $post->ID, '_iod_video',true))->embed->url;
+									$ytpattern = '/^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/';
+									if(preg_match($ytpattern,$iod_video,$vid_id)){
+										$iod_video_thumbnail = 'http://img.youtube.com/vi/'.end($vid_id).'/mqdefault.jpg';
+									}else{
+										$iod_video_thumbnail = 'http://www.askgamblers.com/uploads/original/isoftbet-2-5474883270a0f81c4b8b456b.png';
+									};
+								}
 
-							?>
-							<div class="col-sm-4 margin-bottom-20">
-								<div class="item-box noshadow hover-box margin-top-10">
-									<figure>
-										<span class="item-hover">
-											<span class="overlay dark-5"></span>
-										</span>
-										<span class="item-description">
-											<span class="overlay primary-bg "></span>
-											<span class="inner padding-top-0">
-												<h3><em><a href="#" style="color:#fff"></a></em><?=xyr_smarty_limit_chars(get_the_title($post->ID),40)?></h3>
-												<span class="block size-11 text-center color-theme uppercase">
-													<a class=" btn-sm btn primary-bg text-center noradius weight-700 video-grid-play" href="<?=($iod_video)?>" data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}">PLAY NOW</a>
-												</span>
-
+								?>
+								<div class="col-sm-4 margin-bottom-20">
+									<div class="item-box noshadow hover-box margin-top-10">
+										<figure>
+											<span class="item-hover">
+												<span class="overlay dark-5"></span>
 											</span>
-										</span>
+											<span class="item-description">
+												<span class="overlay primary-bg "></span>
+												<span class="inner padding-top-0">
+													<h3>
+														<em>
+															<a href="#" style="color:#fff"></a>
+														</em>
+														<?=xyr_smarty_limit_chars(get_the_title($post->ID),40)?>
+				                                        <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($post->post_date))?></small>
+													</h3>
+													<span class="block size-11 text-center color-theme uppercase">
+														<a class=" btn-sm btn primary-bg text-center noradius weight-700 video-grid-play" href="<?=($iod_video)?>" data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}">PLAY NOW</a>
+													</span>
 
-										<img class="img-responsive" src="<?=($iod_video_thumbnail)?>" alt="">
-									</figure>
+												</span>
+											</span>
+
+											<img class="img-responsive" src="<?=($iod_video_thumbnail)?>" alt="">
+										</figure>
+									</div>
+
 								</div>
 
-							</div>
+								<?php
+							endforeach;
 
-
-
-
-							<?php
-						endforeach;
-
-					endif;
-					$post = $mainpost;
-					?>
-					<div class="pagination"><?=posts_pagination()?></div>
+						endif;
+						$post = $mainpost;
+						?>
+						<div class="pagination"><?=posts_pagination()?></div>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
-<!-- Tab v3 -->
+	<!-- Tab v3 -->
 
 </div>
 </section>
