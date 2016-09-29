@@ -124,6 +124,16 @@ data-background="assets/images/boxed_background/1.jpg"
 						<li><a href="<?=site_url('accounts')?>" class="btn btn-block btn-login">MY ACCOUNT</a></li>
 						<li><a href="<?=wp_logout_url(home_url())?>" class="btn btn-block btn-login">LOGOUT</a></li>
 					<?php endif; ?>
+					<li>
+						<a href="#">
+							<span class="word-rotator header-word-rotator" data-delay="2000">
+								<span class="items">
+									<span>DEMO ACCOUNT</span>
+									<span>COMING SOON</span>
+								</span>
+							</span>
+						</a>
+					</li>
 					<li class="divest-logo-link">
 						<a href="http://divestmedia.com">
 							<img src="<?=get_stylesheet_directory_uri();?>/assets/img/divestmedia-top-logo.png"/>

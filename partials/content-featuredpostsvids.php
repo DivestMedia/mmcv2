@@ -39,12 +39,13 @@ global $featuredVids,$featuredTitle;
 						<button class="fa fa-bars"></button>
 						<h4>CATEGORIES</h4>
 					</div>
-					<?php if(count($featuredVids['categories'])): ?>
+					<?php if(count($featuredVids['categories'])): 
+					?>
 						<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
 							<?php foreach ($featuredVids['categories'] as $featCat): ?>
 								<li class="list-group-item <?=((!empty($featCat['active']) && $featCat['active']==true) ? 'active' : '')?> <?=(count($featCat['child'])? 'open' : '')?>">
 									<a href="<?=($featCat['link'] ?: '#')?>#all-videos"><?=($featCat['name'] ?: 'Uncategorized')?></a>
-									<?php if(count($featCat['child'])): ?>
+									<?php if(!empty($featCat['child'])): ?>
 										<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
 											<?php foreach ($featCat['child'] as $featCatChild): ?>
 												<li class="list-group-item <?=((!empty($featCatChild['active']) && $featCatChild['active']==true) ? 'active' : '')?>">

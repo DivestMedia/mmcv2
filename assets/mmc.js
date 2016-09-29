@@ -1163,5 +1163,40 @@ jQuery( function ( $ ) {
             return false;
         } );
 
+    $( '#container-coming-soon .coming-soon-play' )
+        .click( function ( e ) {
+            e.preventDefault();
+            
+            var $videogrid = $(this).parents( '.cont-c-vid' );
+            var $videobig = $videogrid
+            var $itembox = $( this )
+                .closest( '.item-box' );
+            var $videourl = $( this )
+                .attr( 'href' );
+
+                console.log($videourl);
+            if ( $videourl.search( 'youtu.be/' ) != -1 ) {
+                var $id = $videourl.split( 'youtu.be/' )[ 1 ];
+            } else {
+                var $id = $videourl.split( '?v=' )[ 1 ];
+            }
+
+            $videobig.find( 'figure' )
+                .empty();
+            $( '.video-grid-details' )
+                .html( $itembox.find( '.inner h3' )
+                    .first()
+                    .clone() );
+            var $videoframe = $(
+                '<iframe class="embed-responsive-item" width="100%" height="100%" src="//www.youtube.com/v/' +
+                $id +
+                '?autoplay=1&controls=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen>'
+            );
+            $videobig.find( 'figure' )
+                .first()
+                .append( $videoframe );
+
+            return false;
+        } );
 
 } );

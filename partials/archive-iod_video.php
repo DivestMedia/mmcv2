@@ -40,7 +40,7 @@ if(!in_array(get_query_var('iod_category'),['webinars'])):
 		$iod_video = '';
 		$iod_video_thumbnail = '';
 		if($video){
-			$videohere = $videohere[0];
+			// $video = $video[0];
 			$iod_video = json_decode(get_post_meta( $video->ID, '_iod_video',true))->embed->url;
 			$ytpattern = '/^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/';
 			if(preg_match($ytpattern,$iod_video,$vid_id)){

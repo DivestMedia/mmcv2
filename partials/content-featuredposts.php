@@ -42,7 +42,16 @@ global $featuredPost,$featuredTitle,$is_article;
 								<li class="list-group-item <?=((!empty($featCat['active']) && $featCat['active']==true) ? 'active' : '')?>">
 									<a href="<?=($featCat['link'] ?: '#')?>"><?=($featCat['name'] ?: 'Uncategorized')?></a>
 								</li>
-							<?php endforeach;?>
+							<?php endforeach;
+							if(!empty($is_article)){
+							?>
+								<li class="list-group-item">
+									<a href="/telling-tales/">TELLING TALES</a>
+								</li>
+							<?php
+							}
+							?>
+
 						</ul>
 					<?php endif;?>
 
