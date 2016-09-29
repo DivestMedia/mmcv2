@@ -10,6 +10,14 @@ class memberRestriction {
 		'find-a-broker',
 	];
 
+	public $restricted_archives = [
+		'iod_video',
+	];
+
+	public $restricted_taxonomies = [
+		'iod_video' => 'iod_category',
+	];
+
 	public function __construct(){
 		add_action('init',[&$this,'hooks']);
 	}
@@ -39,6 +47,18 @@ class memberRestriction {
 		in_array(get_post($parent)->post_name,$this->restricted_pages)
 		){
 			$restrict++;
+		}
+
+		if(
+			is_post_type_archive($this->restricted_archives)
+		){
+			$restrict++;
+		}
+
+		foreach ($this->restricted_taxonomies as $post_type => $taxonomy) {
+			if(get_query_var('taxonomy')==$taxonomy){
+				$restrict++;
+			}
 		}
 
 		return $restrict!=0;

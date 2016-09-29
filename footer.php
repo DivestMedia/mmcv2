@@ -134,10 +134,10 @@ if( !is_user_logged_in() && $restrict->restrict_page() ){
 								<p class="margin-bottom-0 margin-top-20">CONTENT ONLY AVAILABLE TO OUR MEMBERS</p>
 								<h2 class="letter-spacing-2" style="color:#ee3f3f;">CONTENT RESTRICTED</h2>
 								<div style="width: 300px;margin:0 auto">
-									<a href="<?=site_url('register')?>" class="btn btn-success btn-lg btn-block">SIGN UP NOW</a>
+									<a href="<?=site_url('accounts/register')?>" class="btn btn-success btn-lg btn-block">SIGN UP NOW</a>
 								</div>
 								<div style="padding-top: 5px;width: 300px;margin:0 auto">
-									<a href="<?=site_url('login')?>" class="btn btn-info btn-lg btn-block">ALREADY A MEMBER</a>
+									<a href="<?=site_url('accounts/login')?>" class="btn btn-info btn-lg btn-block">ALREADY A MEMBER</a>
 								</div>
 								<div class="margin-top-20">
 									<a href="<?=site_url()?>" class="btn btn-link">NO THANKS</a>
