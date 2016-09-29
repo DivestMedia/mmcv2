@@ -105,6 +105,55 @@ get_template_part( 'partials/content', 'vipsubscribers' );
 	</div>
 </div><!-- /PRELOADER -->
 
+<?php
+	if( !is_user_logged_in() && $restrict->restrict_page() ){
+?>
+		<div id="modal-restrict" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-show="true">
+			<div class="modal-dialog modal-lg" style="max-width: 770px;">
+				<div class="modal-content">
+					<!-- body modal -->
+					<div class="modal-body" style="padding: 0 15px;">
+						<div class="row">
+							<div class="col-md-3 padding-0" style="background-color: #d1d1d1;height: 100%;position: relative;">
+								
+								<figure style="background-image: url('http://mmc.divestmedialocal.com/wp-content/uploads/sites/2/2016/09/restrict.png');background-size: cover;background-repeat: no-repeat;height: 405px;background-position: center;"></figure>
+								<div class="text-center" style="position: absolute;bottom: 10px;width: 100%;">
+									<div style="background-color: rgba(0,0,0,.6);color:#fff;padding:15px 0;">
+										<label class="margin-bottom-0">JOIN NOW!</label>
+										<label class="size-70 margin-bottom-0 weight-700">FREE</label>
+										<label class="margin-bottom-0">PRIVACY PROTECTION</label>
+									</div>
+									<div style="color: #000;border-bottom: 1px solid #000;border-top: 1px solid #000;margin-top: 14px;width: 75%;margin: 17px auto 0;">LIMITED TIME OFFER</div>
+								</div>
+								
+							</div>
+							<div class="col-md-9 padding-15">
+								<div class="text-center">
+									<p class="margin-bottom-0 margin-top-20">CONTENT ONLY AVAILABLE TO OUR MEMBERS</p>
+									<h2 class="letter-spacing-2" style="color:#ee3f3f;">CONTENT RESTRICTED</h2>
+									<div style="width: 300px;margin:0 auto">
+										<button type="button" class="btn btn-success btn-lg btn-block">SIGN UP NOW</button>
+									</div>
+									<div style="padding-top: 5px;width: 300px;margin:0 auto">
+										<button type="button" class="btn btn-info btn-lg btn-block">ALREADY A MEMBER</button>
+									</div>
+									<div class="margin-top-20">
+										<button type="button" class="btn btn-link">NO THANKS</button>
+									</div>
+								</div>
+								<div class="margin-top-20" style="padding: 0 20px;">
+									<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer orci nunc, auctor sed eros eget, efficitur rhoncus nibh. Suspendisse congue mauris nec dolor consectetur, venenatis fermentum erat semper.</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+<?php
+	}
+?>
+
 
 <!-- JAVASCRIPT FILES -->
 <?php
@@ -124,6 +173,7 @@ if(is_home()){
 <script src="<?=get_stylesheet_directory_uri();?>/assets/js/jquery.matchHeight-min.js"></script>
 <script>
 $(function() {
+
 	$('.box').matchHeight(true);
 
 	/** Sparkline Graph
