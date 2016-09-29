@@ -117,11 +117,11 @@ data-background="assets/images/boxed_background/1.jpg"
 					</li>
 					<!-- /SEARCH -->
 					<?php if(!is_user_logged_in()):?>
-						<li><a href="/accounts/login" class="btn btn-block btn-login">LOGIN</a></li>
-						<li><a href="/accounts/register" class="btn btn-block btn-login">REGISTER</a></li>
+						<li><a href="<?=site_url('accounts/login')?>" class="btn btn-block btn-login">LOGIN</a></li>
+						<li><a href="<?=site_url('subscriptions')?>" class="btn btn-block btn-login">REGISTER</a></li>
 					<?php else: ?>
 						<li class="text-welcome hidden-xs">Hi, <strong><?=xyr_smarty_limit_chars(wp_get_current_user()->nickname,16,false)?></strong></li>
-						<li><a href="/accounts/" class="btn btn-block btn-login">MY ACCOUNT</a></li>
+						<li><a href="<?=site_url('accounts')?>" class="btn btn-block btn-login">MY ACCOUNT</a></li>
 						<li><a href="<?=wp_logout_url(home_url())?>" class="btn btn-block btn-login">LOGOUT</a></li>
 					<?php endif; ?>
 					<li class="divest-logo-link">

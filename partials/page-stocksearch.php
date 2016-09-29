@@ -44,9 +44,13 @@ get_template_part( 'partials/content', 'indexwatch' );
                         "allow_symbol_change": true,
                         "save_image": false,
                         "details": true,
+                        "hotlist": true,
+                        "news": [
+                          "headlines"
+                        ],
                         "hideideas": true,
-                        "tradeItWidget": true
                     });
+
                 })(jQuery);
                 </script>
                 <!-- TradingView Widget END -->

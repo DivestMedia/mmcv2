@@ -152,351 +152,353 @@ get_header();
 							$autoplay = 0;
 						}
 						?>
-
+						<div class="embed-responsive embed-responsive-16by9">
+							<iframe class="embed-responsive-item" width="100%" height="100%" src="//www.youtube.com/v/FYHfl0iFWXg?autoplay=<?=($autoplay ? '1' : '0')?>&amp;controls=1&amp;modestbranding=1&amp;rel=0&amp;vq=hd720" frameborder="0" allowfullscreen=""></iframe>
+						</div>
+						<!--
 						<link href="http://vjs.zencdn.net/5.11.6/video-js.css" rel="stylesheet">
-						<!-- If you'd like to support IE8 -->
 						<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 
 						<video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="689" height="388" data-setup='{ "controls": true, "autoplay": <?=($autoplay ? 'true' : 'false')?>, "preload": "auto" }'>
-							<source src="http://beta.marketmasterclass.com/cdn/mmc-welcome-member.mp4" type='video/mp4'>
-								<p class="vjs-no-js">
-									To view this video please enable JavaScript, and consider upgrading to a web browser that
-									<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-								</p>
-							</video>
-							<script src="http://vjs.zencdn.net/5.11.6/video.js"></script>
-							<hr />
-						</div>
-					</div>
-
-					<div class="row">
-
-						<div class="col-md-4 col-sm-4">
-
-							<div class="price-clean">
-								<h5 style="color:#1d1d1d;">INVESTOR<br>ASSESSMENT<br>QUESTIONAIRE</h5>
-								<hr />
-								<?php
-								$_found = $wpdb->get_results('SELECT * FROM '.TBL_ASSESSMENT_RESULTS.' WHERE email = "'.$current_user->user_email.'" ORDER BY date_added DESC LIMIT 1');
-
-								?>
-								<p><?php if(!empty($_found)):
-									$_found = $_found[0];
-									if($_found && $_found->curset>3):
-										$s = $_found->scores;
-										switch ($s) {
-											case $s<=60:
-											echo 'You are a <b>very-conservative</b> risk taker. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
-											break;
-											case $s<=80:
-											echo 'You are a <b>cautiously-moderate</b> risk taker. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
-											break;
-											case $s<=100:
-											echo 'You are a <b>reserved risk taker</b>. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
-											break;
-											case $s<=120:
-											echo 'You are a <b>passive-aggressive</b> risk taker. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
-											break;
-											case $s<=140:
-											echo 'You are a <b>moderately-aggressive</b> risk taker. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
-											break;
-											case $s<=160:
-											default:
-											echo 'You are a <b>highly-aggressive</b> risk taker. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
-											break;
-										}
-									endif;
-								else: ?> Discover what kind of investor you are by taking our <strong>Investor Assessment Questionaire</strong>.<?php endif; ?></p>
-								<hr />
-								<?php if($_found && $_found->curset>3): ?>
-									<a href="http://assessment.marketmasterclass.com/"  target="_blank" class="btn btn-3d btn-primary">Take the test again</a>
-								<?php else: ?>
-									<a href="http://assessment.marketmasterclass.com/"  target="_blank" class="btn btn-3d btn-primary">Take the test now</a>
-								<?php endif;?>
-							</div>
-
-						</div>
-
-						<div class="col-md-4 col-sm-4">
-							<div class="price-clean price-clean-popular">
-								<h5 style="color:#1d1d1d;">INVESTMENT<br>OBJECTIVE<br>QUESTIONAIRE</h5>
-								<hr />
-								<?php
-								$_found = $wpdb->get_results('SELECT * FROM '.TBL_OBJECTIVE_RESULTS.' WHERE email = "'.$current_user->user_email.'" ORDER BY date_added DESC LIMIT 1');
-
-								?>
-								<p><?php if(!empty($_found)):
-									$_found = $_found[0];
-									if($_found && $_found->curset>3):
-										$s = $_found->scores;
-										switch ($s) {
-											case $s<=35:
-											echo 'You are an investor with <b>Short Term</b> horizons. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
-											break;
-											case $s<=54:
-											echo 'You are an investor with <b>Short Term</b> horizons. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
-											break;
-											case $s<=70:
-											default:
-											echo 'You are an investor with <b>Short Term</b> horizons. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
-											break;
-										}
-									endif;
-								else: ?> Discover what kind of investor you are by taking our <strong>Investment Objective Questionaire</strong>.<?php endif; ?></p>
-								<hr />
-								<a href="http://objective.marketmasterclass.com/"  target="_blank" class="btn btn-3d btn-teal">Take the test now</a>
-							</div>
-
-						</div>
-
-						<div class="col-md-4 col-sm-4">
-
-							<div class="price-clean">
-								<div class="ribbon">
-									<div class="ribbon-inner" style="font-size: 8px;">COMING SOON</div>
-								</div>
-								<h5 style="color:#1d1d1d;">DEMO<br>TRADING<br>ACCOUNT</h5>
-								<hr />
-								<p>For individuals looking for something simple to get started.</p>
-								<hr />
-								<a href="#" class="btn btn-3d btn-teal disabled">Coming Soon</a>
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-				<!-- PERSONAL INFO TAB -->
-				<div class="tab-pane fade" id="info">
-
-					<form role="form" name="profile" action="" method="post" enctype="multipart/form-data">
-						<?php wp_nonce_field('update-profile_' . $current_user->data->ID) ?>
-						<input type="hidden" name="from" value="profile" />
-						<input type="hidden" name="action" value="update" />
-						<input type="hidden" name="checkuser_id" value="<?=$current_user->data->ID?>" />
-						<input type="hidden" name="dashboard_url" value="<?php echo get_option("dashboard_url"); ?>" />
-						<input type="hidden" name="user_id" id="user_id" value="<?=$current_user->data->ID?>" />
-						<div class="row">
-							<div class="form-group">
-								<div class="col-md-12">
-									<label>
-										Profile Photo
-										<small class="text-muted"></small>
-									</label>
-
-									<div class="fancy-file-upload">
-										<i class="fa fa-upload"></i>
-										<input type="file" class="form-control" name="photo" onchange="jQuery(this).next('input').val(this.value);" />
-										<input type="text" class="form-control" placeholder="Max file size: 2Mb (jpg/png)" readonly="" />
-										<span class="button">Select an image</span>
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="control-label">First Name</label>
-							<input type="text" id="first_name" name="first_name" class="form-control" value="<?=$current_user->first_name?>">
-						</div>
-						<div class="form-group">
-							<label class="control-label">Last Name</label>
-							<input type="text" id="last_name" name="last_name" class="form-control" value="<?=$current_user->last_name?>">
-						</div>
-						<div class="form-group">
-							<label class="control-label">Email Address</label>
-							<input type="email" id="email_address" name="email_address" class="form-control disabled" readonly value="<?=$current_user->user_email?>">
-						</div>
-
-						<div class="margiv-top10">
-							<button class="btn btn-primary" type="submit">Save Changes </button>
-							<a href="#" class="btn btn-default">Cancel </a>
-						</div>
-
-					</form>
-				</div>
-
-				<div id="fave" class="tab-pane fade">
-					<div class="heading-title heading-dotted text-left margin-top-20 ">
-						<h4>Followed<span> News</span></h4>
-					</div>
-					<?php
-
-					$pref = get_user_meta(get_current_user_id(),'preferred_news',true) ?: [];
-					$category_tags = [ [ 'id' => 7, 'link' => '/tag/asia/', 'name' => 'Asia', 'slug' => 'asia', 'stock' => true, ], [ 'id' => 21, 'link' => '/tag/banking-finance/', 'name' => 'Banking/Finance', 'slug' => 'banking-finance', ], [ 'id' => 19, 'link' => '/tag/bonds/', 'name' => 'Bonds', 'slug' => 'bonds', 'stock' => true, ], [ 'id' => 16, 'link' => '/tag/commodities/', 'name' => 'Commodities', 'slug' => 'commodities', 'stock' => true, ], [ 'id' => 14, 'link' => '/tag/construction/', 'name' => 'Construction', 'slug' => 'construction', ], [ 'id' => 22, 'link' => '/tag/consumer-goods/', 'name' => 'Consumer Goods', 'slug' => 'consumer-goods', ], [ 'id' => 8, 'link' => '/tag/currencies/', 'name' => 'Currencies', 'slug' => 'currencies', 'stock' => true, ], [ 'id' => 15, 'link' => '/tag/energy/', 'name' => 'Energy', 'slug' => 'energy', ], [ 'id' => 25, 'link' => '/tag/etfs/', 'name' => 'ETF&apos;s', 'slug' => 'etfs', 'stock' => true, ], [ 'id' => 3, 'link' => '/tag/europe/', 'name' => 'Europe', 'slug' => 'europe', 'stock' => true, ], [ 'id' => 13, 'link' => '/tag/funds/', 'name' => 'Funds', 'slug' => 'funds', ], [ 'id' => 26, 'link' => '/tag/industrial-goods/', 'name' => 'Industrial Goods', 'slug' => 'industrial-goods', ], [ 'id' => 17, 'link' => '/tag/manufacturing/', 'name' => 'Manufacturing', 'slug' => 'manufacturing', ], [ 'id' => 24, 'link' => '/tag/media/', 'name' => 'Media', 'slug' => 'media', ], [ 'id' => 12, 'link' => '/tag/mining/', 'name' => 'Mining', 'slug' => 'mining', ], [ 'id' => 18, 'link' => '/tag/pharmaceuticals/', 'name' => 'Pharmaceuticals', 'slug' => 'pharmaceuticals', ], [ 'id' => 4, 'link' => '/tag/pre-markets/', 'name' => 'Pre-Markets', 'slug' => 'pre-markets', 'stock' => true, ], [ 'id' => 10, 'link' => '/tag/real-estate/', 'name' => 'Real Estate', 'slug' => 'real-estate', ], [ 'id' => 23, 'link' => '/tag/retail/', 'name' => 'Retail', 'slug' => 'retail', ], [ 'id' => 5, 'link' => '/tag/stocks/', 'name' => 'Stocks', 'slug' => 'stocks', 'stock' => true, ], [ 'id' => 20, 'link' => '/tag/technology/', 'name' => 'Technology', 'slug' => 'technology', ], [ 'id' => 11, 'link' => '/tag/travel/', 'name' => 'Travel', 'slug' => 'travel', ], [ 'id' => 6, 'link' => '/tag/usa/', 'name' => 'USA', 'slug' => 'usa', 'stock' => true, ], ];
-					?>
-					<h5 class="margin-bottom-10">Preferred Categories: <small class="text-muted"> Click on the categories you like then click save. </small></h5>
-					<div class="text-left news-category-labels margin-top-10 margin-bottom-10">
-						<?php
-						foreach ($category_tags as $cat) {
-							?>
-							<a href="<?=(NEWSBASEURL . ltrim($cat['link'],'/'))?>" data-tag="<?=$cat['id']?>" class="news-category-link <?=(in_array($cat['id'],$pref) ? 'active' : '')?>"><span class="badge badge-green"><?=($cat['name'])?></span></a>
-							<?php
-						}
-						?>
-					</div>
-
-					<p class="block">
-						<button class="btn btn-primary btn-xs pull-right btn-save-preferences">Save Preferences</button>
+						<source src="http://beta.marketmasterclass.com/cdn/mmc-welcome-member.mp4" type='video/mp4'>
+						<p class="vjs-no-js">
+						To view this video please enable JavaScript, and consider upgrading to a web browser that
+						<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
 					</p>
-					<div class="clearfix"></div>
-					<div class="row">
-
-
-						<?php
-						// if(!empty($pref)){
-						if(empty($pref)){
-							$pref = [];
-						}else{
-							$pref = implode(',',$pref);
-						}
-
-						$mainpost = $post;
-						$per_page = 6;
-						$tags =['dm-visit-news'];
-						$categories = 2;
-						$page = 1;
-
-						$posts = json_decode(file_get_contents_curl(add_query_arg([
-							'page' => $page,
-							'categories' => $categories,
-							'per_page' => $per_page,
-							'tags' => $pref,
-							'include' => implode(',',array_unique(array_column($visitnews,'i'))),
-						], NEWSBASEURL . 'wp-json/wp/v2/posts')));
-
-						if(count($posts)):
-							?>
-							<?php
-							foreach($posts as $post):
-								?>
-								<div class="col-sm-4">
-									<a href="<?=$post->link?>">
-										<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=$post->post_thumbnail->{'mid-image'}[0]?>');background-size: cover;background-repeat: no-repeat;height: 150px;"></figure>
-									</a>
-									<h4 class="margin-top-20 size-14 weight-700 uppercase height-50" style="overflow:hidden;"><a href="<?=$post->link?>"><?=xyr_smarty_limit_chars($post->title->rendered,80)?></a></h4>
-									<p class="text-justify height-100" style="overflow:hidden;"><?=trim_text($post->content->rendered,180)?></p>
-									<ul class="text-left size-12 list-inline list-separator">
-										<li>
-											<i class="fa fa-calendar"></i>
-											<?=date('F j, Y',strtotime($post->date))?>&nbsp;<small><?=date('h:i a',strtotime($post->date))?></small>
-										</li>
-									</ul>
-								</div>
-								<?php
-							endforeach;
-						endif;
-						$post = $mainpost;
-						wp_reset_postdata();
-						// }
-						?>
-					</div>
-					<div class="row">
-						<?php
-						if(!empty($_COOKIE['dm-visit-news'])){
-							$visitnews = json_decode(stripslashes($_COOKIE['dm-visit-news']),true);
-							$visitnews = array_reverse($visitnews);
-							$mainpost = $post;
-							$per_page = 12;
-							$tags =null;
-							$categories = 2;
-							$page = 1;
-
-							$posts = json_decode(file_get_contents_curl(add_query_arg([
-								'page' => $page,
-								'categories' => $categories,
-								'per_page' => $per_page,
-								'include' => implode(',',array_unique(array_column($visitnews,'i')))
-							], NEWSBASEURL . 'wp-json/wp/v2/posts')));
-
-							if(count($posts)):
-								?>
-								<div class="heading-title heading-dotted text-left margin-top-20 ">
-									<h4>Recently Viewed<span> News</span></h4>
-								</div>
-								<?php
-								foreach($posts as $post):
-									?>
-									<div class="col-sm-4">
-										<a href="<?=$post->link?>">
-											<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=$post->post_thumbnail->{'mid-image'}[0]?>');background-size: cover;background-repeat: no-repeat;height: 150px;"></figure>
-										</a>
-										<h4 class="margin-top-20 size-14 weight-700 uppercase height-50" style="overflow:hidden;"><a href="<?=$post->link?>"><?=xyr_smarty_limit_chars($post->title->rendered,80)?></a></h4>
-										<p class="text-justify height-100" style="overflow:hidden;"><?=trim_text($post->content->rendered,180)?></p>
-										<ul class="text-left size-12 list-inline list-separator">
-											<li>
-												<i class="fa fa-calendar"></i>
-												<?=date('F j, Y',strtotime($post->date))?>&nbsp;<small><?=date('h:i a',strtotime($post->date))?></small>
-											</li>
-										</ul>
-									</div>
-									<?php
-								endforeach;
-							endif;
-							$post = $mainpost;
-							wp_reset_postdata();
-						}
-						?>
-					</div>
-				</div>
-				<!-- /PERSONAL INFO TAB -->
-
-				<!-- AVATAR TAB -->
-
-				<!-- /AVATAR TAB -->
-
-				<!-- PASSWORD TAB -->
-				<div class="tab-pane fade" id="password">
-
-					<form action="#" method="post">
-
-						<div class="form-group">
-							<label class="control-label">Current Password</label>
-							<input type="password" class="form-control">
-						</div>
-						<div class="form-group">
-							<label class="control-label">New Password</label>
-							<input type="password" class="form-control">
-						</div>
-						<div class="form-group">
-							<label class="control-label">Re-type New Password</label>
-							<input type="password" class="form-control">
-						</div>
-
-						<div class="margiv-top10">
-							<a href="#" class="btn btn-primary"><i class="fa fa-check"></i> Change Password</a>
-							<a href="#" class="btn btn-default">Cancel </a>
-						</div>
-
-					</form>
-
-				</div>
-				<!-- /PASSWORD TAB -->
-
+				</video>
+				<script src="http://vjs.zencdn.net/5.11.6/video.js"></script> -->
+				<hr />
 			</div>
 		</div>
 
-		<!-- LEFT -->
-		<div class="col-lg-3 col-md-3 col-sm-4 col-lg-pull-9 col-md-pull-9 col-sm-pull-8">
-			<div class="thumbnail text-center">
-				<?php
+		<div class="row">
 
-				$profileid = get_user_meta($current_user->ID,'_wp_attachment_wp_user_avatar',true);
-				if(!empty($profileid)){
-					$imgsrc = wp_get_attachment_image_src((int)$profileid,'ratio-image-crop');
-					?>
-					<img src="<?=$imgsrc[0]?>" width="245" height="245" alt="" class="avatar avatar-245 wp-user-avatar wp-user-avatar-245 photo avatar-default">
+			<div class="col-md-4 col-sm-4">
+
+				<div class="price-clean">
+					<h5 style="color:#1d1d1d;">INVESTOR<br>ASSESSMENT<br>QUESTIONAIRE</h5>
+					<hr />
 					<?php
-				}else{
-					echo get_avatar( $current_user->data->ID, 245 );
-				}
-				?>
-				<h2 class="size-18 margin-top-10 margin-bottom-0"><?=$current_user->data->display_name?></h2>
-				<h3 class="size-11 margin-top-0 margin-bottom-10 text-muted"><?=strtoupper($current_user->roles[0])?></h3>
+					$_found = $wpdb->get_results('SELECT * FROM '.TBL_ASSESSMENT_RESULTS.' WHERE email = "'.$current_user->user_email.'" ORDER BY date_added DESC LIMIT 1');
+
+					?>
+					<p><?php if(!empty($_found)):
+						$_found = $_found[0];
+						if($_found && $_found->curset>3):
+							$s = $_found->scores;
+							switch ($s) {
+								case $s<=60:
+								echo 'You are a <b>very-conservative</b> risk taker. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
+								break;
+								case $s<=80:
+								echo 'You are a <b>cautiously-moderate</b> risk taker. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
+								break;
+								case $s<=100:
+								echo 'You are a <b>reserved risk taker</b>. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
+								break;
+								case $s<=120:
+								echo 'You are a <b>passive-aggressive</b> risk taker. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
+								break;
+								case $s<=140:
+								echo 'You are a <b>moderately-aggressive</b> risk taker. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
+								break;
+								case $s<=160:
+								default:
+								echo 'You are a <b>highly-aggressive</b> risk taker. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
+								break;
+							}
+						endif;
+					else: ?> Discover what kind of investor you are by taking our <strong>Investor Assessment Questionaire</strong>.<?php endif; ?></p>
+					<hr />
+					<?php if($_found && $_found->curset>3): ?>
+						<a href="http://assessment.marketmasterclass.com/"  target="_blank" class="btn btn-3d btn-primary">Take the test again</a>
+					<?php else: ?>
+						<a href="http://assessment.marketmasterclass.com/"  target="_blank" class="btn btn-3d btn-primary">Take the test now</a>
+					<?php endif;?>
+				</div>
+
 			</div>
+
+			<div class="col-md-4 col-sm-4">
+				<div class="price-clean price-clean-popular">
+					<h5 style="color:#1d1d1d;">INVESTMENT<br>OBJECTIVE<br>QUESTIONAIRE</h5>
+					<hr />
+					<?php
+					$_found = $wpdb->get_results('SELECT * FROM '.TBL_OBJECTIVE_RESULTS.' WHERE email = "'.$current_user->user_email.'" ORDER BY date_added DESC LIMIT 1');
+
+					?>
+					<p><?php if(!empty($_found)):
+						$_found = $_found[0];
+						if($_found && $_found->curset>3):
+							$s = $_found->scores;
+							switch ($s) {
+								case $s<=35:
+								echo 'You are an investor with <b>Short Term</b> horizons. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
+								break;
+								case $s<=54:
+								echo 'You are an investor with <b>Short Term</b> horizons. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
+								break;
+								case $s<=70:
+								default:
+								echo 'You are an investor with <b>Short Term</b> horizons. <small>Based on your results last '.date('D M j , g:i a',strtotime($_found->date_added)).'</small>';
+								break;
+							}
+						endif;
+					else: ?> Discover what kind of investor you are by taking our <strong>Investment Objective Questionaire</strong>.<?php endif; ?></p>
+					<hr />
+					<a href="http://objective.marketmasterclass.com/"  target="_blank" class="btn btn-3d btn-teal">Take the test now</a>
+				</div>
+
+			</div>
+
+			<div class="col-md-4 col-sm-4">
+
+				<div class="price-clean">
+					<div class="ribbon">
+						<div class="ribbon-inner" style="font-size: 8px;">COMING SOON</div>
+					</div>
+					<h5 style="color:#1d1d1d;">DEMO<br>TRADING<br>ACCOUNT</h5>
+					<hr />
+					<p>For individuals looking for something simple to get started.</p>
+					<hr />
+					<a href="#" class="btn btn-3d btn-teal disabled">Coming Soon</a>
+				</div>
+
+			</div>
+
 		</div>
 
 	</div>
+	<!-- PERSONAL INFO TAB -->
+	<div class="tab-pane fade" id="info">
+
+		<form role="form" name="profile" action="" method="post" enctype="multipart/form-data">
+			<?php wp_nonce_field('update-profile_' . $current_user->data->ID) ?>
+			<input type="hidden" name="from" value="profile" />
+			<input type="hidden" name="action" value="update" />
+			<input type="hidden" name="checkuser_id" value="<?=$current_user->data->ID?>" />
+			<input type="hidden" name="dashboard_url" value="<?php echo get_option("dashboard_url"); ?>" />
+			<input type="hidden" name="user_id" id="user_id" value="<?=$current_user->data->ID?>" />
+			<div class="row">
+				<div class="form-group">
+					<div class="col-md-12">
+						<label>
+							Profile Photo
+							<small class="text-muted"></small>
+						</label>
+
+						<div class="fancy-file-upload">
+							<i class="fa fa-upload"></i>
+							<input type="file" class="form-control" name="photo" onchange="jQuery(this).next('input').val(this.value);" />
+							<input type="text" class="form-control" placeholder="Max file size: 2Mb (jpg/png)" readonly="" />
+							<span class="button">Select an image</span>
+						</div>
+
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label">First Name</label>
+				<input type="text" id="first_name" name="first_name" class="form-control" value="<?=$current_user->first_name?>">
+			</div>
+			<div class="form-group">
+				<label class="control-label">Last Name</label>
+				<input type="text" id="last_name" name="last_name" class="form-control" value="<?=$current_user->last_name?>">
+			</div>
+			<div class="form-group">
+				<label class="control-label">Email Address</label>
+				<input type="email" id="email_address" name="email_address" class="form-control disabled" readonly value="<?=$current_user->user_email?>">
+			</div>
+
+			<div class="margiv-top10">
+				<button class="btn btn-primary" type="submit">Save Changes </button>
+				<a href="#" class="btn btn-default">Cancel </a>
+			</div>
+
+		</form>
+	</div>
+
+	<div id="fave" class="tab-pane fade">
+		<div class="heading-title heading-dotted text-left margin-top-20 ">
+			<h4>Followed<span> News</span></h4>
+		</div>
+		<?php
+
+		$pref = get_user_meta(get_current_user_id(),'preferred_news',true) ?: [];
+		$category_tags = [ [ 'id' => 7, 'link' => '/tag/asia/', 'name' => 'Asia', 'slug' => 'asia', 'stock' => true, ], [ 'id' => 21, 'link' => '/tag/banking-finance/', 'name' => 'Banking/Finance', 'slug' => 'banking-finance', ], [ 'id' => 19, 'link' => '/tag/bonds/', 'name' => 'Bonds', 'slug' => 'bonds', 'stock' => true, ], [ 'id' => 16, 'link' => '/tag/commodities/', 'name' => 'Commodities', 'slug' => 'commodities', 'stock' => true, ], [ 'id' => 14, 'link' => '/tag/construction/', 'name' => 'Construction', 'slug' => 'construction', ], [ 'id' => 22, 'link' => '/tag/consumer-goods/', 'name' => 'Consumer Goods', 'slug' => 'consumer-goods', ], [ 'id' => 8, 'link' => '/tag/currencies/', 'name' => 'Currencies', 'slug' => 'currencies', 'stock' => true, ], [ 'id' => 15, 'link' => '/tag/energy/', 'name' => 'Energy', 'slug' => 'energy', ], [ 'id' => 25, 'link' => '/tag/etfs/', 'name' => 'ETF&apos;s', 'slug' => 'etfs', 'stock' => true, ], [ 'id' => 3, 'link' => '/tag/europe/', 'name' => 'Europe', 'slug' => 'europe', 'stock' => true, ], [ 'id' => 13, 'link' => '/tag/funds/', 'name' => 'Funds', 'slug' => 'funds', ], [ 'id' => 26, 'link' => '/tag/industrial-goods/', 'name' => 'Industrial Goods', 'slug' => 'industrial-goods', ], [ 'id' => 17, 'link' => '/tag/manufacturing/', 'name' => 'Manufacturing', 'slug' => 'manufacturing', ], [ 'id' => 24, 'link' => '/tag/media/', 'name' => 'Media', 'slug' => 'media', ], [ 'id' => 12, 'link' => '/tag/mining/', 'name' => 'Mining', 'slug' => 'mining', ], [ 'id' => 18, 'link' => '/tag/pharmaceuticals/', 'name' => 'Pharmaceuticals', 'slug' => 'pharmaceuticals', ], [ 'id' => 4, 'link' => '/tag/pre-markets/', 'name' => 'Pre-Markets', 'slug' => 'pre-markets', 'stock' => true, ], [ 'id' => 10, 'link' => '/tag/real-estate/', 'name' => 'Real Estate', 'slug' => 'real-estate', ], [ 'id' => 23, 'link' => '/tag/retail/', 'name' => 'Retail', 'slug' => 'retail', ], [ 'id' => 5, 'link' => '/tag/stocks/', 'name' => 'Stocks', 'slug' => 'stocks', 'stock' => true, ], [ 'id' => 20, 'link' => '/tag/technology/', 'name' => 'Technology', 'slug' => 'technology', ], [ 'id' => 11, 'link' => '/tag/travel/', 'name' => 'Travel', 'slug' => 'travel', ], [ 'id' => 6, 'link' => '/tag/usa/', 'name' => 'USA', 'slug' => 'usa', 'stock' => true, ], ];
+		?>
+		<h5 class="margin-bottom-10">Preferred Categories: <small class="text-muted"> Click on the categories you like then click save. </small></h5>
+		<div class="text-left news-category-labels margin-top-10 margin-bottom-10">
+			<?php
+			foreach ($category_tags as $cat) {
+				?>
+				<a href="<?=(NEWSBASEURL . ltrim($cat['link'],'/'))?>" data-tag="<?=$cat['id']?>" class="news-category-link <?=(in_array($cat['id'],$pref) ? 'active' : '')?>"><span class="badge badge-green"><?=($cat['name'])?></span></a>
+				<?php
+			}
+			?>
+		</div>
+
+		<p class="block">
+			<button class="btn btn-primary btn-xs pull-right btn-save-preferences">Save Preferences</button>
+		</p>
+		<div class="clearfix"></div>
+		<div class="row">
+
+
+			<?php
+			// if(!empty($pref)){
+			if(empty($pref)){
+				$pref = [];
+			}else{
+				$pref = implode(',',$pref);
+			}
+
+			$mainpost = $post;
+			$per_page = 6;
+			$tags =['dm-visit-news'];
+			$categories = 2;
+			$page = 1;
+
+			$posts = json_decode(file_get_contents_curl(add_query_arg([
+				'page' => $page,
+				'categories' => $categories,
+				'per_page' => $per_page,
+				'tags' => $pref,
+				'include' => implode(',',array_unique(array_column($visitnews,'i'))),
+			], NEWSBASEURL . 'wp-json/wp/v2/posts')));
+
+			if(count($posts)):
+				?>
+				<?php
+				foreach($posts as $post):
+					?>
+					<div class="col-sm-4">
+						<a href="<?=$post->link?>">
+							<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=$post->post_thumbnail->{'mid-image'}[0]?>');background-size: cover;background-repeat: no-repeat;height: 150px;"></figure>
+						</a>
+						<h4 class="margin-top-20 size-14 weight-700 uppercase height-50" style="overflow:hidden;"><a href="<?=$post->link?>"><?=xyr_smarty_limit_chars($post->title->rendered,80)?></a></h4>
+						<p class="text-justify height-100" style="overflow:hidden;"><?=trim_text($post->content->rendered,180)?></p>
+						<ul class="text-left size-12 list-inline list-separator">
+							<li>
+								<i class="fa fa-calendar"></i>
+								<?=date('F j, Y',strtotime($post->date))?>&nbsp;<small><?=date('h:i a',strtotime($post->date))?></small>
+							</li>
+						</ul>
+					</div>
+					<?php
+				endforeach;
+			endif;
+			$post = $mainpost;
+			wp_reset_postdata();
+			// }
+			?>
+		</div>
+		<div class="row">
+			<?php
+			if(!empty($_COOKIE['dm-visit-news'])){
+				$visitnews = json_decode(stripslashes($_COOKIE['dm-visit-news']),true);
+				$visitnews = array_reverse($visitnews);
+				$mainpost = $post;
+				$per_page = 12;
+				$tags =null;
+				$categories = 2;
+				$page = 1;
+
+				$posts = json_decode(file_get_contents_curl(add_query_arg([
+					'page' => $page,
+					'categories' => $categories,
+					'per_page' => $per_page,
+					'include' => implode(',',array_unique(array_column($visitnews,'i')))
+				], NEWSBASEURL . 'wp-json/wp/v2/posts')));
+
+				if(count($posts)):
+					?>
+					<div class="heading-title heading-dotted text-left margin-top-20 ">
+						<h4>Recently Viewed<span> News</span></h4>
+					</div>
+					<?php
+					foreach($posts as $post):
+						?>
+						<div class="col-sm-4">
+							<a href="<?=$post->link?>">
+								<figure style="border-bottom: 5px solid #1ecd6e;background-image: url('<?=$post->post_thumbnail->{'mid-image'}[0]?>');background-size: cover;background-repeat: no-repeat;height: 150px;"></figure>
+							</a>
+							<h4 class="margin-top-20 size-14 weight-700 uppercase height-50" style="overflow:hidden;"><a href="<?=$post->link?>"><?=xyr_smarty_limit_chars($post->title->rendered,80)?></a></h4>
+							<p class="text-justify height-100" style="overflow:hidden;"><?=trim_text($post->content->rendered,180)?></p>
+							<ul class="text-left size-12 list-inline list-separator">
+								<li>
+									<i class="fa fa-calendar"></i>
+									<?=date('F j, Y',strtotime($post->date))?>&nbsp;<small><?=date('h:i a',strtotime($post->date))?></small>
+								</li>
+							</ul>
+						</div>
+						<?php
+					endforeach;
+				endif;
+				$post = $mainpost;
+				wp_reset_postdata();
+			}
+			?>
+		</div>
+	</div>
+	<!-- /PERSONAL INFO TAB -->
+
+	<!-- AVATAR TAB -->
+
+	<!-- /AVATAR TAB -->
+
+	<!-- PASSWORD TAB -->
+	<div class="tab-pane fade" id="password">
+
+		<form action="#" method="post">
+
+			<div class="form-group">
+				<label class="control-label">Current Password</label>
+				<input type="password" class="form-control">
+			</div>
+			<div class="form-group">
+				<label class="control-label">New Password</label>
+				<input type="password" class="form-control">
+			</div>
+			<div class="form-group">
+				<label class="control-label">Re-type New Password</label>
+				<input type="password" class="form-control">
+			</div>
+
+			<div class="margiv-top10">
+				<a href="#" class="btn btn-primary"><i class="fa fa-check"></i> Change Password</a>
+				<a href="#" class="btn btn-default">Cancel </a>
+			</div>
+
+		</form>
+
+	</div>
+	<!-- /PASSWORD TAB -->
+
+</div>
+</div>
+
+<!-- LEFT -->
+<div class="col-lg-3 col-md-3 col-sm-4 col-lg-pull-9 col-md-pull-9 col-sm-pull-8">
+	<div class="thumbnail text-center">
+		<?php
+
+		$profileid = get_user_meta($current_user->ID,'_wp_attachment_wp_user_avatar',true);
+		if(!empty($profileid)){
+			$imgsrc = wp_get_attachment_image_src((int)$profileid,'ratio-image-crop');
+			?>
+			<img src="<?=$imgsrc[0]?>" width="245" height="245" alt="" class="avatar avatar-245 wp-user-avatar wp-user-avatar-245 photo avatar-default">
+			<?php
+		}else{
+			echo get_avatar( $current_user->data->ID, 245 );
+		}
+		?>
+		<h2 class="size-18 margin-top-10 margin-bottom-0"><?=$current_user->data->display_name?></h2>
+		<h3 class="size-11 margin-top-0 margin-bottom-10 text-muted"><?=strtoupper($current_user->roles[0])?></h3>
+	</div>
+</div>
+
+</div>
 </section>
 <script>
 jQuery(function($){
