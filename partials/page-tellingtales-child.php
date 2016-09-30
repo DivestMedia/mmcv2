@@ -13,6 +13,7 @@
 				<!-- <strong class="uppercase">Telling Tales</strong> -->
 				<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
 					<?php
+					$_org_post = $post;
 					$_currentid = $post->ID;
 					$args = array(
 						'post_type'      => 'page',
@@ -23,11 +24,11 @@
 					);
 
 
-					$parent = new WP_Query( $args );
+					$parent = get_posts( $args );
 
-					if ( $parent->have_posts() ) : ?>
-
-					<?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
+					 foreach ($parent as $post) {
+						setup_postdata($post);
+					?>
 
 						<li class="list-group-item <?=$_currentid==get_the_ID()?'active':''?> open">
 							<a href="<?=get_home_url()?>/telling-tales/<?=$post->post_name?>">
@@ -59,9 +60,9 @@
 								endif;
 								?>
 							</li>
-						<?php endwhile; ?>
+						<?php } ?>
 
-					<?php endif; wp_reset_query(); ?>
+					<?php wp_reset_postdata(); ?>
 				</ul>
 				<?php
 				render_side_bar_widget();
@@ -93,18 +94,23 @@
 						}
 						?>
 
-						<?php }?>
-						<?php while ( have_posts() ) : the_post();?>
-							<article id="post-<?php the_ID(); ?>">
-								<div class="text-black size-14 entry-content post-<?=get_post_format();?>">
-									<? the_content();?>
+						<?php }
+						$post = $_org_post;
+						setup_postdata($post);
+						?>
+						<?php while ( have_posts() ) : the_post();
+
+						?>
+							<article id="post-<?=$post->ID?>">
+								<div class="text-black size-14 entry-content post-<?=get_post_format($post->ID);?>">
+									<?=get_the_content($post->ID)?>
 								</div>
 							</article>
 						<?php endwhile;?>
-						<div class="row">
+						<div class="row margin-top-20">
 							<?php
-
-							if(in_array($post->post_name,['worlds-greatest-inventors','the-world-of-weird-and-wacky-investments'])){
+							
+							if(in_array($post->post_name,['worlds-greatest-inventors','the-world-of-weird-and-wacky-investments','celebrity-watch'])){
 								$args = array(
 									'post_type'      =>  'post',
 									'posts_per_page' => -1,
@@ -124,6 +130,7 @@
 
 
 							$parent = new WP_Query( $args );
+							
 							if ( $parent->have_posts() ) : ?>
 							<?php while ( $parent->have_posts() ) : $parent->the_post();
 							$itemtitle = get_the_title();

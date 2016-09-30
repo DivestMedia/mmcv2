@@ -68,7 +68,8 @@
 						'posts_per_page' => -1,
 						'post_parent'    => $post->ID,
 						'order'          => 'ASC',
-						'orderby'        => 'menu_order'
+						'orderby'        => 'menu_order',
+						'post__not_in'   => array(get_page_by_title( 'Webinars' )->ID,get_page_by_title( 'Infomercials' )->ID)
 					);
 					$parent = new WP_Query( $args );
 
