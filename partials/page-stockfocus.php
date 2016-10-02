@@ -25,26 +25,26 @@ get_template_part( 'partials/content', 'indexwatch' );
                             "container_id": "tv-medium-widget-3f2f0",
                             "symbols": [
                                 [
-                                    "HC2 Holdings Inc",
-                                    "AMEX:HCHC|1y"
+                                  "GoDaddy",
+                                  "NYSE:GDDY|1y"
                                 ],
                                 [
-                                    "Zimmer Biomet",
-                                    "NYSE:ZBH|1y"
+                                  "Philip Morris",
+                                  "NYSE:PM|1y"
                                 ],
                                 [
-                                    "Martin Marietta",
-                                    "NYSE:MLM|1y"
+                                  "Viacom",
+                                  "NASDAQ:VIAB|1y"
                                 ],
                                 [
-                                    "Esterline Technologies",
-                                    "NYSE:ESL|1y"
+                                  "General Electric Company ",
+                                  "NYSE:GE|1y"
                                 ],
                                 [
-                                    "Keycorp",
-                                    "NYSE:KEY|1y"
+                                  "CBOE Holdings Inc",
+                                  "NASDAQ:CBOE|1y"
                                 ]
-                            ],
+                              ],
                             "gridLineColor": "rgba(233, 233, 234, 1)",
                             "fontColor": "#83888D",
                             "underLineColor": "rgba(217, 234, 211, 1)",
