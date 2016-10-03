@@ -10,7 +10,7 @@ get_template_part( 'partials/content', 'indexwatch' );
 		<div class="row">
 
 			<div class="col-lg-3 col-md-3 col-sm-3 text-center">
-				<img class="img-responsive" src="<?=get_stylesheet_directory_uri();?>/assets/img/mmc-logo.png" alt="">
+				<img class="img-responsive" src="<?=get_stylesheet_directory_uri();?>/assets/img/mmc-logo-dark.png" alt="">
 			</div>
 
 			<div class="col-md-9 col-sm-9">
