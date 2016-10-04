@@ -108,9 +108,9 @@ get_template_part( 'partials/content', 'vipsubscribers' );
 <?php
 global $restrict;
 
-if( !is_user_logged_in() && $restrict->restrict_page() ){
+if( (!is_user_logged_in() && $restrict->restrict_page()) || is_home() ){
 	?>
-	<div id="modal-restrict" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-show="true" data-autoload="true">
+	<div id="modal-restrict" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" <?php if(!is_home()): ?>data-backdrop="static"<?php endif;?> data-show="true" <?php if(!is_home()): ?>data-autoload="true"<?php endif;?> data-autoload-delay="200">
 		<div class="modal-dialog modal-lg" style="max-width: 770px;">
 			<div class="modal-content">
 				<!-- body modal -->
@@ -131,10 +131,10 @@ if( !is_user_logged_in() && $restrict->restrict_page() ){
 						</div>
 						<div class="col-md-9 padding-15">
 							<div class="text-center">
-								<p class="margin-bottom-0 margin-top-20">CONTENT ONLY AVAILABLE TO OUR MEMBERS</p>
-								<h2 class="letter-spacing-2" style="color:#ee3f3f;">CONTENT RESTRICTED</h2>
+								<h2 class="letter-spacing-2 margin-top-20 margin-bottom-0" style="color:#ee3f3f;">CONTENT RESTRICTED</h2>
+								<p class="margin-bottom-40">CONTENT ONLY AVAILABLE TO OUR MEMBERS</p>
 								<div style="width: 300px;margin:0 auto">
-									<a href="<?=site_url('accounts/register')?>" class="btn btn-success btn-lg btn-block">SIGN UP NOW</a>
+									<a href="<?=site_url('subscriptions')?>" class="btn btn-success btn-lg btn-block">SIGN UP NOW</a>
 								</div>
 								<div style="padding-top: 5px;width: 300px;margin:0 auto">
 									<a href="<?=site_url('accounts/login')?>" class="btn btn-info btn-lg btn-block">ALREADY A MEMBER</a>
@@ -143,16 +143,17 @@ if( !is_user_logged_in() && $restrict->restrict_page() ){
 									<a href="<?=site_url()?>" class="btn btn-link">NO THANKS</a>
 								</div>
 							</div>
-							<div class="margin-top-20" style="padding: 0 20px;">
-								<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer orci nunc, auctor sed eros eget, efficitur rhoncus nibh. Suspendisse congue mauris nec dolor consectetur, venenatis fermentum erat semper.</small>
-							</div>
-						</div>
+							<!-- <div class="margin-top-20" style="padding: 0 20px;">
+							<small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer orci nunc, auctor sed eros eget, efficitur rhoncus nibh. Suspendisse congue mauris nec dolor consectetur, venenatis fermentum erat semper.</small>
+						</div> -->
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<?php
+</div>
+<?php
+
 }
 ?>
 
@@ -161,13 +162,40 @@ if( !is_user_logged_in() && $restrict->restrict_page() ){
 <?php
 wp_footer();
 global $_footers;
+
 echo $_footers;
 
+if(!is_user_logged_in()):
+	?>
+	<script>
+	jQuery(function($){
+		$('a[href="http://assessment.marketmasterclass.com/"]').attr('href','<?=site_url('subscriptions')?>');
+		$('a[href="http://objective.marketmasterclass.com/"]').attr('href','<?=site_url('subscriptions')?>');
+	});
+	</script>
+	<script>
+	jQuery(function($){
+
+		$( '.video-grid' ).find('.video-grid-column-wrapper .video-grid-play').each(function(e){
+			$(this).unbind('click');
+			$(this).removeClass('video-grid-play');
+			$(this).attr('href','#');
+			$(this).bind('click',function(e){
+				e.preventDefault();
+				$('#modal-restrict').modal('show');
+				return false;
+			});
+		});
+	});
+	</script>
+	<?php
+endif;
 if(is_home()){
 	?>
 
 	<script src="<?=get_stylesheet_directory_uri();?>/assets/js/master-slider/masterslider/masterslider.js"></script>
 	<script src="<?=get_stylesheet_directory_uri();?>/assets/js/slider.js"></script>
+
 	<?php
 }
 ?>
@@ -295,8 +323,44 @@ if(!empty($post_slug)):
 			}
 		}
 	endif;
-	?>
 
+
+
+	?>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+	<script>
+	jQuery(function($){
+
+		loadScript(plugin_path + 'typeahead.bundle.js', function() {
+			var stockTickers = new Bloodhound({
+				datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+				queryTokenizer: Bloodhound.tokenizers.whitespace,
+				prefetch: '<?=admin_url("admin-ajax.php")?>?action=stock_ticker_search&s=aa',
+				remote: {
+					url: '<?=admin_url("admin-ajax.php")?>?action=stock_ticker_search&s=%QUERY',
+					wildcard: '%QUERY'
+				}
+			});
+
+			$('.stocksearch-typehead').typeahead(null, {
+				display: 'ticker',
+				minLength: 2,
+				source: stockTickers,
+				displayKey : 'name',
+				displayValue : 'ticker',
+				name : 'tvwidgetsymbol',
+				templates: {
+					empty: [
+						'<div class="empty-message">',
+						'No results',
+						'</div>'
+					].join('\n'),
+					suggestion: Handlebars.compile('<div><strong>{{ticker}}</strong> – {{name}}</div>')
+				}
+			});
+		});
+	});
+	</script>
 
 
 

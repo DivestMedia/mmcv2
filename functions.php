@@ -746,7 +746,7 @@ function wp_get_attachment_image_src_cb($image = [],$attachment_id,$size,$icon){
 
     if($isnews){
         if(empty($image[0]) || checkIfDefaultFileName($image[0])){
-            $tags = get_the_tags($$post);
+            $tags = get_the_tags($post);
             $tag = 'default';
             if(!empty($tags)){
                 $tag = $tags[array_rand($tags)]->slug;
@@ -764,6 +764,11 @@ function wp_get_attachment_image_src_cb($image = [],$attachment_id,$size,$icon){
                 $imagefile = 'wp-content/uploads/2016/09/gen-news-2.jpg';
                 $imagepath = wp_upload_dir()['basedir'] . str_replace('wp-content/uploads','',$imagefile);
                 $imageurl = site_url($imagefile);
+
+                // Change Thumbnail For Good
+                $imageid = pippin_get_image_id($imageurl);
+                set_post_thumbnail(get_post($post),$imageid);
+
                 list($width, $height) = getimagesize($imagepath);
                 return [$imageurl,$width,$height,true];
 
@@ -777,6 +782,13 @@ function wp_get_attachment_image_src_cb($image = [],$attachment_id,$size,$icon){
 
     if($image && isset($image[0])) return $image;
     return false;
+}
+
+
+function pippin_get_image_id($image_url) {
+    global $wpdb;
+    $attachment = $wpdb->get_col($wpdb->prepare("SELECT ID FROM $wpdb->posts WHERE guid='%s';", $image_url ));
+    return $attachment[0];
 }
 
 function slug_get_post_tags( $post, $field_name, $request ) {
@@ -827,9 +839,12 @@ function unhook_thematic_functions() {
     if (!current_user_can('administrator') && !is_admin()) {
         show_admin_bar(false);
     }
+
+
 }
 
 add_action( 'init', 'unhook_thematic_functions' );
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
 
 add_action( 'init', 'blockusers_init' );
 function blockusers_init() {
@@ -856,4 +871,66 @@ function save_user_preferences(){
     if(!empty($tags) && is_user_logged_in()){
         update_user_meta( get_current_user_id(), 'preferred_news', $tags);
     }
+}
+
+add_action( 'wp_ajax_save_advisor_message', 'save_advisor_message' );
+add_action( 'wp_ajax_nopriv_save_advisor_message', 'save_advisor_message' );
+
+function save_advisor_message(){
+    if(!($_POST['is_ajax']=='true')) exit("0");
+    $contact = $_POST['contact'];
+    $result = sendEmail('support@divestmedia.com','New Message for an Advisor','Reply Back','mailto:'.$contact['email'],'accounts-email','Email Address : '.$contact['email'],$contact['message'],"There's a message for ".$contact['advisor']);
+    exit("1");
+}
+
+function sendEmail($email,$subject,$buttontxt,$link = '#',$template,$message1,$message2=false,$greetings=false,$sendername='Market MasterClass Team'){
+    $to = $email;
+    $data = [
+        "{link}" => $link,
+        '{site_email}' => 'help@divestmedia.com',
+        '{btn_confirm_txt}' => $buttontxt,
+        '{email-message1}' => $message1,
+        '{email-message2}' => $message2,
+        '{email-greetings}' => $greetings,
+        '{email-logo}' => site_url('wp-content/themes/digestmedia-encore/assets/dv-media.png')
+    ];
+    ob_start();
+
+    $_email_template = get_stylesheet_directory() . '/accounts/email/'.$template.'.tpl';
+    if(file_exists($_email_template))
+    include($_email_template);
+    else
+    include(CUSTOM_AUTH_FORM_DIR . 'templates/'.$template.'.tpl');
+    $ob = ob_get_clean();
+    $content = str_replace(array_keys($data), array_values($data),$ob);
+    $headers = 'From: '. $sendername ." <no-reply@marketmasterclass.com>". "\r\n" .
+    'Reply-To: no-reply@marketmasterclass.com' . "\r\n" .
+    'Content-Type: text/html; charset=UTF-8' . "\r\n" .
+    'MIME-Version: 1.0' . "\r\n".
+    'X-Mailer: PHP/' . phpversion();
+    // print_r($content);
+    return mail($to, $subject, $content, $headers);
+}
+
+add_action( 'wp_ajax_stock_ticker_search', 'stock_ticker_search' );
+add_action( 'wp_ajax_nopriv_stock_ticker_search', 'stock_ticker_search' );
+
+function stock_ticker_search(){
+    header('Content-type: application/json');
+    $query = $_GET['s'];
+    $data = [];
+    $results = file_get_contents_curl('http://d.yimg.com/autoc.finance.yahoo.com/autoc?region=us&lang=en&query='.$query);
+    if(!empty($results)){
+        $results = json_decode($results);
+        if(count($results->ResultSet->Result)){
+            foreach ($results->ResultSet->Result as $result) {
+                $data[] = [
+                    'ticker' => $result->symbol,
+                    'name' => $result->name
+                ];
+            }
+        }
+    }
+
+    exit(json_encode($data));
 }

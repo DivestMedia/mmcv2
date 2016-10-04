@@ -117,6 +117,47 @@ if ( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'] ) && $_POS
 	// }
 }
 
+if(!empty($_GET['status'])){
+	if($_GET['status']=='payment_success'){
+		global $current_user,$wp_roles;
+
+		$issubscriber = null;
+		if(!empty($current_user->roles)){
+			$issubscriber = array_intersect($current_user->roles, [
+				'free-account',
+				'premium-account',
+				'premium-unpaid-account',
+				'regular-account',
+				'regular-unpaid-account',
+			]);
+
+			if(count($issubscriber)){
+				$issubscriber = array_values($issubscriber)[0];
+			}
+		}
+		if($issubscriber && in_array($issubscriber,[
+			'premium-unpaid-account',
+			])):
+			$current_user->remove_role('premium-unpaid-account');
+			$current_user->add_role('premium-account');
+			?>
+			<script>window.location.assign('<?=site_url('accounts')?>')</script>
+			<?php
+		endif;
+
+
+		if($issubscriber && in_array($issubscriber,[
+			'regular-unpaid-account',
+			])):
+			$current_user->remove_role('regular-unpaid-account');
+			$current_user->add_role('regular-account');
+			?>
+			<script>window.location.assign('<?=site_url('accounts')?>')</script>
+			<?php
+		endif;
+	}
+}
+
 get_header();
 
 ?>
@@ -125,6 +166,45 @@ get_header();
 
 		<!-- RIGHT -->
 		<div class="col-lg-9 col-md-9 col-sm-8 col-lg-push-3 col-md-push-3 col-sm-push-4 margin-bottom-80">
+			<?php
+
+			$issubscriber = null;
+			if(!empty($current_user->roles)){
+				$issubscriber = array_intersect($current_user->roles, [
+					'free-account',
+					'premium-account',
+					'premium-unpaid-account',
+					'regular-account',
+					'regular-unpaid-account',
+				]);
+
+				if(count($issubscriber)){
+					$issubscriber = array_values($issubscriber)[0];
+				}
+			}
+
+			if($issubscriber && in_array($issubscriber,[
+				'premium-unpaid-account',
+				'regular-unpaid-account'
+				])): ?>
+				<div class="callout alert alert-border margin-top-0 margin-bottom-10">
+					<div class="row">
+						<div class="col-md-8 col-sm-8"><!-- left text -->
+							<h4>Welcome to Market MasterClass</h4>
+							<p class="font-lato size-17">
+								You are currently subscribed to <strong><?=$wp_roles->roles[$issubscriber]['name']?></strong><br>
+								<small>We need to settle your account to complete the registration</small>
+							</p>
+						</div><!-- /left text -->
+						<div class="col-md-4 col-sm-4 text-right"><!-- right btn -->
+							<a class="btn btn-block btn-social btn-vimeo" href="<?=site_url('accounts/payment')?>">
+								<i class="fa fa-paypal"></i> Complete Payment
+							</a>
+						</div><!-- /right btn -->
+					</div>
+
+				</div>
+			<?php endif; ?>
 
 			<ul class="nav nav-tabs nav-top-border">
 				<li class="active"><a href="#questionaire" data-toggle="tab">Welcome</a></li>
@@ -160,7 +240,7 @@ get_header();
 						<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 
 						<video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="689" height="388" data-setup='{ "controls": true, "autoplay": <?=($autoplay ? 'true' : 'false')?>, "preload": "auto" }'>
-						<source src="http://beta.marketmasterclass.com/cdn/mmc-welcome-member.mp4" type='video/mp4'>
+						<source src="http://www.marketmasterclass.com/cdn/mmc-welcome-member.mp4" type='video/mp4'>
 						<p class="vjs-no-js">
 						To view this video please enable JavaScript, and consider upgrading to a web browser that
 						<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
@@ -495,6 +575,25 @@ get_header();
 		?>
 		<h2 class="size-18 margin-top-10 margin-bottom-0"><?=$current_user->data->display_name?></h2>
 		<h3 class="size-11 margin-top-0 margin-bottom-10 text-muted"><?=strtoupper($current_user->roles[0])?></h3>
+		<?php
+
+		if(!empty($current_user->roles)){
+			$issubscriber = array_intersect($current_user->roles, [
+				'free-account',
+				'premium-account',
+				'premium-unpaid-account',
+				'regular-account',
+				'regular-unpaid-account',
+			]);
+
+			if(count($issubscriber)){
+				$issubscriber = array_values($issubscriber)[0];
+				echo '<h3 class="size-11 margin-top-0 margin-bottom-10 text-muted">' . $wp_roles->roles[$issubscriber]['name'] . '</h3>';
+			}
+		}
+
+		?>
+
 	</div>
 </div>
 

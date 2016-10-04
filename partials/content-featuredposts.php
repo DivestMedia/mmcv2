@@ -21,7 +21,7 @@ global $featuredPost,$featuredTitle,$is_article;
 
 ?>
 
-<section class="alternate">
+<section class="alternate padding-top-150" id="all-posts">
 	<div class="container">
 		<header class="text-center margin-bottom-10 tiny-line">
 			<h2 class="font-proxima uppercase"><?=($featuredTitle)?></h2>
@@ -93,7 +93,7 @@ global $featuredPost,$featuredTitle,$is_article;
 							$post = $mainpost;
 							wp_reset_postdata();
 							?>
-							
+
 							<?php }?>
 
 		</div>

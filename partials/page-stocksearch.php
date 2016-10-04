@@ -10,9 +10,7 @@ get_template_part( 'partials/content', 'indexwatch' );
             <div class="col-sm-12">
                 <header class="text-left margin-bottom-10">
                     <h3 class="font-proxima uppercase">Stock <span>Search</span></h3>
-                    <p>
-                        We pick some stocks which may be worth having a look at, and we track their progress. It’s that simple. The rest is up to you…
-                    </p>
+                
                 </header>
                 <!-- TradingView Widget BEGIN -->
                 <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>

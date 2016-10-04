@@ -14,7 +14,9 @@ $_datas2 = stockMarket::request($quotes,date('Y-m-d',strtotime("-5 week")),date(
 				<span class="uppercase size-18 font-proxima nopadding nomargin">Stock Market</span>
 				<form action="<?=site_url('/stockwatch/stocksearch/')?>" method="get" class="margin-bottom-0">
 					<div class="input-group input-group-sm ">
-						<input type="search" name="tvwidgetsymbol" placeholder="Search stocks quotes (e.g AAPL)" class="form-control input-sm text-uppercase" value="<?=(!empty($_GET['tvwidgetsymbol']) ? strtoupper($_GET['tvwidgetsymbol']) : '')?>">
+						<div class="autosuggest" data-minLength="2">
+							<input type="text" name="tvwidgetsymbol" placeholder="Search stocks quotes (e.g AAPL)" class="form-control input-sm text-uppercase stocksearch-typehead " value="<?=(!empty($_GET['tvwidgetsymbol']) ? strtoupper($_GET['tvwidgetsymbol']) : '')?>" style="height:30px;"/>
+						</div>
 						<span class="input-group-btn">
 							<button class="btn btn-white noradius" type="submit"><i class="fa fa-search"></i></button>
 						</span>

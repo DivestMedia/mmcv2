@@ -1,4 +1,5 @@
 <?php
+
 get_template_part( 'partials/content', 'indexwatch' );
 $is_brokeragefirms = false;
 if(!strcasecmp(get_the_category($post->ID)[0]->name,'Brokerage Firms')){
@@ -197,7 +198,7 @@ $_parentcat = get_the_category()[0]->category_parent;
 						<div class="row margin-bottom-20">
 							<div class="col-sm-12 col-md-12">
 								<div class="thumbnail margin-bottom-10">
-									<img class="img-responsive" src="http://beta.marketmasterclass.com/wp-content/uploads/sites/8/2016/09/bruce-curren-profile.png" alt="" />
+									<img class="img-responsive" src="http://www.marketmasterclass.com/wp-content/uploads/sites/8/2016/09/bruce-curren-profile.png" alt="" />
 								</div>
 								<div><strong>BRUCE CURRAN</strong></div>
 								<div class="margin-bottom-10"><small>Independent Investment Expert</small></div>
@@ -211,7 +212,7 @@ $_parentcat = get_the_category()[0]->category_parent;
 							<div class="row margin-bottom-20">
 								<div class="col-sm-12 col-md-12">
 									<div class="thumbnail margin-bottom-10">
-										<img class="img-responsive" src="http://beta.marketmasterclass.com/wp-content/uploads/sites/8/2016/09/austenmorrisassociates-1.jpg" alt="" />
+										<img class="img-responsive" src="http://www.marketmasterclass.com/wp-content/uploads/sites/8/2016/09/austenmorrisassociates-1.jpg" alt="" />
 									</div>
 									<div><strong>BMARTYN DAVIES AND MATTHEW ARNOLD</strong></div>
 									<div class="margin-bottom-10"><small>Austen Morris Associates</small></div>

@@ -26,7 +26,7 @@ get_header();
 				?>
 
 				<div class="col-sm-3 margin-bottom-10">
-					<a href="http://beta.marketmasterclass.com/news/the-fed-feds-bullard-says-facebook-co-founder-behind-activists/">
+					<a href="http://www.marketmasterclass.com/news/the-fed-feds-bullard-says-facebook-co-founder-behind-activists/">
 						<figure class="margin-bottom-20 text-center" style="height:255px;">
 							<?=(the_post_thumbnail( 'mid-image', [ 'class' => 'img-responsive' , 'alt' => $post->post_name, 'style' => 'height:100%;width:300px;' ] ))?>
 						</figure>

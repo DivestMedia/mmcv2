@@ -79,14 +79,14 @@ foreach ($category_tags as $key => $cat) {
 			$featuredPostCategories[] = [
 				'id' => $cat->cat_ID,
 				'name' => $cat->name,
-				'link' => get_category_link($cat->cat_ID),
+				'link' => get_category_link($cat->cat_ID). '#all-posts',
 				'active' => $cat->cat_ID==$taghere?true:false
 			];
 		}else{
 			$featuredPostCategories[] = [
 				'id' => $cat->cat_ID,
 				'name' => $cat->name,
-				'link' => get_category_link($cat->cat_ID)
+				'link' => get_category_link($cat->cat_ID). '#all-posts'
 			];
 		}
 	}

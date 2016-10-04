@@ -20,15 +20,15 @@ get_template_part( 'partials/content', 'indexwatch' );
 
                     <div class="col-sm-12 margin-bottom-20">
                         <h4>NEW YORK STOCK EXCHANGE</h4>
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                             <?php
                             echo wp_get_attachment_image(348889,'mid-image',false,[
-                                'class' => 'img-responsive'
+                                'class' => 'pull-right'
                             ]);
                             ?>
                             <p>This index measures the performance of all the stocks listed on the New York Stock Exchange, including more than 1900 stocks, of which around 1500 are US companies. It’s calculated on the basis of price return and total return (including dividends) and it’s a much better indicator of market performance than narrow indexes that have fewer components.</p>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12">
                             <!-- TradingView Widget BEGIN -->
                             <div id="tv-medium-widget-1" class="margin-bottom-20"></div>
                             <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
@@ -58,15 +58,15 @@ get_template_part( 'partials/content', 'indexwatch' );
                 <div class="row">
                     <div class="col-sm-12 margin-bottom-20">
                         <h4>FTSE 100</h4>
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                             <?php
                             echo wp_get_attachment_image(348886,'mid-image',false,[
-                                'class' => 'img-responsive'
+                                'class' => 'pull-right'
                             ]);
                             ?>
                             <p>TThis is an index of the 100 largest companies listed on the London Stock Exchange and is the best indicator of the performance of major companies listed in the UK.</p>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12">
                             <!-- TradingView Widget BEGIN -->
                             <div id="tv-medium-widget-2" class="margin-bottom-20"></div>
                             <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
@@ -96,15 +96,15 @@ get_template_part( 'partials/content', 'indexwatch' );
                 <div class="row">
                     <div class="col-sm-12 margin-bottom-20">
                         <h4>NASDAQ</h4>
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                             <?php
                             echo wp_get_attachment_image(348887,'mid-image',false,[
-                                'class' => 'img-responsive'
+                                'class' => 'pull-right'
                             ]);
                             ?>
                             <p>This is the index where technology stocks are traded, although it also includes stocks from financial, industrial, insurance, and transportation industries. It includes both small and large companies and it is a good indicator for the technology industry as a whole.</p>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12">
                             <!-- TradingView Widget BEGIN -->
                             <div id="tv-medium-widget-3" class="margin-bottom-20"></div>
                             <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
@@ -134,15 +134,15 @@ get_template_part( 'partials/content', 'indexwatch' );
                 <div class="row">
                     <div class="col-sm-12 margin-bottom-20">
                         <h4>S&P 500</h4>
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                             <?php
                             echo wp_get_attachment_image(348891,'mid-image',false,[
-                                'class' => 'img-responsive'
+                                'class' => 'pull-right'
                             ]);
                             ?>
                             <p>A larger and more diverse index than the Dow Jones, it’s made up of 500 of the most widely tracked stocks in the USA and represents about 70% of the total value of the US market. This is a very good indicator of the movement of the US market as a whole. It’s market weighted, which means that every stock is represented in proportion to its total market capitalization, and many people consider this to be the best measure of the market’s movement since it is measured in percentages rather than dollars.</p>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12">
                             <!-- TradingView Widget BEGIN -->
                             <div id="tv-medium-widget-4" class="margin-bottom-20"></div>
                             <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
@@ -172,15 +172,15 @@ get_template_part( 'partials/content', 'indexwatch' );
                 <div class="row">
                     <div class="col-sm-12 margin-bottom-20">
                         <h4>NIKKEI</h4>
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                             <?php
                             echo wp_get_attachment_image(348888,'mid-image',false,[
-                                'class' => 'img-responsive'
+                                'class' => 'pull-right'
                             ]);
                             ?>
                             <p>This index is the leading and most respected index of Japanese stocks, and it’s a price-weighted index comprised of Japan’s top 225 blue chip companies traded on the Japan Stock Exchange. Basically, this is Japan’s equivalent of the Dow Jones.</p>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12">
                             <!-- TradingView Widget BEGIN -->
                             <div id="tv-medium-widget-5" class="margin-bottom-20"></div>
                             <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
@@ -210,15 +210,15 @@ get_template_part( 'partials/content', 'indexwatch' );
                 <div class="row">
                     <div class="col-sm-12 margin-bottom-20">
                         <h4>DOW JONES INDUSTRIAL AVERAGE</h4>
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                             <?php
                             echo wp_get_attachment_image(348885,'mid-image',false,[
-                                'class' => 'img-responsive'
+                                'class' => 'pull-right'
                             ]);
                             ?>
                             <p>One of the oldest and most frequently used indexes, the DJIA is a price-weighted index and it includes 30 of the largest and most influential companies in the USA, representing about a quarter of the value of the entire US stock market. A change in the DJIA represents changes in investors’ expectations of the earnings and risks of the large companies.</p>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12">
                             <!-- TradingView Widget BEGIN -->
                             <div id="tv-medium-widget-6" class="margin-bottom-20"></div>
                             <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
@@ -248,15 +248,15 @@ get_template_part( 'partials/content', 'indexwatch' );
                 <div class="row">
                     <div class="col-sm-12 margin-bottom-20">
                         <h4>RUSSELL 2000</h4>
-                        <div class="col-sm-4">
+                        <div class="col-sm-12">
                             <?php
                             echo wp_get_attachment_image(348890,'mid-image',false,[
-                                'class' => 'img-responsive'
+                                'class' => 'pull-right'
                             ]);
                             ?>
                             <p>This is the index for the 2000 smallest stocks in the Russell 3000 (which is an index of the 3000 largest publicly traded companies, based on cap, in the US stock market) and represents the best indicator of the daily performance of small companies in the market.</p>
                         </div>
-                        <div class="col-sm-8">
+                        <div class="col-sm-12">
                             <!-- TradingView Widget BEGIN -->
                             <div id="tv-medium-widget-7" class="margin-bottom-20"></div>
                             <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
