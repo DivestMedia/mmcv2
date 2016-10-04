@@ -18,7 +18,7 @@
 				}else{
 					$thumb_url = wp_get_attachment_url($_banner->banner_id);
 				}
-	
+				$btn_text = $_banner->ctype==2?'View <span class="visible-3xs">All</span>':'Read <span class="visible-3xs">More</span>';
 	?>
 		<!-- Slide 1 -->
 		<div class="ms-slide">
@@ -31,7 +31,7 @@
 			</h2>
 			<div class="ms-layer ms-promo-travel-description" style="left: 15px; top: 310px;" data-type="text" data-delay="30" data-effect="rotate3dbottom(100,0,0,70)" data-ease="easeOutExpo" data-duration="2300">
 				<p class="g-mb-20 hidden-sm hidden-xs"><?=mb_strimwidth(strip_tags(html_entity_decode($_banner->description)), 0, 150, "&hellip;")?></p>
-				<p><a href="<?=$_banner->link?>" class="btn btn-lg btn-primary noradius">Read <span class="visible-3xs">More</span></a></p>
+				<p><a href="<?=$_banner->link?>" class="btn btn-lg btn-primary noradius"><?=$btn_text?></a></p>
 			</div>
 			<img class="ms-thumb" src="<?=$thumb_url?>" alt="<?=$_banner->title?>">
 		</div>
