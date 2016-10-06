@@ -75,7 +75,8 @@ global $featuredVids,$featuredTitle;
 							foreach($featuredVids['posts'] as $post):
 
 								$post = get_post($post);
-
+								$iod_title = '';
+								$_c_margin_top = '';
 								$iod_video = '';
 								$iod_video_thumbnail = '';
 								if($post){
@@ -87,7 +88,18 @@ global $featuredVids,$featuredTitle;
 									}else{
 										$iod_video_thumbnail = 'http://www.askgamblers.com/uploads/original/isoftbet-2-5474883270a0f81c4b8b456b.png';
 									};
+									$cat = get_the_terms($post->ID,'iod_category');
+									if(!empty($cat[0])){
+										if(!strcasecmp($cat[0]->slug, 'bruce-curran-interviews')){
+											$iod_title = '<div>'.get_the_title($post->ID).'</div>';
+											$iod_title .= '<div class="size-12">'.get_post_meta( $post->ID, 'int_company',true).'</div>';
+											$_c_margin_top = 'style="margin-top: 1em;"';
+										}else{
+											$iod_title = xyr_smarty_limit_chars(get_the_title($post->ID),40);
+										}
+									}
 								}
+
 
 								?>
 								<div class="col-sm-4 margin-bottom-20">
@@ -99,11 +111,11 @@ global $featuredVids,$featuredTitle;
 											<span class="item-description">
 												<span class="overlay primary-bg "></span>
 												<span class="inner padding-top-0">
-													<h3>
+													<h3 <?=$_c_margin_top?>>
 														<em>
 															<a href="#" style="color:#fff"></a>
 														</em>
-														<?=xyr_smarty_limit_chars(get_the_title($post->ID),40)?>
+														<?=$iod_title?>
 				                                        <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($post->post_date))?></small>
 													</h3>
 													<span class="block size-11 text-center color-theme uppercase">

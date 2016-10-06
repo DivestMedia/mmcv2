@@ -46,7 +46,7 @@ setup_postdata($post);
 						<a href="#" class="btn btn-md btn-theme-hover noradius italic" data-toggle="modal" data-target="#ask-advisor-modal">Ask <?=(current(explode(' ',the_title())))?></a>
 						<a href="<?=site_url('/video/bruce-curran/#all-videos')?>" class="btn btn-md btn-theme-hover noradius">View webcast</a>
 					</h2>
-					<?=the_content()?>
+					<?=get_the_content($post->ID)?>
 					<blockquote class="quote">
 						<?php echo do_shortcode('[quotcoll limit="1" orderby="random"]')?>
 					</blockquote>

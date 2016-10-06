@@ -97,7 +97,7 @@ foreach ($featuredvids as $videohere) {
         $featuredvideos[] = [
             'title' => $videocat ,
             'titlelink' => $videocatlink,
-            // 'category' =>
+            'sec_title' => get_post_meta( $videohere->ID, 'int_company',true),
             'description' => trim_text($videohere->post_title,40),
             'date' => $videohere->post_date,
             'thumbnail' => $iod_video_thumbnail,
@@ -146,6 +146,7 @@ $post = $featuredvideos;
                                             <?php endif; ?>
                                         </em>
                                         <?=$video['description']?>
+                                        <?=!empty($video['sec_title'])?'<div class="size-12">'.$video['sec_title'].'</div>':''?>
                                         <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($video['date']))?></small>
                                     </h3>
                                     <span class="block size-11 text-center color-theme uppercase">
@@ -180,6 +181,7 @@ $post = $featuredvideos;
                                             <a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=($video['title']=='Daily Stock Picks' ? 'Kenyon Martin' : $video['title'])?></a>
                                         </em>
                                         <?=$video['description']?>
+                                        <?=!empty($video['sec_title'])?'<div class="size-12">'.$video['sec_title'].'</div>':''?>
                                         <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($video['date']))?></small>
                                     </h3>
                                     <span class="block size-11 text-center color-theme uppercase">
@@ -207,6 +209,7 @@ $post = $featuredvideos;
                                             <a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=($video['title']=='Daily Stock Picks' ? 'Kenyon Martin' : $video['title'])?></a>
                                         </em>
                                         <?=$video['description']?>
+                                        <?=!empty($video['sec_title'])?'<div class="size-12">'.$video['sec_title'].'</div>':''?>
                                         <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($video['date']))?></small>
                                     </h3>
                                     <span class="block size-11 text-center color-theme uppercase">
@@ -239,6 +242,7 @@ $post = $featuredvideos;
                                             <a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=($video['title']=='Daily Stock Picks' ? 'Kenyon Martin' : $video['title'])?></a>
                                         </em>
                                         <?=$video['description']?>
+                                        <?=!empty($video['sec_title'])?'<div class="size-12">'.$video['sec_title'].'</div>':''?>
                                         <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($video['date']))?></small>
                                     </h3>
                                     <span class="block size-11 text-center color-theme uppercase">
@@ -266,6 +270,7 @@ $post = $featuredvideos;
                                             <a href="<?=($video['titlelink'])?>" class="text-white" style=" background: rgba(29, 29, 29, 0.92); padding: 3px 6px; margin-bottom: 5px; display: inline-block;"><?=($video['title']=='Daily Stock Picks' ? 'Kenyon Martin' : $video['title'])?></a>
                                         </em>
                                         <?=$video['description']?>
+                                        <?=!empty($video['sec_title'])?'<div class="size-12">'.$video['sec_title'].'</div>':''?>
                                         <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($video['date']))?></small>
                                     </h3>
                                     <span class="block size-11 text-center color-theme uppercase">
