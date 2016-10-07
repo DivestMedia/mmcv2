@@ -24,7 +24,7 @@ $_parentcat = get_the_category()[0]->category_parent;
 						'class' => 'img-responsive margin-bottom-30'
 						])?>
 					</figure>
-					<div class="post-content">
+					<div class="post-content <?=!strcasecmp(get_cat_name($_parentcat),'Articles')?'isarticle':''?>">
 						<?=$post->post_content?>
 					</div>
 					<?php
