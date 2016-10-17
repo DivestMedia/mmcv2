@@ -34,6 +34,12 @@ $featuredcats = [
         'title' => 'Headlines',
         'description' => 'Global Business News',
         'link' => '/video/andy-penders/#all-videos',
+    ],
+    [
+        'category' => 'Business Animations',
+        'title' => 'Business Animations',
+        'description' => 'Business Animations',
+        'link' => '/video/abusiness-animations/#all-videos',
     ]
 ];
 $featuredvideos = [];

@@ -54,6 +54,9 @@ if(!strcasecmp(get_post_type(), 'newsletter')){
 
 	$_ab_lgimage = get_post_meta($post->ID,'_nltg_ab_lgimage')[0];
 	$_ab_lgurl = get_post_meta($post->ID,'_nltg_ab_lgurl')[0];
+
+	$_ab_b_lgimage = get_post_meta($post->ID,'_nltg_ab_b_lgimage')[0];
+	$_ab_b_lgurl = get_post_meta($post->ID,'_nltg_ab_b_lgurl')[0];
 	$_custom_text =$post->post_content;
 	$_post_link = get_the_permalink($post->ID);
 	$_site_link = site_url();
