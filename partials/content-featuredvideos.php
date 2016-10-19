@@ -124,7 +124,7 @@ $post = $featuredvideos;
 <section class="featured-grid video-grid" >
     <div class="container">
         <header class="text-left margin-bottom-10">
-            <h3 class="font-proxima uppercase"><?=($featureTitle ?: 'Most Popular <span>Videos</span>')?></h3>
+            <h3 class="font-proxima uppercase"><?=($featureTitle ?: 'Divest Media <span>TV</span>')?></h3>
         </header>
 
         <div class="row">

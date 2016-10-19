@@ -39,7 +39,7 @@ global $featuredVids,$featuredTitle;
 						<button class="fa fa-bars"></button>
 						<h4>CATEGORIES</h4>
 					</div>
-					<?php if(count($featuredVids['categories'])): 
+					<?php if(count($featuredVids['categories'])):
 					?>
 						<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
 							<?php foreach ($featuredVids['categories'] as $featCat): ?>
@@ -89,6 +89,8 @@ global $featuredVids,$featuredTitle;
 									};
 								}
 
+								$is_skype = get_post_meta($post->ID,'video-skype',true) ?: false;
+
 								?>
 								<div class="col-sm-4 margin-bottom-20">
 									<div class="item-box noshadow hover-box margin-top-10">
@@ -99,6 +101,9 @@ global $featuredVids,$featuredTitle;
 											<span class="item-description">
 												<span class="overlay primary-bg "></span>
 												<span class="inner padding-top-0">
+													<?php if($is_skype): ?>
+														<i class="fa fa-skype" style="    font-size: 20px; position: absolute; right: 10px; top: 10px; "></i>
+													<?php endif;?>
 													<h3>
 														<em>
 															<a href="#" style="color:#fff"></a>
@@ -125,7 +130,7 @@ global $featuredVids,$featuredTitle;
 						endif;
 						$post = $mainpost;
 						?>
-						
+
 					</div>
 					<div class="pagination"><?=posts_pagination(12)?></div>
 				</div>
