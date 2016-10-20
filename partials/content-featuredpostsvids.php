@@ -20,7 +20,12 @@ global $featuredVids,$featuredTitle;
 // ];
 
 ?>
+<style>
+div.side-nav ul>li>ul{
+	display: block!important;
+}
 
+</style>
 
 <section id="all-videos" class="alternate">
 	<div class="container">
@@ -40,7 +45,7 @@ global $featuredVids,$featuredTitle;
 						<h4>CATEGORIES</h4>
 					</div>
 					<?php if(count($featuredVids['categories'])):
-					?>
+						?>
 						<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
 							<?php foreach ($featuredVids['categories'] as $featCat): ?>
 								<li class="list-group-item <?=((!empty($featCat['active']) && $featCat['active']==true) ? 'active' : '')?> <?=(count($featCat['child'])? 'open' : '')?>">
@@ -50,6 +55,44 @@ global $featuredVids,$featuredTitle;
 											<?php foreach ($featCat['child'] as $featCatChild): ?>
 												<li class="list-group-item <?=((!empty($featCatChild['active']) && $featCatChild['active']==true) ? 'active' : '')?>">
 													<a href="<?=($featCatChild['link'] ?: '#')?>#all-videos"><?=($featCatChild['name'] ?: 'Uncategorized')?></a>
+													<?php
+
+													$child = [];
+													$child_cats = get_categories([
+														'type'                     => 'iod_video',
+														'parent'                   => $featCatChild['id'],
+														'orderby'                  => 'name',
+														'order'                    => 'ASC',
+														'hide_empty'               => 1,
+														'hierarchical'             => 1,
+														'exclude'                  => '1',
+														'include'                  => '',
+														'number'                   => '',
+														'taxonomy'                 => 'iod_category',
+														'pad_counts'               => false
+													]);
+
+													if(!empty($child_cats)){
+														foreach ($child_cats as $kk => $cc) {
+															$child_cats[$kk] = [
+																'id' => $cc->term_id,
+																'name' => $cc->name,
+																'link' => get_term_link($cc->term_id,'iod_category'),
+																'active' => get_query_var('iod_category')==$cc->slug
+															];
+														}
+														$child = $child_cats;
+
+
+													?>
+													<ul class="list-group list-unstyled nav nav-tabs nav-stacked nav-alternate uppercase">
+														<?php foreach ($child as $c): ?>
+															<li class="list-group-item <?=((!empty($c['active']) && $c['active']==true) ? 'active' : '')?>">
+																<a href="<?=($c['link'] ?: '#')?>#all-videos"><?=($c['name'] ?: 'Uncategorized')?></a>
+															</li>
+														<?php endforeach; ?>
+													</ul>
+													<?php } ?>
 												</li>
 											<?php endforeach;?>
 										</ul>
@@ -75,7 +118,8 @@ global $featuredVids,$featuredTitle;
 							foreach($featuredVids['posts'] as $post):
 
 								$post = get_post($post);
-
+								$iod_title = '';
+								$_c_margin_top = '';
 								$iod_video = '';
 								$iod_video_thumbnail = '';
 								if($post){
@@ -87,6 +131,16 @@ global $featuredVids,$featuredTitle;
 									}else{
 										$iod_video_thumbnail = 'http://www.askgamblers.com/uploads/original/isoftbet-2-5474883270a0f81c4b8b456b.png';
 									};
+									$cat = get_the_terms($post->ID,'iod_category');
+									if(!empty($cat[0])){
+										if(!strcasecmp($cat[0]->slug, 'bruce-curran-interviews')){
+											$iod_title = '<div>'.get_the_title($post->ID).'</div>';
+											$iod_title .= '<div class="size-12">'.get_post_meta( $post->ID, 'int_company',true).'</div>';
+											$_c_margin_top = 'style="margin-top: 1em;"';
+										}else{
+											$iod_title = xyr_smarty_limit_chars(get_the_title($post->ID),40);
+										}
+									}
 								}
 
 								$is_skype = get_post_meta($post->ID,'video-skype',true) ?: false;
@@ -108,8 +162,8 @@ global $featuredVids,$featuredTitle;
 														<em>
 															<a href="#" style="color:#fff"></a>
 														</em>
-														<?=xyr_smarty_limit_chars(get_the_title($post->ID),40)?>
-				                                        <small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($post->post_date))?></small>
+														<?=$iod_title?>
+														<small class="block text-white margin-top-10"><?=date('F j, Y',strtotime($post->post_date))?></small>
 													</h3>
 													<span class="block size-11 text-center color-theme uppercase">
 														<a class=" btn-sm btn primary-bg text-center noradius weight-700 video-grid-play" href="<?=($iod_video)?>" data-plugin-options="{&quot;type&quot;:&quot;iframe&quot;}">PLAY NOW</a>

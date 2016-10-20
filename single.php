@@ -19,7 +19,8 @@ if(!strcasecmp(get_post_type(), 'newsletter')){
 		$_link = get_post_meta($post->ID,'_nltg_fv_link_'.$ctr);
 		if(!empty($_image)){
 			$_temp = ['_nltg_fv_image'=>$_image[0],'_nltg_fv_title'=>$_title[0],'_nltg_fv_content'=>$_content[0],'_nltg_fv_link'=>$_link[0]];
-			array_push($_fv,$_temp);
+			if(!empty($_title[0]))
+				array_push($_fv,$_temp);
 		}else{
 			$end = 0;
 		}
@@ -38,7 +39,8 @@ if(!strcasecmp(get_post_type(), 'newsletter')){
 		$_link = get_post_meta($post->ID,'_nltg_fn_link_'.$ctr);
 		if(!empty($_image)){
 			$_temp = ['_nltg_fn_image'=>$_image[0],'_nltg_fn_title'=>$_title[0],'_nltg_fn_content'=>$_content[0],'_nltg_fn_link'=>$_link[0]];
-			array_push($_fn,$_temp);
+			if(!empty($_title[0]))
+				array_push($_fn,$_temp);
 		}else{
 			$end = 0;
 		}
@@ -52,8 +54,11 @@ if(!strcasecmp(get_post_type(), 'newsletter')){
 
 	$_ab_lgimage = get_post_meta($post->ID,'_nltg_ab_lgimage')[0];
 	$_ab_lgurl = get_post_meta($post->ID,'_nltg_ab_lgurl')[0];
-	$_custom_text = get_the_content();
-	$_post_link = get_the_permalink();
+
+	$_ab_b_lgimage = get_post_meta($post->ID,'_nltg_ab_b_lgimage')[0];
+	$_ab_b_lgurl = get_post_meta($post->ID,'_nltg_ab_b_lgurl')[0];
+	$_custom_text =$post->post_content;
+	$_post_link = get_the_permalink($post->ID);
 	$_site_link = site_url();
 	$_site_logo = 'http://www.marketmasterclass.com/wp-content/themes/mmcv2/assets/img/mmc-logo-light.png';
 	$_site_logo_black = 'http://mmc.divestmedialocal.com/wp-content/themes/mmcv2/assets/img/mmc-logo.png';

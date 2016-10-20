@@ -19,6 +19,13 @@
 
 #wrapper{
     .post-content{
+        &.isarticle{
+            white-space: pre-line;
+            ol,ul{
+                white-space: normal;
+                margin-bottom: 0;
+            }
+        }
         img{
             padding: 15px;
 
@@ -580,7 +587,6 @@ ul.widget-twitter{
         }
     }
 }
-
 .video-grid-details{
     h3{
         a{
@@ -604,5 +610,5 @@ ul.widget-twitter{
 }
 
 #header.transparent {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.5)!important;
 }
