@@ -36,10 +36,10 @@ $featuredcats = [
         'link' => '/video/andy-penders/#all-videos',
     ],
     [
-        'category' => 'Business Animations',
-        'title' => 'Business Animations',
-        'description' => 'Business Animations',
-        'link' => '/video/abusiness-animations/#all-videos',
+        'category' => 'Animations',
+        'title' => 'Animations',
+        'description' => 'Animations',
+        'link' => '/video/animations/#all-videos',
     ]
 ];
 $featuredvideos = [];
