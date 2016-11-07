@@ -37,7 +37,7 @@
 					<div class="price-table nobg">
 						<ul>
 							<li class="legalcase"><b class="uppercase">Our Videos</b><br/>Investment tips, interviews, webcasts and world news delivered on our exciting multi-media visual platform.</li>
-							<li class="legalcase"><b class="uppercase">Questionaires</b><br/>We help you work out what type of investor you are, and how best to invest your money.</li>
+							<li class="legalcase"><b class="uppercase">Questionnaires</b><br/>We help you work out what type of investor you are, and how best to invest your money.</li>
 							<li class="legalcase"><b class="uppercase">Stockfocus</b><br/>Follow the stocks our experts pick</li>
 							<li class="legalcase"><b class="uppercase">Find a broker</b><br/>Browser through the best brokerage firms and find the best one for you</li>
 							<li class="legalcase"><b class="uppercase">Newsletters</b><br/>Received on a daily basis, keeping you abreast of the major events of the day</li>
@@ -63,7 +63,7 @@
 					<div class="price-table nobg">
 						<ul>
 							<li class="legalcase"><b class="uppercase">Our Videos</b><br/>Investment tips, interviews, webcasts and world news delivered on our exciting multi-media visual platform.</li>
-							<li class="legalcase"><b class="uppercase">Questionaires</b><br/>We help you work out what type of investor you are, and how best to invest your money.</li>
+							<li class="legalcase"><b class="uppercase">Questionnaires</b><br/>We help you work out what type of investor you are, and how best to invest your money.</li>
 							<li class="legalcase"><b class="uppercase">Stockfocus</b><br/>Follow the stocks our experts pick</li>
 							<li class="legalcase"><b class="uppercase">Find a broker</b><br/>Browser through the best brokerage firms and find the best one for you</li>
 							<li class="legalcase"><b class="uppercase">Newsletters</b><br/>Received on a daily basis, keeping you abreast of the major events of the day</li>

@@ -256,7 +256,7 @@ get_header();
 			<div class="col-md-4 col-sm-4">
 
 				<div class="price-clean">
-					<h5 style="color:#1d1d1d;">INVESTOR<br>ASSESSMENT<br>QUESTIONAIRE</h5>
+					<h5 style="color:#1d1d1d;">INVESTOR<br>ASSESSMENT<br>QUESTIONNAIRE</h5>
 					<hr />
 					<?php
 					$_found = $wpdb->get_results('SELECT * FROM '.TBL_ASSESSMENT_RESULTS.' WHERE email = "'.$current_user->user_email.'" ORDER BY date_added DESC LIMIT 1');
@@ -288,7 +288,7 @@ get_header();
 								break;
 							}
 						endif;
-					else: ?> Discover what kind of investor you are by taking our <strong>Investor Assessment Questionaire</strong>.<?php endif; ?></p>
+					else: ?> Discover what kind of investor you are by taking our <strong>Investor Assessment Questionnaire</strong>.<?php endif; ?></p>
 					<hr />
 					<?php if($_found && $_found->curset>3): ?>
 						<a href="http://assessment.marketmasterclass.com/"  target="_blank" class="btn btn-3d btn-primary">Take the test again</a>
@@ -301,7 +301,7 @@ get_header();
 
 			<div class="col-md-4 col-sm-4">
 				<div class="price-clean price-clean-popular">
-					<h5 style="color:#1d1d1d;">INVESTMENT<br>OBJECTIVE<br>QUESTIONAIRE</h5>
+					<h5 style="color:#1d1d1d;">INVESTMENT<br>OBJECTIVE<br>QUESTIONNAIRE</h5>
 					<hr />
 					<?php
 					$_found = $wpdb->get_results('SELECT * FROM '.TBL_OBJECTIVE_RESULTS.' WHERE email = "'.$current_user->user_email.'" ORDER BY date_added DESC LIMIT 1');
@@ -324,7 +324,7 @@ get_header();
 								break;
 							}
 						endif;
-					else: ?> Discover what kind of investor you are by taking our <strong>Investment Objective Questionaire</strong>.<?php endif; ?></p>
+					else: ?> Discover what kind of investor you are by taking our <strong>Investment Objective Questionnaire</strong>.<?php endif; ?></p>
 					<hr />
 					<a href="http://objective.marketmasterclass.com/"  target="_blank" class="btn btn-3d btn-teal">Take the test now</a>
 				</div>
