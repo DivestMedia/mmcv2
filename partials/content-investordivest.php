@@ -1,11 +1,13 @@
 <?php
 $featuredvideos = [];
 $excludevideoid = [];
-$_iod_vid = get_posts([
+
+$_iod_vid = [];
+$_iod_vid_id = get_posts([
     'post_type'   => 'iod_video',
     'post_status' => 'publish',
-    'posts_per_page' => 5,
-    'posts_per_archive_page' => 5,
+    'posts_per_page' => 1,
+    'posts_per_archive_page' => 1,
     'orderby' => 'date',
     'order' => 'DESC',
     'category__not_in' => [ 42 ],
@@ -14,10 +16,29 @@ $_iod_vid = get_posts([
         [
             'taxonomy'  => 'iod_category',
             'field'     => 'slug',
-            'terms'     => array('invest-or-divest','dummies-guide'), 
+            'terms'     => 'invest-or-divest', 
         ]
     ],
 ]);
+$_iod_vid_dg = get_posts([
+    'post_type'   => 'iod_video',
+    'post_status' => 'publish',
+    'posts_per_page' => 1,
+    'posts_per_archive_page' => 1,
+    'orderby' => 'date',
+    'order' => 'DESC',
+    'category__not_in' => [ 42 ],
+    'taxonomy'=>'iod_category',
+    'tax_query' => [
+        [
+            'taxonomy'  => 'iod_category',
+            'field'     => 'slug',
+            'terms'     => 'dummies-guide', 
+        ]
+    ],
+]);
+array_push($_iod_vid,$_iod_vid_dg[0]);
+array_push($_iod_vid,$_iod_vid_id[0]);
 foreach ($_iod_vid as $videohere) {
 
     $iod_video = '';

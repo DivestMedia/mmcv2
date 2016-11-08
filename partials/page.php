@@ -9,7 +9,7 @@
 			?>
 				<article id="post-<?=$post->ID?>">
 					<div class="text-black size-14 entry-content post-<?=get_post_format($post->ID);?>">
-						<?=get_the_content($post->ID);?>
+						<?=do_shortcode(get_the_content($post->ID));?>
 					</div>
 				</article>
 			<?php endwhile;?>
