@@ -1,3 +1,5 @@
+
+
 <?php
 get_template_part( 'partials/content', 'indexwatch' );
 setup_postdata($post);
@@ -44,7 +46,11 @@ setup_postdata($post);
 				<div class="col-lg-9 col-md-7 col-sm-9">
 					<h2 class="size-25"><span><?=the_title()?></span>
 						<a href="#" class="btn btn-md btn-theme-hover noradius italic" data-toggle="modal" data-target="#ask-advisor-modal">Ask <?=(current(explode(' ',the_title())))?></a>
-						<a href="<?=site_url('/video/bruce-curran/#all-videos')?>" class="btn btn-md btn-theme-hover noradius">View webcast</a>
+						<?php if($post->post_name=='ron-faulkner'):?>
+							<a href="<?=site_url('/video/ron-faulkner/#all-videos')?>" class="btn btn-md btn-theme-hover noradius">View webcast</a>
+						<?php else: ?>
+							<a href="<?=site_url('/video/bruce-curran/#all-videos')?>" class="btn btn-md btn-theme-hover noradius">View webcast</a>
+						<?php endif;?>
 					</h2>
 					<?=get_the_content($post->ID)?>
 					<blockquote class="quote">
@@ -118,10 +124,25 @@ setup_postdata($post);
 	</a>
 	<!-- /BUTTON CALLOUT -->
 
-	<script>
-	jQuery(function($){
-		$('#submit-advisor-modal').click(function(){
-			$('#ask-advisor-modal').modal('hide');
+	<?php
+	function advisor_child_script() {
+		?>
+		<script type="text/javascript">
+		jQuery(window).load(function() {
+			$('#submit-advisor-modal').click(function(){
+				$('#ask-advisor-modal').modal('hide');
+			});
+
+			if(window.location.hash) {
+				var hash = window.location.hash;
+				if($(hash).length>0 && hash == '#ask-advisor-modal'){
+					$(hash).modal('show');
+				}
+			}
 		});
-	});
-	</script>
+		</script>
+		<?php
+	}
+	add_action( 'wp_footer', 'advisor_child_script' ,100);
+
+	?>

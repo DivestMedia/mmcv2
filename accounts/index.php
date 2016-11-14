@@ -566,9 +566,13 @@ get_header();
 		$profileid = get_user_meta($current_user->ID,'_wp_attachment_wp_user_avatar',true);
 		if(!empty($profileid)){
 			$imgsrc = wp_get_attachment_image_src((int)$profileid,'ratio-image-crop');
-			?>
-			<img src="<?=$imgsrc[0]?>" width="245" height="245" alt="" class="avatar avatar-245 wp-user-avatar wp-user-avatar-245 photo avatar-default">
-			<?php
+			if(!empty($imgsrc[0])):
+				?>
+				<img src="<?=$imgsrc[0]?>" width="245" height="245" alt="" class="avatar avatar-245 wp-user-avatar wp-user-avatar-245 photo avatar-default">
+				<?php
+			else:
+				echo get_avatar( $current_user->data->ID, 245 );
+			endif;
 		}else{
 			echo get_avatar( $current_user->data->ID, 245 );
 		}

@@ -317,6 +317,18 @@ $post = $featuredvideos;
                         'link' => '/video/kenyon-martin/#all-videos',
                     ],
                     [
+                        'category' => 'Ron Faulkner',
+                        'title' => 'Ron Faulkner',
+                        'description' => 'Market Tips',
+                        'link' => '/video/ron-faulkner/#all-videos',
+                    ],
+                    [
+                        'category' => 'Panel of Experts',
+                        'title' => 'Panel of Experts',
+                        'description' => 'Panel of Experts',
+                        'link' => '/video/panel-of-experts/#all-videos',
+                    ],
+                    [
                         'category' => 'MMC Headlines',
                         'title' => 'Global Headlines',
                         'description' => 'Investment Tips',
@@ -343,8 +355,12 @@ $post = $featuredvideos;
                         <div class="heading-title heading-dotted text-left margin-top-20 ">
                             <a href="<?=site_url('videos')?>"><h4>Our<span> Channels</span></h4></a>
                         </div>
-                        <?php foreach($featuredvideos as $fk=>$fv):
+                        <?php
 
+                        for ($i=0; $i < 4; $i++) {
+                            if(empty($featuredvideos[$i])) continue;
+                            $fv = $featuredvideos[$i];
+                            $fk = $i;
                             $img = wp_get_attachment_image_src( $catThumbs[$fv->term_id], 'mid-image', false );
                             ?>
                             <div class="col-md-3 col-sm-6 col-xs-6 col-2xs-12">
@@ -362,20 +378,71 @@ $post = $featuredvideos;
                                     </div>
                                 </div>
                             </div>
-                        <?php endforeach;
-                    }?>
+                            <?php
+                        }
+                        ?>
+                        <?php
+                        if(count($featuredvideos)>4){ ?>
+                            <style>
+                            .channel-toggle{
+                                text-align: center;display: block; width: 300px; margin: 0 auto;
+                            }
+                            .channel-toggle:before{
+                                content: none!important;
+                            }
+                            </style>
+                            <div class="toggle toggle-transparent toggle-bordered-simple nopadding">
+                                <div class="toggle nopadding">
+                                    <div class="toggle-content row">
+                                        <div class="col-md-3 col-sm-6 col-xs-6 col-2xs-12" style="
+                                        height: 280px;
+                                        "></div>
+                                        <?php
+                                        for ($i=4; $i < count($featuredvideos); $i++) {
+                                            if(empty($featuredvideos[$i])) continue;
+                                            $fv = $featuredvideos[$i];
+                                            $fk = $i;
+                                            $img = wp_get_attachment_image_src( $catThumbs[$fv->term_id], 'mid-image', false );
+                                            ?>
+                                            <div class="col-md-3 col-sm-6 col-xs-6 col-2xs-12">
+                                                <div class="item-box noshadow hover-box margin-bottom-10 channel-item-box">
+                                                    <div class="img-hover">
+                                                        <a href="<?=(get_term_link($fv->term_id,'iod_category'))?>#all-videos">
+                                                            <figure style="border-bottom: 5px solid rgb(30, 205, 110); height: 200px; background-image: url(<?=$img[0]?>); background-size: cover; background-repeat: no-repeat;" class="lazyOwl" data-src=""></figure>
+                                                        </a>
+
+                                                        <h4 class="text-center margin-top-20 height-50 post-title ">
+                                                            <a href="<?=(get_term_link($fv->term_id,'iod_category'))?>#all-videos">
+                                                                <?=($featuredcats[$fk]['title'])?>
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <?php
+                                        }
+
+
+                                        ?>
+                                    </div>
+
+                                    <label class="channel-toggle primary-bg text-white" style=""> View All Channels</label>
+                                </div>
+                            </div>
+                            <?php }?>
+                            <?php }?>
+                        <?php endif; ?>
+                    </div>
+                    <?php if(!$featureNoMore): ?>
+                        <div class="heading-title heading-dotted text-right margin-top-20 ">
+                            <a href="<?=site_url('videos')?>"><h4>Watch more<span> Videos</span></h4></a>
+                        </div>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
-            <?php if(!$featureNoMore): ?>
-                <div class="heading-title heading-dotted text-right margin-top-20 ">
-                    <a href="<?=site_url('videos')?>"><h4>Watch more<span> Videos</span></h4></a>
-                </div>
-            <?php endif; ?>
-        <?php endif; ?>
-    </div>
-</section>
+        </section>
 
 
-<?php
+        <?php
 
-$post = $mainpost;
+        $post = $mainpost;

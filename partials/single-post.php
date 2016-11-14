@@ -28,6 +28,23 @@ $_parentcat = get_the_category()[0]->category_parent;
 						<?=$post->post_content?>
 					</div>
 					<?php
+					if(in_array(get_cat_name($_parentcat),['Articles'])):
+						if(!strcasecmp(get_the_category($post->ID)[0]->slug, 'ROGUE-TRADER')):
+							?>
+							<p style="padding: 6px 0; text-transform: uppercase; font-size: 12px; margin:0;">
+								Please click <a href="<?=site_url('/advisors/bruce-curran/#ask-advisor-modal')?>" target="_blank">here</a> to ask Bruce a question
+							</p>
+							<?php
+						else:
+							?>
+							<p style="padding: 6px 0; text-transform: uppercase; font-size: 12px; margin:0;">
+								Please click <a href="<?=site_url('advisors')?>" target="_blank">here</a> to connect with one of our Investment Advisors
+							</p>
+							<?php
+						endif;
+					endif;
+					?>
+					<?php
 					if(!strcasecmp(get_cat_name($_parentcat),'Articles')){
 						$prev_articles_url = get_category_link(get_the_category()[0]);
 						?>
@@ -143,6 +160,9 @@ $_parentcat = get_the_category()[0]->category_parent;
 							<i class="icon-email3"></i>
 							<i class="icon-email3"></i>
 						</a>
+
+
+
 
 					</div>
 

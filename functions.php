@@ -1,4 +1,5 @@
 <?php
+
 define('NEWSBASEURL','http://news.marketmasterclass.com/');
 
 
@@ -297,13 +298,7 @@ function trim_text($input, $length, $ellipses = true, $strip_html = true) {
     return $trimmed_text;
 }
 
-add_action( 'json_api', function( $controller, $method )
-{
-    # DEBUG
-// wp_die( "To target only this method use <pre><code>add_action('$controller-$method', function(){ /*YOUR-STUFF*/ });</code></pre>" );
 
-header( "Access-Control-Allow-Origin: *" );
-}, 10, 2 );
 
 
 function file_get_contents_curl($url){
@@ -328,24 +323,25 @@ function file_get_contents_curl($url){
 
 // WP API
 
+add_action( 'json_api', function( $controller, $method ){
+    # DEBUG
+// wp_die( "To target only this method use <pre><code>add_action('$controller-$method', function(){ /*YOUR-STUFF*/ });</code></pre>" );
+// header('content-type: application/json; charset=utf-8');
+// header("Access-Control-Allow-Origin: *");
+// header("Access-Control-Allow-Headers: origin, content-type, accept");
+}, 10, 2 );
 add_action( 'rest_api_init', 'slug_register_post_thumbnail' );
 function slug_register_post_thumbnail() {
-    register_rest_field( 'post',
-    'post_thumbnail',
-    array(
+    register_rest_field( 'post','post_thumbnail',[
         'get_callback'    => 'slug_get_post_thumbnail',
         'update_callback' => null,
         'schema'          => null,
-    )
-);
-register_rest_field( 'post',
-'post_tags',
-array(
-    'get_callback'    => 'slug_get_post_tags',
-    'update_callback' => null,
-    'schema'          => null,
-)
-);
+    ]);
+    register_rest_field( 'post', 'post_tags', [
+        'get_callback'    => 'slug_get_post_tags',
+        'update_callback' => null,
+        'schema'          => null,
+    ]);
 }
 
 /**
@@ -879,7 +875,12 @@ add_action( 'wp_ajax_nopriv_save_advisor_message', 'save_advisor_message' );
 function save_advisor_message(){
     if(!($_POST['is_ajax']=='true')) exit("0");
     $contact = $_POST['contact'];
-    $result = sendEmail('support@divestmedia.com','New Message for an Advisor','Reply Back','mailto:'.$contact['email'],'accounts-email','Email Address : '.$contact['email'],$contact['message'],"There's a message for ".$contact['advisor']);
+
+    $contact['email'] = sanitize_email($contact['email']);
+    if(empty($contact['email'])) exit("0");
+    $contact['message'] = sanitize_text_field($contact['message']);
+
+    $result = sendEmail('support@divestmedia.com','New Message for an Advisor','Reply Back','mailto:'.$contact['email'],'accounts-email','Email Address : '.$contact['email'],esc_textarea($contact['message']),"There's a message for ".$contact['advisor']);
     exit("1");
 }
 
@@ -933,4 +934,68 @@ function stock_ticker_search(){
     }
 
     exit(json_encode($data));
+}
+
+
+add_action( 'init', 'iod_video_rest_support', 25 );
+function iod_video_rest_support() {
+    global $wp_post_types;
+    //be sure to set this to the name of your post type!
+    $post_type_name = 'iod_video';
+    $rest_base = 'video';
+    if( isset( $wp_post_types[ $post_type_name ] ) ) {
+        $wp_post_types[$post_type_name]->show_in_rest = true;
+        $wp_post_types[$post_type_name]->rest_base = $rest_base;
+        $wp_post_types[$post_type_name]->rest_controller_class = 'WP_REST_Posts_Controller';
+    }
+}
+
+add_action( 'rest_api_init', 'slug_register_video_details' );
+function slug_register_video_details() {
+    register_rest_field( 'iod_video', 'video_details', [
+        'get_callback'    => 'slug_get_video_details',
+        'schema'          => null,
+    ]);
+}
+
+function slug_get_video_details( $object, $field_name, $request ) {
+
+    $video = json_decode(get_post_meta( $object[ 'id' ], '_iod_video',true));
+
+    $iod_video = $video->embed->url;
+    // $ytpattern = '/^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/';
+    // if(preg_match($ytpattern,$iod_video,$vid_id)){
+    //     $vid_id = end($vid_id);
+    //     $iod_video_thumbnail = 'http://img.youtube.com/vi/'.$vid_id.'/mqdefault.jpg';
+    // }else{
+    //     $iod_video_thumbnail = 'http://www.askgamblers.com/uploads/original/isoftbet-2-5474883270a0f81c4b8b456b.png';
+    // };
+    $thumbid = get_post_meta( $object[ 'id' ], 'video-image-maxresdefault',true);
+    if(empty($thumbid)) $thumbid =get_post_meta( $object[ 'id' ], 'video-image-hqdefault',true);
+    if(empty($thumbid)) $thumbid =get_post_meta( $object[ 'id' ], 'video-image-mqdefault',true);
+
+    $video_cats = wp_get_post_terms($object[ 'id' ],'iod_category');
+
+    $hascat = false;
+    $videocat = '';
+    $videocatlink = '';
+    if($video_cats){
+        $hascat = true;
+        if(count($video_cats)){
+            $videocat = $video_cats[0]->name;
+            $videocatlink = get_term_link($video_cats[0]->term_id,'iod_category');
+        }
+        foreach ($video_cats as $vidcat) {
+            $vcats[] = '<a href="'.get_term_link($vidcat->term_id,'iod_category').'">'.$vidcat->name.'</a>';
+        }
+    }
+
+    return [
+        'url' => $video->embed->url,
+        'date' => date('M d, Y',strtotime($object['date'])),
+        'thumb' => wp_get_attachment_image_src($thumbid,'full')[0],
+        'duration' => get_post_meta( $object[ 'id' ], 'video-duration',true),
+        'views' => get_post_meta( $object[ 'id' ], 'view-count',true),
+        'cat' => $videocat
+    ];
 }

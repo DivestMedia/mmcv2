@@ -320,7 +320,6 @@ function xyrLoadImg() {
                     $( this )
                         .removeClass( "img_place" );
 
-                    console.log( the_orig_img );
                 }
             }
         } );
@@ -504,7 +503,6 @@ function assignnewsimage( tagelem, itemelem, taglist ) {
                                 newsimages[ tagkey ] = 0;
                             }
                             newsimages[ tagkey ]++;
-                            // console.log(newsimages[tagkey]);
                         } else {
                             rnewimgsrc = newimgsrc[ ctr ];
                             if ( ctr++ >= max )
@@ -1166,7 +1164,7 @@ jQuery( function ( $ ) {
     $( '#container-coming-soon .coming-soon-play' )
         .click( function ( e ) {
             e.preventDefault();
-            
+
             var $videogrid = $(this).parents( '.cont-c-vid' );
             var $videobig = $videogrid
             var $itembox = $( this )
@@ -1174,7 +1172,6 @@ jQuery( function ( $ ) {
             var $videourl = $( this )
                 .attr( 'href' );
 
-                console.log($videourl);
             if ( $videourl.search( 'youtu.be/' ) != -1 ) {
                 var $id = $videourl.split( 'youtu.be/' )[ 1 ];
             } else {
@@ -1198,5 +1195,9 @@ jQuery( function ( $ ) {
 
             return false;
         } );
+
+        $('.channel-toggle').click(function(){
+            $(this).hide();
+        });
 
 } );
