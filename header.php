@@ -62,8 +62,7 @@ BACKGROUND IMAGE [together with .boxed class]
 data-background="assets/images/boxed_background/1.jpg"
 -->
 <body class="smoothscroll enable-animation">
-
-
+	<?=do_shortcode('[CAF_SOCIALSCRIPTS]')?>
 	<!-- wrapper -->
 	<div id="wrapper">
 

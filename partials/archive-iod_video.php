@@ -150,7 +150,15 @@ foreach ($video_cats as $key => $cat) {
 			'order' => 'DESC',
 			'post_status'      => 'publish',
 			'taxonomy' => get_query_var('taxonomy'),
-			'iod_category' => get_query_var('taxonomy')=='iod_category' ? get_query_var('iod_category') : false
+			'iod_category' => get_query_var('taxonomy')=='iod_category' ? get_query_var('iod_category') : false,
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'iod_category',
+					'field' => 'slug',
+					'terms' => 'how-to-videos',
+					'operator' => 'NOT IN'
+				)
+			)
 		]);
 
 		$featuredVids = [

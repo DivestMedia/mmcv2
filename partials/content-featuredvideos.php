@@ -61,7 +61,7 @@ $featuredvids = get_posts([
         [
             'taxonomy'  => 'iod_category',
             'field'     => 'slug',
-            'terms'     => 'andy-penders', // exclude items media items in the news-cat custom taxonomy
+            'terms'     => ['andy-penders','how-to-videos'], // exclude items media items in the news-cat custom taxonomy
             'operator'  => 'NOT IN'
         ]
     ],
