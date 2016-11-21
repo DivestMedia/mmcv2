@@ -1,5 +1,6 @@
 <?php
 get_template_part( 'partials/content', 'indexwatch' );
+$hide_bios = true;
 ?>
 <section>
 	<div class="container">
@@ -47,6 +48,8 @@ get_template_part( 'partials/content', 'indexwatch' );
 	</div>
 </section>
 <!-- / -->
+
+<?php if(!$hide_bios){?>
 
 <!-- ABOUT -->
 <section id="about_heads" class="about_heads parallax dark alternate primary-bg" style="background: #1ab05d url('fxaces.jpg') repeat top left!important ;">
@@ -198,6 +201,6 @@ get_template_part( 'partials/content', 'indexwatch' );
 		</div>
 	</section>
 	<?php
-
+}
 
 	?>

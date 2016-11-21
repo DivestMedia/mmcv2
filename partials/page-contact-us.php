@@ -143,7 +143,7 @@ get_header();
 
 			<h2>Visit Us</h2>
 
-			<p>
+			<!-- <p>
 				<span class="block"><strong><i class="fa fa-map-marker"></i> Address:</strong> 2698 General J. Cailles St., Makati, 1233 Philippines</span>
 				<span class="block"><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="mailto:helpme@divestmedia.com">helpme@divestmedia.com</a></span>
 			</p>
@@ -157,17 +157,18 @@ get_header();
 					<strong><i class="fa fa-phone"></i> Phone:</strong>
 					<a href="tel:+852 8192 6788">+852 8192 6788</a>
 				</span>
-			</p>
+			</p> -->
 			<h4 class="font300">Manila Office</h4>
 			<p>
 				<span class="block">
 					<strong><i class="fa fa-envelope"></i> Address:</strong>
 					Fort Legend Tower, 3rd Ave and 31st Street, Bonifacio Global City, Taguig, Philippines
 				</span>
-				<span class="block">
+				<!-- <span class="block">
 					<strong><i class="fa fa-phone"></i> Phone:</strong>
 					<a href="tel:+63 917 887 8376">+63 917 887 8376</a>
-				</span>
+				</span> -->
+				<span class="block"><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="mailto:support@divestmedia.com">support@divestmedia.com</a></span>
 			</p>
 			<hr />
 
@@ -233,8 +234,8 @@ jQuery(document).ready(function(){
 	**/
 	map3 = new GMaps({
 		div: \'#map3\',
-		lat: 14.5415872,
-		lng: 121.0130077
+		lat: 14.5540263,
+		lng: 121.0468529,
 	});
 
 	// Marker 1
@@ -256,8 +257,8 @@ jQuery(document).ready(function(){
 
 	// Marker 2
 	map3.addMarker({
-		lat: 14.5415872,
-		lng: 121.0130077,
+		lat: 14.5540263,
+		lng: 121.0468529,
 		title: \'Divest Media\',
 		infoWindow: {
 			content: \'<p><b>Manila Office:</b><br/>Fort Legend Tower, 3rd Ave and 31st Street, <br/>Bonifacio Global City, Taguig, Philippines <br/><b>Phone: </b>+63 917 887 8376</p>\'
