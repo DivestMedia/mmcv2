@@ -146,30 +146,30 @@ get_header();
 			<!-- <p>
 				<span class="block"><strong><i class="fa fa-map-marker"></i> Address:</strong> 2698 General J. Cailles St., Makati, 1233 Philippines</span>
 				<span class="block"><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="mailto:helpme@divestmedia.com">helpme@divestmedia.com</a></span>
-			</p>
+			</p> -->
 			<h4 class="font300">Hongkong Office</h4>
 			<p>
 				<span class="block">
 					<strong><i class="fa fa-envelope"></i> Address:</strong>
 					Suite 908 The Hong Kong Club Building, Charter Road Central Hong Kong
 				</span>
-				<span class="block">
+				<!-- <span class="block">
 					<strong><i class="fa fa-phone"></i> Phone:</strong>
 					<a href="tel:+852 8192 6788">+852 8192 6788</a>
-				</span>
-			</p> -->
-			<h4 class="font300">Manila Office</h4>
+				</span> -->
+				<span class="block"><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="mailto:support@divestmedia.com">support@divestmedia.com</a></span>
+			</p>
+			<!-- <h4 class="font300">Manila Office</h4>
 			<p>
 				<span class="block">
 					<strong><i class="fa fa-envelope"></i> Address:</strong>
 					Fort Legend Tower, 3rd Ave and 31st Street, Bonifacio Global City, Taguig, Philippines
 				</span>
-				<!-- <span class="block">
+				<span class="block">
 					<strong><i class="fa fa-phone"></i> Phone:</strong>
 					<a href="tel:+63 917 887 8376">+63 917 887 8376</a>
-				</span> -->
-				<span class="block"><strong><i class="fa fa-envelope"></i> Email:</strong> <a href="mailto:support@divestmedia.com">support@divestmedia.com</a></span>
-			</p>
+				</span>
+			</p> -->
 			<hr />
 
 			<h4 class="font300">Business Hours</h4>
@@ -234,8 +234,8 @@ jQuery(document).ready(function(){
 	**/
 	map3 = new GMaps({
 		div: \'#map3\',
-		lat: 14.5540263,
-		lng: 121.0468529,
+		lat: 22.2814437,
+		lng: 114.1610866,
 	});
 
 	// Marker 1
@@ -257,11 +257,11 @@ jQuery(document).ready(function(){
 
 	// Marker 2
 	map3.addMarker({
-		lat: 14.5540263,
-		lng: 121.0468529,
+		lat: 22.2814437,
+		lng: 114.1610866,
 		title: \'Divest Media\',
 		infoWindow: {
-			content: \'<p><b>Manila Office:</b><br/>Fort Legend Tower, 3rd Ave and 31st Street, <br/>Bonifacio Global City, Taguig, Philippines <br/><b>Phone: </b>+63 917 887 8376</p>\'
+			content: \'<p><b>Hongkong Office:</b><br/>Suite 908 The Hong Kong Club Building,<br/>Charter Road Central Hong Kong<br/><b>Email: </b>support@divestmedia.com</p>\'
 		}
 	});
 
