@@ -1,5 +1,6 @@
 <?php
 global $featuredPost,$featuredTitle,$is_article;
+$queried = get_queried_object();
 // $featuredPost = [
 // 	'categories' => [
 // 		[
@@ -62,10 +63,10 @@ global $featuredPost,$featuredTitle,$is_article;
 			<div class="col-sm-9">
 				<div class="tab-content">
 					<div class="tab-pane fade in active" id="planning">
-						<div class="row" id="news-row">
+						<div class="row" <?php if(!is_category('news-at-a-glance')): echo "id='news-row'"; endif; ?>>
 
 							<?php
-							if(!empty($is_article)){
+							if(!empty($is_article) || in_array($queried->slug,['news-at-a-glance','business-news','world-news-news-at-a-glance']) ){
 							$mainpost = $post;
 							if(count($featuredPost['posts'])):
 								foreach($featuredPost['posts'] as $post):

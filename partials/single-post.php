@@ -25,7 +25,7 @@ $_parentcat = get_the_category()[0]->category_parent;
 						])?>
 					</figure>
 					<div class="post-content <?=!strcasecmp(get_cat_name($_parentcat),'Articles')?'isarticle':''?>">
-						<?=$post->post_content?>
+						<?=wpautop($post->post_content)?>
 					</div>
 					<?php
 					if(in_array(get_cat_name($_parentcat),['Articles'])):
@@ -77,7 +77,7 @@ $_parentcat = get_the_category()[0]->category_parent;
 
 					<?php
 
-					if(in_category(['news']) || in_array(get_cat_name($_parentcat),['Press Release'])):?>
+					if(in_category(['news','news-at-a-glance']) || in_array(get_cat_name($_parentcat),['Press Release'])):?>
 					<div class="row">
 						<div class="col-md-12">
 							<?php if(in_category(['news'])):?>
@@ -86,6 +86,12 @@ $_parentcat = get_the_category()[0]->category_parent;
 									<span>Go Back to All News</span>
 								</a>
 							<?php endif;?>
+								<?php if(in_category(['news-at-a-glance'])):?>
+									<a class="btn btn-3d btn-reveal btn-black pull-right" href="<?=site_url('category/news-at-a-glance')?>">
+										<i class="fa fa-newspaper-o"></i>
+										<span>Go Back to News at a Glance</span>
+									</a>
+								<?php endif;?>
 							<?php if(in_array(get_cat_name($_parentcat),['Press Release'])):?>
 								<a class="btn btn-3d btn-reveal btn-black pull-right" href="<?=site_url('category/press-release')?>">
 									<i class="fa fa-newspaper-o"></i>
@@ -119,7 +125,7 @@ $_parentcat = get_the_category()[0]->category_parent;
 					<?php endif;?>
 				<?php endif;?>
 
-				<?php if(in_category(['news','press-release','article']) || in_array(get_cat_name($_parentcat),['Articles'])):?>
+				<?php if(in_category(['news','press-release','news-at-a-glance','article']) || in_array(get_cat_name($_parentcat),['Articles'])):?>
 					<div class="clearfix margin-top-30">
 
 						<span class="pull-left margin-top-6 bold hidden-xs">
@@ -184,6 +190,20 @@ $_parentcat = get_the_category()[0]->category_parent;
 					<ul class="list-group list-group-bordered list-group-noicon uppercase">
 						<?php
 						$category_tags = get_category_tags(get_category_by_slug('news')->term_id);
+						?>
+						<?php foreach ($category_tags as $key => $tag):?>
+							<li class="list-group-item">
+								<a href="<?=($tag->link)?>" class="tag-<?=($tag->ID)?>" data-id="<?=($tag->ID)?>">
+									<span class="size-11 text-muted pull-right">(<?=(int)($tag->count)?>)</span>
+									<?=strtoupper($tag->name)?>
+								</a>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+					if(in_category(['news-at-a-glance'])):?>
+					<ul class="list-group list-group-bordered list-group-noicon uppercase">
+						<?php
+						$category_tags = get_category_tags(get_category_by_slug('news-at-a-glance')->term_id);
 						?>
 						<?php foreach ($category_tags as $key => $tag):?>
 							<li class="list-group-item">

@@ -1,7 +1,10 @@
 <?php
 get_header();
+$queried = get_queried_object();
 if(is_category('news')){
 	include 'partials/category-news.php';
+}elseif(in_array($queried->slug,['news-at-a-glance','business-news','world-news-news-at-a-glance'])){
+	include 'partials/category-news-at-a-glance.php';
 }elseif(is_category('press-release') || (is_category() && get_category(get_query_var('cat'))->parent != 0 && get_category(get_category(get_query_var('cat'))->parent)->slug=='press-release')){
 	include 'partials/category-press-release.php';
 }elseif(is_category('articles') || (is_category() && get_category(get_query_var('cat'))->parent != 0 && get_category(get_category(get_query_var('cat'))->parent)->slug=='articles')){
