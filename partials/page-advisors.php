@@ -1,9 +1,9 @@
 <?php
 get_template_part( 'partials/content', 'indexwatch' );
-?>	
+?>
 <!-- ABOUT -->
 	<section id="about_advisors" class="parallax dark alternate" style="background: #000 url('<?=get_stylesheet_directory_uri();?>/assets/img/faces.jpg') repeat top left!important ;">
-		
+
 		<div class="overlay dark-9"><!-- dark overlay [1 to 9 opacity] --></div>
 		<div class="container">
 
@@ -11,10 +11,10 @@ get_template_part( 'partials/content', 'indexwatch' );
 				<h3 class="size-26">Board of Advisors</h3>
 				<p class="lead font-lato"></p>
 				<hr />
-				
+
 			</header>
 
-			
+
 			<div class="row margin-bottom-40">
 			<?php
 				$args = array(
@@ -31,8 +31,8 @@ get_template_part( 'partials/content', 'indexwatch' );
 				if ( $parent->have_posts() ) : ?>
 
 				    <?php while ( $parent->have_posts() ) : $parent->the_post(); ?>
-				    	
-				    	<div class="col-sm-6 col-md-3 item <?php if($_x == false){ echo "col-xs-offset-2";$_x = true;}?> ">
+
+				    	<div class="col-sm-6 col-md-3 item">
 				    		<a href="<?=the_permalink()?>">
 							<div class=" noradius">
 								<img class="img-responsive bg-advisor margin-bottom-20" src="<?=the_post_thumbnail_url()?>" alt="" />
@@ -48,10 +48,10 @@ get_template_part( 'partials/content', 'indexwatch' );
 				<?php endif; wp_reset_query(); ?>
 			</div>
 		</div>
-		
+
 	</section>
 	<!-- / -->
-	
+
 	<!-- BUTTON CALLOUT -->
 	<a href="<?=site_url('/contact-us/')?>" rel="nofollow" target="_blank" class="btn btn-xlg btn-theme size-20 fullwidth nomargin noradius padding-40">
 		<span class="font-lato size-30">
