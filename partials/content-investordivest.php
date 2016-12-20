@@ -31,9 +31,9 @@ $_iod_vid_dg = get_posts([
     'taxonomy'=>'iod_category',
     'tax_query' => [
         [
-            'taxonomy'  => 'iod_category',
+            'taxonomy'  => 'post_tag',
             'field'     => 'slug',
-            'terms'     => 'dummies-guide', 
+            'terms'     => 'introduction', 
         ]
     ],
 ]);
