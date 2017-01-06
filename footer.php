@@ -55,7 +55,7 @@ get_template_part( 'partials/content', 'vipsubscribers' );
 	<hr/>
 	<div class="row ">
 		<div class="col-sm-6">
-			&copy; 2016 Market MasterClass. All rights reserved
+			&copy; <?=date("Y")?> Market MasterClass. All rights reserved
 		</div>
 		<div class="col-sm-6 text-right">
 			<?php
