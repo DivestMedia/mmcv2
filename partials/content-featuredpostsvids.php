@@ -138,7 +138,11 @@ div.side-nav ul>li>ul{
 											$iod_title .= '<div class="size-12">'.get_post_meta( $post->ID, 'int_company',true).'</div>';
 											$_c_margin_top = 'style="margin-top: 1em;"';
 										}else{
-											$iod_title = xyr_smarty_limit_chars(get_the_title($post->ID),40);
+											if(!strcasecmp($cat[0]->slug, 'daily-stock-picks')){
+												$iod_title = 'Stock Pick';
+											}else{
+												$iod_title = xyr_smarty_limit_chars(get_the_title($post->ID),40);
+											}
 										}
 									}
 								}

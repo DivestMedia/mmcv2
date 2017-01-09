@@ -64,8 +64,9 @@ get_template_part( 'partials/content', 'vipsubscribers' );
 				foreach (wp_get_nav_menu_items('Footer Navigation') as $f) {
 					array_push($footer_menu , '<a href="'.$f->url.'">'.$f->title.'</a>');
 				}
+
+				print_r(implode(' | ', $footer_menu));
 			}
-			print_r(implode(' | ', $footer_menu));
 			?>
 		</div>
 

@@ -925,6 +925,8 @@ function stock_ticker_search(){
         $results = json_decode($results);
         if(count($results->ResultSet->Result)){
             foreach ($results->ResultSet->Result as $result) {
+                if(!in_array($result->type,['S'])) continue;
+
                 $data[] = [
                     'ticker' => $result->symbol,
                     'name' => $result->name

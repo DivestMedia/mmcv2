@@ -10,7 +10,7 @@ get_template_part( 'partials/content', 'indexwatch' );
             <div class="col-sm-12">
                 <header class="text-left margin-bottom-10">
                     <h3 class="font-proxima uppercase">Stock <span>Search</span></h3>
-                
+
                 </header>
                 <!-- TradingView Widget BEGIN -->
                 <script type="text/javascript" src="https://d33t3vvu2t2yu5.cloudfront.net/tv.js"></script>
@@ -62,6 +62,8 @@ get_template_part( 'partials/content', 'indexwatch' );
 
                     $url = 'http://finance.yahoo.com/webservice/v1/symbols/'.$sym.'/quote?format=json&view=detail';
 
+
+
                     $ch = curl_init();
                     curl_setopt($ch,CURLOPT_USERAGENT,"Mozilla/5.0 (Linux; Android 6.0.1; MotoG3 Build/MPI24.107-55) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.81 Mobile Safari/537.36");
                     // Disable SSL verification
@@ -78,6 +80,7 @@ get_template_part( 'partials/content', 'indexwatch' );
                     if(!empty($data)){
 
                         $data = json_decode($data);
+
                         if(!empty($data) && !empty($data->list) && !empty($data->list->resources) && count($data->list->resources)){
                             $keyword = preg_replace("/[^a-zA-Z0-9\s]+/", "", $data->list->resources[0]->resource->fields->issuer_name);
                             $stock_news = json_decode(file_get_contents_curl(add_query_arg([
