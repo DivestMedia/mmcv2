@@ -69,11 +69,22 @@
                     </div>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="g-recaptcha" data-sitekey="6LfC6REUAAAAACFIBeOOTMKuqM5k_RiZxIfq7zRg" data-callback="checkCaptcha"></div>
+                    <script>
+                    var checkCaptcha = function(response){
+                        console.log(response);
+                        var submitbtn = document.getElementById('comment-submit-btn');
+                        submitbtn.disabled = false;
+                    }
+                    </script>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-12">
 
-                    <button class="btn btn-3d btn-lg btn-reveal btn-black" type="submit">
+                    <button id="comment-submit-btn" class="btn btn-3d btn-lg btn-reveal btn-black" type="submit" disabled>
                         <i class="fa fa-check"></i>
                         <span>SUBMIT MESSAGE</span>
                     </button>
@@ -88,5 +99,5 @@
 
 
     <?php endif; // If registration required and not logged in ?>
-
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 <?php endif; // if you delete this the sky will fall on your head ?>
