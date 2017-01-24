@@ -7,6 +7,8 @@ include_once( get_stylesheet_directory() .'/_inc/stocks.class.php');
 include_once( get_stylesheet_directory() .'/_inc/getmenu.php');
 
 include_once( get_stylesheet_directory() .'/_inc/restriction.class.php');
+// include_once( get_stylesheet_directory() .'/_inc/templateredirect.class.php');
+// $TemplateRedirect = New TemplateRedirect();
 $GetMenu = New GetMenu();
 add_filter( 'jpeg_quality', create_function( '', 'return 80;' ) );
 
@@ -879,7 +881,7 @@ function save_advisor_message(){
         '::1'
     );
 
-    if(!in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
+    if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)){
         exit("0");
     }
 
