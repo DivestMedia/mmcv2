@@ -162,7 +162,7 @@ div.side-nav ul>li>ul{
 													<?php if($is_skype): ?>
 														<i class="fa fa-skype" style="    font-size: 20px; position: absolute; right: 10px; top: 10px; "></i>
 													<?php endif;?>
-													<h3>
+													<h3 style="white-space: nowrap; overflow: hidden; width: 80%; text-overflow: ellipsis; margin-left: auto; margin-right: auto;">
 														<em>
 															<a href="#" style="color:#fff"></a>
 														</em>

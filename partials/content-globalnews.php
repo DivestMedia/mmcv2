@@ -349,7 +349,7 @@ $category_tags = [
 							<?php endforeach; ?>
 						</div>
 					<?php else:
-						var_dump($data);
+						
 						?>
 					<?php endif; ?>
 				</div>

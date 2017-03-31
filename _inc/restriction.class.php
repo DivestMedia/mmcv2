@@ -5,17 +5,17 @@
 class memberRestriction {
 
 	public $restricted_pages = [
-		'dummies-guide',
-		'telling-tales',
-		'find-a-broker',
+		// 'dummies-guide',
+		// 'telling-tales',
+		// 'find-a-broker',
 	];
 
 	public $restricted_archives = [
-		'iod_video',
+		// 'iod_video',
 	];
 
 	public $restricted_taxonomies = [
-		'iod_video' => 'iod_category',
+		// 'iod_video' => 'iod_category',
 	];
 
 	public function __construct(){

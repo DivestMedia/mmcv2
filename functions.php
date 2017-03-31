@@ -6,7 +6,7 @@ define('NEWSBASEURL','http://news.marketmasterclass.com/');
 include_once( get_stylesheet_directory() .'/_inc/stocks.class.php');
 include_once( get_stylesheet_directory() .'/_inc/getmenu.php');
 
-include_once( get_stylesheet_directory() .'/_inc/restriction.class.php');
+// include_once( get_stylesheet_directory() .'/_inc/restriction.class.php');
 // include_once( get_stylesheet_directory() .'/_inc/templateredirect.class.php');
 // $TemplateRedirect = New TemplateRedirect();
 $GetMenu = New GetMenu();
