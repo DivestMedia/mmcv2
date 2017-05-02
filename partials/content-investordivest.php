@@ -16,7 +16,7 @@ $_iod_vid_id = get_posts([
         [
             'taxonomy'  => 'iod_category',
             'field'     => 'slug',
-            'terms'     => 'invest-or-divest', 
+            'terms'     => 'invest-or-divest',
         ]
     ],
 ]);
@@ -33,7 +33,7 @@ $_iod_vid_dg = get_posts([
         [
             'taxonomy'  => 'post_tag',
             'field'     => 'slug',
-            'terms'     => 'introduction', 
+            'terms'     => 'introduction',
         ]
     ],
 ]);
@@ -162,6 +162,8 @@ foreach ($_iod_vid as $videohere) {
 
 		<script>
 			$(function() {
-				xyrLoadImg();
+                if(typeof xyrLoadImg == 'function'){
+            		xyrLoadImg();
+            	}
 			});
 		</script>

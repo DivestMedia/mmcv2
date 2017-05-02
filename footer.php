@@ -109,7 +109,7 @@ get_template_part( 'partials/content', 'vipsubscribers' );
 <?php
 global $restrict;
 
-if( (!is_user_logged_in() && $restrict->restrict_page()) || is_home() ){
+if( (!is_user_logged_in() && ($restrict && $restrict->restrict_page())) || is_home() ){
 	?>
 	<div id="modal-restrict" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" <?php if(!is_home()): ?>data-backdrop="static"<?php endif;?> data-show="true" <?php if(!is_home()): ?>data-autoload="true"<?php endif;?> data-autoload-delay="200">
 		<div class="modal-dialog modal-lg" style="max-width: 770px;">
@@ -246,9 +246,9 @@ $(function() {
 
 
 
-
-	xyrLoadImg();
-
+	if(typeof xyrLoadImg == 'function'){
+		xyrLoadImg();
+	}
 
 
 });
@@ -369,12 +369,12 @@ if(!empty($post_slug)):
 	fbq('track', 'PageView');
 	</script>
 	<noscript><img height="1" width="1" style="display:none"
-	src="https://www.facebook.com/tr?id=135800130229559&ev=PageView&noscript=1"
-	/></noscript>
-	<!-- DO NOT MODIFY -->
-	<!-- End Facebook Pixel Code -->
+		src="https://www.facebook.com/tr?id=135800130229559&ev=PageView&noscript=1"
+		/></noscript>
+		<!-- DO NOT MODIFY -->
+		<!-- End Facebook Pixel Code -->
 
 
-</body>
+	</body>
 
-</html>
+	</html>

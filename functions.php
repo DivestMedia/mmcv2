@@ -1029,3 +1029,169 @@ function filter_wp_allow_comment($commentdata){
     return 0;
 }
 add_filter('wp_allow_comment','filter_wp_allow_comment');
+
+// Slack Command for MMC Video Posting
+
+add_action( 'wp_ajax_mmc_video_slack_hook', 'mmc_video_slack_hook' );
+add_action( 'wp_ajax_nopriv_mmc_video_slack_hook', 'mmc_video_slack_hook' );
+
+function mmc_video_slack_hook(){
+
+    include_once ABSPATH . 'wp-admin/includes/taxonomy.php';
+
+    $data = $_POST;
+    header('Content-Type: application/json');
+    // Check if $data has token and token matches Slack
+    $token = '44TybXL2URqD7k8kaBQDYzY7';
+
+    if($data['token'] == $token){
+
+        $commandtext = $data['text'];
+
+        $videodata = preg_split("/\r\n|\n|\r/", $commandtext);
+
+        $videodata = array_map('trim',$videodata);
+        // /dmvideo
+        // INVESTMENT TIPS
+        // Red Oak Technology Select Fund
+        // 040317
+        // https://youtu.be/Z5xdiCe6Cow
+
+        // Check first if category exist
+        $category = get_term_by('slug', sanitize_title($videodata[0]) , 'iod_category' );
+        if ($category && $category->term_id ) {
+            $category = $category->term_id;
+
+            $iod_video = $videodata[3];
+            $ytpattern = '/^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/';
+            $videoid = '';
+
+            if(preg_match($ytpattern,$iod_video,$vid_id)){
+                $videoid = end($vid_id);
+            }
+
+
+            $pid = wp_insert_post([
+                'post_author' => 1,
+                'post_content' => '',
+                'post_title' => $videodata[1],
+                'post_status' => "Publish",
+                'post_type' => "iod_video",
+                'post_date' => date_format(date_create_from_format('mdy',$videodata[2]), 'Y-m-d H:i:s'),
+                'post_category' =>  [$category],
+                'iod_category' => [$category],
+                'meta_input' => [
+                    '_iod_video' => '{"type":"link","embed":{"url":"' . $videodata[3] . '"}}',
+                ]
+            ]);
+
+            if($pid){
+                wp_set_post_terms( (int)$pid, [$category], 'iod_category' );
+                $iod_video_thumbnail = 'http://img.youtube.com/vi/'.$videoid.'/mqdefault.jpg';
+                grab_thumbnail($iod_video_thumbnail,$pid);
+            }
+
+            exit(json_encode([
+                'response_type' => 'in_channel',
+                'attachments' => [
+                    [
+                        'color' => 'good',
+                        'title' => 'Video Posted Successfully',
+                        'title_link' => site_url('/video/'.sanitize_title($videodata[0]).'/#all-videos'),
+                        'text' => '<'.site_url('/video/'.sanitize_title($videodata[0]).'/#all-videos').'|Visit Page> | <'.$videodata[3].'|Play on Youtube> ',
+                        'fields' => [
+                            [
+                                'title' => 'Video Title',
+                                'value' => $videodata[1],
+                                'short' => true,
+                            ],
+                            [
+                                'title' => 'Video Category',
+                                'value' => $videodata[0],
+                                'short' => true,
+                            ],
+                            [
+                                'title' => 'Publish Date',
+                                'value' => date_format(date_create_from_format('mdy',$videodata[2]), 'Y-m-d H:i:s'),
+                                'short' => true,
+                            ],
+                        ],
+                        'thumb_url' => 'http://img.youtube.com/vi/'.$videoid.'/2.jpg',
+                        'footer' => 'Market Masterclass',
+                        'footer_icon' => site_url('/wp-content/themes/mmcv2/assets/favicon/apple-icon-60x60.png'),
+                        'ts' => time(),
+                    ]
+                ]
+            ]));
+
+        }else{
+
+            exit(json_encode([
+                "text" => "Category does not exist\n" . implode("\n",$videodata),
+            ]));
+
+        }
+
+
+
+    }else{
+        exit('Token does not match');
+    }
+
+}
+
+function grab_thumbnail( $image_url, $post_id , $thumbnail = true ){
+    $upload_dir = wp_upload_dir();
+
+    $opts = [
+        'http' => [
+            'method'  => 'GET',
+            'user_agent '  => "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
+            'header' => [
+                'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+                '
+            ]
+        ]
+    ];
+
+    $context  = stream_context_create($opts);
+
+    // $image_data = file_get_contents($image_url,false,$context);
+    $image_data = file_get_contents_curl($image_url);
+    if(!is_array(getimagesize($image_url))){
+        return false;
+    }
+
+    $filename = basename($image_url);
+
+    // Remove Query Strings
+    $querypos = strpos($filename, '?');
+    if($querypos!==FALSE){
+        $filename = substr($filename,0,$querypos);
+    }
+
+    if(empty($filename)):
+        $filename = get_post($post_id)->post_name;
+    endif;
+
+    if(wp_mkdir_p($upload_dir['path']))     $file = $upload_dir['path'] . '/' . $filename;
+    else                                    $file = $upload_dir['basedir'] . '/' . $filename;
+    file_put_contents($file, $image_data);
+
+    $wp_filetype = wp_check_filetype($filename, null );
+    $attachment = array(
+        'post_mime_type' => $wp_filetype['type'],
+        'post_title' => sanitize_file_name($filename),
+        'post_content' => '',
+        'post_status' => 'inherit'
+    );
+    $attach_id = wp_insert_attachment( $attachment, $file, $post_id );
+    require_once(ABSPATH . 'wp-admin/includes/image.php');
+    $attach_data = wp_generate_attachment_metadata( $attach_id, $file );
+    $res1= wp_update_attachment_metadata( $attach_id, $attach_data );
+    if($thumbnail){
+        $res2= set_post_thumbnail( $post_id, $attach_id );
+    }else{
+        return $attach_id;
+    }
+}
