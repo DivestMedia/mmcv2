@@ -1041,7 +1041,7 @@ jQuery( function ( $ ) {
 
 
             var $videoframe = $(
-                '<iframe width="100%" height="100%" src="//www.youtube.com/v/' +
+                '<iframe width="100%" height="100%" src="//www.youtube.com/embed/' +
                 $id +
                 '?autoplay=1&controls=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen>'
             );
@@ -1076,7 +1076,7 @@ jQuery( function ( $ ) {
                     .first()
                     .clone() );
             var $videoframe = $(
-                '<iframe width="100%" height="100%" src="//www.youtube.com/v/' +
+                '<iframe width="100%" height="100%" src="//www.youtube.com/embed/' +
                 $id +
                 '?autoplay=1&controls=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen>'
             );
@@ -1185,7 +1185,7 @@ jQuery( function ( $ ) {
                     .first()
                     .clone() );
             var $videoframe = $(
-                '<iframe class="embed-responsive-item" width="100%" height="100%" src="//www.youtube.com/v/' +
+                '<iframe class="embed-responsive-item" width="100%" height="100%" src="//www.youtube.com/embed/' +
                 $id +
                 '?autoplay=1&controls=1&modestbranding=1&rel=0" frameborder="0" allowfullscreen>'
             );
